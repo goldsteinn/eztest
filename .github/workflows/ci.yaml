@@ -1,0 +1,2926 @@
+# Name of the workflow is also displayed as a SVG badge
+name: EZTEST CI tests
+
+on: [push, pull_request]
+
+concurrency:
+  group: fast-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  eztest-integration:
+    name: Integration - ${{ matrix.system.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        system: [
+        { os: ubuntu-latest, },
+        { os: ubuntu-22.04 },
+        { os: ubuntu-20.04 },
+        { os: ubuntu-18.04 },
+        ]
+    runs-on: ${{ matrix.system.os }}
+    steps:
+    - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+    - name: apt-get install
+      if: always()
+      run: |
+        sudo apt-get update
+        sudo apt-get install clang-tidy cmake build-essential
+    - name: Config External Include
+      if: always()
+      run:
+        cmake -B build -S . -DEZTEST_TEST_INSTALLED_NO_FAIL_=ON -DCMAKE_INSTALL_PREFIX=build/tests/test-installed-eztest  -DEZTEST_BUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release
+    - name: Check Install
+      if: always()
+      run: |
+        cmake --build build --target check-external
+    - name: Check External
+      if: always()
+      run: |
+        cmake --build build --target check-external
+
+  eztest-x86:
+    name: ${{ matrix.targets.arch }}, ${{ matrix.compiler.cc }}, ${{ matrix.compiler.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        targets: [
+          { arch: 'x86-64', runtime_pkg: '' },
+          { arch: 'x86-32', runtime_pkg: 'libc6-dev-i386' },
+        ]
+
+
+        compiler: [
+        # cc
+        {
+          pkgs: '',
+          cc: cc,
+          cxx: c++,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'gnu',
+          comp_ver: 0,
+          uver: 0,
+          os: ubuntu-latest,
+        },
+
+
+        # gcc
+        {
+          pkgs: '',
+          cc: gcc,
+          cxx: g++,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'gnu',
+          comp_ver: 0,
+          uver: 0,
+          os: ubuntu-latest,
+        },
+
+        {
+          pkgs: 'gcc-13  g++-13  gcc-13-multilib g++-13-multilib',
+          cc: gcc-13,
+          cxx: g++-13,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'gnu',
+          comp_ver: 13,
+          uver: 0,
+          os: ubuntu-22.04,
+        },
+
+        {
+          pkgs: 'gcc-12  g++-12   gcc-12-multilib g++-12-multilib',
+          cc: gcc-12,
+          cxx: g++-12,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'gnu',
+          comp_ver: 12,
+          uver: 0,
+          os: ubuntu-22.04,
+        },
+
+        {
+          pkgs: 'gcc-11  g++-11   gcc-11-multilib g++-11-multilib',
+          cc: gcc-11,
+          cxx: g++-11,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'gnu',
+          comp_ver: 11,
+          uver: 0,
+          os: ubuntu-22.04,
+        },
+
+        {
+          pkgs: 'gcc-10  g++-10   gcc-10-multilib g++-10-multilib',
+          cc: gcc-10,
+          cxx: g++-10,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'gnu',
+          comp_ver: 10,
+          uver: 0,
+          os: ubuntu-22.04,
+        },
+
+        {
+          pkgs: 'gcc-9   g++-9   gcc-9-multilib g++-9-multilib',
+          cc: gcc-9,
+          cxx: g++-9,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'gnu',
+          comp_ver: 9,
+          uver: 0,
+          os: ubuntu-22.04,
+        },
+
+        {
+          pkgs: 'gcc-8   g++-8   gcc-8-multilib g++-8-multilib',
+          cc: gcc-8,
+          cxx: g++-8,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'gnu',
+          comp_ver: 8,
+          uver: 0,
+          os: ubuntu-20.04,
+        },
+
+        {
+          pkgs: 'gcc-7   g++-7   gcc-7-multilib g++-7-multilib',
+          cc: gcc-7,
+          cxx: g++-7,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'gnu',
+          comp_ver: 7,
+          uver: 0,
+          os: ubuntu-20.04,
+        },
+
+
+        # clang
+        {
+          pkgs: '',
+          cc: clang,
+          cxx: clang++,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 15,
+          uver: 0,
+          os: ubuntu-latest,
+        },
+
+        {
+          pkgs: 'clang-15',
+          cc: clang-15,
+          cxx: clang++-15,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 15,
+          uver: 0,
+          os: ubuntu-22.04,
+        },
+
+        {
+          pkgs: 'clang-14',
+          cc: clang-14,
+          cxx: clang++-14,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 14,
+          uver: 0,
+          os: ubuntu-22.04,
+        },
+
+        {
+          pkgs: 'clang-13',
+          cc: clang-13,
+          cxx: clang++-13,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 13,
+          uver: 0,
+          os: ubuntu-22.04,
+        },
+
+        {
+          pkgs: 'clang-12',
+          cc: clang-12,
+          cxx: clang++-12,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 12,
+          uver: 0,
+          os: ubuntu-22.04,
+        },
+
+        {
+          pkgs: 'clang-11',
+          cc: clang-11,
+          cxx: clang++-11,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 11,
+          uver: 0,
+          os: ubuntu-22.04,
+        },
+
+        {
+          pkgs: 'clang-10',
+          cc: clang-10,
+          cxx: clang++-10,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 10,
+          uver: 0,
+          os: ubuntu-20.04,
+        },
+
+        {
+          pkgs: 'clang-9',
+          cc: clang-9,
+          cxx: clang++-9,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 9,
+          uver: 0,
+          os: ubuntu-20.04,
+        },
+
+        {
+          pkgs: 'clang-8',
+          cc: clang-8,
+          cxx: clang++-8,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 8,
+          uver: 0,
+          os: ubuntu-20.04,
+        },
+
+        {
+          pkgs: 'clang-7',
+          cc: clang-7,
+          cxx: clang++-7,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 7,
+          uver: 0,
+          os: ubuntu-20.04,
+        },
+
+
+        # clang outside of apt
+        {
+          pkgs: '',
+          cc: clang-16,
+          cxx: clang++-16,
+          tidy: 'clang-tidy-16',
+          install_method: 'web',
+          comp_base: 'llvm',
+          comp_ver: 16,
+          uver: 14,
+          os: ubuntu-latest,
+        },
+
+        {
+          pkgs: '',
+          cc: clang-17,
+          cxx: clang++-17,
+          tidy: 'clang-tidy-17',
+          install_method: 'web',
+          comp_base: 'llvm',
+          comp_ver: 17,
+          uver: 14,
+          os: ubuntu-latest,
+        },
+
+        {
+          pkgs: '',
+          cc: clang-18,
+          cxx: clang++-18,
+          tidy: 'clang-tidy-18',
+          install_method: 'web',
+          comp_base: 'llvm',
+          comp_ver: 18,
+          uver: 14,
+          os: ubuntu-latest,
+        },
+
+        {
+          pkgs: '',
+          cc: clang-19,
+          cxx: clang++-19,
+          tidy: 'clang-tidy-19',
+          install_method: 'web',
+          comp_base: 'llvm',
+          comp_ver: 19,
+          uver: 14,
+          os: ubuntu-latest,
+        },
+        ]
+
+    runs-on: ${{ matrix.compiler.os }}
+    env:                        # Set environment variables
+      # We globally set CC and CXX to improve compatibility with .travis.yml
+      EZTEST_CC: ${{ matrix.compiler.cc }}
+      EZTEST_CXX: ${{ matrix.compiler.cxx }}
+      EZTEST_TIDY: ${{ matrix.compiler.tidy }}
+      EZTEST_VENDOR: ${{ matrix.compiler.comp_base }}
+      EZTEST_ARCH: ${{ matrix.targets.arch }}
+    steps:
+    - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+    - name: web-get install
+      if: matrix.compiler.install_method == 'web' && matrix.compiler.comp_base == 'llvm'
+      run: |
+        sudo apt-get update
+        sudo apt-get remove clang-${{matrix.compiler.uver}} lldb-${{matrix.compiler.uver}} lld-${{matrix.compiler.uver}} clangd-${{matrix.compiler.uver}} clang-tidy-${{matrix.compiler.uver}} clang-format-${{matrix.compiler.uver}} clang-tools-${{matrix.compiler.uver}} llvm-${{matrix.compiler.uver}}-dev lld-${{matrix.compiler.uver}} lldb-${{matrix.compiler.uver}} llvm-${{matrix.compiler.uver}}-tools libomp-${{matrix.compiler.uver}}-dev libc++-${{matrix.compiler.uver}}-dev libc++abi-${{matrix.compiler.uver}}-dev libclang-common-${{matrix.compiler.uver}}-dev libclang-${{matrix.compiler.uver}}-dev libclang-cpp${{matrix.compiler.uver}}-dev libunwind-${{matrix.compiler.uver}}-dev
+        wget https://apt.llvm.org/llvm.sh
+        chmod +x llvm.sh
+        sudo ./llvm.sh ${{matrix.compiler.comp_ver}} all
+    - name: apt-get install
+      if: always()
+      run: |
+        sudo apt-get update
+        sudo apt-get install cmake ninja-build ${{ matrix.compiler.pkgs }} ${{ matrix.targets.runtime_pkg }}
+    - name: apt-get install clang-tidy
+      if: matrix.compiler.install_method == 'apt'
+      run: |
+        sudo apt-get update
+        sudo apt-get install clang-tidy
+    - name: apt-get install runtimes
+      if: matrix.targets.arch != 'x86-64'
+      run: |
+        sudo apt-get update
+        sudo apt-get install gcc-multilib g++-multilib
+    - name: Environment info
+      if: always()
+      run: |
+        echo && type $EZTEST_CC && which $EZTEST_CC && $EZTEST_CC --version
+        echo && type $EZTEST_CXX && which $EZTEST_CXX && $EZTEST_CXX --version
+        echo && type cmake && cmake --version
+        echo && $EZTEST_TIDY --version
+        echo && type make && make -v
+        echo ${{ matrix.targets.arch }}
+
+    - name: Config Weverything
+      if: always()
+      run: |
+        cmake -B build -S . -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check Weverything
+      if: always()
+      run: |
+        cmake --build build --target check-all
+    - name: Check San Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build
+    - name: Check External Weverything
+      if: always()
+      run: |
+        cmake --build build --target check-external
+    - name: Check Static Analysis Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build run-static-analysis 14
+
+    - name: Config C99/CXX11 Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-99-11 -S . -DCMAKE_C_STANDARD=99 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=11 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C99 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-c
+    - name: Check CXX11 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-cxx
+    - name: Check San C99/CXX11 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-99-11
+    - name: Check Static Analysis C99/CXX11 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-99-11 run-static-analysis 14
+
+    - name: Config C11/CXX14 Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-11-14 -S . -DCMAKE_C_STANDARD=11 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=14 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C11 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-c
+    - name: Check CXX14 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-cxx
+    - name: Check San C11/CXX14 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-11-14
+    - name: Check Static Analysis C11/CXX14 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-11-14 run-static-analysis 14
+
+    - name: Config C17/CXX17 Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-17-17 -S . -DCMAKE_C_STANDARD=17 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=17 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C17 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-c
+    - name: Check CXX17 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-cxx
+    - name: Check San C17/CXX17 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-17-17
+    - name: Check Static Analysis C17/CXX17 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-17-17 run-static-analysis 14
+
+    - name: Config CXX20 Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-20 -S . -DCMAKE_CXX_STANDARD=20 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check CXX20 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-20 --target check-all-cxx
+    - name: Check San CXX20 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-20
+    - name: Check Static Analysis CXX20 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-20 run-static-analysis-cxx 14
+
+    - name: Config C23/CXX23 Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-23-23 -S . -DCMAKE_C_STANDARD=23 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=23 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C23 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-23-23 --target check-all-c
+    - name: Check CXX23 Ext Weverything
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        cmake --build build-23-23 --target check-all-cxx
+    - name: Check San C23 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -c
+    - name: Check San CXX23 Ext Weverything
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -cxx
+    - name: Check Static Analysis C23/CXX23 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-23-23 run-static-analysis 17
+
+
+    - name: Config C99/CXX11 No-Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-99-11 -S . -DCMAKE_C_STANDARD=99 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=11 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C99 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-c
+    - name: Check CXX11 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-cxx
+    - name: Check San C99/CXX11 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-99-11
+    - name: Check Static Analysis C99/CXX11 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-99-11 run-static-analysis 14
+
+    - name: Config C11/CXX14 No-Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-11-14 -S . -DCMAKE_C_STANDARD=11 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=14 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C11 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-c
+    - name: Check CXX14 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-cxx
+    - name: Check San C11/CXX14 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-11-14
+    - name: Check Static Analysis C11/CXX14 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-11-14 run-static-analysis 14
+
+    - name: Config C17/CXX17 No-Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-17-17 -S . -DCMAKE_C_STANDARD=17 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=17 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C17 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-c
+    - name: Check CXX17 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-cxx
+    - name: Check San C17/CXX17 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-17-17
+    - name: Check Static Analysis C17/CXX17 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-17-17 run-static-analysis 14
+
+    - name: Config CXX20 No-Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-20 -S . -DCMAKE_CXX_STANDARD=20 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check CXX20 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-20 --target check-all-cxx
+    - name: Check San CXX20 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-20
+    - name: Check Static Analysis CXX20 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-20 run-static-analysis-cxx 14
+
+    - name: Config C23/CXX23 No-Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-23-23 -S . -DCMAKE_C_STANDARD=23 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=23 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C23 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-23-23 --target check-all-c
+    - name: Check CXX23 No-Ext Weverything
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        cmake --build build-23-23 --target check-all-cxx
+    - name: Check San C23 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -c
+    - name: Check San CXX23 No-Ext Weverything
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -cxx
+    - name: Check Static Analysis C23/CXX23 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-23-23 run-static-analysis 17
+    - name: Config Wall
+      if: always()
+      run: |
+        cmake -B build -S . -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check Wall
+      if: always()
+      run: |
+        cmake --build build --target check-all
+    - name: Check San Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build
+    - name: Check External Wall
+      if: always()
+      run: |
+        cmake --build build --target check-external
+    - name: Check Static Analysis Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build run-static-analysis 14
+
+    - name: Config C99/CXX11 Ext Wall
+      if: always()
+      run: |
+        cmake -B build-99-11 -S . -DCMAKE_C_STANDARD=99 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=11 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C99 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-c
+    - name: Check CXX11 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-cxx
+    - name: Check San C99/CXX11 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-99-11
+    - name: Check Static Analysis C99/CXX11 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-99-11 run-static-analysis 14
+
+    - name: Config C11/CXX14 Ext Wall
+      if: always()
+      run: |
+        cmake -B build-11-14 -S . -DCMAKE_C_STANDARD=11 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=14 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C11 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-c
+    - name: Check CXX14 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-cxx
+    - name: Check San C11/CXX14 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-11-14
+    - name: Check Static Analysis C11/CXX14 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-11-14 run-static-analysis 14
+
+    - name: Config C17/CXX17 Ext Wall
+      if: always()
+      run: |
+        cmake -B build-17-17 -S . -DCMAKE_C_STANDARD=17 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=17 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C17 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-c
+    - name: Check CXX17 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-cxx
+    - name: Check San C17/CXX17 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-17-17
+    - name: Check Static Analysis C17/CXX17 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-17-17 run-static-analysis 14
+
+    - name: Config CXX20 Ext Wall
+      if: always()
+      run: |
+        cmake -B build-20 -S . -DCMAKE_CXX_STANDARD=20 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check CXX20 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-20 --target check-all-cxx
+    - name: Check San CXX20 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-20
+    - name: Check Static Analysis CXX20 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-20 run-static-analysis-cxx 14
+
+    - name: Config C23/CXX23 Ext Wall
+      if: always()
+      run: |
+        cmake -B build-23-23 -S . -DCMAKE_C_STANDARD=23 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=23 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C23 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-23-23 --target check-all-c
+    - name: Check CXX23 Ext Wall
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        cmake --build build-23-23 --target check-all-cxx
+    - name: Check San C23 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -c
+    - name: Check San CXX23 Ext Wall
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -cxx
+    - name: Check Static Analysis C23/CXX23 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-23-23 run-static-analysis 17
+
+
+    - name: Config C99/CXX11 No-Ext Wall
+      if: always()
+      run: |
+        cmake -B build-99-11 -S . -DCMAKE_C_STANDARD=99 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=11 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C99 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-c
+    - name: Check CXX11 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-cxx
+    - name: Check San C99/CXX11 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-99-11
+    - name: Check Static Analysis C99/CXX11 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-99-11 run-static-analysis 14
+
+    - name: Config C11/CXX14 No-Ext Wall
+      if: always()
+      run: |
+        cmake -B build-11-14 -S . -DCMAKE_C_STANDARD=11 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=14 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C11 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-c
+    - name: Check CXX14 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-cxx
+    - name: Check San C11/CXX14 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-11-14
+    - name: Check Static Analysis C11/CXX14 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-11-14 run-static-analysis 14
+
+    - name: Config C17/CXX17 No-Ext Wall
+      if: always()
+      run: |
+        cmake -B build-17-17 -S . -DCMAKE_C_STANDARD=17 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=17 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C17 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-c
+    - name: Check CXX17 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-cxx
+    - name: Check San C17/CXX17 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-17-17
+    - name: Check Static Analysis C17/CXX17 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-17-17 run-static-analysis 14
+
+    - name: Config CXX20 No-Ext Wall
+      if: always()
+      run: |
+        cmake -B build-20 -S . -DCMAKE_CXX_STANDARD=20 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check CXX20 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-20 --target check-all-cxx
+    - name: Check San CXX20 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-20
+    - name: Check Static Analysis CXX20 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-20 run-static-analysis-cxx 14
+
+    - name: Config C23/CXX23 No-Ext Wall
+      if: always()
+      run: |
+        cmake -B build-23-23 -S . -DCMAKE_C_STANDARD=23 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=23 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C23 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-23-23 --target check-all-c
+    - name: Check CXX23 No-Ext Wall
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        cmake --build build-23-23 --target check-all-cxx
+    - name: Check San C23 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -c
+    - name: Check San CXX23 No-Ext Wall
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -cxx
+    - name: Check Static Analysis C23/CXX23 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-23-23 run-static-analysis 17
+  eztest-riscv64:
+    name: ${{ matrix.targets.arch }}, ${{ matrix.compiler.cc }}, ${{ matrix.compiler.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        targets: [
+          { arch: 'riscv64', runtime_pkg: 'qemu-user-static qemu-utils  qemu-system-riscv64' },
+        ]
+
+        compiler: [
+        # clang
+        {
+          pkgs: 'gcc-riscv64-linux-gnu  g++-riscv64-linux-gnu',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: clang,
+          cxx: clang++,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 15,
+          uver: 0,
+          os: ubuntu-latest,
+        },
+
+        {
+          pkgs: 'clang-15 gcc-riscv64-linux-gnu  g++-riscv64-linux-gnu',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: clang-15,
+          cxx: clang++-15,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 15,
+          uver: 0,
+          os: ubuntu-22.04,
+        },
+
+        {
+          pkgs: 'clang-14 gcc-12-riscv64-linux-gnu  g++-12-riscv64-linux-gnu',
+          libgcc_pkgs : ' gcc-12-multilib g++-12-multilib',
+          cc: clang-14,
+          cxx: clang++-14,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 14,
+          uver: 0,
+          os: ubuntu-22.04,
+        },
+
+        {
+          pkgs: 'clang-13 gcc-11-riscv64-linux-gnu  g++-11-riscv64-linux-gnu',
+          libgcc_pkgs : ' gcc-11-multilib g++-11-multilib',
+          cc: clang-13,
+          cxx: clang++-13,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 13,
+          uver: 0,
+          os: ubuntu-22.04,
+        },
+
+        # clang outside of apt
+        {
+          pkgs: ' gcc-riscv64-linux-gnu  g++-riscv64-linux-gnu',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: clang-16,
+          cxx: clang++-16,
+          tidy: 'clang-tidy-16',
+          install_method: 'web',
+          comp_base: 'llvm',
+          comp_ver: 16,
+          uver: 14,
+          os: ubuntu-latest,
+        },
+
+        {
+          pkgs: ' gcc-riscv64-linux-gnu  g++-riscv64-linux-gnu',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: clang-17,
+          cxx: clang++-17,
+          tidy: 'clang-tidy-17',
+          install_method: 'web',
+          comp_base: 'llvm',
+          comp_ver: 17,
+          uver: 14,
+          os: ubuntu-latest,
+        },
+
+        {
+          pkgs: ' gcc-riscv64-linux-gnu  g++-riscv64-linux-gnu',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: clang-18,
+          cxx: clang++-18,
+          tidy: 'clang-tidy-18',
+          install_method: 'web',
+          comp_base: 'llvm',
+          comp_ver: 18,
+          uver: 14,
+          os: ubuntu-latest,
+        },
+
+        {
+          pkgs: ' gcc-riscv64-linux-gnu  g++-riscv64-linux-gnu',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: clang-19,
+          cxx: clang++-19,
+          tidy: 'clang-tidy-19',
+          install_method: 'web',
+          comp_base: 'llvm',
+          comp_ver: 19,
+          uver: 14,
+          os: ubuntu-latest,
+        },
+        # arm
+        {
+          pkgs: 'gcc-riscv64-linux-gnu  g++-riscv64-linux-gnu',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: riscv64-linux-gnu-gcc,
+          cxx: riscv64-linux-gnu-g++,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'gnu',
+          comp_ver: 12,
+          uver: 0,
+          os: ubuntu-latest,
+        },
+        {
+          pkgs: 'gcc-12-riscv64-linux-gnu  g++-12-riscv64-linux-gnu',
+          libgcc_pkgs: '  gcc-12-multilib g++-12-multilib',
+          cc: riscv64-linux-gnu-gcc-12,
+          cxx: riscv64-linux-gnu-g++-12,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'gnu',
+          comp_ver: 12,
+          uver: 0,
+          os: ubuntu-22.04,
+        },
+        {
+          pkgs: 'gcc-11-riscv64-linux-gnu  g++-11-riscv64-linux-gnu',
+          libgcc_pkgs: '  gcc-11-multilib g++-11-multilib',
+          cc: riscv64-linux-gnu-gcc-11,
+          cxx: riscv64-linux-gnu-g++-11,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'gnu',
+          comp_ver: 11,
+          uver: 0,
+          os: ubuntu-22.04,
+        },
+        {
+          pkgs: 'gcc-10-riscv64-linux-gnu  g++-10-riscv64-linux-gnu',
+          libgcc_pkgs: '  gcc-10-multilib g++-10-multilib',
+          cc: riscv64-linux-gnu-gcc-10,
+          cxx: riscv64-linux-gnu-g++-10,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'gnu',
+          comp_ver: 10,
+          uver: 0,
+          os: ubuntu-22.04,
+        },
+        {
+          pkgs: 'gcc-9-riscv64-linux-gnu  g++-9-riscv64-linux-gnu',
+          libgcc_pkgs: '  gcc-9-multilib g++-9-multilib',
+          cc: riscv64-linux-gnu-gcc-9,
+          cxx: riscv64-linux-gnu-g++-9,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'gnu',
+          comp_ver: 9,
+          uver: 0,
+          os: ubuntu-22.04,
+        },
+        {
+          pkgs: 'gcc-8-riscv64-linux-gnu  g++-8-riscv64-linux-gnu',
+          libgcc_pkgs: '  gcc-8-multilib g++-8-multilib',
+          cc: riscv64-linux-gnu-gcc-8,
+          cxx: riscv64-linux-gnu-g++-8,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'gnu',
+          comp_ver: 8,
+          uver: 0,
+          os: ubuntu-20.04,
+        },
+        ]
+
+    runs-on: ${{ matrix.compiler.os }}
+    env:                        # Set environment variables
+      # We globally set CC and CXX to improve compatibility with .travis.yml
+      EZTEST_CC: ${{ matrix.compiler.cc }}
+      EZTEST_CXX: ${{ matrix.compiler.cxx }}
+      EZTEST_TIDY: ${{ matrix.compiler.tidy }}
+      EZTEST_VENDOR: ${{ matrix.compiler.comp_base }}
+      EZTEST_ARCH: ${{ matrix.targets.arch }}
+    steps:
+    - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+    - name: web-get install
+      if: matrix.compiler.install_method == 'web' && matrix.compiler.comp_base == 'llvm'
+      run: |
+        sudo apt-get update
+        sudo apt-get remove clang-${{matrix.compiler.uver}} lldb-${{matrix.compiler.uver}} lld-${{matrix.compiler.uver}} clangd-${{matrix.compiler.uver}} clang-tidy-${{matrix.compiler.uver}} clang-format-${{matrix.compiler.uver}} clang-tools-${{matrix.compiler.uver}} llvm-${{matrix.compiler.uver}}-dev lld-${{matrix.compiler.uver}} lldb-${{matrix.compiler.uver}} llvm-${{matrix.compiler.uver}}-tools libomp-${{matrix.compiler.uver}}-dev libc++-${{matrix.compiler.uver}}-dev libc++abi-${{matrix.compiler.uver}}-dev libclang-common-${{matrix.compiler.uver}}-dev libclang-${{matrix.compiler.uver}}-dev libclang-cpp${{matrix.compiler.uver}}-dev libunwind-${{matrix.compiler.uver}}-dev
+        wget https://apt.llvm.org/llvm.sh
+        chmod +x llvm.sh
+        sudo ./llvm.sh ${{matrix.compiler.comp_ver}} all
+    - name: apt-get install
+      if: always()
+      run: |
+        sudo apt-get update
+        sudo apt-get install cmake ninja-build
+        sudo apt-get install clang-tidy
+        sudo apt-get install ${{ matrix.compiler.libgcc_pkgs }}
+        sudo apt-get install ${{ matrix.compiler.pkgs }} ${{ matrix.targets.runtime_pkg }}
+    - name: Pkg Info
+      if: always()
+      run: |
+        echo && apt-cache search "^gcc-" | grep "linux" | sort
+    - name: Environment info
+      if: always()
+      run: |
+        echo && type $EZTEST_CC && which $EZTEST_CC && $EZTEST_CC --version
+        echo && type $EZTEST_CXX && which $EZTEST_CXX && $EZTEST_CXX --version
+        echo && type cmake && cmake --version
+        echo && $EZTEST_TIDY --version
+        echo && type make && make -v
+        echo ${{ matrix.targets.arch }}
+
+    - name: Config Weverything
+      if: always()
+      run: |
+        cmake -B build -S . -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check Weverything
+      if: always()
+      run: |
+        cmake --build build --target check-all
+    - name: Check San Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build
+    - name: Check External Weverything
+      if: always()
+      run: |
+        cmake --build build --target check-external
+    - name: Check Static Analysis Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build run-static-analysis 14
+
+    - name: Config C99/CXX11 Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-99-11 -S . -DCMAKE_C_STANDARD=99 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=11 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C99 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-c
+    - name: Check CXX11 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-cxx
+    - name: Check San C99/CXX11 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-99-11
+    - name: Check Static Analysis C99/CXX11 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-99-11 run-static-analysis 14
+
+    - name: Config C11/CXX14 Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-11-14 -S . -DCMAKE_C_STANDARD=11 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=14 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C11 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-c
+    - name: Check CXX14 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-cxx
+    - name: Check San C11/CXX14 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-11-14
+    - name: Check Static Analysis C11/CXX14 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-11-14 run-static-analysis 14
+
+    - name: Config C17/CXX17 Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-17-17 -S . -DCMAKE_C_STANDARD=17 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=17 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C17 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-c
+    - name: Check CXX17 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-cxx
+    - name: Check San C17/CXX17 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-17-17
+    - name: Check Static Analysis C17/CXX17 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-17-17 run-static-analysis 14
+
+    - name: Config CXX20 Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-20 -S . -DCMAKE_CXX_STANDARD=20 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check CXX20 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-20 --target check-all-cxx
+    - name: Check San CXX20 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-20
+    - name: Check Static Analysis CXX20 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-20 run-static-analysis-cxx 14
+
+    - name: Config C23/CXX23 Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-23-23 -S . -DCMAKE_C_STANDARD=23 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=23 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C23 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-23-23 --target check-all-c
+    - name: Check CXX23 Ext Weverything
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        cmake --build build-23-23 --target check-all-cxx
+    - name: Check San C23 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -c
+    - name: Check San CXX23 Ext Weverything
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -cxx
+    - name: Check Static Analysis C23/CXX23 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-23-23 run-static-analysis 17
+
+
+    - name: Config C99/CXX11 No-Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-99-11 -S . -DCMAKE_C_STANDARD=99 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=11 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C99 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-c
+    - name: Check CXX11 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-cxx
+    - name: Check San C99/CXX11 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-99-11
+    - name: Check Static Analysis C99/CXX11 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-99-11 run-static-analysis 14
+
+    - name: Config C11/CXX14 No-Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-11-14 -S . -DCMAKE_C_STANDARD=11 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=14 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C11 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-c
+    - name: Check CXX14 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-cxx
+    - name: Check San C11/CXX14 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-11-14
+    - name: Check Static Analysis C11/CXX14 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-11-14 run-static-analysis 14
+
+    - name: Config C17/CXX17 No-Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-17-17 -S . -DCMAKE_C_STANDARD=17 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=17 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C17 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-c
+    - name: Check CXX17 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-cxx
+    - name: Check San C17/CXX17 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-17-17
+    - name: Check Static Analysis C17/CXX17 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-17-17 run-static-analysis 14
+
+    - name: Config CXX20 No-Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-20 -S . -DCMAKE_CXX_STANDARD=20 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check CXX20 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-20 --target check-all-cxx
+    - name: Check San CXX20 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-20
+    - name: Check Static Analysis CXX20 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-20 run-static-analysis-cxx 14
+
+    - name: Config C23/CXX23 No-Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-23-23 -S . -DCMAKE_C_STANDARD=23 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=23 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C23 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-23-23 --target check-all-c
+    - name: Check CXX23 No-Ext Weverything
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        cmake --build build-23-23 --target check-all-cxx
+    - name: Check San C23 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -c
+    - name: Check San CXX23 No-Ext Weverything
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -cxx
+    - name: Check Static Analysis C23/CXX23 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-23-23 run-static-analysis 17
+    - name: Config Wall
+      if: always()
+      run: |
+        cmake -B build -S . -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check Wall
+      if: always()
+      run: |
+        cmake --build build --target check-all
+    - name: Check San Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build
+    - name: Check External Wall
+      if: always()
+      run: |
+        cmake --build build --target check-external
+    - name: Check Static Analysis Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build run-static-analysis 14
+
+    - name: Config C99/CXX11 Ext Wall
+      if: always()
+      run: |
+        cmake -B build-99-11 -S . -DCMAKE_C_STANDARD=99 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=11 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C99 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-c
+    - name: Check CXX11 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-cxx
+    - name: Check San C99/CXX11 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-99-11
+    - name: Check Static Analysis C99/CXX11 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-99-11 run-static-analysis 14
+
+    - name: Config C11/CXX14 Ext Wall
+      if: always()
+      run: |
+        cmake -B build-11-14 -S . -DCMAKE_C_STANDARD=11 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=14 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C11 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-c
+    - name: Check CXX14 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-cxx
+    - name: Check San C11/CXX14 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-11-14
+    - name: Check Static Analysis C11/CXX14 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-11-14 run-static-analysis 14
+
+    - name: Config C17/CXX17 Ext Wall
+      if: always()
+      run: |
+        cmake -B build-17-17 -S . -DCMAKE_C_STANDARD=17 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=17 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C17 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-c
+    - name: Check CXX17 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-cxx
+    - name: Check San C17/CXX17 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-17-17
+    - name: Check Static Analysis C17/CXX17 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-17-17 run-static-analysis 14
+
+    - name: Config CXX20 Ext Wall
+      if: always()
+      run: |
+        cmake -B build-20 -S . -DCMAKE_CXX_STANDARD=20 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check CXX20 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-20 --target check-all-cxx
+    - name: Check San CXX20 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-20
+    - name: Check Static Analysis CXX20 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-20 run-static-analysis-cxx 14
+
+    - name: Config C23/CXX23 Ext Wall
+      if: always()
+      run: |
+        cmake -B build-23-23 -S . -DCMAKE_C_STANDARD=23 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=23 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C23 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-23-23 --target check-all-c
+    - name: Check CXX23 Ext Wall
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        cmake --build build-23-23 --target check-all-cxx
+    - name: Check San C23 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -c
+    - name: Check San CXX23 Ext Wall
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -cxx
+    - name: Check Static Analysis C23/CXX23 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-23-23 run-static-analysis 17
+
+
+    - name: Config C99/CXX11 No-Ext Wall
+      if: always()
+      run: |
+        cmake -B build-99-11 -S . -DCMAKE_C_STANDARD=99 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=11 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C99 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-c
+    - name: Check CXX11 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-cxx
+    - name: Check San C99/CXX11 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-99-11
+    - name: Check Static Analysis C99/CXX11 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-99-11 run-static-analysis 14
+
+    - name: Config C11/CXX14 No-Ext Wall
+      if: always()
+      run: |
+        cmake -B build-11-14 -S . -DCMAKE_C_STANDARD=11 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=14 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C11 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-c
+    - name: Check CXX14 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-cxx
+    - name: Check San C11/CXX14 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-11-14
+    - name: Check Static Analysis C11/CXX14 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-11-14 run-static-analysis 14
+
+    - name: Config C17/CXX17 No-Ext Wall
+      if: always()
+      run: |
+        cmake -B build-17-17 -S . -DCMAKE_C_STANDARD=17 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=17 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C17 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-c
+    - name: Check CXX17 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-cxx
+    - name: Check San C17/CXX17 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-17-17
+    - name: Check Static Analysis C17/CXX17 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-17-17 run-static-analysis 14
+
+    - name: Config CXX20 No-Ext Wall
+      if: always()
+      run: |
+        cmake -B build-20 -S . -DCMAKE_CXX_STANDARD=20 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check CXX20 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-20 --target check-all-cxx
+    - name: Check San CXX20 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-20
+    - name: Check Static Analysis CXX20 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-20 run-static-analysis-cxx 14
+
+    - name: Config C23/CXX23 No-Ext Wall
+      if: always()
+      run: |
+        cmake -B build-23-23 -S . -DCMAKE_C_STANDARD=23 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=23 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C23 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-23-23 --target check-all-c
+    - name: Check CXX23 No-Ext Wall
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        cmake --build build-23-23 --target check-all-cxx
+    - name: Check San C23 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -c
+    - name: Check San CXX23 No-Ext Wall
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -cxx
+    - name: Check Static Analysis C23/CXX23 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-23-23 run-static-analysis 17
+
+  eztest-aarch64:
+    name: ${{ matrix.targets.arch }}, ${{ matrix.compiler.cc }}, ${{ matrix.compiler.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        targets: [
+          { arch: 'aarch64', runtime_pkg: 'qemu-user-static qemu-utils  qemu-system-aarch64' },
+        ]
+
+        compiler: [
+        # clang
+        {
+          pkgs: 'gcc-aarch64-linux-gnu  g++-aarch64-linux-gnu',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: clang,
+          cxx: clang++,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 15,
+          uver: 0,
+          os: ubuntu-latest,
+        },
+
+        {
+          pkgs: 'clang-15 gcc-aarch64-linux-gnu  g++-aarch64-linux-gnu',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: clang-15,
+          cxx: clang++-15,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 15,
+          uver: 0,
+          os: ubuntu-22.04,
+        },
+
+        {
+          pkgs: 'clang-14 gcc-10-aarch64-linux-gnu  g++-10-aarch64-linux-gnu',
+          libgcc_pkgs : ' gcc-10-multilib g++-10-multilib',
+          cc: clang-14,
+          cxx: clang++-14,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 14,
+          uver: 0,
+          os: ubuntu-22.04,
+        },
+
+        {
+          pkgs: 'clang-13 gcc-aarch64-linux-gnu  g++-aarch64-linux-gnu',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: clang-13,
+          cxx: clang++-13,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 13,
+          uver: 0,
+          os: ubuntu-22.04,
+        },
+
+
+        # clang outside of apt
+        {
+          pkgs: ' gcc-aarch64-linux-gnu  g++-aarch64-linux-gnu',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: clang-16,
+          cxx: clang++-16,
+          tidy: 'clang-tidy-16',
+          install_method: 'web',
+          comp_base: 'llvm',
+          comp_ver: 16,
+          uver: 14,
+          os: ubuntu-latest,
+        },
+
+        {
+          pkgs: ' gcc-aarch64-linux-gnu  g++-aarch64-linux-gnu',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: clang-17,
+          cxx: clang++-17,
+          tidy: 'clang-tidy-17',
+          install_method: 'web',
+          comp_base: 'llvm',
+          comp_ver: 17,
+          uver: 14,
+          os: ubuntu-latest,
+        },
+
+        {
+          pkgs: ' gcc-aarch64-linux-gnu  g++-aarch64-linux-gnu',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: clang-18,
+          cxx: clang++-18,
+          tidy: 'clang-tidy-18',
+          install_method: 'web',
+          comp_base: 'llvm',
+          comp_ver: 18,
+          uver: 14,
+          os: ubuntu-latest,
+        },
+
+        {
+          pkgs: ' gcc-aarch64-linux-gnu  g++-aarch64-linux-gnu',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: clang-19,
+          cxx: clang++-19,
+          tidy: 'clang-tidy-19',
+          install_method: 'web',
+          comp_base: 'llvm',
+          comp_ver: 19,
+          uver: 14,
+          os: ubuntu-latest,
+        },
+        # arm
+        {
+          pkgs: 'gcc-aarch64-linux-gnu  g++-aarch64-linux-gnu',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: aarch64-linux-gnu-gcc,
+          cxx: aarch64-linux-gnu-g++,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'gnu',
+          comp_ver: 12,
+          uver: 0,
+          os: ubuntu-latest,
+        },
+        {
+          pkgs: 'gcc-12-aarch64-linux-gnu  g++-12-aarch64-linux-gnu',
+          libgcc_pkgs: '  gcc-12-multilib g++-12-multilib',
+          cc: aarch64-linux-gnu-gcc-12,
+          cxx: aarch64-linux-gnu-g++-12,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'gnu',
+          comp_ver: 12,
+          uver: 0,
+          os: ubuntu-22.04,
+        },
+        {
+          pkgs: 'gcc-11-aarch64-linux-gnu  g++-11-aarch64-linux-gnu',
+          libgcc_pkgs: '  gcc-11-multilib g++-11-multilib',
+          cc: aarch64-linux-gnu-gcc-11,
+          cxx: aarch64-linux-gnu-g++-11,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'gnu',
+          comp_ver: 11,
+          uver: 0,
+          os: ubuntu-22.04,
+        },
+        {
+          pkgs: 'gcc-10-aarch64-linux-gnu  g++-10-aarch64-linux-gnu',
+          libgcc_pkgs: '  gcc-10-multilib g++-10-multilib',
+          cc: aarch64-linux-gnu-gcc-10,
+          cxx: aarch64-linux-gnu-g++-10,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'gnu',
+          comp_ver: 10,
+          uver: 0,
+          os: ubuntu-22.04,
+        },
+        {
+          pkgs: 'gcc-9-aarch64-linux-gnu  g++-9-aarch64-linux-gnu',
+          libgcc_pkgs: '  gcc-9-multilib g++-9-multilib',
+          cc: aarch64-linux-gnu-gcc-9,
+          cxx: aarch64-linux-gnu-g++-9,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'gnu',
+          comp_ver: 9,
+          uver: 0,
+          os: ubuntu-22.04,
+        },
+        {
+          pkgs: 'gcc-8-aarch64-linux-gnu  g++-8-aarch64-linux-gnu',
+          libgcc_pkgs: '  gcc-8-multilib g++-8-multilib',
+          cc: aarch64-linux-gnu-gcc-8,
+          cxx: aarch64-linux-gnu-g++-8,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'gnu',
+          comp_ver: 8,
+          uver: 0,
+          os: ubuntu-20.04,
+        },
+        ]
+
+    runs-on: ${{ matrix.compiler.os }}
+    env:                        # Set environment variables
+      # We globally set CC and CXX to improve compatibility with .travis.yml
+      EZTEST_CC: ${{ matrix.compiler.cc }}
+      EZTEST_CXX: ${{ matrix.compiler.cxx }}
+      EZTEST_TIDY: ${{ matrix.compiler.tidy }}
+      EZTEST_VENDOR: ${{ matrix.compiler.comp_base }}
+      EZTEST_ARCH: ${{ matrix.targets.arch }}
+    steps:
+    - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+    - name: web-get install
+      if: matrix.compiler.install_method == 'web' && matrix.compiler.comp_base == 'llvm'
+      run: |
+        sudo apt-get update
+        sudo apt-get remove clang-${{matrix.compiler.uver}} lldb-${{matrix.compiler.uver}} lld-${{matrix.compiler.uver}} clangd-${{matrix.compiler.uver}} clang-tidy-${{matrix.compiler.uver}} clang-format-${{matrix.compiler.uver}} clang-tools-${{matrix.compiler.uver}} llvm-${{matrix.compiler.uver}}-dev lld-${{matrix.compiler.uver}} lldb-${{matrix.compiler.uver}} llvm-${{matrix.compiler.uver}}-tools libomp-${{matrix.compiler.uver}}-dev libc++-${{matrix.compiler.uver}}-dev libc++abi-${{matrix.compiler.uver}}-dev libclang-common-${{matrix.compiler.uver}}-dev libclang-${{matrix.compiler.uver}}-dev libclang-cpp${{matrix.compiler.uver}}-dev libunwind-${{matrix.compiler.uver}}-dev
+        wget https://apt.llvm.org/llvm.sh
+        chmod +x llvm.sh
+        sudo ./llvm.sh ${{matrix.compiler.comp_ver}} all
+    - name: apt-get install
+      if: always()
+      run: |
+        sudo apt-get update
+        sudo apt-get install cmake ninja-build
+        sudo apt-get install clang-tidy
+        sudo apt-get install ${{ matrix.compiler.libgcc_pkgs }}
+        sudo apt-get install ${{ matrix.compiler.pkgs }} ${{ matrix.targets.runtime_pkg }}
+    - name: Pkg Info
+      if: always()
+      run: |
+        echo && apt-cache search "^gcc-" | grep "linux" | sort
+    - name: Environment info
+      if: always()
+      run: |
+        echo && type $EZTEST_CC && which $EZTEST_CC && $EZTEST_CC --version
+        echo && type $EZTEST_CXX && which $EZTEST_CXX && $EZTEST_CXX --version
+        echo && type cmake && cmake --version
+        echo && $EZTEST_TIDY --version
+        echo && type make && make -v
+        echo ${{ matrix.targets.arch }}
+
+    - name: Config Weverything
+      if: always()
+      run: |
+        cmake -B build -S . -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check Weverything
+      if: always()
+      run: |
+        cmake --build build --target check-all
+    - name: Check San Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build
+    - name: Check External Weverything
+      if: always()
+      run: |
+        cmake --build build --target check-external
+    - name: Check Static Analysis Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build run-static-analysis 14
+
+    - name: Config C99/CXX11 Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-99-11 -S . -DCMAKE_C_STANDARD=99 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=11 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C99 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-c
+    - name: Check CXX11 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-cxx
+    - name: Check San C99/CXX11 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-99-11
+    - name: Check Static Analysis C99/CXX11 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-99-11 run-static-analysis 14
+
+    - name: Config C11/CXX14 Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-11-14 -S . -DCMAKE_C_STANDARD=11 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=14 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C11 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-c
+    - name: Check CXX14 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-cxx
+    - name: Check San C11/CXX14 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-11-14
+    - name: Check Static Analysis C11/CXX14 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-11-14 run-static-analysis 14
+
+    - name: Config C17/CXX17 Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-17-17 -S . -DCMAKE_C_STANDARD=17 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=17 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C17 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-c
+    - name: Check CXX17 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-cxx
+    - name: Check San C17/CXX17 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-17-17
+    - name: Check Static Analysis C17/CXX17 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-17-17 run-static-analysis 14
+
+    - name: Config CXX20 Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-20 -S . -DCMAKE_CXX_STANDARD=20 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check CXX20 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-20 --target check-all-cxx
+    - name: Check San CXX20 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-20
+    - name: Check Static Analysis CXX20 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-20 run-static-analysis-cxx 14
+
+    - name: Config C23/CXX23 Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-23-23 -S . -DCMAKE_C_STANDARD=23 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=23 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C23 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-23-23 --target check-all-c
+    - name: Check CXX23 Ext Weverything
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        cmake --build build-23-23 --target check-all-cxx
+    - name: Check San C23 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -c
+    - name: Check San CXX23 Ext Weverything
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -cxx
+    - name: Check Static Analysis C23/CXX23 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-23-23 run-static-analysis 17
+
+
+    - name: Config C99/CXX11 No-Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-99-11 -S . -DCMAKE_C_STANDARD=99 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=11 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C99 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-c
+    - name: Check CXX11 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-cxx
+    - name: Check San C99/CXX11 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-99-11
+    - name: Check Static Analysis C99/CXX11 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-99-11 run-static-analysis 14
+
+    - name: Config C11/CXX14 No-Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-11-14 -S . -DCMAKE_C_STANDARD=11 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=14 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C11 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-c
+    - name: Check CXX14 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-cxx
+    - name: Check San C11/CXX14 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-11-14
+    - name: Check Static Analysis C11/CXX14 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-11-14 run-static-analysis 14
+
+    - name: Config C17/CXX17 No-Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-17-17 -S . -DCMAKE_C_STANDARD=17 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=17 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C17 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-c
+    - name: Check CXX17 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-cxx
+    - name: Check San C17/CXX17 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-17-17
+    - name: Check Static Analysis C17/CXX17 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-17-17 run-static-analysis 14
+
+    - name: Config CXX20 No-Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-20 -S . -DCMAKE_CXX_STANDARD=20 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check CXX20 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-20 --target check-all-cxx
+    - name: Check San CXX20 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-20
+    - name: Check Static Analysis CXX20 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-20 run-static-analysis-cxx 14
+
+    - name: Config C23/CXX23 No-Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-23-23 -S . -DCMAKE_C_STANDARD=23 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=23 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C23 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-23-23 --target check-all-c
+    - name: Check CXX23 No-Ext Weverything
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        cmake --build build-23-23 --target check-all-cxx
+    - name: Check San C23 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -c
+    - name: Check San CXX23 No-Ext Weverything
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -cxx
+    - name: Check Static Analysis C23/CXX23 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-23-23 run-static-analysis 17
+    - name: Config Wall
+      if: always()
+      run: |
+        cmake -B build -S . -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check Wall
+      if: always()
+      run: |
+        cmake --build build --target check-all
+    - name: Check San Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build
+    - name: Check External Wall
+      if: always()
+      run: |
+        cmake --build build --target check-external
+    - name: Check Static Analysis Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build run-static-analysis 14
+
+    - name: Config C99/CXX11 Ext Wall
+      if: always()
+      run: |
+        cmake -B build-99-11 -S . -DCMAKE_C_STANDARD=99 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=11 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C99 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-c
+    - name: Check CXX11 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-cxx
+    - name: Check San C99/CXX11 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-99-11
+    - name: Check Static Analysis C99/CXX11 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-99-11 run-static-analysis 14
+
+    - name: Config C11/CXX14 Ext Wall
+      if: always()
+      run: |
+        cmake -B build-11-14 -S . -DCMAKE_C_STANDARD=11 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=14 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C11 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-c
+    - name: Check CXX14 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-cxx
+    - name: Check San C11/CXX14 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-11-14
+    - name: Check Static Analysis C11/CXX14 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-11-14 run-static-analysis 14
+
+    - name: Config C17/CXX17 Ext Wall
+      if: always()
+      run: |
+        cmake -B build-17-17 -S . -DCMAKE_C_STANDARD=17 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=17 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C17 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-c
+    - name: Check CXX17 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-cxx
+    - name: Check San C17/CXX17 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-17-17
+    - name: Check Static Analysis C17/CXX17 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-17-17 run-static-analysis 14
+
+    - name: Config CXX20 Ext Wall
+      if: always()
+      run: |
+        cmake -B build-20 -S . -DCMAKE_CXX_STANDARD=20 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check CXX20 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-20 --target check-all-cxx
+    - name: Check San CXX20 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-20
+    - name: Check Static Analysis CXX20 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-20 run-static-analysis-cxx 14
+
+    - name: Config C23/CXX23 Ext Wall
+      if: always()
+      run: |
+        cmake -B build-23-23 -S . -DCMAKE_C_STANDARD=23 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=23 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C23 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-23-23 --target check-all-c
+    - name: Check CXX23 Ext Wall
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        cmake --build build-23-23 --target check-all-cxx
+    - name: Check San C23 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -c
+    - name: Check San CXX23 Ext Wall
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -cxx
+    - name: Check Static Analysis C23/CXX23 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-23-23 run-static-analysis 17
+
+
+    - name: Config C99/CXX11 No-Ext Wall
+      if: always()
+      run: |
+        cmake -B build-99-11 -S . -DCMAKE_C_STANDARD=99 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=11 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C99 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-c
+    - name: Check CXX11 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-cxx
+    - name: Check San C99/CXX11 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-99-11
+    - name: Check Static Analysis C99/CXX11 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-99-11 run-static-analysis 14
+
+    - name: Config C11/CXX14 No-Ext Wall
+      if: always()
+      run: |
+        cmake -B build-11-14 -S . -DCMAKE_C_STANDARD=11 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=14 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C11 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-c
+    - name: Check CXX14 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-cxx
+    - name: Check San C11/CXX14 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-11-14
+    - name: Check Static Analysis C11/CXX14 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-11-14 run-static-analysis 14
+
+    - name: Config C17/CXX17 No-Ext Wall
+      if: always()
+      run: |
+        cmake -B build-17-17 -S . -DCMAKE_C_STANDARD=17 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=17 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C17 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-c
+    - name: Check CXX17 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-cxx
+    - name: Check San C17/CXX17 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-17-17
+    - name: Check Static Analysis C17/CXX17 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-17-17 run-static-analysis 14
+
+    - name: Config CXX20 No-Ext Wall
+      if: always()
+      run: |
+        cmake -B build-20 -S . -DCMAKE_CXX_STANDARD=20 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check CXX20 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-20 --target check-all-cxx
+    - name: Check San CXX20 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-20
+    - name: Check Static Analysis CXX20 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-20 run-static-analysis-cxx 14
+
+    - name: Config C23/CXX23 No-Ext Wall
+      if: always()
+      run: |
+        cmake -B build-23-23 -S . -DCMAKE_C_STANDARD=23 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=23 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C23 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-23-23 --target check-all-c
+    - name: Check CXX23 No-Ext Wall
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        cmake --build build-23-23 --target check-all-cxx
+    - name: Check San C23 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -c
+    - name: Check San CXX23 No-Ext Wall
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -cxx
+    - name: Check Static Analysis C23/CXX23 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-23-23 run-static-analysis 17
+
+  eztest-arm:
+    name: ${{ matrix.targets.arch }}, ${{ matrix.compiler.cc }}, ${{ matrix.compiler.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        targets: [
+          { arch: 'arm', runtime_pkg: 'qemu-user-static qemu-utils  qemu-system-arm' },
+        ]
+
+        compiler: [
+        # clang
+        {
+          pkgs: 'gcc-arm-linux-gnueabi  g++-arm-linux-gnueabi',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: clang,
+          cxx: clang++,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 15,
+          uver: 0,
+          os: ubuntu-latest,
+        },
+
+        {
+          pkgs: 'clang-15 gcc-arm-linux-gnueabi  g++-arm-linux-gnueabi',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: clang-15,
+          cxx: clang++-15,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 15,
+          uver: 0,
+          os: ubuntu-22.04,
+        },
+
+        {
+          pkgs: 'clang-14 gcc-10-arm-linux-gnueabi  g++-10-arm-linux-gnueabi',
+          libgcc_pkgs : ' gcc-10-multilib g++-10-multilib',
+          cc: clang-14,
+          cxx: clang++-14,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 14,
+          uver: 0,
+          os: ubuntu-22.04,
+        },
+
+        {
+          pkgs: 'clang-13 gcc-arm-linux-gnueabi  g++-arm-linux-gnueabi',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: clang-13,
+          cxx: clang++-13,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 13,
+          uver: 0,
+          os: ubuntu-22.04,
+        },
+
+
+        # clang outside of apt
+        {
+          pkgs: ' gcc-arm-linux-gnueabi  g++-arm-linux-gnueabi',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: clang-16,
+          cxx: clang++-16,
+          tidy: 'clang-tidy-16',
+          install_method: 'web',
+          comp_base: 'llvm',
+          comp_ver: 16,
+          uver: 14,
+          os: ubuntu-latest,
+        },
+
+        {
+          pkgs: ' gcc-arm-linux-gnueabi  g++-arm-linux-gnueabi',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: clang-17,
+          cxx: clang++-17,
+          tidy: 'clang-tidy-17',
+          install_method: 'web',
+          comp_base: 'llvm',
+          comp_ver: 17,
+          uver: 14,
+          os: ubuntu-latest,
+        },
+
+        {
+          pkgs: ' gcc-arm-linux-gnueabi  g++-arm-linux-gnueabi',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: clang-18,
+          cxx: clang++-18,
+          tidy: 'clang-tidy-18',
+          install_method: 'web',
+          comp_base: 'llvm',
+          comp_ver: 18,
+          uver: 14,
+          os: ubuntu-latest,
+        },
+
+        {
+          pkgs: ' gcc-arm-linux-gnueabi  g++-arm-linux-gnueabi',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: clang-19,
+          cxx: clang++-19,
+          tidy: 'clang-tidy-19',
+          install_method: 'web',
+          comp_base: 'llvm',
+          comp_ver: 19,
+          uver: 14,
+          os: ubuntu-latest,
+        },
+        # arm
+        {
+          pkgs: 'gcc-arm-linux-gnueabi  g++-arm-linux-gnueabi',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: arm-linux-gnueabi-gcc,
+          cxx: arm-linux-gnueabi-g++,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'gnu',
+          comp_ver: 12,
+          uver: 0,
+          os: ubuntu-latest,
+        },
+        {
+          pkgs: 'gcc-12-arm-linux-gnueabi  g++-12-arm-linux-gnueabi',
+          libgcc_pkgs: '  gcc-12-multilib g++-12-multilib',
+          cc: arm-linux-gnueabi-gcc-12,
+          cxx: arm-linux-gnueabi-g++-12,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'gnu',
+          comp_ver: 12,
+          uver: 0,
+          os: ubuntu-22.04,
+        },
+        {
+          pkgs: 'gcc-11-arm-linux-gnueabi  g++-11-arm-linux-gnueabi',
+          libgcc_pkgs: '  gcc-11-multilib g++-11-multilib',
+          cc: arm-linux-gnueabi-gcc-11,
+          cxx: arm-linux-gnueabi-g++-11,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'gnu',
+          comp_ver: 11,
+          uver: 0,
+          os: ubuntu-22.04,
+        },
+        {
+          pkgs: 'gcc-10-arm-linux-gnueabi  g++-10-arm-linux-gnueabi',
+          libgcc_pkgs: '  gcc-10-multilib g++-10-multilib',
+          cc: arm-linux-gnueabi-gcc-10,
+          cxx: arm-linux-gnueabi-g++-10,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'gnu',
+          comp_ver: 10,
+          uver: 0,
+          os: ubuntu-22.04,
+        },
+        {
+          pkgs: 'gcc-9-arm-linux-gnueabi  g++-9-arm-linux-gnueabi',
+          libgcc_pkgs: '  gcc-9-multilib g++-9-multilib',
+          cc: arm-linux-gnueabi-gcc-9,
+          cxx: arm-linux-gnueabi-g++-9,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'gnu',
+          comp_ver: 9,
+          uver: 0,
+          os: ubuntu-22.04,
+        },
+        {
+          pkgs: 'gcc-8-arm-linux-gnueabi  g++-8-arm-linux-gnueabi',
+          libgcc_pkgs: '  gcc-8-multilib g++-8-multilib',
+          cc: arm-linux-gnueabi-gcc-8,
+          cxx: arm-linux-gnueabi-g++-8,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'gnu',
+          comp_ver: 8,
+          uver: 0,
+          os: ubuntu-20.04,
+        },
+        ]
+
+    runs-on: ${{ matrix.compiler.os }}
+    env:                        # Set environment variables
+      # We globally set CC and CXX to improve compatibility with .travis.yml
+      EZTEST_CC: ${{ matrix.compiler.cc }}
+      EZTEST_CXX: ${{ matrix.compiler.cxx }}
+      EZTEST_TIDY: ${{ matrix.compiler.tidy }}
+      EZTEST_VENDOR: ${{ matrix.compiler.comp_base }}
+      EZTEST_ARCH: ${{ matrix.targets.arch }}
+    steps:
+    - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+    - name: web-get install
+      if: matrix.compiler.install_method == 'web' && matrix.compiler.comp_base == 'llvm'
+      run: |
+        sudo apt-get update
+        sudo apt-get remove clang-${{matrix.compiler.uver}} lldb-${{matrix.compiler.uver}} lld-${{matrix.compiler.uver}} clangd-${{matrix.compiler.uver}} clang-tidy-${{matrix.compiler.uver}} clang-format-${{matrix.compiler.uver}} clang-tools-${{matrix.compiler.uver}} llvm-${{matrix.compiler.uver}}-dev lld-${{matrix.compiler.uver}} lldb-${{matrix.compiler.uver}} llvm-${{matrix.compiler.uver}}-tools libomp-${{matrix.compiler.uver}}-dev libc++-${{matrix.compiler.uver}}-dev libc++abi-${{matrix.compiler.uver}}-dev libclang-common-${{matrix.compiler.uver}}-dev libclang-${{matrix.compiler.uver}}-dev libclang-cpp${{matrix.compiler.uver}}-dev libunwind-${{matrix.compiler.uver}}-dev
+        wget https://apt.llvm.org/llvm.sh
+        chmod +x llvm.sh
+        sudo ./llvm.sh ${{matrix.compiler.comp_ver}} all
+    - name: apt-get install
+      if: always()
+      run: |
+        sudo apt-get update
+        sudo apt-get install cmake ninja-build
+        sudo apt-get install clang-tidy
+        sudo apt-get install ${{ matrix.compiler.libgcc_pkgs }}
+        sudo apt-get install ${{ matrix.compiler.pkgs }} ${{ matrix.targets.runtime_pkg }}
+    - name: Pkg Info
+      if: always()
+      run: |
+        echo && apt-cache search "^gcc-" | grep "linux" | sort
+    - name: Environment info
+      if: always()
+      run: |
+        echo && type $EZTEST_CC && which $EZTEST_CC && $EZTEST_CC --version
+        echo && type $EZTEST_CXX && which $EZTEST_CXX && $EZTEST_CXX --version
+        echo && type cmake && cmake --version
+        echo && $EZTEST_TIDY --version
+        echo && type make && make -v
+        echo ${{ matrix.targets.arch }}
+
+    - name: Config Weverything
+      if: always()
+      run: |
+        cmake -B build -S . -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check Weverything
+      if: always()
+      run: |
+        cmake --build build --target check-all
+    - name: Check San Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build
+    - name: Check External Weverything
+      if: always()
+      run: |
+        cmake --build build --target check-external
+    - name: Check Static Analysis Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build run-static-analysis 14
+
+    - name: Config C99/CXX11 Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-99-11 -S . -DCMAKE_C_STANDARD=99 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=11 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C99 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-c
+    - name: Check CXX11 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-cxx
+    - name: Check San C99/CXX11 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-99-11
+    - name: Check Static Analysis C99/CXX11 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-99-11 run-static-analysis 14
+
+    - name: Config C11/CXX14 Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-11-14 -S . -DCMAKE_C_STANDARD=11 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=14 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C11 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-c
+    - name: Check CXX14 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-cxx
+    - name: Check San C11/CXX14 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-11-14
+    - name: Check Static Analysis C11/CXX14 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-11-14 run-static-analysis 14
+
+    - name: Config C17/CXX17 Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-17-17 -S . -DCMAKE_C_STANDARD=17 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=17 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C17 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-c
+    - name: Check CXX17 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-cxx
+    - name: Check San C17/CXX17 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-17-17
+    - name: Check Static Analysis C17/CXX17 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-17-17 run-static-analysis 14
+
+    - name: Config CXX20 Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-20 -S . -DCMAKE_CXX_STANDARD=20 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check CXX20 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-20 --target check-all-cxx
+    - name: Check San CXX20 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-20
+    - name: Check Static Analysis CXX20 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-20 run-static-analysis-cxx 14
+
+    - name: Config C23/CXX23 Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-23-23 -S . -DCMAKE_C_STANDARD=23 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=23 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C23 Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-23-23 --target check-all-c
+    - name: Check CXX23 Ext Weverything
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        cmake --build build-23-23 --target check-all-cxx
+    - name: Check San C23 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -c
+    - name: Check San CXX23 Ext Weverything
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -cxx
+    - name: Check Static Analysis C23/CXX23 Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-23-23 run-static-analysis 17
+
+
+    - name: Config C99/CXX11 No-Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-99-11 -S . -DCMAKE_C_STANDARD=99 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=11 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C99 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-c
+    - name: Check CXX11 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-cxx
+    - name: Check San C99/CXX11 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-99-11
+    - name: Check Static Analysis C99/CXX11 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-99-11 run-static-analysis 14
+
+    - name: Config C11/CXX14 No-Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-11-14 -S . -DCMAKE_C_STANDARD=11 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=14 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C11 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-c
+    - name: Check CXX14 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-cxx
+    - name: Check San C11/CXX14 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-11-14
+    - name: Check Static Analysis C11/CXX14 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-11-14 run-static-analysis 14
+
+    - name: Config C17/CXX17 No-Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-17-17 -S . -DCMAKE_C_STANDARD=17 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=17 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C17 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-c
+    - name: Check CXX17 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-cxx
+    - name: Check San C17/CXX17 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-17-17
+    - name: Check Static Analysis C17/CXX17 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-17-17 run-static-analysis 14
+
+    - name: Config CXX20 No-Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-20 -S . -DCMAKE_CXX_STANDARD=20 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check CXX20 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-20 --target check-all-cxx
+    - name: Check San CXX20 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-20
+    - name: Check Static Analysis CXX20 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-20 run-static-analysis-cxx 14
+
+    - name: Config C23/CXX23 No-Ext Weverything
+      if: always()
+      run: |
+        cmake -B build-23-23 -S . -DCMAKE_C_STANDARD=23 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=23 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C23 No-Ext Weverything
+      if: always()
+      run: |
+        cmake --build build-23-23 --target check-all-c
+    - name: Check CXX23 No-Ext Weverything
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        cmake --build build-23-23 --target check-all-cxx
+    - name: Check San C23 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -c
+    - name: Check San CXX23 No-Ext Weverything
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -cxx
+    - name: Check Static Analysis C23/CXX23 No-Ext Weverything
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-23-23 run-static-analysis 17
+    - name: Config Wall
+      if: always()
+      run: |
+        cmake -B build -S . -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check Wall
+      if: always()
+      run: |
+        cmake --build build --target check-all
+    - name: Check San Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build
+    - name: Check External Wall
+      if: always()
+      run: |
+        cmake --build build --target check-external
+    - name: Check Static Analysis Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build run-static-analysis 14
+
+    - name: Config C99/CXX11 Ext Wall
+      if: always()
+      run: |
+        cmake -B build-99-11 -S . -DCMAKE_C_STANDARD=99 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=11 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C99 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-c
+    - name: Check CXX11 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-cxx
+    - name: Check San C99/CXX11 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-99-11
+    - name: Check Static Analysis C99/CXX11 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-99-11 run-static-analysis 14
+
+    - name: Config C11/CXX14 Ext Wall
+      if: always()
+      run: |
+        cmake -B build-11-14 -S . -DCMAKE_C_STANDARD=11 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=14 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C11 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-c
+    - name: Check CXX14 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-cxx
+    - name: Check San C11/CXX14 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-11-14
+    - name: Check Static Analysis C11/CXX14 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-11-14 run-static-analysis 14
+
+    - name: Config C17/CXX17 Ext Wall
+      if: always()
+      run: |
+        cmake -B build-17-17 -S . -DCMAKE_C_STANDARD=17 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=17 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C17 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-c
+    - name: Check CXX17 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-cxx
+    - name: Check San C17/CXX17 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-17-17
+    - name: Check Static Analysis C17/CXX17 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-17-17 run-static-analysis 14
+
+    - name: Config CXX20 Ext Wall
+      if: always()
+      run: |
+        cmake -B build-20 -S . -DCMAKE_CXX_STANDARD=20 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check CXX20 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-20 --target check-all-cxx
+    - name: Check San CXX20 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-20
+    - name: Check Static Analysis CXX20 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-20 run-static-analysis-cxx 14
+
+    - name: Config C23/CXX23 Ext Wall
+      if: always()
+      run: |
+        cmake -B build-23-23 -S . -DCMAKE_C_STANDARD=23 -DCMAKE_C_EXTENSIONS=ON -DCMAKE_CXX_STANDARD=23 -DCMAKE_CXX_EXTENSIONS=ON -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C23 Ext Wall
+      if: always()
+      run: |
+        cmake --build build-23-23 --target check-all-c
+    - name: Check CXX23 Ext Wall
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        cmake --build build-23-23 --target check-all-cxx
+    - name: Check San C23 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -c
+    - name: Check San CXX23 Ext Wall
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -cxx
+    - name: Check Static Analysis C23/CXX23 Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-23-23 run-static-analysis 17
+
+
+    - name: Config C99/CXX11 No-Ext Wall
+      if: always()
+      run: |
+        cmake -B build-99-11 -S . -DCMAKE_C_STANDARD=99 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=11 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C99 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-c
+    - name: Check CXX11 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-99-11 --target check-all-cxx
+    - name: Check San C99/CXX11 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-99-11
+    - name: Check Static Analysis C99/CXX11 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-99-11 run-static-analysis 14
+
+    - name: Config C11/CXX14 No-Ext Wall
+      if: always()
+      run: |
+        cmake -B build-11-14 -S . -DCMAKE_C_STANDARD=11 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=14 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C11 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-c
+    - name: Check CXX14 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-11-14 --target check-all-cxx
+    - name: Check San C11/CXX14 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-11-14
+    - name: Check Static Analysis C11/CXX14 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-11-14 run-static-analysis 14
+
+    - name: Config C17/CXX17 No-Ext Wall
+      if: always()
+      run: |
+        cmake -B build-17-17 -S . -DCMAKE_C_STANDARD=17 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=17 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C17 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-c
+    - name: Check CXX17 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-17-17 --target check-all-cxx
+    - name: Check San C17/CXX17 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-17-17
+    - name: Check Static Analysis C17/CXX17 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-17-17 run-static-analysis 14
+
+    - name: Config CXX20 No-Ext Wall
+      if: always()
+      run: |
+        cmake -B build-20 -S . -DCMAKE_CXX_STANDARD=20 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check CXX20 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-20 --target check-all-cxx
+    - name: Check San CXX20 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-20
+    - name: Check Static Analysis CXX20 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-20 run-static-analysis-cxx 14
+
+    - name: Config C23/CXX23 No-Ext Wall
+      if: always()
+      run: |
+        cmake -B build-23-23 -S . -DCMAKE_C_STANDARD=23 -DCMAKE_C_EXTENSIONS=OFF -DCMAKE_CXX_STANDARD=23 -DCMAKE_CXX_EXTENSIONS=OFF -DEZTEST_TEST_LOG_TO_STDOUT_=ON -DEZTEST_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$EZTEST_CC -DCMAKE_CXX_COMPILER=$EZTEST_CXX -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-unused-function" -DCMAKE_C_FLAGS="-Wno-unused-function"  -DEZTEST_TEST_HIDE_WARNINGS_=OFF -DEZTEST_TEST_WEVERYTHING_=OFF -DCMAKE_TOOLCHAIN_FILE=tests/cross-test/cross-$EZTEST_ARCH.$EZTEST_VENDOR.cmake
+    - name: Check C23 No-Ext Wall
+      if: always()
+      run: |
+        cmake --build build-23-23 --target check-all-c
+    - name: Check CXX23 No-Ext Wall
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        cmake --build build-23-23 --target check-all-cxx
+    - name: Check San C23 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -c
+    - name: Check San CXX23 No-Ext Wall
+      if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
+      run: |
+        ./.github/workflows/ci-check-san.sh build-23-23 -cxx
+    - name: Check Static Analysis C23/CXX23 No-Ext Wall
+      if: always()
+      run: |
+        ./.github/workflows/ci-run-static-analysis.sh build-23-23 run-static-analysis 17

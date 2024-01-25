@@ -1,0 +1,153 @@
+if(EZTEST_SANITIZER_INC_)
+  return()
+endif()
+set(EZTEST_SANITIZER_INC_ ON)
+
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/compiler-options.cmake)
+
+set(
+  EZTEST_TEST_OPTS_AND_POSTFIX_NOSAN_
+  "|${EZTEST_TEST_FORTIFY_SOURCE_}|"
+)
+set(
+  EZTEST_TEST_OPTS_AND_POSTFIX_LSAN_
+  "-fsanitize=leak|${EZTEST_TEST_FORTIFY_SOURCE_} -DEZTEST_LSAN_=1 -fsanitize=leak|-lsan"
+)
+set(
+  EZTEST_TEST_OPTS_AND_POSTFIX_ASAN_
+  "-fsanitize=address|-fsanitize=address -DEZTEST_ASAN_=1 -U_FORTIFY_SOURCE|-asan"
+)
+set(
+  EZTEST_TEST_OPTS_AND_POSTFIX_TSAN_
+  "-fsanitize=thread|-fsanitize=thread -DEZTEST_TSAN_=1|-tsan"
+)
+set(
+  EZTEST_TEST_OPTS_AND_POSTFIX_USAN_
+  "-fsanitize=undefined|${EZTEST_TEST_FORTIFY_SOURCE_} -fsanitize=undefined -DEZTEST_USAN_=1 |-usan"
+)
+set(
+  EZTEST_TEST_OPTS_AND_POSTFIX_MSAN_
+  "-fsanitize=memory|-fsanitize=memory -DEZTEST_MSAN_=1 -U_FORTIFY_SOURCE|-msan"
+)
+
+function(
+    eztest_test_san_split_opt_and_postfix_
+    EZTEST_TEST_SAN_OPTS_AND_POSTFIX_IN_
+    EZTEST_TEST_SAN_LINK_OPT_OUT_
+    EZTEST_TEST_SAN_COMPILER_OPT_OUT_
+    EZTEST_TEST_SAN_POSTFIX_OUT_
+  )
+  string(
+    REPLACE
+    "|"
+    ";"
+    EZTEST_TEST_SAN_OPTS_AND_POSTFIX_
+    "${EZTEST_TEST_SAN_OPTS_AND_POSTFIX_IN_}"
+  )
+  list(
+    LENGTH
+    EZTEST_TEST_SAN_OPTS_AND_POSTFIX_
+    EZTEST_TEST_SAN_OPTS_AND_POSTFIX_LENGTH_
+  )
+  if(NOT EZTEST_TEST_SAN_OPTS_AND_POSTFIX_LENGTH_ EQUAL 3)
+    message(FATAL_ERROR "Unable to split ${EZTEST_TEST_SAN_OPTS_AND_POSTFIX_IN_} into three pieces")
+  endif()
+
+  list(GET EZTEST_TEST_SAN_OPTS_AND_POSTFIX_ 0 EZTEST_TEST_SAN_LINK_OPT_)
+  list(GET EZTEST_TEST_SAN_OPTS_AND_POSTFIX_ 1 EZTEST_TEST_SAN_COMPILER_OPT_)
+  list(GET EZTEST_TEST_SAN_OPTS_AND_POSTFIX_ 2 EZTEST_TEST_SAN_POSTFIX_)
+  string(
+    REPLACE
+    " "
+    ";"
+    EZTEST_TEST_SAN_LINK_OPT_
+    "${EZTEST_TEST_SAN_LINK_OPT_}"
+  )
+  string(
+    REPLACE
+    " "
+    ";"
+    EZTEST_TEST_SAN_COMPILER_OPT_
+    "${EZTEST_TEST_SAN_COMPILER_OPT_}"
+  )
+  set(${EZTEST_TEST_SAN_LINK_OPT_OUT_} ${EZTEST_TEST_SAN_LINK_OPT_} PARENT_SCOPE)
+  set(${EZTEST_TEST_SAN_COMPILER_OPT_OUT_} ${EZTEST_TEST_SAN_COMPILER_OPT_} PARENT_SCOPE)
+  set(${EZTEST_TEST_SAN_POSTFIX_OUT_} ${EZTEST_TEST_SAN_POSTFIX_} PARENT_SCOPE)
+endfunction()
+
+
+set(
+  EZTEST_TEST_SANITIZER_OPTS_AND_POSTFIXES_
+  ${EZTEST_TEST_OPTS_AND_POSTFIX_NOSAN_}
+)
+if(EZTEST_TEST_SANITIZERS_)
+  list(
+    APPEND
+    EZTEST_TEST_SANITIZER_OPTS_AND_POSTFIXES_
+    ${EZTEST_TEST_OPTS_AND_POSTFIX_LSAN_}
+    ${EZTEST_TEST_OPTS_AND_POSTFIX_ASAN_}
+    ${EZTEST_TEST_OPTS_AND_POSTFIX_TSAN_}
+    ${EZTEST_TEST_OPTS_AND_POSTFIX_USAN_}
+    ${EZTEST_TEST_OPTS_AND_POSTFIX_MSAN_}
+  )
+endif()
+
+foreach (
+    EZTEST_LANG_
+    "C"
+    "CXX"
+  )
+  set(
+    EZTEST_TEST_LANG_SAN_LIST_
+    "EZTEST_TEST_${EZTEST_LANG_}_SANITIZER_OPTS_AND_POSTFIXES_"
+  )
+
+  foreach(
+      EZTEST_TEST_SAN_OPTS_AND_POSTFIX_
+      IN LISTS
+      EZTEST_TEST_SANITIZER_OPTS_AND_POSTFIXES_
+    )
+
+    eztest_test_san_split_opt_and_postfix_(
+      ${EZTEST_TEST_SAN_OPTS_AND_POSTFIX_}
+      EZTEST_TEST_SAN_LINK_OPT_
+      EZTEST_TEST_SAN_COMPILER_OPT_
+      EZTEST_TEST_SAN_POSTFIX_
+    )
+    eztest_supports_flag_(
+      "LINKER"
+      "${EZTEST_LANG_}"
+      "${EZTEST_TEST_SAN_LINK_OPT_}"
+      EZTEST_TEST_LANG_SAN_LINK_SUPPORTED_
+    )
+    if(${EZTEST_TEST_LANG_SAN_LINK_SUPPORTED_})
+      set(
+        EZTEST_SAVE_CMAKE_REQUIRED_LINK_OPTIONS_
+        ${CMAKE_REQUIRED_LINK_OPTIONS}
+      )
+      set(
+        CMAKE_REQUIRED_LINK_OPTIONS
+        ${EZTEST_TEST_SAN_LINK_OPT_}
+      )
+      eztest_supports_flag_(
+        "COMPILER"
+        "${EZTEST_LANG_}"
+        "${EZTEST_TEST_SAN_COMPILER_OPT_}"
+        EZTEST_TEST_LANG_SAN_COMPILER_SUPPORTED_
+      )
+      set(
+        CMAKE_REQUIRED_LINK_OPTIONS
+        ${EZTEST_SAVE_CMAKE_REQUIRED_LINK_OPTIONS_}
+      )
+
+      if(${EZTEST_TEST_LANG_SAN_COMPILER_SUPPORTED_})
+
+        list(
+          APPEND
+          ${EZTEST_TEST_LANG_SAN_LIST_}
+          ${EZTEST_TEST_SAN_OPTS_AND_POSTFIX_}
+        )
+      endif()
+    endif()
+  endforeach()
+endforeach()

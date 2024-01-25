@@ -1,0 +1,5 @@
+---
+# Sections sorted by how likely they are to be dealth with
+# NB: clang-tidy runs clang-check (static analyzer)
+Checks: "*"
+WarningsAsErrors: "*"
