@@ -39,7 +39,8 @@ G_NO_FAIL = G_ARGS.no_fail
 if G_INSTALL is not None:
     G_INSTALL_POSTFIXES = [
         "", "include", "include/eztest", "include/eztest/eztest.h", "lib",
-        "lib/cmake", "lib/cmake/eztest/", "lib/cmake/eztest/eztest-config.cmake",
+        "lib/cmake", "lib/cmake/eztest/",
+        "lib/cmake/eztest/eztest-config.cmake",
         "lib/cmake/eztest/eztest-config-version.cmake",
         "lib/cmake/eztest/eztest-targets.cmake"
     ]
@@ -48,12 +49,12 @@ if G_INSTALL is not None:
 
             if G_NO_FAIL:
                 sys.exit(1)
-            print("Skipping install test")                
+            print("Skipping install test")
             sys.exit(0)
     G_UNKNOWNARGS.append("-DCMAKE_PREFIX_PATH={}".format(G_INSTALL))
 
 try:
-    subprocess.check_output(["cmake", "-S", G_SRC, "-B", G_DST, "-GNinja"] +
+    subprocess.check_output(["cmake", "-S", G_SRC, "-B", G_DST] +
                             G_UNKNOWNARGS)
     subprocess.check_output(
         ["cmake", "--build", G_DST, "--target", "check-all"])
