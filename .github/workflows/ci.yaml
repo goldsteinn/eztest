@@ -37,7 +37,7 @@ jobs:
     - name: Check Install
       if: always()
       run: |
-        cmake --build build --target check-external
+        cmake --build build --target install
     - name: Check External
       if: always()
       run: |
