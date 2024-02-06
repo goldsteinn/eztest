@@ -15,7 +15,7 @@ try:
     G_f = open(G_README)
     G_content = G_f.read()
     G_f.close()
-    assert G_content.startswith("# EZTEST")
+    assert G_content.startswith("# EZTest")
 except Exception:
     assert False, "Unable to verify!"
 G_FREEZE_SCRIPT = os.path.join(G_PROJECT_DIR, "scripts")
