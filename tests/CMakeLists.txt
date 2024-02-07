@@ -205,10 +205,16 @@ endif()
 
 
 set(EZTEST_TEST_EXTERNAL_TARGET_ "check-external")
-set(EZTEST_TEST_ALL_TARGET_ "check-all")
-set(EZTEST_TEST_ALL_ALLSAN_TARGET_ "check-all-san")
-set(EZTEST_TEST_ALL_ALL_TARGET_ "check-all-all")
-add_custom_target(${EZTEST_TEST_ALL_ALL_TARGET_})
+set(EZTEST_TEST_CHECK_ALL_TARGET_ "check-all")
+set(EZTEST_TEST_CHECK_ALL_ALLSAN_TARGET_ "check-all-san")
+set(EZTEST_TEST_CHECK_ALL_ALL_TARGET_ "check-all-all")
+
+
+set(EZTEST_TEST_BUILD_ALL_TARGET_ "build-all")
+set(EZTEST_TEST_BUILD_ALL_ALLSAN_TARGET_ "build-all-san")
+set(EZTEST_TEST_BUILD_ALL_ALL_TARGET_ "build-all-all")
+add_custom_target(${EZTEST_TEST_CHECK_ALL_ALL_TARGET_})
+add_custom_target(${EZTEST_TEST_BUILD_ALL_ALL_TARGET_})
 
 set(EZTEST_TEST_STANDARDS_INFO_TARGET_ eztest-standard-info)
 add_executable(
@@ -249,7 +255,9 @@ function(eztest_test_add_test_file_ EZTEST_TEST_DIR_ EZTEST_TEST_BASENAME_)
     ${EZTEST_TEST_TARGET_}
   )
 
-  set(EZTEST_TEST_TARGET_ "check-${EZTEST_TEST_TARGET_}")
+  set(EZTEST_TEST_CHECK_TARGET_ "check-${EZTEST_TEST_TARGET_}")
+  set(EZTEST_TEST_BUILD_TARGET_ "build-${EZTEST_TEST_TARGET_}")
+
   get_filename_component(EZTEST_LANG_ ${EZTEST_TEST_BASENAME_} LAST_EXT)
   if(${EZTEST_LANG_} STREQUAL ".c")
     set(EZTEST_LANG_ "C")
@@ -310,14 +318,23 @@ function(eztest_test_add_test_file_ EZTEST_TEST_DIR_ EZTEST_TEST_BASENAME_)
       "${EZTEST_TEST_EXE_TARGET_}${EZTEST_TEST_SAN_POSTFIX_}"
     )
     set(
-      EZTEST_TEST_SAN_TARGET_
-      "${EZTEST_TEST_TARGET_}${EZTEST_TEST_SAN_POSTFIX_}"
+      EZTEST_TEST_CHECK_SAN_TARGET_
+      "${EZTEST_TEST_CHECK_TARGET_}${EZTEST_TEST_SAN_POSTFIX_}"
+    )
+    set(
+      EZTEST_TEST_BUILD_SAN_TARGET_
+      "${EZTEST_TEST_BUILD_TARGET_}${EZTEST_TEST_SAN_POSTFIX_}"
     )
 
     set(
-      EZTEST_TEST_ALL_LANG_SAN_TARGET_
-      "${EZTEST_TEST_ALL_TARGET_}-${EZTEST_LOWER_LANG_}${EZTEST_TEST_SAN_POSTFIX_}"
+      EZTEST_TEST_CHECK_ALL_LANG_SAN_TARGET_
+      "${EZTEST_TEST_CHECK_ALL_TARGET_}-${EZTEST_LOWER_LANG_}${EZTEST_TEST_SAN_POSTFIX_}"
     )
+    set(
+      EZTEST_TEST_BUILD_ALL_LANG_SAN_TARGET_
+      "${EZTEST_TEST_BUILD_ALL_TARGET_}-${EZTEST_LOWER_LANG_}${EZTEST_TEST_SAN_POSTFIX_}"
+    )
+
     add_executable(
       ${EZTEST_TEST_EXE_SAN_TARGET_}
       EXCLUDE_FROM_ALL
@@ -351,7 +368,13 @@ function(eztest_test_add_test_file_ EZTEST_TEST_DIR_ EZTEST_TEST_BASENAME_)
     )
 
     add_custom_target(
-      ${EZTEST_TEST_SAN_TARGET_}
+      ${EZTEST_TEST_BUILD_SAN_TARGET_}
+      DEPENDS
+      ${EZTEST_TEST_EXE_SAN_TARGET_}
+    )
+
+    add_custom_target(
+      ${EZTEST_TEST_CHECK_SAN_TARGET_}
       DEPENDS
       ${EZTEST_TEST_EXE_SAN_TARGET_}
       ${EZTEST_TEST_LANG_STANDARDS_INFO_TARGET_}
@@ -368,79 +391,129 @@ function(eztest_test_add_test_file_ EZTEST_TEST_DIR_ EZTEST_TEST_BASENAME_)
       "${EZTEST_TEST_TARGET_ARCH_}"
     )
 
+
     # First of {lang}-{san} type
-    if(NOT TARGET ${EZTEST_TEST_ALL_LANG_SAN_TARGET_})
+    if(NOT TARGET ${EZTEST_TEST_CHECK_ALL_LANG_SAN_TARGET_})
       set(
-        EZTEST_TEST_ALL_SAN_TARGET_
-        "${EZTEST_TEST_ALL_TARGET_}${EZTEST_TEST_SAN_POSTFIX_}"
+        EZTEST_TEST_CHECK_ALL_SAN_TARGET_
+        "${EZTEST_TEST_CHECK_ALL_TARGET_}${EZTEST_TEST_SAN_POSTFIX_}"
       )
+      set(
+        EZTEST_TEST_BUILD_ALL_SAN_TARGET_
+        "${EZTEST_TEST_BUILD_ALL_TARGET_}${EZTEST_TEST_SAN_POSTFIX_}"
+      )
+
       # Setup generic-{san} target
-      if(NOT TARGET ${EZTEST_TEST_ALL_SAN_TARGET_})
+      if(NOT TARGET ${EZTEST_TEST_CHECK_ALL_SAN_TARGET_})
         # we build all-all from all-all-lang so no need to link
         # all-{san} to anything
-        add_custom_target(${EZTEST_TEST_ALL_SAN_TARGET_})
+        add_custom_target(${EZTEST_TEST_CHECK_ALL_SAN_TARGET_})
+        add_custom_target(${EZTEST_TEST_BUILD_ALL_SAN_TARGET_})
       endif()
       set(
-        EZTEST_TEST_ALL_ALL_LANG_TARGET_
-        "${EZTEST_TEST_ALL_ALL_TARGET_}-${EZTEST_LOWER_LANG_}"
+        EZTEST_TEST_CHECK_ALL_ALL_LANG_TARGET_
+        "${EZTEST_TEST_CHECK_ALL_ALL_TARGET_}-${EZTEST_LOWER_LANG_}"
+      )
+      set(
+        EZTEST_TEST_BUILD_ALL_ALL_LANG_TARGET_
+        "${EZTEST_TEST_BUILD_ALL_ALL_TARGET_}-${EZTEST_LOWER_LANG_}"
       )
       # Setup all-all-lang target
-      if(NOT TARGET ${EZTEST_TEST_ALL_ALL_LANG_TARGET_})
-        add_custom_target(${EZTEST_TEST_ALL_ALL_LANG_TARGET_})
+      if(NOT TARGET ${EZTEST_TEST_CHECK_ALL_ALL_LANG_TARGET_})
+        add_custom_target(${EZTEST_TEST_CHECK_ALL_ALL_LANG_TARGET_})
+        add_custom_target(${EZTEST_TEST_BUILD_ALL_ALL_LANG_TARGET_})
         # all-all-lang -> all-all
         add_dependencies(
-          ${EZTEST_TEST_ALL_ALL_TARGET_}
-          ${EZTEST_TEST_ALL_ALL_LANG_TARGET_}
+          ${EZTEST_TEST_CHECK_ALL_ALL_TARGET_}
+          ${EZTEST_TEST_CHECK_ALL_ALL_LANG_TARGET_}
+        )
+        add_dependencies(
+          ${EZTEST_TEST_BUILD_ALL_ALL_TARGET_}
+          ${EZTEST_TEST_BUILD_ALL_ALL_LANG_TARGET_}
         )
       endif()
 
       # Add {lang}-{san} target
-      add_custom_target(${EZTEST_TEST_ALL_LANG_SAN_TARGET_})
+      add_custom_target(${EZTEST_TEST_CHECK_ALL_LANG_SAN_TARGET_})
+      add_custom_target(${EZTEST_TEST_BUILD_ALL_LANG_SAN_TARGET_})
       # Add {lang}-{san} -> generic-{san}
       add_dependencies(
-        ${EZTEST_TEST_ALL_SAN_TARGET_}
-        ${EZTEST_TEST_ALL_LANG_SAN_TARGET_}
+        ${EZTEST_TEST_CHECK_ALL_SAN_TARGET_}
+        ${EZTEST_TEST_CHECK_ALL_LANG_SAN_TARGET_}
+      )
+      add_dependencies(
+        ${EZTEST_TEST_BUILD_ALL_SAN_TARGET_}
+        ${EZTEST_TEST_BUILD_ALL_LANG_SAN_TARGET_}
       )
       # Add {lang}-{san} -> all-all-lang
       add_dependencies(
-        ${EZTEST_TEST_ALL_ALL_LANG_TARGET_}
-        ${EZTEST_TEST_ALL_LANG_SAN_TARGET_}
+        ${EZTEST_TEST_CHECK_ALL_ALL_LANG_TARGET_}
+        ${EZTEST_TEST_CHECK_ALL_LANG_SAN_TARGET_}
+      )
+      add_dependencies(
+        ${EZTEST_TEST_BUILD_ALL_ALL_LANG_TARGET_}
+        ${EZTEST_TEST_BUILD_ALL_LANG_SAN_TARGET_}
       )
 
       # If there is an actual sanitizer
       if(NOT "${EZTEST_TEST_SAN_POSTFIX_}" STREQUAL "")
-        if(NOT TARGET ${EZTEST_TEST_ALL_ALLSAN_TARGET_})
-          add_custom_target(${EZTEST_TEST_ALL_ALLSAN_TARGET_})
+        if(NOT TARGET ${EZTEST_TEST_CHECK_ALL_ALLSAN_TARGET_})
+          add_custom_target(${EZTEST_TEST_CHECK_ALL_ALLSAN_TARGET_})
+          add_custom_target(${EZTEST_TEST_BUILD_ALL_ALLSAN_TARGET_})
           add_dependencies(
-            ${EZTEST_TEST_ALL_ALL_TARGET_}
-            ${EZTEST_TEST_ALL_ALLSAN_TARGET_}
+            ${EZTEST_TEST_CHECK_ALL_ALL_TARGET_}
+            ${EZTEST_TEST_CHECK_ALL_ALLSAN_TARGET_}
+          )
+          add_dependencies(
+            ${EZTEST_TEST_BUILD_ALL_ALL_TARGET_}
+            ${EZTEST_TEST_BUILD_ALL_ALLSAN_TARGET_}
           )
         endif()
 
         # setup check-all-{lang}-san
         set(
-          EZTEST_TEST_ALL_LANG_ALLSAN_TARGET_
-          "${EZTEST_TEST_ALL_TARGET_}-${EZTEST_LOWER_LANG_}-san"
+          EZTEST_TEST_CHECK_ALL_LANG_ALLSAN_TARGET_
+          "${EZTEST_TEST_CHECK_ALL_TARGET_}-${EZTEST_LOWER_LANG_}-san"
         )
-        if(NOT TARGET ${EZTEST_TEST_ALL_LANG_ALLSAN_TARGET_})
-          add_custom_target(${EZTEST_TEST_ALL_LANG_ALLSAN_TARGET_})
+        set(
+          EZTEST_TEST_BUILD_ALL_LANG_ALLSAN_TARGET_
+          "${EZTEST_TEST_BUILD_ALL_TARGET_}-${EZTEST_LOWER_LANG_}-san"
+        )
+        if(NOT TARGET ${EZTEST_TEST_CHECK_ALL_LANG_ALLSAN_TARGET_})
+          add_custom_target(${EZTEST_TEST_CHECK_ALL_LANG_ALLSAN_TARGET_})
+          add_custom_target(${EZTEST_TEST_BUILD_ALL_LANG_ALLSAN_TARGET_})
           # check-all-{lang}-san -> check-all-san
           add_dependencies(
-            ${EZTEST_TEST_ALL_ALLSAN_TARGET_}
-            ${EZTEST_TEST_ALL_LANG_ALLSAN_TARGET_}
+            ${EZTEST_TEST_CHECK_ALL_ALLSAN_TARGET_}
+            ${EZTEST_TEST_CHECK_ALL_LANG_ALLSAN_TARGET_}
+          )
+          add_dependencies(
+            ${EZTEST_TEST_BUILD_ALL_ALLSAN_TARGET_}
+            ${EZTEST_TEST_BUILD_ALL_LANG_ALLSAN_TARGET_}
           )
         endif()
         # {lang}-{san} -> check-all-{lang}-san
         add_dependencies(
-          ${EZTEST_TEST_ALL_LANG_ALLSAN_TARGET_}
-          ${EZTEST_TEST_ALL_LANG_SAN_TARGET_}
+          ${EZTEST_TEST_CHECK_ALL_LANG_ALLSAN_TARGET_}
+          ${EZTEST_TEST_CHECK_ALL_LANG_SAN_TARGET_}
+        )
+        add_dependencies(
+          ${EZTEST_TEST_BUILD_ALL_LANG_ALLSAN_TARGET_}
+          ${EZTEST_TEST_BUILD_ALL_LANG_SAN_TARGET_}
         )
       endif()
 
 
     endif()
     # This -> {lang}-san
-    add_dependencies(${EZTEST_TEST_ALL_LANG_SAN_TARGET_} ${EZTEST_TEST_SAN_TARGET_})
+    add_dependencies(
+      ${EZTEST_TEST_CHECK_ALL_LANG_SAN_TARGET_}
+      ${EZTEST_TEST_CHECK_SAN_TARGET_}
+    )
+    add_dependencies(
+      ${EZTEST_TEST_BUILD_ALL_LANG_SAN_TARGET_}
+      ${EZTEST_TEST_BUILD_SAN_TARGET_}
+    )
   endforeach()
 endfunction()
 
