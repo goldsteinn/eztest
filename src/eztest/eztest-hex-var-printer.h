@@ -11,7 +11,6 @@ EZTEST_NAMESPACE_BEGIN_
 EZTEST_PRIVATE_CXX_INL_ int
 eztest_hex_print_var(const uint8_t *       eztest_op,
                      EZTEST_STD_NS_ size_t eztest_op_size) {
-    
     EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_
     static const EZTEST_STD_NS_ size_t eztest_k_hexstr_max_bytes = 40;
     EZTEST_STD_NS_ size_t              eztest_op_cur_idx         = 0;

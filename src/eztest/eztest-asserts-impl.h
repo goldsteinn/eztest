@@ -2,6 +2,7 @@
 #define EZTEST_D_EZTEST_D_EZTEST_ASSERTS_IMPL_H_
 
 #include "eztest-compiler.h"
+#include "eztest-containers.h"
 #include "eztest-fail.h"
 #include "eztest-float-compare.h"
 #include "eztest-hex-var-printer.h"

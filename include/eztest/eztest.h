@@ -2,7 +2,7 @@
 #define EZTEST_EZTEST_H_
 /*
  * Single header of entire eztest suite.
- * Generated: 2024-02-06 15:53:55.044727
+ * Generated: 2024-02-07 13:46:30.213660
  */
 /* Begin include of: eztest.h  */
 
@@ -566,7 +566,7 @@ EZTEST_DISABLE_WSYSTEM_HEADERS_
 
 /* Begin include of: eztest-asserts-impl.h  */
 
-/* Begin include of: eztest-fail.h  */
+/* Begin include of: eztest-containers.h  */
 
 /* Begin include of: eztest-lang.h  */
 
@@ -687,44 +687,6 @@ EZTEST_DISABLE_WSYSTEM_HEADERS_
 
 
 /* End include of: eztest-lang.h  */
-
-
-EZTEST_NAMESPACE_BEGIN_
-
-/* NOLINTBEGIN(bugprone-easily-swappable-parameters) */
-EZTEST_PRIVATE_ int
-eztest_cur_test_getmod_failed(int eztest_set, int eztest_val) {
-    /* NOLINTEND(bugprone-easily-swappable-parameters) */
-    static int eztest_S_cur_test_failed = 0;
-    if (eztest_set == 0) {
-        return eztest_S_cur_test_failed;
-    }
-    eztest_S_cur_test_failed = eztest_val;
-    return 0;
-}
-
-EZTEST_DISABLE_WUNUSED_FUNCTION_
-EZTEST_PRIVATE_ void
-eztest_cur_test_set_failed(EZTEST_VOID_ARG_) {
-    (void)EZTEST_NS_ eztest_cur_test_getmod_failed(1, 1);
-}
-EZTEST_REENABLE_WUNUSED_FUNCTION_
-
-EZTEST_PRIVATE_ void
-eztest_cur_test_set_success(EZTEST_VOID_ARG_) {
-    (void)EZTEST_NS_ eztest_cur_test_getmod_failed(1, 0);
-}
-
-EZTEST_PRIVATE_ int
-eztest_cur_test_result(EZTEST_VOID_ARG_) {
-    return EZTEST_NS_ eztest_cur_test_getmod_failed(0, 0);
-}
-
-EZTEST_NAMESPACE_END_
-
-/* End include of: eztest-fail.h  */
-/* Begin include of: eztest-float-compare.h  */
-
 /* Begin include of: eztest-libc.h  */
 
 
@@ -971,6 +933,55 @@ EZTEST_NAMESPACE_END_
 
 #endif
 /* End include of: eztest-libc.h  */
+
+
+#if EZTEST_CXX_LANG_ >= 2011
+# include <array>
+# define EZTEST_ARR_BUILDER_(name, T, k_n) EZTEST_STD_NS_ array<T, k_n> name
+#else
+# define EZTEST_ARR_BUILDER_(name, T, k_n) T name[k_n]
+#endif
+
+/* End include of: eztest-containers.h  */
+/* Begin include of: eztest-fail.h  */
+
+
+EZTEST_NAMESPACE_BEGIN_
+
+/* NOLINTBEGIN(bugprone-easily-swappable-parameters) */
+EZTEST_PRIVATE_ int
+eztest_cur_test_getmod_failed(int eztest_set, int eztest_val) {
+    /* NOLINTEND(bugprone-easily-swappable-parameters) */
+    static int eztest_S_cur_test_failed = 0;
+    if (eztest_set == 0) {
+        return eztest_S_cur_test_failed;
+    }
+    eztest_S_cur_test_failed = eztest_val;
+    return 0;
+}
+
+EZTEST_DISABLE_WUNUSED_FUNCTION_
+EZTEST_PRIVATE_ void
+eztest_cur_test_set_failed(EZTEST_VOID_ARG_) {
+    (void)EZTEST_NS_ eztest_cur_test_getmod_failed(1, 1);
+}
+EZTEST_REENABLE_WUNUSED_FUNCTION_
+
+EZTEST_PRIVATE_ void
+eztest_cur_test_set_success(EZTEST_VOID_ARG_) {
+    (void)EZTEST_NS_ eztest_cur_test_getmod_failed(1, 0);
+}
+
+EZTEST_PRIVATE_ int
+eztest_cur_test_result(EZTEST_VOID_ARG_) {
+    return EZTEST_NS_ eztest_cur_test_getmod_failed(0, 0);
+}
+
+EZTEST_NAMESPACE_END_
+
+/* End include of: eztest-fail.h  */
+/* Begin include of: eztest-float-compare.h  */
+
 /* Begin include of: eztest-libm.h  */
 
 
@@ -1146,7 +1157,6 @@ EZTEST_NAMESPACE_BEGIN_
 EZTEST_PRIVATE_CXX_INL_ int
 eztest_hex_print_var(const uint8_t *       eztest_op,
                      EZTEST_STD_NS_ size_t eztest_op_size) {
-
     EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_
     static const EZTEST_STD_NS_ size_t eztest_k_hexstr_max_bytes = 40;
     EZTEST_STD_NS_ size_t              eztest_op_cur_idx         = 0;
@@ -3155,8 +3165,10 @@ EZTEST_NAMESPACE_BEGIN_
 EZTEST_DISABLE_WPADDED_
 struct eztest_results_t {
     EZTEST_DURATION_T_ eztest_suite_duration_;
-    unsigned           eztest_stats_[EZTEST_NS_ eztest_k_status_end];
-    unsigned           eztest_num_groups_;
+    EZTEST_ARR_BUILDER_(eztest_stats_,
+                        unsigned,
+                        EZTEST_NS_ eztest_k_status_end);
+    unsigned eztest_num_groups_;
 };
 EZTEST_REENABLE_WPADDED_
 #define EZTEST_RESULTS_T_ EZTEST_STRUCT_NS_ eztest_results_t

@@ -120,6 +120,7 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
     ${PROJECT_SOURCE_DIR}/src/eztest/eztest-c-asserts-impl.h
     ${PROJECT_SOURCE_DIR}/src/eztest/eztest-compiler-warnings.h
     ${PROJECT_SOURCE_DIR}/src/eztest/eztest-compiler.h
+    ${PROJECT_SOURCE_DIR}/src/eztest/eztest-containers.h
     ${PROJECT_SOURCE_DIR}/src/eztest/eztest-cxx-asserts-impl.h
     ${PROJECT_SOURCE_DIR}/src/eztest/eztest-duration.h
     ${PROJECT_SOURCE_DIR}/src/eztest/eztest-fail.h
