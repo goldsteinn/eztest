@@ -20,7 +20,7 @@ jobs:
         { os: ubuntu-latest, },
         { os: ubuntu-22.04 },
         { os: ubuntu-20.04 },
-        { os: ubuntu-18.04 },
+        #{ os: ubuntu-18.04 },
         ]
     runs-on: ${{ matrix.system.os }}
     steps:
