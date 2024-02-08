@@ -17,7 +17,6 @@ option(
 set(
   EZTEST_CLANG_18_0_0_WARNING_COMMON_FLAGS_
   "-Weverything"
-  "-Wunsafe-buffer-usage -fsafe-buffer-usage-suggestions"
 )
 
 if(${EZTEST_STACK_ALLOC_LIMIT_} GREATER 0)
