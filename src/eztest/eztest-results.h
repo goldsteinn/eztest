@@ -19,7 +19,7 @@ struct eztest_results_t {
 EZTEST_REENABLE_WPADDED_
 #define EZTEST_RESULTS_T_ EZTEST_STRUCT_NS_ eztest_results_t
 #define EZTEST_RESULTS_T_INIT_                                                 \
- { EZTEST_DURATION_T_INIT_, { 0 }, 0 }
+ { EZTEST_DURATION_T_INIT_, EZTEST_ARR_T_INIT_, 0 }
 
 
 EZTEST_PRIVATE_ unsigned

@@ -2,7 +2,7 @@
 #define EZTEST_EZTEST_H_
 /*
  * Single header of entire eztest suite.
- * Generated: 2024-02-07 13:46:30.213660
+ * Generated: 2024-02-08 10:40:00.983940
  */
 /* Begin include of: eztest.h  */
 
@@ -938,8 +938,14 @@ EZTEST_NAMESPACE_END_
 #if EZTEST_CXX_LANG_ >= 2011
 # include <array>
 # define EZTEST_ARR_BUILDER_(name, T, k_n) EZTEST_STD_NS_ array<T, k_n> name
+# define EZTEST_ARR_T_INIT_                                                    \
+  {                                                                            \
+   { 0 }                                                                       \
+  }
 #else
 # define EZTEST_ARR_BUILDER_(name, T, k_n) T name[k_n]
+# define EZTEST_ARR_T_INIT_                                                    \
+  { 0 }
 #endif
 
 /* End include of: eztest-containers.h  */
@@ -3173,7 +3179,7 @@ struct eztest_results_t {
 EZTEST_REENABLE_WPADDED_
 #define EZTEST_RESULTS_T_ EZTEST_STRUCT_NS_ eztest_results_t
 #define EZTEST_RESULTS_T_INIT_                                                 \
- { EZTEST_DURATION_T_INIT_, { 0 }, 0 }
+ { EZTEST_DURATION_T_INIT_, EZTEST_ARR_T_INIT_, 0 }
 
 
 EZTEST_PRIVATE_ unsigned
