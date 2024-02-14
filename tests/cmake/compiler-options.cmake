@@ -161,7 +161,6 @@ set(EZTEST_GCC_14_0_0_WARNING_COMMON_FLAGS_
     "-Winvalid-memory-model"
     "-Winvalid-pch"
     "-Winvalid-utf8"
-    "-Wlarger-than=4096"
     "-Wlogical-not-parentheses"
     "-Wlogical-op"
     "-Wlong-long"
@@ -287,7 +286,7 @@ set(EZTEST_GCC_14_0_0_WARNING_COMMON_FLAGS_
 if(${EZTEST_STACK_ALLOC_LIMIT_} GREATER 0)
   list(
     APPEND
-    EZTEST_GCC_18_0_0_WARNING_COMMON_FLAGS_
+    EZTEST_GCC_14_0_0_WARNING_COMMON_FLAGS_
     "-Walloca-larger-than=${EZTEST_STACK_ALLOC_LIMIT_}"
     "-Wframe-larger-than=${EZTEST_STACK_ALLOC_LIMIT_}"
     "-Wlarger-than=${EZTEST_STACK_ALLOC_LIMIT_}"
@@ -296,7 +295,7 @@ if(${EZTEST_STACK_ALLOC_LIMIT_} GREATER 0)
   )
 endif()
 if(${EZTEST_HEAP_ALLOC_LIMIT_} GREATER 0)
-  list(APPEND EZTEST_GCC_18_0_0_WARNING_COMMON_FLAGS_
+  list(APPEND EZTEST_GCC_14_0_0_WARNING_COMMON_FLAGS_
        "-Walloc-size-larger-than=${EZTEST_HEAP_ALLOC_LIMIT_}"
   )
 endif()
