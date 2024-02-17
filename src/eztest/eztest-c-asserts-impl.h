@@ -12,12 +12,14 @@
 # define EZTEST_C11_DISABLE_WC99_C11_COMPAT_ EZTEST_DISABLE_WC99_C11_COMPAT_
 # define EZTEST_C11_DISABLE_WC90_C99_COMPAT_ EZTEST_DISABLE_WC90_C99_COMPAT_
 # define EZTEST_C11_DISABLE_WC11_EXTENSIONS_ EZTEST_DISABLE_WC11_EXTENSIONS_
+# define EZTEST_C11_DISABLE_WPRE_C11_COMPAT_ EZTEST_DISABLE_WPRE_C11_COMPAT_
 
 # define EZTEST_C11_REENABLE_WLONG_LONG_      EZTEST_REENABLE_WLONG_LONG_
 # define EZTEST_C11_REENABLE_WC99_C11_COMPAT_ EZTEST_REENABLE_WC99_C11_COMPAT_
 # define EZTEST_C11_REENABLE_WC90_C99_COMPAT_ EZTEST_REENABLE_WC90_C99_COMPAT_
 # define EZTEST_C11_REENABLE_WC99_COMPAT_     EZTEST_REENABLE_WC99_COMPAT_
 # define EZTEST_C11_REENABLE_WC11_EXTENSIONS_ EZTEST_REENABLE_WC11_EXTENSIONS_
+# define EZTEST_C11_REENABLE_WPRE_C11_COMPAT_ EZTEST_REENABLE_WPRE_C11_COMPAT_
 
 /* clang-format off */
 #define EZTEST_C_GET_VAR_FMT_SPECIFIER_(var)    \
@@ -90,18 +92,22 @@
   EZTEST_C11_DISABLE_WLONG_LONG_                                               \
   EZTEST_C11_DISABLE_WC99_C11_COMPAT_                                          \
   EZTEST_C11_DISABLE_WC90_C99_COMPAT_                                          \
+  EZTEST_C11_DISABLE_WPRE_C11_COMPAT_                                          \
   /* NOLINTBEGIN(bugprone-macro-parentheses) */                                \
   const char * tmpvar = EZTEST_C_GET_VAR_FMT_SPECIFIER_(var);                  \
   /* NOLINTEND(bugprone-macro-parentheses) */                                  \
+  EZTEST_C11_REENABLE_WPRE_C11_COMPAT_                                         \
   EZTEST_C11_REENABLE_WC90_C99_COMPAT_                                         \
   EZTEST_C11_REENABLE_WC99_C11_COMPAT_                                         \
   EZTEST_C11_REENABLE_WLONG_LONG_                                              \
   if ((tmpvar) != EZTEST_NULL_) {                                              \
    EZTEST_C11_DISABLE_WC99_C11_COMPAT_                                         \
    EZTEST_C11_DISABLE_WC90_C99_COMPAT_                                         \
+   EZTEST_C11_DISABLE_WPRE_C11_COMPAT_                                         \
    EZTEST_DISABLE_WFORMAT_NONLITERAL_(void)                                    \
    EZTEST_C_DO_PRINT_VAR_((tmpvar), (var));                                    \
    EZTEST_REENABLE_WFORMAT_NONLITERAL_                                         \
+   EZTEST_C11_REENABLE_WPRE_C11_COMPAT_                                        \
    EZTEST_C11_REENABLE_WC90_C99_COMPAT_                                        \
    EZTEST_C11_REENABLE_WC99_C11_COMPAT_                                        \
   }                                                                            \
