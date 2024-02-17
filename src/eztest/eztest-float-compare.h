@@ -17,7 +17,7 @@ EZTEST_PRIVATE_ uint64_t
 eztest_fp_bits_get_sam(uint64_t              eztest_fp_bits,
                        uint64_t              eztest_fp_signbit,
                        EZTEST_STD_NS_ size_t eztest_fp_bytes) {
-    
+
     /* NOLINTEND(bugprone-easily-swappable-parameters) */
 
     if ((eztest_fp_bits & eztest_fp_signbit) != 0) {
@@ -37,7 +37,7 @@ eztest_fp_bits_get_sam(uint64_t              eztest_fp_bits,
 EZTEST_PRIVATE_ uint64_t
 eztest_fp_bits_get_signmask(uint64_t eztest_fp_bits_1,
                             uint64_t eztest_fp_bits_m1) {
-    
+
     eztest_fp_bits_1 ^= eztest_fp_bits_m1;
     if ((eztest_fp_bits_1 & (eztest_fp_bits_1 - 1)) != 0) {
         return 0;
@@ -53,7 +53,7 @@ eztest_fp_bits_get_ulp(uint64_t              eztest_fp_bits_lhs,
                        uint64_t              eztest_fp_bits_1,
                        uint64_t              eztest_fp_bits_m1,
                        EZTEST_STD_NS_ size_t eztest_fp_size) {
-    
+
     /* NOLINTEND(bugprone-easily-swappable-parameters) */
     /* This should portably isolate the sign bits.  */
     const uint64_t eztest_fp_bits_signmask =
@@ -88,7 +88,7 @@ eztest_fp_bits_get_ulp(uint64_t              eztest_fp_bits_lhs,
 
 EZTEST_PRIVATE_ int
 eztest_flt_compare(float eztest_fp_lhs, float eztest_fp_rhs) {
-    
+
     uint64_t eztest_flt_ulp = 0;
     uint64_t eztest_u64_lhs = 0;
     uint64_t eztest_u64_rhs = 0;
@@ -118,7 +118,7 @@ eztest_flt_compare(float eztest_fp_lhs, float eztest_fp_rhs) {
 
 EZTEST_PRIVATE_ int
 eztest_dbl_compare(double eztest_fp_lhs, double eztest_fp_rhs) {
-    
+
     uint64_t eztest_dbl_ulp = 0;
     uint64_t eztest_u64_lhs = 0;
     uint64_t eztest_u64_rhs = 0;

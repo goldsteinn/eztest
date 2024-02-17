@@ -2,7 +2,7 @@
 #define EZTEST_EZTEST_H_
 /*
  * Single header of entire eztest suite.
- * Generated: 2024-02-08 10:40:00.983940
+ * Generated: 2024-02-17 01:40:46.722442
  */
 /* Begin include of: eztest.h  */
 
@@ -86,12 +86,12 @@
 
 #define EZTEST_CAT_IMPL_(eztest_expr0, eztest_expr1) eztest_expr0##eztest_expr1
 #define EZTEST_CAT_(eztest_expr0, eztest_expr1)                                \
- EZTEST_CAT_IMPL_(eztest_expr0, eztest_expr1)
+    EZTEST_CAT_IMPL_(eztest_expr0, eztest_expr1)
 
 #define EZTEST_SNAKE_CAT_IMPL_(eztest_expr0, eztest_expr1)                     \
- eztest_expr0##_##eztest_expr1
+    eztest_expr0##_##eztest_expr1
 #define EZTEST_SNAKE_CAT_(eztest_expr0, eztest_expr1)                          \
- EZTEST_SNAKE_CAT_IMPL_(eztest_expr0, eztest_expr1)
+    EZTEST_SNAKE_CAT_IMPL_(eztest_expr0, eztest_expr1)
 
 #ifdef __COUNTER__
 # define EZTEST_COUNTER_ __COUNTER__
@@ -114,12 +114,12 @@
 #define EZTEST_UID_ EZTEST_SNAKE_CAT_(EZTEST_LINE_, EZTEST_COUNTER_)
 
 #define EZTEST_UNIQUE_NAME_(eztest_var)                                        \
- EZTEST_SNAKE_CAT_(eztest_var, EZTEST_UID_)
+    EZTEST_SNAKE_CAT_(eztest_var, EZTEST_UID_)
 
 /* End include of: eztest-pre-processor.h  */
 
 #define EZTEST_VERNUM_(eztest_major, eztest_minor, eztest_patch)               \
- (((eztest_major)*100 * 100) + ((eztest_minor)*100) + (eztest_patch))
+    (((eztest_major) * 100 * 100) + ((eztest_minor) * 100) + (eztest_patch))
 
 #ifdef __clang__
 # ifdef __clang_major__
@@ -140,12 +140,12 @@
 # endif
 
 # define EZTEST_USING_CLANG_                                                   \
-  EZTEST_VERNUM_(EZTEST_CLANG_MAJOR_, EZTEST_CLANG_MINOR_,                     \
-                 EZTEST_CLANG_PATCHLEVEL_)
+     EZTEST_VERNUM_(EZTEST_CLANG_MAJOR_, EZTEST_CLANG_MINOR_,                  \
+                    EZTEST_CLANG_PATCHLEVEL_)
 
 # define EZTEST_DISABLE_WARNING_(eztest_warning)                               \
-  _Pragma("clang diagnostic push")                                             \
-      _Pragma(EZTEST_STRINGIFY_(clang diagnostic ignored eztest_warning))
+     _Pragma("clang diagnostic push")                                          \
+         _Pragma(EZTEST_STRINGIFY_(clang diagnostic ignored eztest_warning))
 
 # define EZTEST_REENABLE_WARNING_ _Pragma("clang diagnostic pop")
 #endif
@@ -165,11 +165,12 @@
 # endif
 
 # define EZTEST_USING_GCC_                                                     \
-  EZTEST_VERNUM_(EZTEST_GCC_MAJOR_, EZTEST_GCC_MINOR_, EZTEST_GCC_PATCHLEVEL_)
+     EZTEST_VERNUM_(EZTEST_GCC_MAJOR_, EZTEST_GCC_MINOR_,                      \
+                    EZTEST_GCC_PATCHLEVEL_)
 
 # define EZTEST_DISABLE_WARNING_(eztest_warning)                               \
-  _Pragma("GCC diagnostic push")                                               \
-      _Pragma(EZTEST_STRINGIFY_(GCC diagnostic ignored eztest_warning))
+     _Pragma("GCC diagnostic push")                                            \
+         _Pragma(EZTEST_STRINGIFY_(GCC diagnostic ignored eztest_warning))
 # define EZTEST_REENABLE_WARNING_ _Pragma("GCC diagnostic pop")
 #endif
 
@@ -274,9 +275,9 @@
 
 #if (EZTEST_DISABLE_WARNINGS)
 # define EZTEST_HAS_CLANG_VER_(major, minor, patch)                            \
-  (EZTEST_USING_CLANG_ >= EZTEST_VERNUM_(major, minor, patch))
+     (EZTEST_USING_CLANG_ >= EZTEST_VERNUM_(major, minor, patch))
 # define EZTEST_HAS_GCC_VER_(major, minor, patch)                              \
-  (EZTEST_USING_GCC_ >= EZTEST_VERNUM_(major, minor, patch))
+     (EZTEST_USING_GCC_ >= EZTEST_VERNUM_(major, minor, patch))
 #else
 # define EZTEST_HAS_CLANG_VER_(major, minor, patch) 0
 # define EZTEST_HAS_GCC_VER_(major, minor, patch)   0
@@ -302,7 +303,7 @@
 
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WGLOBAL_CONSTRUCTORS_                                  \
-  EZTEST_DISABLE_WARNING_("-Wglobal-constructors")
+     EZTEST_DISABLE_WARNING_("-Wglobal-constructors")
 # define EZTEST_REENABLE_WGLOBAL_CONSTRUCTORS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGLOBAL_CONSTRUCTORS_
@@ -321,7 +322,7 @@
 
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WUNUSED_FUNCTION_                                      \
-  EZTEST_DISABLE_WARNING_("-Wunused-function")
+     EZTEST_DISABLE_WARNING_("-Wunused-function")
 # define EZTEST_REENABLE_WUNUSED_FUNCTION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNUSED_FUNCTION_
@@ -340,7 +341,7 @@
 
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WVARIADIC_MACROS_                                      \
-  EZTEST_DISABLE_WARNING_("-Wvariadic-macros")
+     EZTEST_DISABLE_WARNING_("-Wvariadic-macros")
 # define EZTEST_REENABLE_WVARIADIC_MACROS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WVARIADIC_MACROS_
@@ -350,7 +351,7 @@
 
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 6, 4))
 # define EZTEST_DISABLE_WDOUBLE_PROMOTION_                                     \
-  EZTEST_DISABLE_WARNING_("-Wdouble-promotion")
+     EZTEST_DISABLE_WARNING_("-Wdouble-promotion")
 # define EZTEST_REENABLE_WDOUBLE_PROMOTION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDOUBLE_PROMOTION_
@@ -360,7 +361,7 @@
 
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WFORMAT_NONLITERAL_                                    \
-  EZTEST_DISABLE_WARNING_("-Wformat-nonliteral")
+     EZTEST_DISABLE_WARNING_("-Wformat-nonliteral")
 # define EZTEST_REENABLE_WFORMAT_NONLITERAL_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFORMAT_NONLITERAL_
@@ -370,7 +371,7 @@
 
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDISABLED_MACRO_EXPANSION_                             \
-  EZTEST_DISABLE_WARNING_("-Wdisabled-macro-expansion")
+     EZTEST_DISABLE_WARNING_("-Wdisabled-macro-expansion")
 # define EZTEST_REENABLE_WDISABLED_MACRO_EXPANSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDISABLED_MACRO_EXPANSION_
@@ -380,7 +381,7 @@
 
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNUSED_MEMBER_FUNCTION_                               \
-  EZTEST_DISABLE_WARNING_("-Wunused-member-function")
+     EZTEST_DISABLE_WARNING_("-Wunused-member-function")
 # define EZTEST_REENABLE_WUNUSED_MEMBER_FUNCTION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNUSED_MEMBER_FUNCTION_
@@ -399,7 +400,7 @@
 
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCXX98_COMPAT_PEDANTIC_                                \
-  EZTEST_DISABLE_WARNING_("-Wc++98-compat-pedantic")
+     EZTEST_DISABLE_WARNING_("-Wc++98-compat-pedantic")
 # define EZTEST_REENABLE_WCXX98_COMPAT_PEDANTIC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX98_COMPAT_PEDANTIC_
@@ -409,7 +410,7 @@
 
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WC11_EXTENSIONS_                                       \
-  EZTEST_DISABLE_WARNING_("-Wc11-extensions")
+     EZTEST_DISABLE_WARNING_("-Wc11-extensions")
 # define EZTEST_REENABLE_WC11_EXTENSIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WC11_EXTENSIONS_
@@ -428,7 +429,7 @@
 
 #if (EZTEST_HAS_CLANG_VER_(5, 0, 0))
 # define EZTEST_DISABLE_WUNUSED_TEMPLATE_                                      \
-  EZTEST_DISABLE_WARNING_("-Wunused-template")
+     EZTEST_DISABLE_WARNING_("-Wunused-template")
 # define EZTEST_REENABLE_WUNUSED_TEMPLATE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNUSED_TEMPLATE_
@@ -438,7 +439,7 @@
 
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0))
 # define EZTEST_DISABLE_WRESERVED_IDENTIFIER_                                  \
-  EZTEST_DISABLE_WARNING_("-Wreserved-identifier")
+     EZTEST_DISABLE_WARNING_("-Wreserved-identifier")
 # define EZTEST_REENABLE_WRESERVED_IDENTIFIER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WRESERVED_IDENTIFIER_
@@ -448,7 +449,7 @@
 
 #if (EZTEST_HAS_CLANG_VER_(16, 0, 0))
 # define EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_                                  \
-  EZTEST_DISABLE_WARNING_("-Wunsafe-buffer-usage")
+     EZTEST_DISABLE_WARNING_("-Wunsafe-buffer-usage")
 # define EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_
@@ -458,7 +459,7 @@
 
 #if (EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WSYSTEM_HEADERS_                                       \
-  EZTEST_DISABLE_WARNING_("-Wsystem-headers")
+     EZTEST_DISABLE_WARNING_("-Wsystem-headers")
 # define EZTEST_REENABLE_WSYSTEM_HEADERS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSYSTEM_HEADERS_
@@ -475,7 +476,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(4, 5, 3)) && EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WUNSUFFIXED_FLOAT_CONSTANTS_                           \
-  EZTEST_DISABLE_WARNING_("-Wunsuffixed-float-constants")
+     EZTEST_DISABLE_WARNING_("-Wunsuffixed-float-constants")
 # define EZTEST_REENABLE_WUNSUFFIXED_FLOAT_CONSTANTS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNSUFFIXED_FLOAT_CONSTANTS_
@@ -485,7 +486,7 @@
 
 #if ((EZTEST_HAS_GCC_VER_(5, 1, 0)) && EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WC90_C99_COMPAT_                                       \
-  EZTEST_DISABLE_WARNING_("-Wc90-c99-compat")
+     EZTEST_DISABLE_WARNING_("-Wc90-c99-compat")
 # define EZTEST_REENABLE_WC90_C99_COMPAT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WC90_C99_COMPAT_
@@ -493,7 +494,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(5, 1, 0)) && EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WC99_C11_COMPAT_                                       \
-  EZTEST_DISABLE_WARNING_("-Wc99-c11-compat")
+     EZTEST_DISABLE_WARNING_("-Wc99-c11-compat")
 # define EZTEST_REENABLE_WC99_C11_COMPAT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WC99_C11_COMPAT_
@@ -531,7 +532,7 @@
 
 #ifdef __has_attribute
 # define EZTEST_HAS_ATTRIBUTE_(eztest_attribute)                               \
-  __has_attribute(eztest_attribute)
+     __has_attribute(eztest_attribute)
 #else
 # define EZTEST_HAS_ATTRIBUTE_(eztest_attribute) 0
 #endif
@@ -547,7 +548,7 @@
 #if EZTEST_HAS_ATTRIBUTE_(format)
 EZTEST_DISABLE_WCXX98_COMPAT_PEDANTIC_
 # define EZTEST_ATTR_FMT_(fmt, varargs)                                        \
-  __attribute__((format(printf, fmt, varargs)))
+     __attribute__((format(printf, fmt, varargs)))
 EZTEST_REENABLE_WCXX98_COMPAT_PEDANTIC_
 #else
 # define EZTEST_ATTR_FMT_(fmt, varargs)
@@ -575,20 +576,20 @@ EZTEST_DISABLE_WSYSTEM_HEADERS_
 # define EZTEST_STRUCT_
 
 # define EZTEST_NAMESPACE_BEGIN_                                               \
-  EZTEST_DISABLE_WNAMESPACES_                                                  \
-  namespace eztest {
+     EZTEST_DISABLE_WNAMESPACES_                                               \
+     namespace eztest {
 
 # define EZTEST_NAMESPACE_END_                                                 \
-  }                                                                            \
-  EZTEST_REENABLE_WNAMESPACES_
+     }                                                                         \
+     EZTEST_REENABLE_WNAMESPACES_
 
 # define EZTEST_NS_                                                            \
-  /* NOLINTBEGIN(llvmlibc-callee-namespace) */                                 \
-  eztest::/* NOLINTEND(llvmlibc-callee-namespace) */
+     /* NOLINTBEGIN(llvmlibc-callee-namespace) */                              \
+     eztest::/* NOLINTEND(llvmlibc-callee-namespace) */
 
 # define EZTEST_STD_NS_                                                        \
-  /* NOLINTBEGIN(llvmlibc-callee-namespace) */                                 \
-  std::/* NOLINTEND(llvmlibc-callee-namespace) */
+     /* NOLINTBEGIN(llvmlibc-callee-namespace) */                              \
+     std::/* NOLINTEND(llvmlibc-callee-namespace) */
 
 # define EZTEST_VOID_ARG_
 
@@ -597,17 +598,17 @@ EZTEST_DISABLE_WSYSTEM_HEADERS_
 # endif
 
 # define EZTEST_PRIVATE_CXX_INL_ /* NOLINTBEGIN(llvmlibc-inl*-func*-decl) */   \
-  static EZTEST_INLINE_          /* NOLINTEND(llvmlibc-inl*-func*-decl) */
+     static EZTEST_INLINE_       /* NOLINTEND(llvmlibc-inl*-func*-decl) */
 
 
 # define EZTEST_PRIVATE_                                                       \
-  /* NOLINTBEGIN(llvmlibc-inl*-func*-decl) */                                  \
-  static /* NOLINTEND(llvmlibc-inl*-func*-decl) */
+     /* NOLINTBEGIN(llvmlibc-inl*-func*-decl) */                               \
+     static /* NOLINTEND(llvmlibc-inl*-func*-decl) */
 
 
 # if EZTEST_CXX_LANG_ >= 2011
 #  define EZTEST_NULL_                                                         \
-   EZTEST_DISABLE_WCXX98_COMPAT_ nullptr EZTEST_REENABLE_WCXX98_COMPAT_
+      EZTEST_DISABLE_WCXX98_COMPAT_ nullptr EZTEST_REENABLE_WCXX98_COMPAT_
 # else
 #  include <cstddef> /* NULL.  */
 #  define EZTEST_NULL_ NULL
@@ -615,16 +616,16 @@ EZTEST_DISABLE_WSYSTEM_HEADERS_
 
 # define EZTEST_CAST_(type, expr) static_cast<type>(expr)
 # define EZTEST_REINTERPRET_CAST_(type, var)                                   \
-  /* NOLINTBEGIN(cppcoreguidelines-pro-type-reinterpret-cast) */               \
-  reinterpret_cast<type>(                                                      \
-      var) /* NOLINTEND(cppcoreguidelines-pro-type-reinterpret-cast) */
+     /* NOLINTBEGIN(cppcoreguidelines-pro-type-reinterpret-cast) */            \
+     reinterpret_cast<type>(                                                   \
+         var) /* NOLINTEND(cppcoreguidelines-pro-type-reinterpret-cast) */
 
 # if EZTEST_CXX_LANG_ >= 2011
 #  define EZTEST_STATIC_ASSERT_MSG_(cond, msg)                                 \
-   EZTEST_DISABLE_WCXX98_COMPAT_ static_assert(cond, msg)                      \
-       EZTEST_REENABLE_WCXX98_COMPAT_
+      EZTEST_DISABLE_WCXX98_COMPAT_ static_assert(cond, msg)                   \
+          EZTEST_REENABLE_WCXX98_COMPAT_
 #  define EZTEST_AUTO_(eztest_unused_A0)                                       \
-   EZTEST_DISABLE_WCXX98_COMPAT_ auto EZTEST_REENABLE_WCXX98_COMPAT_
+      EZTEST_DISABLE_WCXX98_COMPAT_ auto EZTEST_REENABLE_WCXX98_COMPAT_
 # endif
 
 
@@ -644,7 +645,7 @@ EZTEST_DISABLE_WSYSTEM_HEADERS_
 # endif
 
 # define EZTEST_PRIVATE_ /* NOLINTBEGIN(llvmlibc-inline-function-decl) */      \
-  static                 /* NOLINTEND(llvmlibc-inline-function-decl) */
+     static              /* NOLINTEND(llvmlibc-inline-function-decl) */
 # define EZTEST_PRIVATE_CXX_INL_ EZTEST_PRIVATE_
 
 
@@ -667,9 +668,9 @@ EZTEST_DISABLE_WSYSTEM_HEADERS_
 
 #ifndef EZTEST_STATIC_ASSERT_MSG_
 # define EZTEST_STATIC_ASSERT_MSG_(cond, msg)                                  \
-  struct EZTEST_UNIQUE_NAME_(eztest_static_assertion) {                        \
-   char EZTEST_UNIQUE_NAME_(eztest_x_)[(cond) ? 1 : -1];                       \
-  }
+     struct EZTEST_UNIQUE_NAME_(eztest_static_assertion) {                     \
+         char EZTEST_UNIQUE_NAME_(eztest_x_)[(cond) ? 1 : -1];                 \
+     }
 
 #endif
 
@@ -681,9 +682,9 @@ EZTEST_DISABLE_WSYSTEM_HEADERS_
 #define EZTEST_STRUCT_NS_ EZTEST_STRUCT_ EZTEST_NS_
 
 #define EZTEST_UNIMPLEMENTED_(name)                                            \
- EZTEST_STATIC_ASSERT_MSG_(0, name " is unimplemented")
+    EZTEST_STATIC_ASSERT_MSG_(0, name " is unimplemented")
 #define EZTEST_STATIC_ASSERT_(cond)                                            \
- EZTEST_STATIC_ASSERT_MSG_(cond, EZTEST_STRINGIFY_(cond))
+    EZTEST_STATIC_ASSERT_MSG_(cond, EZTEST_STRINGIFY_(cond))
 
 
 /* End include of: eztest-lang.h  */
@@ -749,14 +750,14 @@ EZTEST_DISABLE_WSYSTEM_HEADERS_
 #define EZTEST_EXIT_ EZTEST_STD_NS_ _Exit
 EZTEST_DISABLE_WCXX98_COMPAT_PEDANTIC_
 
-#define EZTEST_PRINTF_(...)                                                    \
- /* NOLINTBEGIN(clang-ana*-sec*.insecureAPI.Depr*OrUnsafeBufferHandling) */    \
- /* NOLINTBEGIN(cppcoreguide*-pro-type-vararg,hicpp-vararg) */                 \
- EZTEST_STD_NS_ fprintf(                                                       \
-     EZTEST_STDOUT_,                                                           \
-     __VA_ARGS__) /* NOLINTEND(cppcoreguide*-pro-type-vararg,hicpp-vararg) */  \
-                                                                               \
-     /* NOLINTEND(clang-ana*-sec*.insecureAPI.Depr*OrUnsafeBufferHandling) */
+#define EZTEST_PRINTF_(...)                                                                                      \
+    /* NOLINTBEGIN(clang-ana*-sec*.insecureAPI.Depr*OrUnsafeBufferHandling) */                                   \
+    /* NOLINTBEGIN(cppcoreguide*-pro-type-vararg,hicpp-vararg) */                                                \
+    EZTEST_STD_NS_ fprintf(EZTEST_STDOUT_, __VA_ARGS__) /* NOLINTEND(cppcoreguide*-pro-type-vararg,hicpp-vararg) \
+                                                         */                                                      \
+                                                                                                                 \
+        /* NOLINTEND(clang-ana*-sec*.insecureAPI.Depr*OrUnsafeBufferHandling)                                    \
+         */
 
 EZTEST_REENABLE_WCXX98_COMPAT_PEDANTIC_
 
@@ -764,8 +765,8 @@ EZTEST_REENABLE_WCXX98_COMPAT_PEDANTIC_
 #define EZTEST_FFLUSH_   EZTEST_STD_NS_ fflush
 #define EZTEST_ERRNO_    errno
 #define EZTEST_STDOUT_                                                         \
- EZTEST_DISABLE_WDISABLED_MACRO_EXPANSION_ stdout                              \
-     EZTEST_REENABLE_WDISABLED_MACRO_EXPANSION_
+    EZTEST_DISABLE_WDISABLED_MACRO_EXPANSION_ stdout                           \
+        EZTEST_REENABLE_WDISABLED_MACRO_EXPANSION_
 
 /* strerror is safe here. We have complete control of the threads
    and know in the parent proc there will only be 1 thread (the
@@ -776,17 +777,17 @@ EZTEST_REENABLE_WCXX98_COMPAT_PEDANTIC_
 #  define EZTEST_STRERROR_R_(errnum, buf, bufsz) strerror_r(errnum, buf, bufsz)
 # else
 #  define EZTEST_STRERROR_R_(errnum, buf, bufsz)                               \
-   (strerror_r(errnum, buf, bufsz) == 0 ? &((buf)[0]) : "Unknown error")
+      (strerror_r(errnum, buf, bufsz) == 0 ? &((buf)[0]) : "Unknown error")
 # endif
 #else
 # if EZTEST_CXX_LANG_
 #  define EZTEST_STRERROR_R_(errnum, buf, bufsz)                               \
-   /* NOLINTBEGIN(concurrency-mt-unsafe) */                                    \
-   std::strerror(errnum) /* NOLINTEND(concurrency-mt-unsafe) */
+      /* NOLINTBEGIN(concurrency-mt-unsafe) */                                 \
+      std::strerror(errnum) /* NOLINTEND(concurrency-mt-unsafe) */
 # else
 #  define EZTEST_STRERROR_R_(errnum, buf, bufsz)                               \
-   /* NOLINTBEGIN(concurrency-mt-unsafe) */                                    \
-   strerror(errnum) /* NOLINTEND(concurrency-mt-unsafe) */
+      /* NOLINTBEGIN(concurrency-mt-unsafe) */                                 \
+      strerror(errnum) /* NOLINTEND(concurrency-mt-unsafe) */
 # endif
 #endif
 
@@ -824,7 +825,7 @@ EZTEST_NAMESPACE_END_
 
 #define EZTEST_STRCMP_(lhs, rhs) EZTEST_STD_NS_ strcmp(lhs, rhs)
 #define EZTEST_STARTSWITH_(prefix, str)                                        \
- (EZTEST_STD_NS_ strncmp(prefix, str, EZTEST_STD_NS_ strlen(prefix)) == 0)
+    (EZTEST_STD_NS_ strncmp(prefix, str, EZTEST_STD_NS_ strlen(prefix)) == 0)
 
 #define EZTEST_MEMCPY_(dst, src, sz) EZTEST_STD_NS_ memcpy(dst, src, sz)
 #define EZTEST_MEMSET_(dst, val, sz) EZTEST_STD_NS_ memset(dst, val, sz)
@@ -832,8 +833,8 @@ EZTEST_NAMESPACE_END_
 
 #if EZTEST_POSIX_VERSION_ >= 200809L || EZTEST_GNU_SOURCE_ != 0
 # define EZTEST_STRNLEN_(str, maxlen)                                          \
-  /* NOLINTBEGIN(llvmlibc-callee-namespace) */                                 \
-  strnlen(str, maxlen) /* NOLINTEND(llvmlibc-callee-namespace) */
+     /* NOLINTBEGIN(llvmlibc-callee-namespace) */                              \
+     strnlen(str, maxlen) /* NOLINTEND(llvmlibc-callee-namespace) */
 
 #else
 EZTEST_NAMESPACE_BEGIN_
@@ -858,11 +859,11 @@ EZTEST_NAMESPACE_END_
 
 #if EZTEST_GNU_SOURCE_ != 0
 # define EZTEST_STRCASECMP_(lhs, rhs)                                          \
-  /* NOLINTBEGIN(llvmlibc-callee-namespace) */ strcasecmp(                     \
-      lhs, rhs) /* NOLINTEND(llvmlibc-callee-namespace) */
+     /* NOLINTBEGIN(llvmlibc-callee-namespace) */ strcasecmp(                  \
+         lhs, rhs) /* NOLINTEND(llvmlibc-callee-namespace) */
 # define EZTEST_STRNCASECMP_(lhs, rhs, len)                                    \
-  /* NOLINTBEGIN(llvmlibc-callee-namespace) */ strncasecmp(                    \
-      lhs, rhs, len) /* NOLINTEND(llvmlibc-callee-namespace) */
+     /* NOLINTBEGIN(llvmlibc-callee-namespace) */ strncasecmp(                 \
+         lhs, rhs, len) /* NOLINTEND(llvmlibc-callee-namespace) */
 
 #else
 EZTEST_NAMESPACE_BEGIN_
@@ -929,7 +930,7 @@ EZTEST_REENABLE_WUNUSED_FUNCTION_
 EZTEST_NAMESPACE_END_
 # define EZTEST_STRCASECMP_(lhs, rhs) EZTEST_NS_ eztest_strcasecmp(lhs, rhs)
 # define EZTEST_STRNCASECMP_(lhs, rhs, len)                                    \
-  EZTEST_NS_ eztest_strncasecmp(lhs, rhs, len)
+     EZTEST_NS_ eztest_strncasecmp(lhs, rhs, len)
 
 #endif
 /* End include of: eztest-libc.h  */
@@ -939,13 +940,13 @@ EZTEST_NAMESPACE_END_
 # include <array>
 # define EZTEST_ARR_BUILDER_(name, T, k_n) EZTEST_STD_NS_ array<T, k_n> name
 # define EZTEST_ARR_T_INIT_                                                    \
-  {                                                                            \
-   { 0 }                                                                       \
-  }
+     {                                                                         \
+         { 0 }                                                                 \
+     }
 #else
 # define EZTEST_ARR_BUILDER_(name, T, k_n) T name[k_n]
 # define EZTEST_ARR_T_INIT_                                                    \
-  { 0 }
+     { 0 }
 #endif
 
 /* End include of: eztest-containers.h  */
@@ -999,7 +1000,7 @@ EZTEST_NAMESPACE_END_
 #endif
 /* NOLINTEND(llvmlibc-restrict-system-libc-headers) */
 
-#if EZTEST_CXX_LANG_
+#if EZTEST_CXX_LANG_ && EZTEST_CXX_LANG_ < 2023
 # define EZTEST_ABS_(x) EZTEST_STD_NS_ abs(x)
 #else
 # define EZTEST_ABS_(x) EZTEST_STD_NS_ fabs(x)
@@ -1078,14 +1079,15 @@ eztest_fp_bits_get_ulp(uint64_t              eztest_fp_bits_lhs,
 }
 
 #define EZTEST_BITCAST_FP_TO_U64_(ty_t, fp, u64_out)                           \
- /* NOLINTBEGIN(cppcoreguide*-avoid-do-while) */                               \
- do {                                                                          \
-  ty_t eztest_fp_tmp_ = fp;                                                    \
-  (u64_out)           = 0;                                                     \
-  /* NOLINTBEGIN(clang-a*-sec*.insecureAPI.Depr*OrUnsafeBufferHandling) */     \
-  EZTEST_MEMCPY_(&(u64_out), &eztest_fp_tmp_, sizeof(ty_t));                   \
-  /* NOLINTEND(clang-a*-sec*.insecureAPI.Depr*OrUnsafeBufferHandling) */       \
- } while (0) /* NOLINTEND(cppcoreguide*-avoid-do-while) */
+    /* NOLINTBEGIN(cppcoreguide*-avoid-do-while) */                            \
+    do {                                                                       \
+        ty_t eztest_fp_tmp_ = fp;                                              \
+        (u64_out)           = 0;                                               \
+        /* NOLINTBEGIN(clang-a*-sec*.insecureAPI.Depr*OrUnsafeBufferHandling)  \
+         */                                                                    \
+        EZTEST_MEMCPY_(&(u64_out), &eztest_fp_tmp_, sizeof(ty_t));             \
+        /* NOLINTEND(clang-a*-sec*.insecureAPI.Depr*OrUnsafeBufferHandling) */ \
+    } while (0) /* NOLINTEND(cppcoreguide*-avoid-do-while) */
 
 
 EZTEST_PRIVATE_ int
@@ -1794,7 +1796,7 @@ class eztest_cxx_binop_strcasene_t : public EZTEST_NS_ eztest_cxx_print_var_t {
     /* NOLINTEND(llvmlibc-inline-function-decl) */
 };
 
-class eztest_cxx_binop_fp_eq_t : public EZTEST_NS_ eztest_cxx_print_var_t {
+class eztest_cxx_binop_flt_eq_t : public EZTEST_NS_ eztest_cxx_print_var_t {
    public:
     /* NOLINTBEGIN(llvmlibc-inline-function-decl) */
     EZTEST_PRIVATE_ int
@@ -1807,11 +1809,24 @@ class eztest_cxx_binop_fp_eq_t : public EZTEST_NS_ eztest_cxx_print_var_t {
     eztest_cxx_run(const float & eztest_op0, const float & eztest_op1) {
         return EZTEST_NS_ eztest_flt_compare(eztest_op0, eztest_op1) != 0;
     }
+    /* NOLINTEND(llvmlibc-inline-function-decl) */
+};
+
+class eztest_cxx_binop_dbl_eq_t : public EZTEST_NS_ eztest_cxx_print_var_t {
+   public:
+    /* NOLINTBEGIN(llvmlibc-inline-function-decl) */
+    EZTEST_PRIVATE_ int
+    eztest_cxx_print_op_desc(const char * eztest_op0_expr,
+                             const char * eztest_op1_expr) {
+        return EZTEST_PRINTF_("(%s) != (%s)", eztest_op0_expr, eztest_op1_expr);
+    }
+
 
     EZTEST_PRIVATE_CXX_INL_ bool
     eztest_cxx_run(const double & eztest_op0, const double & eztest_op1) {
         return EZTEST_NS_ eztest_dbl_compare(eztest_op0, eztest_op1) != 0;
     }
+
     /* NOLINTEND(llvmlibc-inline-function-decl) */
 };
 
@@ -1828,16 +1843,17 @@ class eztest_cxx_ternop_near_t : public EZTEST_NS_ eztest_cxx_print_var_t {
     }
 
     EZTEST_PRIVATE_CXX_INL_ bool
-    eztest_cxx_run(const float & eztest_op0,
-                   const float & eztest_op1,
-                   const float & eztest_op2) {
-        return EZTEST_ABS_(eztest_op0 - eztest_op1) <= EZTEST_ABS_(eztest_op2);
-    }
-
-    EZTEST_PRIVATE_CXX_INL_ bool
     eztest_cxx_run(const double & eztest_op0,
                    const double & eztest_op1,
                    const double & eztest_op2) {
+        return EZTEST_ABS_(eztest_op0 - eztest_op1) <= EZTEST_ABS_(eztest_op2);
+    }
+
+    template<typename eztest_T0_t, typename eztest_T1_t, typename eztest_T2_t>
+    EZTEST_PRIVATE_CXX_INL_ bool
+    eztest_cxx_run(const eztest_T0_t & eztest_op0,
+                   const eztest_T1_t & eztest_op1,
+                   const eztest_T2_t & eztest_op2) {
         return EZTEST_ABS_(eztest_op0 - eztest_op1) <= EZTEST_ABS_(eztest_op2);
     }
     /* NOLINTEND(llvmlibc-inline-function-decl) */
@@ -2090,97 +2106,98 @@ EZTEST_DISABLE_WCXX98_COMPAT_PEDANTIC_
 EZTEST_DISABLE_WVARIADIC_MACROS_
 
 # define EZTEST_GET_TERNOP_EXPRESSIONS_IMPL_(expr0, expr1, expr2, ...)         \
-  EZTEST_STRINGIFY_(expr0), EZTEST_STRINGIFY_(expr1), EZTEST_STRINGIFY_(expr2)
+     EZTEST_STRINGIFY_(expr0), EZTEST_STRINGIFY_(expr1),                       \
+         EZTEST_STRINGIFY_(expr2)
 # define EZTEST_GET_TERNOP_EXPRESSIONS_(...)                                   \
-  EZTEST_GET_TERNOP_EXPRESSIONS_IMPL_(__VA_ARGS__, eztest0, eztest1, eztest2,  \
-                                      eztest3)
+     EZTEST_GET_TERNOP_EXPRESSIONS_IMPL_(__VA_ARGS__, eztest0, eztest1,        \
+                                         eztest2, eztest3)
 
 # define EZTEST_GET_BINOP_EXPRESSIONS_IMPL_(expr0, expr1, ...)                 \
-  EZTEST_STRINGIFY_(expr0), EZTEST_STRINGIFY_(expr1)
+     EZTEST_STRINGIFY_(expr0), EZTEST_STRINGIFY_(expr1)
 # define EZTEST_GET_BINOP_EXPRESSIONS_(...)                                    \
-  EZTEST_GET_BINOP_EXPRESSIONS_IMPL_(__VA_ARGS__, eztest0, eztest1, eztest2)
+     EZTEST_GET_BINOP_EXPRESSIONS_IMPL_(__VA_ARGS__, eztest0, eztest1, eztest2)
 
 # define EZTEST_GET_BOOL_EXPRESSIONS_IMPL_(expr0, ...) EZTEST_STRINGIFY_(expr0)
 # define EZTEST_GET_BOOL_EXPRESSIONS_(...)                                     \
-  EZTEST_GET_BOOL_EXPRESSIONS_IMPL_(__VA_ARGS__, eztest0, eztest1)
+     EZTEST_GET_BOOL_EXPRESSIONS_IMPL_(__VA_ARGS__, eztest0, eztest1)
 
 # define EZTEST_ASSERT_BOOL_IMPL_(exit_on_fail, expec, ...)                    \
-  EZTEST_NS_ eztest_cxx_bool_assert(exit_on_fail, EZTEST_LINE_, EZTEST_FILE_,  \
-                                    EZTEST_GET_BOOL_EXPRESSIONS_(__VA_ARGS__), \
-                                    expec, __VA_ARGS__)
+     EZTEST_NS_ eztest_cxx_bool_assert(                                        \
+         exit_on_fail, EZTEST_LINE_, EZTEST_FILE_,                             \
+         EZTEST_GET_BOOL_EXPRESSIONS_(__VA_ARGS__), expec, __VA_ARGS__)
 
 
 # define EZTEST_ASSERT_BINOP_IMPL_(exit_on_fail, binop_t, ...)                 \
-  EZTEST_NS_ eztest_cxx_binop_assert<EZTEST_NS_ binop_t>(                      \
-      exit_on_fail, EZTEST_LINE_, EZTEST_FILE_,                                \
-      EZTEST_GET_BINOP_EXPRESSIONS_(__VA_ARGS__), __VA_ARGS__)
+     EZTEST_NS_ eztest_cxx_binop_assert<EZTEST_NS_ binop_t>(                   \
+         exit_on_fail, EZTEST_LINE_, EZTEST_FILE_,                             \
+         EZTEST_GET_BINOP_EXPRESSIONS_(__VA_ARGS__), __VA_ARGS__)
 
 # define EZTEST_ASSERT_TERNOP_IMPL_(exit_on_fail, ternop_t, ...)               \
-  EZTEST_NS_ eztest_cxx_ternop_assert<EZTEST_NS_ ternop_t>(                    \
-      exit_on_fail, EZTEST_LINE_, EZTEST_FILE_,                                \
-      EZTEST_GET_TERNOP_EXPRESSIONS_(__VA_ARGS__), __VA_ARGS__)
+     EZTEST_NS_ eztest_cxx_ternop_assert<EZTEST_NS_ ternop_t>(                 \
+         exit_on_fail, EZTEST_LINE_, EZTEST_FILE_,                             \
+         EZTEST_GET_TERNOP_EXPRESSIONS_(__VA_ARGS__), __VA_ARGS__)
 
 # define EZTEST_ASSERT_TRUE_IMPL_(...)                                         \
-  EZTEST_ASSERT_BOOL_IMPL_(1, true, __VA_ARGS__)
+     EZTEST_ASSERT_BOOL_IMPL_(1, true, __VA_ARGS__)
 # define EZTEST_ASSERT_FALSE_IMPL_(...)                                        \
-  EZTEST_ASSERT_BOOL_IMPL_(1, false, __VA_ARGS__)
+     EZTEST_ASSERT_BOOL_IMPL_(1, false, __VA_ARGS__)
 # define EZTEST_ASSERT_EQ_IMPL_(...)                                           \
-  EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_eq_t, __VA_ARGS__)
+     EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_eq_t, __VA_ARGS__)
 # define EZTEST_ASSERT_NE_IMPL_(...)                                           \
-  EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_ne_t, __VA_ARGS__)
+     EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_ne_t, __VA_ARGS__)
 # define EZTEST_ASSERT_LE_IMPL_(...)                                           \
-  EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_le_t, __VA_ARGS__)
+     EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_le_t, __VA_ARGS__)
 # define EZTEST_ASSERT_LT_IMPL_(...)                                           \
-  EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_lt_t, __VA_ARGS__)
+     EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_lt_t, __VA_ARGS__)
 # define EZTEST_ASSERT_GE_IMPL_(...)                                           \
-  EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_ge_t, __VA_ARGS__)
+     EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_ge_t, __VA_ARGS__)
 # define EZTEST_ASSERT_GT_IMPL_(...)                                           \
-  EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_gt_t, __VA_ARGS__)
+     EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_gt_t, __VA_ARGS__)
 # define EZTEST_ASSERT_STREQ_IMPL_(...)                                        \
-  EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_streq_t, __VA_ARGS__)
+     EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_streq_t, __VA_ARGS__)
 # define EZTEST_ASSERT_STRNE_IMPL_(...)                                        \
-  EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_strne_t, __VA_ARGS__)
+     EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_strne_t, __VA_ARGS__)
 # define EZTEST_ASSERT_STRCASEEQ_IMPL_(...)                                    \
-  EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_strcaseeq_t, __VA_ARGS__)
+     EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_strcaseeq_t, __VA_ARGS__)
 # define EZTEST_ASSERT_STRCASENE_IMPL_(...)                                    \
-  EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_strcasene_t, __VA_ARGS__)
+     EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_strcasene_t, __VA_ARGS__)
 # define EZTEST_ASSERT_FLOAT_EQ_IMPL_(...)                                     \
-  EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_fp_eq_t, __VA_ARGS__)
+     EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_flt_eq_t, __VA_ARGS__)
 # define EZTEST_ASSERT_DOUBLE_EQ_IMPL_(...)                                    \
-  EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_fp_eq_t, __VA_ARGS__)
+     EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_dbl_eq_t, __VA_ARGS__)
 # define EZTEST_ASSERT_NEAR_IMPL_(...)                                         \
-  EZTEST_ASSERT_TERNOP_IMPL_(1, eztest_cxx_ternop_near_t, __VA_ARGS__)
+     EZTEST_ASSERT_TERNOP_IMPL_(1, eztest_cxx_ternop_near_t, __VA_ARGS__)
 
 # define EZTEST_EXPECT_TRUE_IMPL_(...)                                         \
-  EZTEST_ASSERT_BOOL_IMPL_(0, true, __VA_ARGS__)
+     EZTEST_ASSERT_BOOL_IMPL_(0, true, __VA_ARGS__)
 # define EZTEST_EXPECT_FALSE_IMPL_(...)                                        \
-  EZTEST_ASSERT_BOOL_IMPL_(0, false, __VA_ARGS__)
+     EZTEST_ASSERT_BOOL_IMPL_(0, false, __VA_ARGS__)
 # define EZTEST_EXPECT_EQ_IMPL_(...)                                           \
-  EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_eq_t, __VA_ARGS__)
+     EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_eq_t, __VA_ARGS__)
 # define EZTEST_EXPECT_NE_IMPL_(...)                                           \
-  EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_ne_t, __VA_ARGS__)
+     EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_ne_t, __VA_ARGS__)
 # define EZTEST_EXPECT_LE_IMPL_(...)                                           \
-  EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_le_t, __VA_ARGS__)
+     EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_le_t, __VA_ARGS__)
 # define EZTEST_EXPECT_LT_IMPL_(...)                                           \
-  EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_lt_t, __VA_ARGS__)
+     EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_lt_t, __VA_ARGS__)
 # define EZTEST_EXPECT_GE_IMPL_(...)                                           \
-  EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_ge_t, __VA_ARGS__)
+     EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_ge_t, __VA_ARGS__)
 # define EZTEST_EXPECT_GT_IMPL_(...)                                           \
-  EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_gt_t, __VA_ARGS__)
+     EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_gt_t, __VA_ARGS__)
 # define EZTEST_EXPECT_STREQ_IMPL_(...)                                        \
-  EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_streq_t, __VA_ARGS__)
+     EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_streq_t, __VA_ARGS__)
 # define EZTEST_EXPECT_STRNE_IMPL_(...)                                        \
-  EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_strne_t, __VA_ARGS__)
+     EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_strne_t, __VA_ARGS__)
 # define EZTEST_EXPECT_STRCASEEQ_IMPL_(...)                                    \
-  EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_strcaseeq_t, __VA_ARGS__)
+     EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_strcaseeq_t, __VA_ARGS__)
 # define EZTEST_EXPECT_STRCASENE_IMPL_(...)                                    \
-  EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_strcasene_t, __VA_ARGS__)
+     EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_strcasene_t, __VA_ARGS__)
 # define EZTEST_EXPECT_FLOAT_EQ_IMPL_(...)                                     \
-  EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_fp_eq_t, __VA_ARGS__)
+     EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_flt_eq_t, __VA_ARGS__)
 # define EZTEST_EXPECT_DOUBLE_EQ_IMPL_(...)                                    \
-  EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_fp_eq_t, __VA_ARGS__)
+     EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_dbl_eq_t, __VA_ARGS__)
 # define EZTEST_EXPECT_NEAR_IMPL_(...)                                         \
-  EZTEST_ASSERT_TERNOP_IMPL_(0, eztest_cxx_ternop_near_t, __VA_ARGS__)
+     EZTEST_ASSERT_TERNOP_IMPL_(0, eztest_cxx_ternop_near_t, __VA_ARGS__)
 
 
 EZTEST_REENABLE_WCXX98_COMPAT_PEDANTIC_
@@ -2274,266 +2291,279 @@ EZTEST_REENABLE_WVARIADIC_MACROS_
 # endif
 
 # define EZTEST_C_PRINT_VAR_IMPL_(var, tmpvar)                                 \
-  do {                                                                         \
-   EZTEST_C11_DISABLE_WLONG_LONG_                                              \
-   EZTEST_C11_DISABLE_WC99_C11_COMPAT_                                         \
-   EZTEST_C11_DISABLE_WC90_C99_COMPAT_                                         \
-   /* NOLINTBEGIN(bugprone-macro-parentheses) */                               \
-   const char * tmpvar = EZTEST_C_GET_VAR_FMT_SPECIFIER_(var);                 \
-   /* NOLINTEND(bugprone-macro-parentheses) */                                 \
-   EZTEST_C11_REENABLE_WC90_C99_COMPAT_                                        \
-   EZTEST_C11_REENABLE_WC99_C11_COMPAT_                                        \
-   EZTEST_C11_REENABLE_WLONG_LONG_                                             \
-   if ((tmpvar) != EZTEST_NULL_) {                                             \
-    EZTEST_C11_DISABLE_WC99_C11_COMPAT_                                        \
-    EZTEST_C11_DISABLE_WC90_C99_COMPAT_                                        \
-    EZTEST_DISABLE_WFORMAT_NONLITERAL_(void)                                   \
-    EZTEST_C_DO_PRINT_VAR_((tmpvar), (var));                                   \
-    EZTEST_REENABLE_WFORMAT_NONLITERAL_                                        \
-    EZTEST_C11_REENABLE_WC90_C99_COMPAT_                                       \
-    EZTEST_C11_REENABLE_WC99_C11_COMPAT_                                       \
-   }                                                                           \
-   else {                                                                      \
-    (void)EZTEST_NS_ eztest_hex_print_var(                                     \
-        EZTEST_CAST_(const uint8_t *, &(var)), sizeof(var));                   \
-   }                                                                           \
-  } while (0)
+     do {                                                                      \
+         EZTEST_C11_DISABLE_WLONG_LONG_                                        \
+         EZTEST_C11_DISABLE_WC99_C11_COMPAT_                                   \
+         EZTEST_C11_DISABLE_WC90_C99_COMPAT_                                   \
+         /* NOLINTBEGIN(bugprone-macro-parentheses) */                         \
+         const char * tmpvar = EZTEST_C_GET_VAR_FMT_SPECIFIER_(var);           \
+         /* NOLINTEND(bugprone-macro-parentheses) */                           \
+         EZTEST_C11_REENABLE_WC90_C99_COMPAT_                                  \
+         EZTEST_C11_REENABLE_WC99_C11_COMPAT_                                  \
+         EZTEST_C11_REENABLE_WLONG_LONG_                                       \
+         if ((tmpvar) != EZTEST_NULL_) {                                       \
+             EZTEST_C11_DISABLE_WC99_C11_COMPAT_                               \
+             EZTEST_C11_DISABLE_WC90_C99_COMPAT_                               \
+             EZTEST_DISABLE_WFORMAT_NONLITERAL_(void)                          \
+             EZTEST_C_DO_PRINT_VAR_((tmpvar), (var));                          \
+             EZTEST_REENABLE_WFORMAT_NONLITERAL_                               \
+             EZTEST_C11_REENABLE_WC90_C99_COMPAT_                              \
+             EZTEST_C11_REENABLE_WC99_C11_COMPAT_                              \
+         }                                                                     \
+         else {                                                                \
+             (void)EZTEST_NS_ eztest_hex_print_var(                            \
+                 EZTEST_CAST_(const uint8_t *, &(var)), sizeof(var));          \
+         }                                                                     \
+     } while (0)
 
 
 # define EZTEST_C_PRINT_VAR_(var)                                              \
-  EZTEST_C_PRINT_VAR_IMPL_(var, EZTEST_UNIQUE_NAME_(eztest_var_fmt_tmp_))
+     EZTEST_C_PRINT_VAR_IMPL_(var, EZTEST_UNIQUE_NAME_(eztest_var_fmt_tmp_))
 
 # define EZTEST_C_PRINT_STR_(var) (void)EZTEST_PRINTF_("%s", var);
 
 
 # define EZTEST_C_ASSERT_PRINT_BOOL_HDR_(expec_str, expr_op0_str)              \
-  (void)EZTEST_PRINTF_("%s:%d Failure\nExpected: (%s) to be %s\n",             \
-                       EZTEST_FILE_, EZTEST_LINE_, expr_op0_str, expec_str);
+     (void)EZTEST_PRINTF_("%s:%d Failure\nExpected: (%s) to be %s\n",          \
+                          EZTEST_FILE_, EZTEST_LINE_, expr_op0_str,            \
+                          expec_str);
 
 # define EZTEST_C_ASSERT_PRINT_BINOP_HDR_(op_fmt, expr_op0_str, expr_op1_str)  \
-  (void)EZTEST_PRINTF_("%s:%d Failure\nExpected: " op_fmt "\n", EZTEST_FILE_,  \
-                       EZTEST_LINE_, expr_op0_str, expr_op1_str);
+     (void)EZTEST_PRINTF_("%s:%d Failure\nExpected: " op_fmt "\n",             \
+                          EZTEST_FILE_, EZTEST_LINE_, expr_op0_str,            \
+                          expr_op1_str);
 
 # define EZTEST_C_ASSERT_PRINT_TERNOP_HDR_(op_fmt, expr_op0_str, expr_op1_str, \
                                            expr_op2_str)                       \
-  (void)EZTEST_PRINTF_("%s:%d Failure\nExpected: " op_fmt "\n", EZTEST_FILE_,  \
-                       EZTEST_LINE_, expr_op0_str, expr_op1_str,               \
-                       expr_op2_str);
+     (void)EZTEST_PRINTF_("%s:%d Failure\nExpected: " op_fmt "\n",             \
+                          EZTEST_FILE_, EZTEST_LINE_, expr_op0_str,            \
+                          expr_op1_str, expr_op2_str);
 
 # define EZTEST_C_ASSERT_PRINT_BOOL_(expec_str, expr_op0_str, expr_op0_var)    \
-  EZTEST_C_ASSERT_PRINT_BOOL_HDR_(expec_str, expr_op0_str);                    \
-  (void)EZTEST_PRINTF_("  Actual  : ");                                        \
-  EZTEST_C_PRINT_VAR_(expr_op0_var);                                           \
-  (void)EZTEST_PRINTF_("\n");                                                  \
-  (void)EZTEST_PRINTF_("  Expected: %s", expec_str);                           \
-  (void)EZTEST_PRINTF_("\n");
+     EZTEST_C_ASSERT_PRINT_BOOL_HDR_(expec_str, expr_op0_str);                 \
+     (void)EZTEST_PRINTF_("  Actual  : ");                                     \
+     EZTEST_C_PRINT_VAR_(expr_op0_var);                                        \
+     (void)EZTEST_PRINTF_("\n");                                               \
+     (void)EZTEST_PRINTF_("  Expected: %s", expec_str);                        \
+     (void)EZTEST_PRINTF_("\n");
 
 # define EZTEST_C_ASSERT_PRINT_BINOP_(op_fmt, expr_op0_str, expr_op1_str,      \
                                       expr_op0_var, expr_op1_var)              \
-  EZTEST_C_ASSERT_PRINT_BINOP_HDR_(op_fmt, expr_op0_str, expr_op1_str);        \
-  (void)EZTEST_PRINTF_("  Lhs: ");                                             \
-  EZTEST_C_PRINT_VAR_(expr_op0_var);                                           \
-  (void)EZTEST_PRINTF_("\n");                                                  \
-  (void)EZTEST_PRINTF_("  Rhs: ");                                             \
-  EZTEST_C_PRINT_VAR_(expr_op1_var);                                           \
-  (void)EZTEST_PRINTF_("\n");
+     EZTEST_C_ASSERT_PRINT_BINOP_HDR_(op_fmt, expr_op0_str, expr_op1_str);     \
+     (void)EZTEST_PRINTF_("  Lhs: ");                                          \
+     EZTEST_C_PRINT_VAR_(expr_op0_var);                                        \
+     (void)EZTEST_PRINTF_("\n");                                               \
+     (void)EZTEST_PRINTF_("  Rhs: ");                                          \
+     EZTEST_C_PRINT_VAR_(expr_op1_var);                                        \
+     (void)EZTEST_PRINTF_("\n");
 
 # define EZTEST_C_ASSERT_PRINT_TERNOP_(op_fmt, expr_op0_str, expr_op1_str,     \
                                        expr_op2_str, expr_op0_var,             \
                                        expr_op1_var, expr_op2_var)             \
-  EZTEST_C_ASSERT_PRINT_TERNOP_HDR_(op_fmt, expr_op0_str, expr_op1_str,        \
-                                    expr_op2_str);                             \
-  (void)EZTEST_PRINTF_("  Arg0: ");                                            \
-  EZTEST_C_PRINT_VAR_(expr_op0_var);                                           \
-  (void)EZTEST_PRINTF_("\n");                                                  \
-  (void)EZTEST_PRINTF_("  Arg1: ");                                            \
-  EZTEST_C_PRINT_VAR_(expr_op1_var);                                           \
-  (void)EZTEST_PRINTF_("\n");                                                  \
-  (void)EZTEST_PRINTF_("  Arg2: ");                                            \
-  EZTEST_C_PRINT_VAR_(expr_op2_var);                                           \
-  (void)EZTEST_PRINTF_("\n");
+     EZTEST_C_ASSERT_PRINT_TERNOP_HDR_(op_fmt, expr_op0_str, expr_op1_str,     \
+                                       expr_op2_str);                          \
+     (void)EZTEST_PRINTF_("  Arg0: ");                                         \
+     EZTEST_C_PRINT_VAR_(expr_op0_var);                                        \
+     (void)EZTEST_PRINTF_("\n");                                               \
+     (void)EZTEST_PRINTF_("  Arg1: ");                                         \
+     EZTEST_C_PRINT_VAR_(expr_op1_var);                                        \
+     (void)EZTEST_PRINTF_("\n");                                               \
+     (void)EZTEST_PRINTF_("  Arg2: ");                                         \
+     EZTEST_C_PRINT_VAR_(expr_op2_var);                                        \
+     (void)EZTEST_PRINTF_("\n");
 
 # define EZTEST_C_ASSERT_PRINT_STR_(op_fmt, expr_op0_str, expr_op1_str,        \
                                     expr_op0_var, expr_op1_var)                \
-  EZTEST_C_ASSERT_PRINT_BINOP_HDR_(op_fmt, expr_op0_str, expr_op1_str);        \
-  (void)EZTEST_PRINTF_("  Lhs: ");                                             \
-  EZTEST_C_PRINT_STR_(expr_op0_var);                                           \
-  (void)EZTEST_PRINTF_("\n");                                                  \
-  (void)EZTEST_PRINTF_("  Rhs: ");                                             \
-  EZTEST_C_PRINT_STR_(expr_op1_var);                                           \
-  (void)EZTEST_PRINTF_("\n");
+     EZTEST_C_ASSERT_PRINT_BINOP_HDR_(op_fmt, expr_op0_str, expr_op1_str);     \
+     (void)EZTEST_PRINTF_("  Lhs: ");                                          \
+     EZTEST_C_PRINT_STR_(expr_op0_var);                                        \
+     (void)EZTEST_PRINTF_("\n");                                               \
+     (void)EZTEST_PRINTF_("  Rhs: ");                                          \
+     EZTEST_C_PRINT_STR_(expr_op1_var);                                        \
+     (void)EZTEST_PRINTF_("\n");
 
 
 # if (defined EZTEST_AUTO_) && EZTEST_C_LANG_ >= 2011 && (EZTEST_C_PRINT_ARGS)
 #  define EZTEST_C_ASSERT_BOOL_(fail_on_err, expec, expr_op0, ...)             \
-   do {                                                                        \
-    const EZTEST_AUTO_(expr_op0) eztest_expr_op0_tmp_ = expr_op0;              \
-    if (EZTEST_C_ASSERT_CHECK_BOOL_(expec, eztest_expr_op0_tmp_)) {            \
-     EZTEST_C_ASSERT_PRINT_BOOL_((expec) ? "true" : "false",                   \
-                                 EZTEST_STRINGIFY_(expr_op0),                  \
-                                 eztest_expr_op0_tmp_);                        \
-     EZTEST_C_ASSERT_FAIL_(fail_on_err, __VA_ARGS__);                          \
-    }                                                                          \
-   } while (0)
+      do {                                                                     \
+          const EZTEST_AUTO_(expr_op0) eztest_expr_op0_tmp_ = expr_op0;        \
+          if (EZTEST_C_ASSERT_CHECK_BOOL_(expec, eztest_expr_op0_tmp_)) {      \
+              EZTEST_C_ASSERT_PRINT_BOOL_((expec) ? "true" : "false",          \
+                                          EZTEST_STRINGIFY_(expr_op0),         \
+                                          eztest_expr_op0_tmp_);               \
+              EZTEST_C_ASSERT_FAIL_(fail_on_err, __VA_ARGS__);                 \
+          }                                                                    \
+      } while (0)
 
 
 #  define EZTEST_C_ASSERT_BINOP_(fail_on_err, op, op_fmt, expr_op0, expr_op1,  \
                                  ...)                                          \
-   do {                                                                        \
-    const EZTEST_AUTO_(expr_op0) eztest_expr_op0_tmp_ = expr_op0;              \
-    const EZTEST_AUTO_(expr_op1) eztest_expr_op1_tmp_ = expr_op1;              \
-    if (EZTEST_C_ASSERT_CHECK_BINOP_(op, eztest_expr_op0_tmp_,                 \
-                                     eztest_expr_op1_tmp_)) {                  \
-     EZTEST_C_ASSERT_PRINT_BINOP_(op_fmt, EZTEST_STRINGIFY_(expr_op0),         \
-                                  EZTEST_STRINGIFY_(expr_op1),                 \
-                                  eztest_expr_op0_tmp_, eztest_expr_op1_tmp_); \
-     EZTEST_C_ASSERT_FAIL_(fail_on_err, __VA_ARGS__);                          \
-    }                                                                          \
-   } while (0)
+      do {                                                                     \
+          const EZTEST_AUTO_(expr_op0) eztest_expr_op0_tmp_ = expr_op0;        \
+          const EZTEST_AUTO_(expr_op1) eztest_expr_op1_tmp_ = expr_op1;        \
+          if (EZTEST_C_ASSERT_CHECK_BINOP_(op, eztest_expr_op0_tmp_,           \
+                                           eztest_expr_op1_tmp_)) {            \
+              EZTEST_C_ASSERT_PRINT_BINOP_(                                    \
+                  op_fmt, EZTEST_STRINGIFY_(expr_op0),                         \
+                  EZTEST_STRINGIFY_(expr_op1), eztest_expr_op0_tmp_,           \
+                  eztest_expr_op1_tmp_);                                       \
+              EZTEST_C_ASSERT_FAIL_(fail_on_err, __VA_ARGS__);                 \
+          }                                                                    \
+      } while (0)
 
 
 #  define EZTEST_C_ASSERT_TERNOP_(fail_on_err, op, op_fmt, expr_op0, expr_op1, \
                                   expr_op2, ...)                               \
-   do {                                                                        \
-    const EZTEST_AUTO_(expr_op0) eztest_expr_op0_tmp_ = expr_op0;              \
-    const EZTEST_AUTO_(expr_op1) eztest_expr_op1_tmp_ = expr_op1;              \
-    const EZTEST_AUTO_(expr_op2) eztest_expr_op2_tmp_ = expr_op2;              \
-    if (EZTEST_C_ASSERT_CHECK_TERNOP_(op, eztest_expr_op0_tmp_,                \
-                                      eztest_expr_op1_tmp_,                    \
-                                      eztest_expr_op2_tmp_)) {                 \
-     EZTEST_C_ASSERT_PRINT_TERNOP_(                                            \
-         op_fmt, EZTEST_STRINGIFY_(expr_op0), EZTEST_STRINGIFY_(expr_op1),     \
-         EZTEST_STRINGIFY_(expr_op2), eztest_expr_op0_tmp_,                    \
-         eztest_expr_op1_tmp_, eztest_expr_op2_tmp_);                          \
-     EZTEST_C_ASSERT_FAIL_(fail_on_err, __VA_ARGS__);                          \
-    }                                                                          \
-   } while (0)
+      do {                                                                     \
+          const EZTEST_AUTO_(expr_op0) eztest_expr_op0_tmp_ = expr_op0;        \
+          const EZTEST_AUTO_(expr_op1) eztest_expr_op1_tmp_ = expr_op1;        \
+          const EZTEST_AUTO_(expr_op2) eztest_expr_op2_tmp_ = expr_op2;        \
+          if (EZTEST_C_ASSERT_CHECK_TERNOP_(op, eztest_expr_op0_tmp_,          \
+                                            eztest_expr_op1_tmp_,              \
+                                            eztest_expr_op2_tmp_)) {           \
+              EZTEST_C_ASSERT_PRINT_TERNOP_(                                   \
+                  op_fmt, EZTEST_STRINGIFY_(expr_op0),                         \
+                  EZTEST_STRINGIFY_(expr_op1), EZTEST_STRINGIFY_(expr_op2),    \
+                  eztest_expr_op0_tmp_, eztest_expr_op1_tmp_,                  \
+                  eztest_expr_op2_tmp_);                                       \
+              EZTEST_C_ASSERT_FAIL_(fail_on_err, __VA_ARGS__);                 \
+          }                                                                    \
+      } while (0)
 
 #  define EZTEST_C_ASSERT_STR_(fail_on_err, op, op_fmt, expr_op0, expr_op1,    \
                                ...)                                            \
-   do {                                                                        \
-    const EZTEST_AUTO_(expr_op0) eztest_expr_op0_tmp_ = expr_op0;              \
-    const EZTEST_AUTO_(expr_op1) eztest_expr_op1_tmp_ = expr_op1;              \
-    if (EZTEST_C_ASSERT_CHECK_BINOP_(op, eztest_expr_op0_tmp_,                 \
-                                     eztest_expr_op1_tmp_)) {                  \
-     EZTEST_C_ASSERT_PRINT_STR_(op_fmt, EZTEST_STRINGIFY_(expr_op0),           \
-                                EZTEST_STRINGIFY_(expr_op1),                   \
-                                eztest_expr_op0_tmp_, eztest_expr_op1_tmp_);   \
-     EZTEST_C_ASSERT_FAIL_(fail_on_err, __VA_ARGS__);                          \
-    }                                                                          \
-   } while (0)
+      do {                                                                     \
+          const EZTEST_AUTO_(expr_op0) eztest_expr_op0_tmp_ = expr_op0;        \
+          const EZTEST_AUTO_(expr_op1) eztest_expr_op1_tmp_ = expr_op1;        \
+          if (EZTEST_C_ASSERT_CHECK_BINOP_(op, eztest_expr_op0_tmp_,           \
+                                           eztest_expr_op1_tmp_)) {            \
+              EZTEST_C_ASSERT_PRINT_STR_(op_fmt, EZTEST_STRINGIFY_(expr_op0),  \
+                                         EZTEST_STRINGIFY_(expr_op1),          \
+                                         eztest_expr_op0_tmp_,                 \
+                                         eztest_expr_op1_tmp_);                \
+              EZTEST_C_ASSERT_FAIL_(fail_on_err, __VA_ARGS__);                 \
+          }                                                                    \
+      } while (0)
 
 
 # else
 #  define EZTEST_C_ASSERT_BOOL_(fail_on_err, expec, expr, ...)                 \
-   do {                                                                        \
-    if (EZTEST_C_ASSERT_CHECK_BOOL_(expec, expr)) {                            \
-     EZTEST_C_ASSERT_PRINT_BOOL_HDR_((expec) ? "true" : "false",               \
-                                     EZTEST_STRINGIFY_(expr));                 \
-     EZTEST_C_ASSERT_FAIL_(fail_on_err, __VA_ARGS__);                          \
-    }                                                                          \
-   } while (0)
+      do {                                                                     \
+          if (EZTEST_C_ASSERT_CHECK_BOOL_(expec, expr)) {                      \
+              EZTEST_C_ASSERT_PRINT_BOOL_HDR_((expec) ? "true" : "false",      \
+                                              EZTEST_STRINGIFY_(expr));        \
+              EZTEST_C_ASSERT_FAIL_(fail_on_err, __VA_ARGS__);                 \
+          }                                                                    \
+      } while (0)
 
 #  define EZTEST_C_ASSERT_BINOP_(fail_on_err, op, op_fmt, expr_op0, expr_op1,  \
                                  ...)                                          \
-   do {                                                                        \
-    if (EZTEST_C_ASSERT_CHECK_BINOP_(op, expr_op0, expr_op1)) {                \
-     EZTEST_C_ASSERT_PRINT_BINOP_HDR_(op_fmt, EZTEST_STRINGIFY_(expr_op0),     \
-                                      EZTEST_STRINGIFY_(expr_op1));            \
-     EZTEST_C_ASSERT_FAIL_(fail_on_err, __VA_ARGS__);                          \
-    }                                                                          \
-   } while (0)
+      do {                                                                     \
+          if (EZTEST_C_ASSERT_CHECK_BINOP_(op, expr_op0, expr_op1)) {          \
+              EZTEST_C_ASSERT_PRINT_BINOP_HDR_(op_fmt,                         \
+                                               EZTEST_STRINGIFY_(expr_op0),    \
+                                               EZTEST_STRINGIFY_(expr_op1));   \
+              EZTEST_C_ASSERT_FAIL_(fail_on_err, __VA_ARGS__);                 \
+          }                                                                    \
+      } while (0)
 
 
 #  define EZTEST_C_ASSERT_TERNOP_(fail_on_err, op, op_fmt, expr_op0, expr_op1, \
                                   expr_op2, ...)                               \
-   do {                                                                        \
-    if (EZTEST_C_ASSERT_CHECK_TERNOP_(op, expr_op0, expr_op1, expr_op2)) {     \
-     EZTEST_C_ASSERT_PRINT_TERNOP_HDR_(op_fmt, EZTEST_STRINGIFY_(expr_op0),    \
-                                       EZTEST_STRINGIFY_(expr_op1),            \
-                                       EZTEST_STRINGIFY_(expr_op2));           \
-     EZTEST_C_ASSERT_FAIL_(fail_on_err, __VA_ARGS__);                          \
-    }                                                                          \
-   } while (0)
+      do {                                                                     \
+          if (EZTEST_C_ASSERT_CHECK_TERNOP_(op, expr_op0, expr_op1,            \
+                                            expr_op2)) {                       \
+              EZTEST_C_ASSERT_PRINT_TERNOP_HDR_(                               \
+                  op_fmt, EZTEST_STRINGIFY_(expr_op0),                         \
+                  EZTEST_STRINGIFY_(expr_op1), EZTEST_STRINGIFY_(expr_op2));   \
+              EZTEST_C_ASSERT_FAIL_(fail_on_err, __VA_ARGS__);                 \
+          }                                                                    \
+      } while (0)
 
 #  define EZTEST_C_ASSERT_STR_(fail_on_err, op, op_fmt, expr_op0, expr_op1,    \
                                ...)                                            \
-   EZTEST_C_ASSERT_BINOP_(fail_on_err, op, op_fmt, expr_op0, expr_op1,         \
-                          __VA_ARGS__)
+      EZTEST_C_ASSERT_BINOP_(fail_on_err, op, op_fmt, expr_op0, expr_op1,      \
+                             __VA_ARGS__)
 # endif
 
 # define EZTEST_C_ASSERT_FAIL_(fail_on_err, ...)                               \
-  (void)EZTEST_PRINTF_(__VA_ARGS__);                                           \
-  EZTEST_NS_ eztest_cur_test_set_failed();                                     \
-  if (fail_on_err) {                                                           \
-   (void)EZTEST_FFLUSH_(stdout);                                               \
-   (void)EZTEST_FFLUSH_(stderr);                                               \
-   EZTEST_EXIT_(1);                                                            \
-  }
+     (void)EZTEST_PRINTF_(__VA_ARGS__);                                        \
+     EZTEST_NS_ eztest_cur_test_set_failed();                                  \
+     if (fail_on_err) {                                                        \
+         (void)EZTEST_FFLUSH_(stdout);                                         \
+         (void)EZTEST_FFLUSH_(stderr);                                         \
+         EZTEST_EXIT_(1);                                                      \
+     }
 
 # define EZTEST_C_ASSERT_CHECK_BOOL_(expec, expr)                              \
-  ((expec) ? (!(expr)) : (!!(expr)))
+     ((expec) ? (!(expr)) : (!!(expr)))
 
 # define EZTEST_C_ASSERT_CHECK_BINOP_(op, expr_op0, expr_op1)                  \
-  (!(op((expr_op0), (expr_op1))))
+     (!(op((expr_op0), (expr_op1))))
 
 # define EZTEST_C_ASSERT_CHECK_TERNOP_(op, expr_arg0, expr_arg1, expr_arg2)    \
-  (!(op((expr_arg0), (expr_arg1), (expr_arg2))))
+     (!(op((expr_arg0), (expr_arg1), (expr_arg2))))
 
 # define EZTEST_C_BINOP_EQ_(op0, op1) ((op0) == (op1))
 # define EZTEST_C_BINOP_LT_(op0, op1) ((op0) < (op1))
 # define EZTEST_C_BINOP_LE_(op0, op1) ((op0) <= (op1))
 # define EZTEST_C_FMT_BINOP_(op)      "(%s) " op " (%s)"
 # define EZTEST_C_TERNOP_FP_NEAR_(op0, op1, abs_err)                           \
-  (EZTEST_ABS_((op0) - (op1)) <= EZTEST_ABS_(abs_err))
+     (EZTEST_ABS_((op0) - (op1)) <= EZTEST_ABS_(abs_err))
 
+# define EZTEST_C_FLT_COMPARE_WRAPPER_(op0, op1)                               \
+     EZTEST_NS_ eztest_flt_compare(EZTEST_CAST_(float, op0),                   \
+                                   EZTEST_CAST_(float, op1))
+# define EZTEST_C_DBL_COMPARE_WRAPPER_(op0, op1)                               \
+     EZTEST_NS_ eztest_dbl_compare(EZTEST_CAST_(double, op0),                  \
+                                   EZTEST_CAST_(double, op1))
 
 # define EZTEST_C_ASSERT_TRUE_IMPL_(fail_on_err, ...)                          \
-  EZTEST_C_ASSERT_BOOL_(fail_on_err, 1, __VA_ARGS__)
+     EZTEST_C_ASSERT_BOOL_(fail_on_err, 1, __VA_ARGS__)
 # define EZTEST_C_ASSERT_FALSE_IMPL_(fail_on_err, ...)                         \
-  EZTEST_C_ASSERT_BOOL_(fail_on_err, 0, __VA_ARGS__)
+     EZTEST_C_ASSERT_BOOL_(fail_on_err, 0, __VA_ARGS__)
 
 # define EZTEST_C_ASSERT_EQ_IMPL_(fail_on_err, ...)                            \
-  EZTEST_C_ASSERT_BINOP_(fail_on_err, EZTEST_C_BINOP_EQ_,                      \
-                         EZTEST_C_FMT_BINOP_("=="), __VA_ARGS__)
+     EZTEST_C_ASSERT_BINOP_(fail_on_err, EZTEST_C_BINOP_EQ_,                   \
+                            EZTEST_C_FMT_BINOP_("=="), __VA_ARGS__)
 # define EZTEST_C_ASSERT_NE_IMPL_(fail_on_err, ...)                            \
-  EZTEST_C_ASSERT_BINOP_(fail_on_err, !EZTEST_C_BINOP_EQ_,                     \
-                         EZTEST_C_FMT_BINOP_("!="), __VA_ARGS__)
+     EZTEST_C_ASSERT_BINOP_(fail_on_err, !EZTEST_C_BINOP_EQ_,                  \
+                            EZTEST_C_FMT_BINOP_("!="), __VA_ARGS__)
 # define EZTEST_C_ASSERT_LE_IMPL_(fail_on_err, ...)                            \
-  EZTEST_C_ASSERT_BINOP_(fail_on_err, EZTEST_C_BINOP_LE_,                      \
-                         EZTEST_C_FMT_BINOP_("<="), __VA_ARGS__)
+     EZTEST_C_ASSERT_BINOP_(fail_on_err, EZTEST_C_BINOP_LE_,                   \
+                            EZTEST_C_FMT_BINOP_("<="), __VA_ARGS__)
 # define EZTEST_C_ASSERT_LT_IMPL_(fail_on_err, ...)                            \
-  EZTEST_C_ASSERT_BINOP_(fail_on_err, EZTEST_C_BINOP_LT_,                      \
-                         EZTEST_C_FMT_BINOP_("<"), __VA_ARGS__)
+     EZTEST_C_ASSERT_BINOP_(fail_on_err, EZTEST_C_BINOP_LT_,                   \
+                            EZTEST_C_FMT_BINOP_("<"), __VA_ARGS__)
 # define EZTEST_C_ASSERT_GE_IMPL_(fail_on_err, ...)                            \
-  EZTEST_C_ASSERT_BINOP_(fail_on_err, !EZTEST_C_BINOP_LT_,                     \
-                         EZTEST_C_FMT_BINOP_(">="), __VA_ARGS__)
+     EZTEST_C_ASSERT_BINOP_(fail_on_err, !EZTEST_C_BINOP_LT_,                  \
+                            EZTEST_C_FMT_BINOP_(">="), __VA_ARGS__)
 # define EZTEST_C_ASSERT_GT_IMPL_(fail_on_err, ...)                            \
-  EZTEST_C_ASSERT_BINOP_(fail_on_err, !EZTEST_C_BINOP_LE_,                     \
-                         EZTEST_C_FMT_BINOP_(">"), __VA_ARGS__)
+     EZTEST_C_ASSERT_BINOP_(fail_on_err, !EZTEST_C_BINOP_LE_,                  \
+                            EZTEST_C_FMT_BINOP_(">"), __VA_ARGS__)
 
 # define EZTEST_C_ASSERT_STREQ_IMPL_(fail_on_err, ...)                         \
-  EZTEST_C_ASSERT_STR_(fail_on_err, !EZTEST_STRCMP_,                           \
-                       EZTEST_C_FMT_BINOP_("eq"), __VA_ARGS__)
+     EZTEST_C_ASSERT_STR_(fail_on_err, !EZTEST_STRCMP_,                        \
+                          EZTEST_C_FMT_BINOP_("eq"), __VA_ARGS__)
 # define EZTEST_C_ASSERT_STRNE_IMPL_(fail_on_err, ...)                         \
-  EZTEST_C_ASSERT_STR_(fail_on_err, EZTEST_STRCMP_, EZTEST_C_FMT_BINOP_("ne"), \
-                       __VA_ARGS__)
+     EZTEST_C_ASSERT_STR_(fail_on_err, EZTEST_STRCMP_,                         \
+                          EZTEST_C_FMT_BINOP_("ne"), __VA_ARGS__)
 # define EZTEST_C_ASSERT_STRCASEEQ_IMPL_(fail_on_err, ...)                     \
-  EZTEST_C_ASSERT_STR_(fail_on_err, !EZTEST_STRCASECMP_,                       \
-                       EZTEST_C_FMT_BINOP_("case-eq"), __VA_ARGS__)
+     EZTEST_C_ASSERT_STR_(fail_on_err, !EZTEST_STRCASECMP_,                    \
+                          EZTEST_C_FMT_BINOP_("case-eq"), __VA_ARGS__)
 # define EZTEST_C_ASSERT_STRCASENE_IMPL_(fail_on_err, ...)                     \
-  EZTEST_C_ASSERT_STR_(fail_on_err, EZTEST_STRCASECMP_,                        \
-                       EZTEST_C_FMT_BINOP_("case-ne"), __VA_ARGS__)
+     EZTEST_C_ASSERT_STR_(fail_on_err, EZTEST_STRCASECMP_,                     \
+                          EZTEST_C_FMT_BINOP_("case-ne"), __VA_ARGS__)
 
 # define EZTEST_C_ASSERT_FLOAT_EQ_IMPL_(fail_on_err, ...)                      \
-  EZTEST_C_ASSERT_BINOP_(fail_on_err, EZTEST_NS_ eztest_flt_compare,           \
-                         EZTEST_C_FMT_BINOP_("=="), __VA_ARGS__)
+     EZTEST_C_ASSERT_BINOP_(fail_on_err, EZTEST_C_FLT_COMPARE_WRAPPER_,        \
+                            EZTEST_C_FMT_BINOP_("=="), __VA_ARGS__)
 # define EZTEST_C_ASSERT_DOUBLE_EQ_IMPL_(fail_on_err, ...)                     \
-  EZTEST_C_ASSERT_BINOP_(fail_on_err, EZTEST_NS_ eztest_dbl_compare,           \
-                         EZTEST_C_FMT_BINOP_("=="), __VA_ARGS__)
+     EZTEST_C_ASSERT_BINOP_(fail_on_err, EZTEST_C_DBL_COMPARE_WRAPPER_,        \
+                            EZTEST_C_FMT_BINOP_("=="), __VA_ARGS__)
 # define EZTEST_C_ASSERT_NEAR_IMPL_(fail_on_err, ...)                          \
-  EZTEST_C_ASSERT_TERNOP_(fail_on_err, EZTEST_C_TERNOP_FP_NEAR_,               \
-                          "abs(%s - %s) <= (%s)", __VA_ARGS__)
+     EZTEST_C_ASSERT_TERNOP_(fail_on_err, EZTEST_C_TERNOP_FP_NEAR_,            \
+                             "abs(%s - %s) <= (%s)", __VA_ARGS__)
 
 
 # define EZTEST_PP_ARGS_TO_N_(...) EZTEST_PP_ARGS_TO_N_PRIM_(__VA_ARGS__)
@@ -2559,91 +2589,92 @@ EZTEST_REENABLE_WVARIADIC_MACROS_
      a233, a234, a235, a236, a237, a238, a239, a240, a241, a242, a243, a244,   \
      a245, a246, a247, a248, a249, a250, a251, a252, a253, a254, a255, a256,   \
      a257, aN, ...)                                                            \
-  aN
+     aN
 # define EZTEST_PP_NARG_1N_(...)                                               \
-  EZTEST_PP_ARGS_TO_N_(__VA_ARGS__, EZTEST_PP_REVERSE_SEQ_1N_())
+     EZTEST_PP_ARGS_TO_N_(__VA_ARGS__, EZTEST_PP_REVERSE_SEQ_1N_())
 # define EZTEST_PP_REVERSE_SEQ_1N_()                                           \
-  N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N,   \
-      N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N,  \
-      N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N,  \
-      N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N,  \
-      N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N,  \
-      N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N,  \
-      N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N,  \
-      N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N,  \
-      N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N,  \
-      N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N,  \
-      N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, 1, BAD
+     N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N,   \
+         N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N,  \
+         N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N,  \
+         N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N,  \
+         N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N,  \
+         N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N,  \
+         N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N,  \
+         N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N,  \
+         N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N,  \
+         N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N,  \
+         N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N,  \
+         N, N, 1, BAD
 
 
 # define EZTEST_CLEANED_VA_ARGS_1(...) __VA_ARGS__, "%s", ""
 # define EZTEST_CLEANED_VA_ARGS_N(...) __VA_ARGS__
 # define EZTEST_CLEAN_VA_ARGS_(...)                                            \
-  EZTEST_CAT_(EZTEST_CLEANED_VA_ARGS_, EZTEST_PP_NARG_1N_(__VA_ARGS__))        \
-  (__VA_ARGS__)
+     EZTEST_CAT_(EZTEST_CLEANED_VA_ARGS_, EZTEST_PP_NARG_1N_(__VA_ARGS__))     \
+     (__VA_ARGS__)
 
 # define EZTEST_ASSERT_TRUE_IMPL_(...)                                         \
-  EZTEST_C_ASSERT_TRUE_IMPL_(1, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
+     EZTEST_C_ASSERT_TRUE_IMPL_(1, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
 # define EZTEST_ASSERT_FALSE_IMPL_(...)                                        \
-  EZTEST_C_ASSERT_FALSE_IMPL_(1, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
+     EZTEST_C_ASSERT_FALSE_IMPL_(1, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
 # define EZTEST_ASSERT_EQ_IMPL_(op0, ...)                                      \
-  EZTEST_C_ASSERT_EQ_IMPL_(1, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
+     EZTEST_C_ASSERT_EQ_IMPL_(1, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
 # define EZTEST_ASSERT_NE_IMPL_(op0, ...)                                      \
-  EZTEST_C_ASSERT_NE_IMPL_(1, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
+     EZTEST_C_ASSERT_NE_IMPL_(1, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
 # define EZTEST_ASSERT_LE_IMPL_(op0, ...)                                      \
-  EZTEST_C_ASSERT_LE_IMPL_(1, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
+     EZTEST_C_ASSERT_LE_IMPL_(1, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
 # define EZTEST_ASSERT_LT_IMPL_(op0, ...)                                      \
-  EZTEST_C_ASSERT_LT_IMPL_(1, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
+     EZTEST_C_ASSERT_LT_IMPL_(1, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
 # define EZTEST_ASSERT_GE_IMPL_(op0, ...)                                      \
-  EZTEST_C_ASSERT_GE_IMPL_(1, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
+     EZTEST_C_ASSERT_GE_IMPL_(1, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
 # define EZTEST_ASSERT_GT_IMPL_(op0, ...)                                      \
-  EZTEST_C_ASSERT_GT_IMPL_(1, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
+     EZTEST_C_ASSERT_GT_IMPL_(1, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
 # define EZTEST_ASSERT_STREQ_IMPL_(op0, ...)                                   \
-  EZTEST_C_ASSERT_STREQ_IMPL_(1, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
+     EZTEST_C_ASSERT_STREQ_IMPL_(1, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
 # define EZTEST_ASSERT_STRNE_IMPL_(op0, ...)                                   \
-  EZTEST_C_ASSERT_STRNE_IMPL_(1, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
+     EZTEST_C_ASSERT_STRNE_IMPL_(1, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
 # define EZTEST_ASSERT_STRCASEEQ_IMPL_(op0, ...)                               \
-  EZTEST_C_ASSERT_STRCASEEQ_IMPL_(1, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
+     EZTEST_C_ASSERT_STRCASEEQ_IMPL_(1, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
 # define EZTEST_ASSERT_STRCASENE_IMPL_(op0, ...)                               \
-  EZTEST_C_ASSERT_STRCASENE_IMPL_(1, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
+     EZTEST_C_ASSERT_STRCASENE_IMPL_(1, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
 # define EZTEST_ASSERT_FLOAT_EQ_IMPL_(op0, ...)                                \
-  EZTEST_C_ASSERT_FLOAT_EQ_IMPL_(1, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
+     EZTEST_C_ASSERT_FLOAT_EQ_IMPL_(1, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
 # define EZTEST_ASSERT_DOUBLE_EQ_IMPL_(op0, ...)                               \
-  EZTEST_C_ASSERT_DOUBLE_EQ_IMPL_(1, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
+     EZTEST_C_ASSERT_DOUBLE_EQ_IMPL_(1, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
 # define EZTEST_ASSERT_NEAR_IMPL_(op0, op1, ...)                               \
-  EZTEST_C_ASSERT_NEAR_IMPL_(1, op0, op1, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
+     EZTEST_C_ASSERT_NEAR_IMPL_(1, op0, op1, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
 
 
 # define EZTEST_EXPECT_TRUE_IMPL_(...)                                         \
-  EZTEST_C_ASSERT_TRUE_IMPL_(0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
+     EZTEST_C_ASSERT_TRUE_IMPL_(0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
 # define EZTEST_EXPECT_FALSE_IMPL_(...)                                        \
-  EZTEST_C_ASSERT_FALSE_IMPL_(0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
+     EZTEST_C_ASSERT_FALSE_IMPL_(0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
 # define EZTEST_EXPECT_EQ_IMPL_(op0, ...)                                      \
-  EZTEST_C_ASSERT_EQ_IMPL_(0, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
+     EZTEST_C_ASSERT_EQ_IMPL_(0, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
 # define EZTEST_EXPECT_NE_IMPL_(op0, ...)                                      \
-  EZTEST_C_ASSERT_NE_IMPL_(0, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
+     EZTEST_C_ASSERT_NE_IMPL_(0, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
 # define EZTEST_EXPECT_LE_IMPL_(op0, ...)                                      \
-  EZTEST_C_ASSERT_LE_IMPL_(0, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
+     EZTEST_C_ASSERT_LE_IMPL_(0, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
 # define EZTEST_EXPECT_LT_IMPL_(op0, ...)                                      \
-  EZTEST_C_ASSERT_LT_IMPL_(0, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
+     EZTEST_C_ASSERT_LT_IMPL_(0, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
 # define EZTEST_EXPECT_GE_IMPL_(op0, ...)                                      \
-  EZTEST_C_ASSERT_GE_IMPL_(0, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
+     EZTEST_C_ASSERT_GE_IMPL_(0, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
 # define EZTEST_EXPECT_GT_IMPL_(op0, ...)                                      \
-  EZTEST_C_ASSERT_GT_IMPL_(0, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
+     EZTEST_C_ASSERT_GT_IMPL_(0, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
 # define EZTEST_EXPECT_STREQ_IMPL_(op0, ...)                                   \
-  EZTEST_C_ASSERT_STREQ_IMPL_(0, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
+     EZTEST_C_ASSERT_STREQ_IMPL_(0, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
 # define EZTEST_EXPECT_STRNE_IMPL_(op0, ...)                                   \
-  EZTEST_C_ASSERT_STRNE_IMPL_(0, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
+     EZTEST_C_ASSERT_STRNE_IMPL_(0, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
 # define EZTEST_EXPECT_STRCASEEQ_IMPL_(op0, ...)                               \
-  EZTEST_C_ASSERT_STRCASEEQ_IMPL_(0, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
+     EZTEST_C_ASSERT_STRCASEEQ_IMPL_(0, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
 # define EZTEST_EXPECT_STRCASENE_IMPL_(op0, ...)                               \
-  EZTEST_C_ASSERT_STRCASENE_IMPL_(0, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
+     EZTEST_C_ASSERT_STRCASENE_IMPL_(0, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
 # define EZTEST_EXPECT_FLOAT_EQ_IMPL_(op0, ...)                                \
-  EZTEST_C_ASSERT_FLOAT_EQ_IMPL_(0, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
+     EZTEST_C_ASSERT_FLOAT_EQ_IMPL_(0, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
 # define EZTEST_EXPECT_DOUBLE_EQ_IMPL_(op0, ...)                               \
-  EZTEST_C_ASSERT_DOUBLE_EQ_IMPL_(0, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
+     EZTEST_C_ASSERT_DOUBLE_EQ_IMPL_(0, op0, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
 # define EZTEST_EXPECT_NEAR_IMPL_(op0, op1, ...)                               \
-  EZTEST_C_ASSERT_NEAR_IMPL_(0, op0, op1, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
+     EZTEST_C_ASSERT_NEAR_IMPL_(0, op0, op1, EZTEST_CLEAN_VA_ARGS_(__VA_ARGS__))
 
 
 /* End include of: eztest-c-asserts-impl.h  */
@@ -2661,9 +2692,9 @@ EZTEST_REENABLE_WVARIADIC_MACROS_
 #  define EZTEST_STRUCT_INTT_PADDING_INIT_
 # else
 #  define EZTEST_STRUCT_INTT_PADDING_                                          \
-   char unused_[sizeof(void *) - sizeof(unsigned)];
+      char unused_[sizeof(void *) - sizeof(unsigned)];
 #  define EZTEST_STRUCT_INTT_PADDING_INIT_                                     \
-   { 0 }
+      { 0 }
 # endif
 #else
 # define EZTEST_STRUCT_INTT_PADDING_
@@ -2827,7 +2858,7 @@ struct eztest_list_t {
 };
 #define EZTEST_LIST_T_ EZTEST_STRUCT_NS_ eztest_list_t
 #define EZTEST_LIST_T_INIT_                                                    \
- { EZTEST_NULL_, 0, EZTEST_STRUCT_INTT_PADDING_INIT_ }
+    { EZTEST_NULL_, 0, EZTEST_STRUCT_INTT_PADDING_INIT_ }
 
 
 /*
@@ -3021,8 +3052,9 @@ EZTEST_NAMESPACE_END_
 
 
 #define EZTEST_CXX_HAS_TS_                                                     \
- (EZTEST_CXX_LANG_ >= 2020 ||                                                  \
-  (EZTEST_CXX_LANG_ >= 2017 && EZTEST_USING_GCC_ >= EZTEST_VERNUM_(9, 0, 0)))
+    (EZTEST_CXX_LANG_ >= 2020 ||                                               \
+     (EZTEST_CXX_LANG_ >= 2017 &&                                              \
+      EZTEST_USING_GCC_ >= EZTEST_VERNUM_(9, 0, 0)))
 
 #if EZTEST_CXX_HAS_TS_ || (EZTEST_C_LANG_ >= 2011) ||                          \
     (EZTEST_POSIX_VERSION_ >= 199309L)
@@ -3054,7 +3086,7 @@ EZTEST_NAMESPACE_END_
 #endif
 
 #define EZTEST_TIME_T_INIT_                                                    \
- { 0, 0 }
+    { 0, 0 }
 
 #define EZTEST_TIME_GET_(tsp)   EZTEST_NS_ eztest_time_get(tsp)
 #define EZTEST_TIME_AS_MS_(tsp) EZTEST_NS_ eztest_time_timespec_to_ms(tsp)
@@ -3109,7 +3141,7 @@ struct eztest_duration_t {
 };
 /* NOLINTEND(llvmlibc-inline-function-decl) */
 #define EZTEST_DURATION_T_INIT_                                                \
- { EZTEST_TIME_T_INIT_, EZTEST_TIME_T_INIT_, -1L }
+    { EZTEST_TIME_T_INIT_, EZTEST_TIME_T_INIT_, -1L }
 #define EZTEST_DURATION_T_ EZTEST_STRUCT_NS_ eztest_duration_t
 
 
@@ -3179,7 +3211,7 @@ struct eztest_results_t {
 EZTEST_REENABLE_WPADDED_
 #define EZTEST_RESULTS_T_ EZTEST_STRUCT_NS_ eztest_results_t
 #define EZTEST_RESULTS_T_INIT_                                                 \
- { EZTEST_DURATION_T_INIT_, EZTEST_ARR_T_INIT_, 0 }
+    { EZTEST_DURATION_T_INIT_, EZTEST_ARR_T_INIT_, 0 }
 
 
 EZTEST_PRIVATE_ unsigned
@@ -3254,7 +3286,7 @@ struct eztest_group_it_t {
     EZTEST_TEST_T_ * eztest_cur_test_;
 };
 #define EZTEST_GROUP_IT_T_INIT_                                                \
- { EZTEST_NULL_ }
+    { EZTEST_NULL_ }
 #define EZTEST_GROUP_IT_T_ EZTEST_STRUCT_NS_ eztest_group_it_t
 
 
@@ -3331,18 +3363,18 @@ EZTEST_NAMESPACE_END_
 /* NOLINTEND(llvmlibc-restrict-system-libc-headers) */
 
 # define EZTEST_PIDFD_OPEN_(pid, flags)                                        \
-  /* NOLINTBEGIN(llvmlibc-callee-namespace) */                                 \
-  /* NOLINTBEGIN(cppcoreguidelines-pro-type-vararg) */                         \
-  /* NOLINTBEGIN(hicpp-vararg) */                                              \
+     /* NOLINTBEGIN(llvmlibc-callee-namespace) */                              \
+     /* NOLINTBEGIN(cppcoreguidelines-pro-type-vararg) */                      \
+     /* NOLINTBEGIN(hicpp-vararg) */                                           \
                                                                                \
-  syscall(EZTEST_CAST_(long, SYS_pidfd_open), pid, flags) \
+     syscall(EZTEST_CAST_(long, SYS_pidfd_open), pid, flags) \
         /* NOLINTEND(hicpp-vararg) */                       \
         /* NOLINTEND(cppcoreguidelines-pro-type-vararg) */  \
         /* NOLINTEND(llvmlibc-callee-namespace) */
 
 # define EZTEST_KILL_(pid, sig)                                                \
-  /* NOLINTBEGIN(llvmlibc-callee-namespace) */                                 \
-  kill(pid, sig) /* NOLINTEND(llvmlibc-callee-namespace) */
+     /* NOLINTBEGIN(llvmlibc-callee-namespace) */                              \
+     kill(pid, sig) /* NOLINTEND(llvmlibc-callee-namespace) */
 
 #else
 /* NOLINTBEGIN(llvmlibc-restrict-system-libc-headers) */
@@ -3478,13 +3510,14 @@ eztest_syscall2(long eztest_syscall_no, long eztest_arg0, long eztest_arg1) {
 }
 
 # define EZTEST_PIDFD_OPEN_(pid, flags)                                        \
-  EZTEST_NS_ eztest_syscall2(EZTEST_CAST_(long, __NR_pidfd_open),              \
-                             EZTEST_CAST_(long, pid),                          \
-                             EZTEST_CAST_(long, flags))
+     EZTEST_NS_ eztest_syscall2(EZTEST_CAST_(long, __NR_pidfd_open),           \
+                                EZTEST_CAST_(long, pid),                       \
+                                EZTEST_CAST_(long, flags))
 
 # define EZTEST_KILL_(pid, sig)                                                \
-  EZTEST_NS_ eztest_syscall2(EZTEST_CAST_(long, __NR_kill),                    \
-                             EZTEST_CAST_(long, pid), EZTEST_CAST_(long, sig))
+     EZTEST_NS_ eztest_syscall2(EZTEST_CAST_(long, __NR_kill),                 \
+                                EZTEST_CAST_(long, pid),                       \
+                                EZTEST_CAST_(long, sig))
 
 EZTEST_NAMESPACE_END_
 #endif
@@ -3514,10 +3547,10 @@ enum {
 /* Maybe use pthread_sigprocmask (afraid of -lpthread dependency) */
 #endif
 #define EZTEST_SIGPROCMASK_(todo, new_mask, old_mask)                          \
- /* NOLINTBEGIN(concurrency-mt-unsafe,llvmlibc-callee-namespace) */            \
- sigprocmask(todo, new_mask, old_mask)                                         \
+    /* NOLINTBEGIN(concurrency-mt-unsafe,llvmlibc-callee-namespace) */         \
+    sigprocmask(todo, new_mask, old_mask)                                      \
                                                                                \
-     /* NOLINTEND(concurrency-mt-unsafe,llvmlibc-callee-namespace) */
+        /* NOLINTEND(concurrency-mt-unsafe,llvmlibc-callee-namespace) */
 
 
 typedef int (*eztest_proc_func)(const EZTEST_TEST_T_ *);
@@ -3530,7 +3563,7 @@ struct eztest_proc_result_t {
 };
 #define EZTEST_PROC_RESULT_T_ EZTEST_STRUCT_NS_ eztest_proc_result_t
 #define EZTEST_PROC_RESULT_T_INIT_                                             \
- { 0, 0, EZTEST_DURATION_T_INIT_ }
+    { 0, 0, EZTEST_DURATION_T_INIT_ }
 
 
 typedef int eztest_timed_wait_res_t;
@@ -4356,78 +4389,78 @@ main(int argc, char ** argv) {
 
 
 #define EZTEST_INTERNAL_NAME_(group, name, lineno)                             \
- EZTEST_SNAKE_CAT_(EZTEST_SNAKE_CAT_(eztest, group),                           \
-                   EZTEST_SNAKE_CAT_(name, lineno))
+    EZTEST_SNAKE_CAT_(EZTEST_SNAKE_CAT_(eztest, group),                        \
+                      EZTEST_SNAKE_CAT_(name, lineno))
 
 
 #if EZTEST_CXX_LANG_
 # define EZTEST_CREATE_LINK_IN_TEST_(base_name, struct_name, sink_name)        \
-  static const int sink_name =                                                 \
-      EZTEST_NS_   eztest_list_insert_test(base_name, &(struct_name));
+     static const int sink_name =                                              \
+         EZTEST_NS_   eztest_list_insert_test(base_name, &(struct_name));
 
 #else
 # define EZTEST_CREATE_LINK_IN_TEST_(base_name, struct_name, sink_name)        \
-  static void EZTEST_ATTR_CONSTRUCTOR_ sink_name(void) {                       \
-   EZTEST_NS_ eztest_list_insert_test(base_name, &(struct_name));              \
-  }
+     static void EZTEST_ATTR_CONSTRUCTOR_ sink_name(void) {                    \
+         EZTEST_NS_ eztest_list_insert_test(base_name, &(struct_name));        \
+     }
 #endif
 
 #define EZTEST_CREATE_SETUP_TEST_IMPL_(base_name, func_name, struct_name,      \
                                        sink_name, group, name, msecs, lineno)  \
- /* NOLINTBEGIN(llvmlibc-implementation-in-namespace) */                       \
- /* NOLINTBEGIN(misc-use-anonymous-namespace) */                               \
- static void func_name(void);                                                  \
- EZTEST_NAMESPACE_BEGIN_                                                       \
- EZTEST_DISABLE_GCC7_GCC8_UBSAN_WPADDED_                                       \
- EZTEST_DISABLE_WUSELESS_CAST_                                                 \
- /* NOLINTBEGIN(cppcoreguidelines-avoid-non-const-global-variables) */         \
- static EZTEST_TEST_T_ struct_name = {                                         \
-     EZTEST_NULL_, /* NOLINTBEGIN(llvmlibc-callee-namespace) */                \
-     func_name,    /* NOLINTEND(llvmlibc-callee-namespace) */                  \
-     EZTEST_STRINGIFY_(group),                                                 \
-     EZTEST_STRINGIFY_(name),                                                  \
-     EZTEST_CAST_(unsigned, lineno),                                           \
-     EZTEST_CAST_(int, msecs),                                                 \
-     EZTEST_CAST_(unsigned, EZTEST_NS_ eztest_k_status_init),                  \
-     EZTEST_STRUCT_INTT_PADDING_INIT_                                          \
- };                                                                            \
- /* NOLINTEND(cppcoreguidelines-avoid-non-const-global-variables) */           \
- EZTEST_REENABLE_WUSELESS_CAST_                                                \
- EZTEST_DISABLE_GCC7_GCC8_UBSAN_WPADDED_                                       \
- EZTEST_CREATE_LINK_IN_TEST_(base_name, EZTEST_NS_ struct_name, sink_name)     \
- EZTEST_NAMESPACE_END_                                                         \
- static void func_name(void) /* NOLINTEND(misc-use-anonymous-namespace) */     \
+    /* NOLINTBEGIN(llvmlibc-implementation-in-namespace) */                    \
+    /* NOLINTBEGIN(misc-use-anonymous-namespace) */                            \
+    static void func_name(void);                                               \
+    EZTEST_NAMESPACE_BEGIN_                                                    \
+    EZTEST_DISABLE_GCC7_GCC8_UBSAN_WPADDED_                                    \
+    EZTEST_DISABLE_WUSELESS_CAST_                                              \
+    /* NOLINTBEGIN(cppcoreguidelines-avoid-non-const-global-variables) */      \
+    static EZTEST_TEST_T_ struct_name = {                                      \
+        EZTEST_NULL_, /* NOLINTBEGIN(llvmlibc-callee-namespace) */             \
+        func_name,    /* NOLINTEND(llvmlibc-callee-namespace) */               \
+        EZTEST_STRINGIFY_(group),                                              \
+        EZTEST_STRINGIFY_(name),                                               \
+        EZTEST_CAST_(unsigned, lineno),                                        \
+        EZTEST_CAST_(int, msecs),                                              \
+        EZTEST_CAST_(unsigned, EZTEST_NS_ eztest_k_status_init),               \
+        EZTEST_STRUCT_INTT_PADDING_INIT_                                       \
+    };                                                                         \
+    /* NOLINTEND(cppcoreguidelines-avoid-non-const-global-variables) */        \
+    EZTEST_REENABLE_WUSELESS_CAST_                                             \
+    EZTEST_DISABLE_GCC7_GCC8_UBSAN_WPADDED_                                    \
+    EZTEST_CREATE_LINK_IN_TEST_(base_name, EZTEST_NS_ struct_name, sink_name)  \
+    EZTEST_NAMESPACE_END_                                                      \
+    static void func_name(void) /* NOLINTEND(misc-use-anonymous-namespace) */  \
                                                                                \
-     /* NOLINTEND(llvmlibc-implementation-in-namespace) */
+        /* NOLINTEND(llvmlibc-implementation-in-namespace) */
 
 #define EZTEST_CREATE_SETUP_TEST_(base_name, internal_name, group, name,       \
                                   msecs, lineno)                               \
- EZTEST_CREATE_SETUP_TEST_IMPL_(base_name, EZTEST_CAT_(internal_name, func),   \
-                                EZTEST_CAT_(internal_name, struct),            \
-                                EZTEST_CAT_(internal_name, sink), group, name, \
-                                msecs, lineno)
+    EZTEST_CREATE_SETUP_TEST_IMPL_(                                            \
+        base_name, EZTEST_CAT_(internal_name, func),                           \
+        EZTEST_CAT_(internal_name, struct), EZTEST_CAT_(internal_name, sink),  \
+        group, name, msecs, lineno)
 
 #define EZTEST_CREATE_TEST_(base_name, group, name, msecs, lineno)             \
- EZTEST_DISABLE_WGLOBAL_CONSTRUCTORS_                                          \
- EZTEST_CREATE_SETUP_TEST_(base_name,                                          \
-                           EZTEST_INTERNAL_NAME_(group, name, lineno), group,  \
-                           name, msecs, lineno)                                \
- EZTEST_REENABLE_WGLOBAL_CONSTRUCTORS_
+    EZTEST_DISABLE_WGLOBAL_CONSTRUCTORS_                                       \
+    EZTEST_CREATE_SETUP_TEST_(base_name,                                       \
+                              EZTEST_INTERNAL_NAME_(group, name, lineno),      \
+                              group, name, msecs, lineno)                      \
+    EZTEST_REENABLE_WGLOBAL_CONSTRUCTORS_
 
 /* End include of: eztest-test-setup.h  */
 
 #define EZTEST_TIMED(group, name, msecs)                                       \
- EZTEST_CREATE_TEST_(EZTEST_NS_ eztest_list_get_head(), group, name, msecs,    \
-                     EZTEST_LINE_)
+    EZTEST_CREATE_TEST_(EZTEST_NS_ eztest_list_get_head(), group, name, msecs, \
+                        EZTEST_LINE_)
 #define EZTEST(group, name) EZTEST_TIMED(group, name, 0)
 
 #define EZTEST_F(group, name) EZTEST_UNIMPLEMENTED_("EZTEST_F")
 #define EZTEST_F_TIMED(group, name, msecs)                                     \
- EZTEST_UNIMPLEMENTED_("EZTEST_F_TIMED")
+    EZTEST_UNIMPLEMENTED_("EZTEST_F_TIMED")
 
 #define EZTEST_P(group, name) EZTEST_UNIMPLEMENTED_("EZTEST_P")
 #define EZTEST_P_TIMED(group, name, msecs)                                     \
- EZTEST_UNIMPLEMENTED_("EZTEST_P_TIMED")
+    EZTEST_UNIMPLEMENTED_("EZTEST_P_TIMED")
 
 #define EZTEST_SCOPED_TRACE(msg) EZTEST_UNIMPLEMENTED_("SCOPED_TRACE")
 
@@ -4438,13 +4471,13 @@ EZTEST_DISABLE_WVARIADIC_MACROS_
 #define EZTEST_ASSERT_ANY_THROW(...) EZTEST_UNIMPLEMENTED_("ASSERT_ANY_THROW")
 #define EZTEST_ASSERT_NO_THROW(...)  EZTEST_UNIMPLEMENTED_("ASSERT_NO_THROW")
 #define EZTEST_ASSERT_NO_FATAL_FAILURE(...)                                    \
- EZTEST_UNIMPLEMENTED_("ASSERT_NO_FATAL_FAILURE")
+    EZTEST_UNIMPLEMENTED_("ASSERT_NO_FATAL_FAILURE")
 
 #define EZTEST_EXPECT_THROW(...)     EZTEST_UNIMPLEMENTED_("EXPECT_THROW")
 #define EZTEST_EXPECT_ANY_THROW(...) EZTEST_UNIMPLEMENTED_("EXPECT_ANY_THROW")
 #define EZTEST_EXPECT_NO_THROW(...)  EZTEST_UNIMPLEMENTED_("EXPECT_NO_THROW")
 #define EZTEST_EXPECT_NO_FATAL_FAILURE(...)                                    \
- EZTEST_UNIMPLEMENTED_("EXPECT_NO_FATAL_FAILURE")
+    EZTEST_UNIMPLEMENTED_("EXPECT_NO_FATAL_FAILURE")
 
 #define EZTEST_ASSERT_PRED1(...) EZTEST_UNIMPLEMENTED_("EZTEST_ASSERT_PRED1")
 #define EZTEST_ASSERT_PRED2(...) EZTEST_UNIMPLEMENTED_("EZTEST_ASSERT_PRED2")
@@ -4458,6 +4491,10 @@ EZTEST_DISABLE_WVARIADIC_MACROS_
 #define EZTEST_EXPECT_PRED4(...) EZTEST_UNIMPLEMENTED_("EZTEST_EXPECT_PRED4")
 #define EZTEST_EXPECT_PRED5(...) EZTEST_UNIMPLEMENTED_("EZTEST_EXPECT_PRED5")
 
+#define EZTEST_ASSERT_LONG_DOUBLE_EQ(...)                                      \
+    EZTEST_UNIMPLEMENTED_("EZTEST_ASSERT_LONG_DOUBLE_EQ")
+#define EZTEST_EXPECT_LONG_DOUBLE_EQ(...)                                      \
+    EZTEST_UNIMPLEMENTED_("EZTEST_EXPECT_LONG_DOUBLE_EQ")
 
 EZTEST_REENABLE_WVARIADIC_MACROS_
 EZTEST_REENABLE_WCXX98_COMPAT_PEDANTIC_
@@ -4525,6 +4562,7 @@ EZTEST_REENABLE_WCXX98_COMPAT_PEDANTIC_
 # define ASSERT_STRCASENE        EZTEST_ASSERT_STRCASENE
 # define ASSERT_FLOAT_EQ         EZTEST_ASSERT_FLOAT_EQ
 # define ASSERT_DOUBLE_EQ        EZTEST_ASSERT_DOUBLE_EQ
+# define ASSERT_LONG_DOUBLE_EQ   EZTEST_ASSERT_LONG_DOUBLE_EQ
 # define ASSERT_NEAR             EZTEST_ASSERT_NEAR
 # define ASSERT_PRED1            EZTEST_ASSERT_PRED1
 # define ASSERT_PRED2            EZTEST_ASSERT_PRED2
@@ -4533,26 +4571,27 @@ EZTEST_REENABLE_WCXX98_COMPAT_PEDANTIC_
 # define ASSERT_PRED5            EZTEST_ASSERT_PRED5
 
 
-# define EXPECT_TRUE      EZTEST_EXPECT_TRUE
-# define EXPECT_FALSE     EZTEST_EXPECT_FALSE
-# define EXPECT_EQ        EZTEST_EXPECT_EQ
-# define EXPECT_NE        EZTEST_EXPECT_NE
-# define EXPECT_LE        EZTEST_EXPECT_LE
-# define EXPECT_LT        EZTEST_EXPECT_LT
-# define EXPECT_GE        EZTEST_EXPECT_GE
-# define EXPECT_GT        EZTEST_EXPECT_GT
-# define EXPECT_STREQ     EZTEST_EXPECT_STREQ
-# define EXPECT_STRNE     EZTEST_EXPECT_STRNE
-# define EXPECT_STRCASEEQ EZTEST_EXPECT_STRCASEEQ
-# define EXPECT_STRCASENE EZTEST_EXPECT_STRCASENE
-# define EXPECT_FLOAT_EQ  EZTEST_EXPECT_FLOAT_EQ
-# define EXPECT_DOUBLE_EQ EZTEST_EXPECT_DOUBLE_EQ
-# define EXPECT_NEAR      EZTEST_EXPECT_NEAR
-# define EXPECT_PRED1     EZTEST_EXPECT_PRED1
-# define EXPECT_PRED2     EZTEST_EXPECT_PRED2
-# define EXPECT_PRED3     EZTEST_EXPECT_PRED3
-# define EXPECT_PRED4     EZTEST_EXPECT_PRED4
-# define EXPECT_PRED5     EZTEST_EXPECT_PRED5
+# define EXPECT_TRUE           EZTEST_EXPECT_TRUE
+# define EXPECT_FALSE          EZTEST_EXPECT_FALSE
+# define EXPECT_EQ             EZTEST_EXPECT_EQ
+# define EXPECT_NE             EZTEST_EXPECT_NE
+# define EXPECT_LE             EZTEST_EXPECT_LE
+# define EXPECT_LT             EZTEST_EXPECT_LT
+# define EXPECT_GE             EZTEST_EXPECT_GE
+# define EXPECT_GT             EZTEST_EXPECT_GT
+# define EXPECT_STREQ          EZTEST_EXPECT_STREQ
+# define EXPECT_STRNE          EZTEST_EXPECT_STRNE
+# define EXPECT_STRCASEEQ      EZTEST_EXPECT_STRCASEEQ
+# define EXPECT_STRCASENE      EZTEST_EXPECT_STRCASENE
+# define EXPECT_FLOAT_EQ       EZTEST_EXPECT_FLOAT_EQ
+# define EXPECT_DOUBLE_EQ      EZTEST_EXPECT_DOUBLE_EQ
+# define EXPECT_LONG_DOUBLE_EQ EZTEST_EXPECT_LONG_DOUBLE_EQ
+# define EXPECT_NEAR           EZTEST_EXPECT_NEAR
+# define EXPECT_PRED1          EZTEST_EXPECT_PRED1
+# define EXPECT_PRED2          EZTEST_EXPECT_PRED2
+# define EXPECT_PRED3          EZTEST_EXPECT_PRED3
+# define EXPECT_PRED4          EZTEST_EXPECT_PRED4
+# define EXPECT_PRED5          EZTEST_EXPECT_PRED5
 
 #endif
 

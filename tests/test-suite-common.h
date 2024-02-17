@@ -323,6 +323,25 @@
 # define TS_REENABLE_WEXTRA_
 #endif
 
+#if (TS_HAS_CLANG_VER_(8, 0, 0))
+# define TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_                            \
+  TS_DISABLE_WARNING_("-Wimplicit-float-conversion")
+# define TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_ TS_REENABLE_WARNING_
+#else
+# define TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+# define TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+#endif
+
+#if ((TS_HAS_CLANG_VER_(4, 0, 0) || TS_HAS_GCC_VER_(9, 1, 0)) &&       \
+     TS_C_LANG_)
+# define TS_DISABLE_WABSOLUTE_VALUE_                                       \
+  TS_DISABLE_WARNING_("-Wabsolute-value")
+# define TS_REENABLE_WABSOLUTE_VALUE_ TS_REENABLE_WARNING_
+#else
+# define TS_DISABLE_WABSOLUTE_VALUE_
+# define TS_REENABLE_WABSOLUTE_VALUE_
+#endif
+
 /* NOLINTEND(cppcoreguidelines-macro-usage) */
 
 #endif

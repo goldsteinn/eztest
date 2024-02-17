@@ -298,6 +298,12 @@
 #define EZTEST_C_TERNOP_FP_NEAR_(op0, op1, abs_err)                            \
  (EZTEST_ABS_((op0) - (op1)) <= EZTEST_ABS_(abs_err))
 
+#define EZTEST_C_FLT_COMPARE_WRAPPER_(op0, op1)                                \
+ EZTEST_NS_ eztest_flt_compare(EZTEST_CAST_(float, op0),                       \
+                               EZTEST_CAST_(float, op1))
+#define EZTEST_C_DBL_COMPARE_WRAPPER_(op0, op1)                                \
+ EZTEST_NS_ eztest_dbl_compare(EZTEST_CAST_(double, op0),                      \
+                               EZTEST_CAST_(double, op1))
 
 #define EZTEST_C_ASSERT_TRUE_IMPL_(fail_on_err, ...)                           \
  EZTEST_C_ASSERT_BOOL_(fail_on_err, 1, __VA_ARGS__)
@@ -337,10 +343,10 @@
                       EZTEST_C_FMT_BINOP_("case-ne"), __VA_ARGS__)
 
 #define EZTEST_C_ASSERT_FLOAT_EQ_IMPL_(fail_on_err, ...)                       \
- EZTEST_C_ASSERT_BINOP_(fail_on_err, EZTEST_NS_ eztest_flt_compare,            \
+ EZTEST_C_ASSERT_BINOP_(fail_on_err, EZTEST_C_FLT_COMPARE_WRAPPER_,            \
                         EZTEST_C_FMT_BINOP_("=="), __VA_ARGS__)
 #define EZTEST_C_ASSERT_DOUBLE_EQ_IMPL_(fail_on_err, ...)                      \
- EZTEST_C_ASSERT_BINOP_(fail_on_err, EZTEST_NS_ eztest_dbl_compare,            \
+ EZTEST_C_ASSERT_BINOP_(fail_on_err, EZTEST_C_DBL_COMPARE_WRAPPER_,            \
                         EZTEST_C_FMT_BINOP_("=="), __VA_ARGS__)
 #define EZTEST_C_ASSERT_NEAR_IMPL_(fail_on_err, ...)                           \
  EZTEST_C_ASSERT_TERNOP_(fail_on_err, EZTEST_C_TERNOP_FP_NEAR_,                \

@@ -299,6 +299,69 @@ TEST(fpe, assert_float_eq12_fail) {
     ASSERT_FLOAT_EQ(fp0, fp1);
 }
 
+TEST(fpe, assert_float_eq13_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.23F;
+    ASSERT_FLOAT_EQ(fp0, 1.23F);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_float_eq14_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.23F;
+    ASSERT_FLOAT_EQ(fp0, 2.23F);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_float_eq15_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.23F;
+    ASSERT_FLOAT_EQ(1.23F, fp0);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_float_eq16_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.23F;
+    ASSERT_FLOAT_EQ(2.23F, fp0);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_float_eq17_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.23F;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    ASSERT_FLOAT_EQ(fp0, 1.23);
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_float_eq18_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.23F;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    ASSERT_FLOAT_EQ(fp0, 2.23);
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_float_eq19_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.23F;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    ASSERT_FLOAT_EQ(1.23, fp0);
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_float_eq20_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.23F;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    ASSERT_FLOAT_EQ(2.23, fp0);
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
 
 TEST(fpe, assert_double_eq0_okay) {
     uint64_t bits0 = 0;
@@ -545,6 +608,64 @@ TEST(fpe, assert_double_eq12_fail) {
      */
     ASSERT_DOUBLE_EQ(fp0, fp1);
 }
+
+TEST(fpe, assert_double_eq13_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    double fp0 = 1.23;
+    ASSERT_DOUBLE_EQ(fp0, 1.23);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_double_eq14_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    double fp0 = 1.23;
+    ASSERT_DOUBLE_EQ(fp0, 2.23);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_double_eq15_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    double fp0 = 1.23;
+    ASSERT_DOUBLE_EQ(1.23, fp0);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_double_eq16_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    double fp0 = 1.23;
+    ASSERT_DOUBLE_EQ(2.23, fp0);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_double_eq17_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    double fp0 = 1.23;
+    ASSERT_DOUBLE_EQ(fp0, 1.23F);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_double_eq18_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    double fp0 = 1.23;
+    ASSERT_DOUBLE_EQ(fp0, 2.23F);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_double_eq19_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    double fp0 = 1.23;
+    ASSERT_DOUBLE_EQ(1.23F, fp0);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_double_eq20_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    double fp0 = 1.23;
+    ASSERT_DOUBLE_EQ(2.23F, fp0);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+
 /* NOLINTEND(misc-include-cleaner) */
 
 /* NOLINTBEGIN(readability-function-cognitive-complexity) */
@@ -594,6 +715,399 @@ TEST(fpe, assert_double_near5_fail) {
     ASSERT_NEAR(fp0, fp1, .000001);
     /* NOLINTEND(*-magic-numbers) */
 }
+
+
+TEST(fpe, assert_double_near6_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    double fp0 = 1.10001;
+    double fp1 = 1.1;
+    ASSERT_NEAR(fp0, fp1, .000001F);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_double_near7_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    double fp0 = 1.10001;
+    ASSERT_NEAR(fp0, 1.1, .000001F);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_double_near8_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    double fp0 = 1.10001;
+    ASSERT_NEAR(fp0, 1.1F, .000001F);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_double_near9_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    double fp0 = 1.10001;
+    ASSERT_NEAR(1.1F, fp0, .000001F);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_double_near10_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    double fp0 = 1.10001;
+    ASSERT_NEAR(1.1F, fp0, .000001);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_double_near11_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    double fp0 = 1.10001;
+    ASSERT_NEAR(1.1, fp0, .000001);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_double_near12_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    ASSERT_NEAR(1.1, 1.10001, .000001);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_double_near13_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    ASSERT_NEAR(1.1, 1.10001F, .000001);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_double_near14_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    ASSERT_NEAR(1.1, 1.10001F, .000001F);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_double_near15_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float  fp0 = 1.10001F;
+    double fp1 = 1.1;
+    ASSERT_NEAR(fp0, fp1, .0001);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_double_near16_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.10001F;
+    float fp1 = 1.1F;
+    ASSERT_NEAR(fp0, fp1, .0001);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_double_near17_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.10001F;
+    float fp1 = 1.1F;
+    ASSERT_NEAR(fp0, fp1, .0001F);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+
+TEST(fpe, assert_double_near18_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float  fp0 = 1.10001F;
+    double fp1 = 1.1;
+    ASSERT_NEAR(fp0, fp1, .0001F);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_double_near19_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    double fp0 = 1.10001;
+    float  fp1 = 1.1F;
+    ASSERT_NEAR(fp0, fp1, .0001F);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_double_near20_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.10001F;
+    ASSERT_NEAR(fp0, 1.1, .0001F);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_double_near21_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.10001F;
+    ASSERT_NEAR(fp0, 1.1, .0001);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_double_near22_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.10001F;
+    ASSERT_NEAR(1.1, fp0, .0001F);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_double_near23_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.10001F;
+    ASSERT_NEAR(1.1, fp0, .0001);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+//
+TEST(fpe, assert_long_double_near0_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    long double fp0 = 1.1L;
+    long double fp1 = 1.2L;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    ASSERT_NEAR(fp0, fp1, .1);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_long_double_near1_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    long double fp0 = 1.2L;
+    long double fp1 = 1.1L;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    ASSERT_NEAR(fp0, fp1, .0999);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_long_double_near2_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    long double fp0 = 1.1L;
+    long double fp1 = 1.1000001L;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    ASSERT_NEAR(fp0, fp1, .0001F);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_long_double_near3_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    long double fp0 = 1.1000001L;
+    long double fp1 = 1.1L;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    ASSERT_NEAR(fp0, fp1, .0001);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_long_double_near4_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    long double fp0 = 1.10001L;
+    long double fp1 = 1.1L;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    ASSERT_NEAR(fp0, fp1, .0001L);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+TEST(fpe, assert_long_double_near5_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    long double fp0 = 1.10001L;
+    long double fp1 = 1.1L;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    ASSERT_NEAR(fp0, fp1, .000001L);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+
+TEST(fpe, assert_long_double_near6_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    long double fp0 = 1.10001L;
+    long double fp1 = 1.1L;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    ASSERT_NEAR(fp0, fp1, .000001F);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_long_double_near7_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    long double fp0 = 1.10001L;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    ASSERT_NEAR(fp0, 1.1, .000001L);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_long_double_near8_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    long double fp0 = 1.10001L;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    ASSERT_NEAR(fp0, 1.1, .000001);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_long_double_near9_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    long double fp0 = 1.10001L;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    ASSERT_NEAR(1.1F, fp0, .000001F);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_long_double_near10_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    long double fp0 = 1.10001L;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    ASSERT_NEAR(1.1F, fp0, .000001L);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_long_double_near11_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    long double fp0 = 1.10001L;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    ASSERT_NEAR(1.1, fp0, .000001);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_long_double_near12_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    ASSERT_NEAR(1.1, 1.10001, .000001);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_long_double_near13_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    ASSERT_NEAR(1.1, 1.10001F, .000001);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_long_double_near14_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    ASSERT_NEAR(1.1, 1.10001F, .000001F);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_long_double_near15_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float       fp0 = 1.10001F;
+    long double fp1 = 1.1L;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    ASSERT_NEAR(fp0, fp1, .0001L);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_long_double_near16_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.10001F;
+    float fp1 = 1.1F;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    ASSERT_NEAR(fp0, fp1, .0001);
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_long_double_near17_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.10001F;
+    float fp1 = 1.1F;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    ASSERT_NEAR(fp0, fp1, .0001L);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+
+TEST(fpe, assert_long_double_near18_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float       fp0 = 1.10001F;
+    long double fp1 = 1.1L;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    ASSERT_NEAR(fp0, fp1, .0001F);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_long_double_near19_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    long double fp0 = 1.10001L;
+    float       fp1 = 1.1F;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    ASSERT_NEAR(fp0, fp1, .0001L);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_long_double_near20_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.10001F;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    ASSERT_NEAR(fp0, 1.1L, .0001F);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_long_double_near21_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.10001F;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    ASSERT_NEAR(fp0, 1.1, .0001L);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_long_double_near22_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.10001F;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    ASSERT_NEAR(1.1L, fp0, .0001F);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_long_double_near23_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.10001F;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    ASSERT_NEAR(1.1L, fp0, .0001L);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
 /* NOLINTEND(readability-function-cognitive-complexity) */
 
 /* NOLINTBEGIN(misc-include-cleaner) */
@@ -842,6 +1356,69 @@ TEST(fpe, expect_float_eq12_fail) {
     EXPECT_FLOAT_EQ(fp0, fp1);
 }
 
+TEST(fpe, expect_float_eq13_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.23F;
+    EXPECT_FLOAT_EQ(fp0, 1.23F);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_float_eq14_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.23F;
+    EXPECT_FLOAT_EQ(fp0, 2.23F);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_float_eq15_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.23F;
+    EXPECT_FLOAT_EQ(1.23F, fp0);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_float_eq16_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.23F;
+    EXPECT_FLOAT_EQ(2.23F, fp0);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_float_eq17_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.23F;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    EXPECT_FLOAT_EQ(fp0, 1.23);
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_float_eq18_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.23F;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    EXPECT_FLOAT_EQ(fp0, 2.23);
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_float_eq19_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.23F;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    EXPECT_FLOAT_EQ(1.23, fp0);
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_float_eq20_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.23F;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    EXPECT_FLOAT_EQ(2.23, fp0);
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
 
 TEST(fpe, expect_double_eq0_okay) {
     uint64_t bits0 = 0;
@@ -1090,6 +1667,64 @@ TEST(fpe, expect_double_eq12_fail) {
 }
 /* NOLINTEND(misc-include-cleaner) */
 
+
+TEST(fpe, expect_double_eq13_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    double fp0 = 1.23;
+    EXPECT_DOUBLE_EQ(fp0, 1.23);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_double_eq14_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    double fp0 = 1.23;
+    EXPECT_DOUBLE_EQ(fp0, 2.23);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_double_eq15_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    double fp0 = 1.23;
+    EXPECT_DOUBLE_EQ(1.23, fp0);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_double_eq16_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    double fp0 = 1.23;
+    EXPECT_DOUBLE_EQ(2.23, fp0);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_double_eq17_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    double fp0 = 1.23;
+    EXPECT_DOUBLE_EQ(fp0, 1.23F);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_double_eq18_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    double fp0 = 1.23;
+    EXPECT_DOUBLE_EQ(fp0, 2.23F);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_double_eq19_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    double fp0 = 1.23;
+    EXPECT_DOUBLE_EQ(1.23F, fp0);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_double_eq20_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    double fp0 = 1.23;
+    EXPECT_DOUBLE_EQ(2.23F, fp0);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+
 /* NOLINTBEGIN(readability-function-cognitive-complexity) */
 TEST(fpe, expect_double_near0_okay) {
     /* NOLINTBEGIN(*-magic-numbers) */
@@ -1137,6 +1772,395 @@ TEST(fpe, expect_double_near5_fail) {
     EXPECT_NEAR(fp0, fp1, .000001);
     /* NOLINTEND(*-magic-numbers) */
 }
+
+TEST(fpe, expect_double_near6_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    double fp0 = 1.10001;
+    double fp1 = 1.1;
+    EXPECT_NEAR(fp0, fp1, .000001F);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_double_near7_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    double fp0 = 1.10001;
+    EXPECT_NEAR(fp0, 1.1, .000001F);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_double_near8_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    double fp0 = 1.10001;
+    EXPECT_NEAR(fp0, 1.1F, .000001F);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_double_near9_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    double fp0 = 1.10001;
+    EXPECT_NEAR(1.1F, fp0, .000001F);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_double_near10_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    double fp0 = 1.10001;
+    EXPECT_NEAR(1.1F, fp0, .000001);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_double_near11_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    double fp0 = 1.10001;
+    EXPECT_NEAR(1.1, fp0, .000001);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_double_near12_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    EXPECT_NEAR(1.1, 1.10001, .000001);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_double_near13_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    EXPECT_NEAR(1.1, 1.10001F, .000001);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_double_near14_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    EXPECT_NEAR(1.1, 1.10001F, .000001F);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_double_near15_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float  fp0 = 1.10001F;
+    double fp1 = 1.1;
+    EXPECT_NEAR(fp0, fp1, .0001);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_double_near16_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.10001F;
+    float fp1 = 1.1F;
+    EXPECT_NEAR(fp0, fp1, .0001);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_double_near17_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.10001F;
+    float fp1 = 1.1F;
+    EXPECT_NEAR(fp0, fp1, .0001F);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+
+TEST(fpe, expect_double_near18_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float  fp0 = 1.10001F;
+    double fp1 = 1.1;
+    EXPECT_NEAR(fp0, fp1, .0001F);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_double_near19_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    double fp0 = 1.10001;
+    float  fp1 = 1.1F;
+    EXPECT_NEAR(fp0, fp1, .0001F);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_double_near20_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.10001F;
+    EXPECT_NEAR(fp0, 1.1, .0001F);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_double_near21_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.10001F;
+    EXPECT_NEAR(fp0, 1.1, .0001);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_double_near22_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.10001F;
+    EXPECT_NEAR(1.1, fp0, .0001F);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_double_near23_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.10001F;
+    EXPECT_NEAR(1.1, fp0, .0001);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_long_double_near0_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    long double fp0 = 1.1L;
+    long double fp1 = 1.2L;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    EXPECT_NEAR(fp0, fp1, .1);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_long_double_near1_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    long double fp0 = 1.1L;
+    long double fp1 = 1.2L;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    EXPECT_NEAR(fp0, fp1, .0999);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_long_double_near2_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    long double fp0 = 1.1L;
+    long double fp1 = 1.1000001L;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    EXPECT_NEAR(fp0, fp1, .0001F);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_long_double_near3_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    long double fp0 = 1.1000001L;
+    long double fp1 = 1.1L;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    EXPECT_NEAR(fp0, fp1, .0001);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_long_double_near4_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    long double fp0 = 1.10001L;
+    long double fp1 = 1.1L;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    EXPECT_NEAR(fp0, fp1, .0001L);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+TEST(fpe, expect_long_double_near5_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    long double fp0 = 1.10001L;
+    long double fp1 = 1.1L;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    EXPECT_NEAR(fp0, fp1, .000001L);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+
+TEST(fpe, expect_long_double_near6_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    long double fp0 = 1.10001L;
+    long double fp1 = 1.1L;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    EXPECT_NEAR(fp0, fp1, .000001F);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_long_double_near7_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    long double fp0 = 1.10001L;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    EXPECT_NEAR(fp0, 1.1, .000001L);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_long_double_near8_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    long double fp0 = 1.10001L;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    EXPECT_NEAR(fp0, 1.1, .000001);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_long_double_near9_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    long double fp0 = 1.10001L;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    EXPECT_NEAR(1.1F, fp0, .000001F);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_long_double_near10_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    long double fp0 = 1.10001L;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    EXPECT_NEAR(1.1F, fp0, .000001L);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_long_double_near11_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    long double fp0 = 1.10001L;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    EXPECT_NEAR(1.1, fp0, .000001);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_long_double_near12_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    EXPECT_NEAR(1.1, 1.10001, .000001);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_long_double_near13_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    EXPECT_NEAR(1.1, 1.10001F, .000001);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_long_double_near14_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    EXPECT_NEAR(1.1, 1.10001F, .000001F);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_long_double_near15_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float       fp0 = 1.10001F;
+    long double fp1 = 1.1L;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    EXPECT_NEAR(fp0, fp1, .0001L);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_long_double_near16_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.10001F;
+    float fp1 = 1.1F;
+    EXPECT_NEAR(fp0, fp1, .0001);
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_long_double_near17_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.10001F;
+    float fp1 = 1.1F;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    EXPECT_NEAR(fp0, fp1, .0001L);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+
+TEST(fpe, expect_long_double_near18_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float       fp0 = 1.10001F;
+    long double fp1 = 1.1L;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    EXPECT_NEAR(fp0, fp1, .0001F);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_long_double_near19_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    long double fp0 = 1.10001L;
+    float       fp1 = 1.1F;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    EXPECT_NEAR(fp0, fp1, .0001L);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_long_double_near20_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.10001F;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    EXPECT_NEAR(fp0, 1.1L, .0001F);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_long_double_near21_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.10001F;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    EXPECT_NEAR(fp0, 1.1, .0001L);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_long_double_near22_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.10001F;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    EXPECT_NEAR(1.1L, fp0, .0001F);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_long_double_near23_okay) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    float fp0 = 1.10001F;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    TS_DISABLE_WABSOLUTE_VALUE_
+    EXPECT_NEAR(1.1L, fp0, .0001L);
+    TS_REENABLE_WABSOLUTE_VALUE_
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
 /* NOLINTEND(readability-function-cognitive-complexity) */
 
 TEST(c, assert_true0_okay) {

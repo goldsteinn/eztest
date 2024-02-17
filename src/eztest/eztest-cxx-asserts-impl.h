@@ -595,7 +595,7 @@ class eztest_cxx_binop_strcasene_t : public EZTEST_NS_ eztest_cxx_print_var_t {
     /* NOLINTEND(llvmlibc-inline-function-decl) */
 };
 
-class eztest_cxx_binop_fp_eq_t : public EZTEST_NS_ eztest_cxx_print_var_t {
+class eztest_cxx_binop_flt_eq_t : public EZTEST_NS_ eztest_cxx_print_var_t {
    public:
     /* NOLINTBEGIN(llvmlibc-inline-function-decl) */
     EZTEST_PRIVATE_ int
@@ -608,11 +608,24 @@ class eztest_cxx_binop_fp_eq_t : public EZTEST_NS_ eztest_cxx_print_var_t {
     eztest_cxx_run(const float & eztest_op0, const float & eztest_op1) {
         return EZTEST_NS_ eztest_flt_compare(eztest_op0, eztest_op1) != 0;
     }
+    /* NOLINTEND(llvmlibc-inline-function-decl) */
+};
+
+class eztest_cxx_binop_dbl_eq_t : public EZTEST_NS_ eztest_cxx_print_var_t {
+   public:
+    /* NOLINTBEGIN(llvmlibc-inline-function-decl) */
+    EZTEST_PRIVATE_ int
+    eztest_cxx_print_op_desc(const char * eztest_op0_expr,
+                             const char * eztest_op1_expr) {
+        return EZTEST_PRINTF_("(%s) != (%s)", eztest_op0_expr, eztest_op1_expr);
+    }
+
 
     EZTEST_PRIVATE_CXX_INL_ bool
     eztest_cxx_run(const double & eztest_op0, const double & eztest_op1) {
         return EZTEST_NS_ eztest_dbl_compare(eztest_op0, eztest_op1) != 0;
     }
+
     /* NOLINTEND(llvmlibc-inline-function-decl) */
 };
 
@@ -629,16 +642,17 @@ class eztest_cxx_ternop_near_t : public EZTEST_NS_ eztest_cxx_print_var_t {
     }
 
     EZTEST_PRIVATE_CXX_INL_ bool
-    eztest_cxx_run(const float & eztest_op0,
-                   const float & eztest_op1,
-                   const float & eztest_op2) {
-        return EZTEST_ABS_(eztest_op0 - eztest_op1) <= EZTEST_ABS_(eztest_op2);
-    }
-
-    EZTEST_PRIVATE_CXX_INL_ bool
     eztest_cxx_run(const double & eztest_op0,
                    const double & eztest_op1,
                    const double & eztest_op2) {
+        return EZTEST_ABS_(eztest_op0 - eztest_op1) <= EZTEST_ABS_(eztest_op2);
+    }
+
+    template<typename eztest_T0_t, typename eztest_T1_t, typename eztest_T2_t>
+    EZTEST_PRIVATE_CXX_INL_ bool
+    eztest_cxx_run(const eztest_T0_t & eztest_op0,
+                   const eztest_T1_t & eztest_op1,
+                   const eztest_T2_t & eztest_op2) {
         return EZTEST_ABS_(eztest_op0 - eztest_op1) <= EZTEST_ABS_(eztest_op2);
     }
     /* NOLINTEND(llvmlibc-inline-function-decl) */
@@ -946,9 +960,9 @@ EZTEST_DISABLE_WVARIADIC_MACROS_
 #define EZTEST_ASSERT_STRCASENE_IMPL_(...)                                     \
  EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_strcasene_t, __VA_ARGS__)
 #define EZTEST_ASSERT_FLOAT_EQ_IMPL_(...)                                      \
- EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_fp_eq_t, __VA_ARGS__)
+ EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_flt_eq_t, __VA_ARGS__)
 #define EZTEST_ASSERT_DOUBLE_EQ_IMPL_(...)                                     \
- EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_fp_eq_t, __VA_ARGS__)
+ EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_dbl_eq_t, __VA_ARGS__)
 #define EZTEST_ASSERT_NEAR_IMPL_(...)                                          \
  EZTEST_ASSERT_TERNOP_IMPL_(1, eztest_cxx_ternop_near_t, __VA_ARGS__)
 
@@ -977,9 +991,9 @@ EZTEST_DISABLE_WVARIADIC_MACROS_
 #define EZTEST_EXPECT_STRCASENE_IMPL_(...)                                     \
  EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_strcasene_t, __VA_ARGS__)
 #define EZTEST_EXPECT_FLOAT_EQ_IMPL_(...)                                      \
- EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_fp_eq_t, __VA_ARGS__)
+ EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_flt_eq_t, __VA_ARGS__)
 #define EZTEST_EXPECT_DOUBLE_EQ_IMPL_(...)                                     \
- EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_fp_eq_t, __VA_ARGS__)
+ EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_dbl_eq_t, __VA_ARGS__)
 #define EZTEST_EXPECT_NEAR_IMPL_(...)                                          \
  EZTEST_ASSERT_TERNOP_IMPL_(0, eztest_cxx_ternop_near_t, __VA_ARGS__)
 

@@ -11,7 +11,7 @@
 #endif
 /* NOLINTEND(llvmlibc-restrict-system-libc-headers) */
 
-#if EZTEST_CXX_LANG_
+#if EZTEST_CXX_LANG_ && EZTEST_CXX_LANG_ < 2023
 # define EZTEST_ABS_(x) EZTEST_STD_NS_ abs(x)
 #else
 # define EZTEST_ABS_(x) EZTEST_STD_NS_ fabs(x)
