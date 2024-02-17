@@ -48,13 +48,13 @@
 
 
 # define TS_GCC_MAJOR_ __GNUC__
-# ifdef __GNUC_minor__
+# ifdef __GNUC_MINOR__
 #  define TS_GCC_MINOR_ __GNUC_MINOR__
 # else
 #  define TS_GCC_MINOR_ 0
 # endif
 
-# ifdef __GNUC_patchlevel__
+# ifdef __GNUC_PATCHLEVEL__
 #  define TS_GCC_PATCHLEVEL_ __GNUC_PATCHLEVEL__
 # else
 #  define TS_GCC_PATCHLEVEL_ 0
@@ -221,6 +221,14 @@
 # define TS_REENABLE_WCONVERSION_NULL_
 #endif
 
+#if (TS_HAS_CLANG_VER_(4, 0, 0) || TS_HAS_GCC_VER_(4, 4, 7))
+# define TS_DISABLE_WCONVERSION_  TS_DISABLE_WARNING_("-Wconversion")
+# define TS_REENABLE_WCONVERSION_ TS_REENABLE_WARNING_
+#else
+# define TS_DISABLE_WCONVERSION_
+# define TS_REENABLE_WCONVERSION_
+#endif
+
 #if (TS_HAS_CLANG_VER_(4, 0, 0))
 # define TS_DISABLE_WLITERAL_CONVERSION_                                       \
   TS_DISABLE_WARNING_("-Wliteral-conversion")
@@ -324,7 +332,7 @@
 #endif
 
 #if (TS_HAS_CLANG_VER_(8, 0, 0))
-# define TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_                            \
+# define TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_                                \
   TS_DISABLE_WARNING_("-Wimplicit-float-conversion")
 # define TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_ TS_REENABLE_WARNING_
 #else
@@ -332,10 +340,9 @@
 # define TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
 #endif
 
-#if ((TS_HAS_CLANG_VER_(4, 0, 0) || TS_HAS_GCC_VER_(9, 1, 0)) &&       \
-     TS_C_LANG_)
-# define TS_DISABLE_WABSOLUTE_VALUE_                                       \
-  TS_DISABLE_WARNING_("-Wabsolute-value")
+#if ((TS_HAS_CLANG_VER_(4, 0, 0) || TS_HAS_GCC_VER_(9, 1, 0)) && TS_C_LANG_)
+
+# define TS_DISABLE_WABSOLUTE_VALUE_  TS_DISABLE_WARNING_("-Wabsolute-value")
 # define TS_REENABLE_WABSOLUTE_VALUE_ TS_REENABLE_WARNING_
 #else
 # define TS_DISABLE_WABSOLUTE_VALUE_

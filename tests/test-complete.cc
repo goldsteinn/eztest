@@ -8,6 +8,7 @@ TS_DISABLE_WDOUBLE_PROMOTION_
 TS_DISABLE_WFLOAT_EQUAL_
 TS_DISABLE_WFLOAT_CONVERSION_
 TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+TS_DISABLE_WCONVERSION_
 /* NOLINTBEGIN(cppcoreguidelines-macro-usage) */
 #ifndef EZTEST_DISABLE_WARNINGS
 # define EZTEST_DISABLE_WARNINGS 1
@@ -363,6 +364,24 @@ TEST(fpe, assert_float_eq20_fail) {
 }
 
 
+TEST(fpe, assert_float_eq20_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    const float fp0 = 1.23F;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    ASSERT_FLOAT_EQ(2.23, fp0);
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, assert_float_eq21_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    const float fp0 = 1.23F;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    ASSERT_FLOAT_EQ(fp0, 2.23L);
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
 TEST(fpe, assert_double_eq0_okay) {
     uint64_t bits0 = 0;
     uint64_t bits1 = 0;
@@ -666,7 +685,7 @@ TEST(fpe, assert_double_eq16_fail) {
 TEST(fpe, assert_double_eq17_fail) {
     /* NOLINTBEGIN(*-magic-numbers) */
     const double fp0 = 1.23;
-    ASSERT_DOUBLE_EQ(fp0, 1.23F);
+    ASSERT_DOUBLE_EQ(fp0, 1.93L);
     /* NOLINTEND(*-magic-numbers) */
 }
 
@@ -680,7 +699,7 @@ TEST(fpe, assert_double_eq18_fail) {
 TEST(fpe, assert_double_eq19_fail) {
     /* NOLINTBEGIN(*-magic-numbers) */
     const double fp0 = 1.23;
-    ASSERT_DOUBLE_EQ(1.23F, fp0);
+    ASSERT_DOUBLE_EQ(1.93L, fp0);
     /* NOLINTEND(*-magic-numbers) */
 }
 
@@ -1443,6 +1462,24 @@ TEST(fpe, expect_float_eq20_fail) {
     /* NOLINTEND(*-magic-numbers) */
 }
 
+TEST(fpe, expect_float_eq21_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    const float fp0 = 1.23F;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    EXPECT_FLOAT_EQ(fp0, 2.23L);
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
+TEST(fpe, expect_float_eq22_fail) {
+    /* NOLINTBEGIN(*-magic-numbers) */
+    const float fp0 = 1.23F;
+    TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
+    EXPECT_FLOAT_EQ(2.23L, fp0);
+    TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(*-magic-numbers) */
+}
+
 
 TEST(fpe, expect_double_eq0_okay) {
     uint64_t bits0 = 0;
@@ -1747,7 +1784,7 @@ TEST(fpe, expect_double_eq16_fail) {
 TEST(fpe, expect_double_eq17_fail) {
     /* NOLINTBEGIN(*-magic-numbers) */
     const double fp0 = 1.23;
-    EXPECT_DOUBLE_EQ(fp0, 1.23F);
+    EXPECT_DOUBLE_EQ(fp0, 1.93L);
     /* NOLINTEND(*-magic-numbers) */
 }
 
@@ -1761,7 +1798,7 @@ TEST(fpe, expect_double_eq18_fail) {
 TEST(fpe, expect_double_eq19_fail) {
     /* NOLINTBEGIN(*-magic-numbers) */
     const double fp0 = 1.23;
-    EXPECT_DOUBLE_EQ(1.23F, fp0);
+    EXPECT_DOUBLE_EQ(1.93L, fp0);
     /* NOLINTEND(*-magic-numbers) */
 }
 
@@ -4308,4 +4345,5 @@ TS_REENABLE_WFLOAT_CONVERSION_
 TS_REENABLE_WMISSING_NORETURN_
 TS_REENABLE_WSTACK_PROTECTOR_
 TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+TS_REENABLE_WCONVERSION_
 /* NOLINTEND(altera-unroll-loops) */

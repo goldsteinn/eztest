@@ -37,13 +37,13 @@
 #if !(defined __clang__) && (defined __GNUC__)
 
 # define EZTEST_GCC_MAJOR_ __GNUC__
-# ifdef __GNUC_minor__
+# ifdef __GNUC_MINOR__
 #  define EZTEST_GCC_MINOR_ __GNUC_MINOR__
 # else
 #  define EZTEST_GCC_MINOR_ 0
 # endif
 
-# ifdef __GNUC_patchlevel__
+# ifdef __GNUC_PATCHLEVEL__
 #  define EZTEST_GCC_PATCHLEVEL_ __GNUC_PATCHLEVEL__
 # else
 #  define EZTEST_GCC_PATCHLEVEL_ 0
