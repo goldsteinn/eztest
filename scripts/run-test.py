@@ -5,6 +5,7 @@ import argparse
 import traceback
 import sys
 import re
+import platform
 import datetime
 import os
 
@@ -204,8 +205,29 @@ class pp_stack_t():
                 self.comp_def_ = "GCC"
         self.cver_ = G_COMP_VERSION
 
+        host_arch = platform.machine().lower()
         self.arch_def_ = ("X86_64", "ANY_X86")
         self.arch_word_size_ = 64
+
+        if host_arch in ("aarch64"):
+            self.arch_def_ = ("AARCH64", "ANY_ARM")
+            self.arch_word_size_ = 64
+        elif host_arch in ("arm64", "armv6l", "armv7l"):
+            self.arch_def_ = ("ARM32", "ANY_ARM")
+            self.arch_word_size_ = 32
+        elif host_arch in ("i686", "i386", "i86pc", "x86"):
+            self.arch_def_ = ("X86_32", "ANY_X86")
+            self.arch_word_size_ = 32
+        elif host_arch in ("i686-64", "ia64", "amd64", "x86_64"):
+            self.arch_def_ = ("X86_64", "ANY_X86")
+            self.arch_word_size_ = 64
+        elif host_arch in ("riscv32"):
+            self.arch_def_ = ("RISCV32", "ANY_RISCV")
+            self.arch_word_size_ = 32
+        elif host_arch in ("riscv64"):
+            self.arch_def_ = ("RISCV64", "ANY_RISCV")
+            self.arch_word_size_ = 64
+
         if G_ARCH is not None or G_ENV is not None:
             arch = G_ARCH
             if arch is None:
@@ -697,7 +719,7 @@ def match_lines(expec, output):
                     output.step(1)
         if suite_first_active:
             output.must_re_match(
-                '^\[----------\] Ran tests from {} \((-1|\d+) ms total\)'.
+                r'^\[----------\] Ran tests from {} \((-1|\d+) ms total\)'.
                 format(suite))
             output.must_match("")
 
