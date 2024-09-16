@@ -2,7 +2,7 @@
 #define EZTEST_EZTEST_H_
 /*
  * Single header of entire eztest suite.
- * Generated: 2024-02-17 16:36:48.423677
+ * Generated: 2024-09-16 12:12:16.764253
  */
 /* Begin include of: eztest.h  */
 
@@ -346,6 +346,16 @@
 #else
 # define EZTEST_DISABLE_WVARIADIC_MACROS_
 # define EZTEST_REENABLE_WVARIADIC_MACROS_
+#endif
+
+
+#if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
+# define EZTEST_DISABLE_WAGGREGATE_RETURN_                                     \
+     EZTEST_DISABLE_WARNING_("-Waggregate-return")
+# define EZTEST_REENABLE_WAGGREGATE_RETURN_ EZTEST_REENABLE_WARNING_
+#else
+# define EZTEST_DISABLE_WAGGREGATE_RETURN_
+# define EZTEST_REENABLE_WAGGREGATE_RETURN_
 #endif
 
 
@@ -953,8 +963,7 @@ EZTEST_NAMESPACE_END_
      }
 #else
 # define EZTEST_ARR_BUILDER_(name, T, k_n) T name[k_n]
-# define EZTEST_ARR_T_INIT_                                                    \
-     { 0 }
+# define EZTEST_ARR_T_INIT_                { 0 }
 #endif
 
 /* End include of: eztest-containers.h  */
@@ -1552,16 +1561,21 @@ class eztest_cxx_binop_streq_t : public EZTEST_NS_ eztest_cxx_print_var_t {
     EZTEST_PRIVATE_CXX_INL_ bool
     eztest_cxx_run(const EZTEST_STD_NS_ string &      eztest_op0,
                    const EZTEST_STD_NS_ string_view & eztest_op1) {
-        return EZTEST_STD_NS_ operator==(EZTEST_STD_NS_ string_view(eztest_op0),
-                                         eztest_op1);
+        EZTEST_DISABLE_WAGGREGATE_RETURN_
+        EZTEST_STD_NS_ string_view eztest_op0_sv(eztest_op0);
+        EZTEST_REENABLE_WAGGREGATE_RETURN_
+        return EZTEST_STD_NS_ operator==(eztest_op0_sv, eztest_op1);
     }
 
     EZTEST_PRIVATE_CXX_INL_ bool
     eztest_cxx_run(const EZTEST_STD_NS_ string_view & eztest_op0,
                    const EZTEST_STD_NS_ string &      eztest_op1) {
-        return EZTEST_STD_NS_ operator==(
-            eztest_op0, EZTEST_STD_NS_ string_view(eztest_op1));
+        EZTEST_DISABLE_WAGGREGATE_RETURN_
+        EZTEST_STD_NS_ string_view eztest_op1_sv(eztest_op1);
+        EZTEST_REENABLE_WAGGREGATE_RETURN_
+        return EZTEST_STD_NS_ operator==(eztest_op0, eztest_op1_sv);
     }
+
 # endif
 
     EZTEST_PRIVATE_CXX_INL_ bool
@@ -2707,8 +2721,7 @@ EZTEST_REENABLE_WVARIADIC_MACROS_
 # else
 #  define EZTEST_STRUCT_INTT_PADDING_                                          \
       char unused_[sizeof(void *) - sizeof(unsigned)];
-#  define EZTEST_STRUCT_INTT_PADDING_INIT_                                     \
-      { 0 }
+#  define EZTEST_STRUCT_INTT_PADDING_INIT_ { 0 }
 # endif
 #else
 # define EZTEST_STRUCT_INTT_PADDING_
@@ -3099,8 +3112,7 @@ EZTEST_NAMESPACE_END_
 
 #endif
 
-#define EZTEST_TIME_T_INIT_                                                    \
-    { 0, 0 }
+#define EZTEST_TIME_T_INIT_ { 0, 0 }
 
 #define EZTEST_TIME_GET_(tsp)   EZTEST_NS_ eztest_time_get(tsp)
 #define EZTEST_TIME_AS_MS_(tsp) EZTEST_NS_ eztest_time_timespec_to_ms(tsp)
@@ -3299,9 +3311,8 @@ EZTEST_NAMESPACE_BEGIN_
 struct eztest_group_it_t {
     EZTEST_TEST_T_ * eztest_cur_test_;
 };
-#define EZTEST_GROUP_IT_T_INIT_                                                \
-    { EZTEST_NULL_ }
-#define EZTEST_GROUP_IT_T_ EZTEST_STRUCT_NS_ eztest_group_it_t
+#define EZTEST_GROUP_IT_T_INIT_ { EZTEST_NULL_ }
+#define EZTEST_GROUP_IT_T_      EZTEST_STRUCT_NS_ eztest_group_it_t
 
 
 EZTEST_PRIVATE_ void
@@ -3575,9 +3586,8 @@ struct eztest_proc_result_t {
     int                  eztest_proc_status_value_;
     EZTEST_DURATION_T_   eztest_proc_duration_;
 };
-#define EZTEST_PROC_RESULT_T_ EZTEST_STRUCT_NS_ eztest_proc_result_t
-#define EZTEST_PROC_RESULT_T_INIT_                                             \
-    { 0, 0, EZTEST_DURATION_T_INIT_ }
+#define EZTEST_PROC_RESULT_T_      EZTEST_STRUCT_NS_ eztest_proc_result_t
+#define EZTEST_PROC_RESULT_T_INIT_ { 0, 0, EZTEST_DURATION_T_INIT_ }
 
 
 typedef int eztest_timed_wait_res_t;
