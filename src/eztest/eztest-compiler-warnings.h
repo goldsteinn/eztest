@@ -9,9 +9,9 @@
 
 #if (EZTEST_DISABLE_WARNINGS)
 # define EZTEST_HAS_CLANG_VER_(major, minor, patch)                            \
-  (EZTEST_USING_CLANG_ >= EZTEST_VERNUM_(major, minor, patch))
+     (EZTEST_USING_CLANG_ >= EZTEST_VERNUM_(major, minor, patch))
 # define EZTEST_HAS_GCC_VER_(major, minor, patch)                              \
-  (EZTEST_USING_GCC_ >= EZTEST_VERNUM_(major, minor, patch))
+     (EZTEST_USING_GCC_ >= EZTEST_VERNUM_(major, minor, patch))
 #else
 # define EZTEST_HAS_CLANG_VER_(major, minor, patch) 0
 # define EZTEST_HAS_GCC_VER_(major, minor, patch)   0
@@ -19,7 +19,7 @@
 
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WSTACK_PROTECTOR_                                      \
-  EZTEST_DISABLE_WARNING_("-Wstack-protector")
+     EZTEST_DISABLE_WARNING_("-Wstack-protector")
 # define EZTEST_REENABLE_WSTACK_PROTECTOR_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSTACK_PROTECTOR_
@@ -27,7 +27,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDYNAMIC_EXCEPTION_SPEC_                               \
-  EZTEST_DISABLE_WARNING_("-Wdynamic-exception-spec")
+     EZTEST_DISABLE_WARNING_("-Wdynamic-exception-spec")
 # define EZTEST_REENABLE_WDYNAMIC_EXCEPTION_SPEC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDYNAMIC_EXCEPTION_SPEC_
@@ -35,7 +35,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOVERRIDING_METHOD_MISMATCH_                           \
-  EZTEST_DISABLE_WARNING_("-Woverriding-method-mismatch")
+     EZTEST_DISABLE_WARNING_("-Woverriding-method-mismatch")
 # define EZTEST_REENABLE_WOVERRIDING_METHOD_MISMATCH_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOVERRIDING_METHOD_MISMATCH_
@@ -43,7 +43,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WGNU_REDECLARED_ENUM_                                  \
-  EZTEST_DISABLE_WARNING_("-Wgnu-redeclared-enum")
+     EZTEST_DISABLE_WARNING_("-Wgnu-redeclared-enum")
 # define EZTEST_REENABLE_WGNU_REDECLARED_ENUM_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_REDECLARED_ENUM_
@@ -65,7 +65,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCXX0X_EXTENSIONS_                                     \
-  EZTEST_DISABLE_WARNING_("-Wc++0x-extensions")
+     EZTEST_DISABLE_WARNING_("-Wc++0x-extensions")
 # define EZTEST_REENABLE_WCXX0X_EXTENSIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX0X_EXTENSIONS_
@@ -80,7 +80,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WINVALID_IBOUTLET_                                     \
-  EZTEST_DISABLE_WARNING_("-Winvalid-iboutlet")
+     EZTEST_DISABLE_WARNING_("-Winvalid-iboutlet")
 # define EZTEST_REENABLE_WINVALID_IBOUTLET_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINVALID_IBOUTLET_
@@ -88,7 +88,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WASM_IGNORED_QUALIFIER_                                \
-  EZTEST_DISABLE_WARNING_("-Wasm-ignored-qualifier")
+     EZTEST_DISABLE_WARNING_("-Wasm-ignored-qualifier")
 # define EZTEST_REENABLE_WASM_IGNORED_QUALIFIER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WASM_IGNORED_QUALIFIER_
@@ -96,7 +96,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WBITFIELD_WIDTH_                                       \
-  EZTEST_DISABLE_WARNING_("-Wbitfield-width")
+     EZTEST_DISABLE_WARNING_("-Wbitfield-width")
 # define EZTEST_REENABLE_WBITFIELD_WIDTH_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WBITFIELD_WIDTH_
@@ -111,7 +111,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNUSED_PROPERTY_IVAR_                                 \
-  EZTEST_DISABLE_WARNING_("-Wunused-property-ivar")
+     EZTEST_DISABLE_WARNING_("-Wunused-property-ivar")
 # define EZTEST_REENABLE_WUNUSED_PROPERTY_IVAR_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNUSED_PROPERTY_IVAR_
@@ -119,7 +119,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WAUTO_STORAGE_CLASS_                                   \
-  EZTEST_DISABLE_WARNING_("-Wauto-storage-class")
+     EZTEST_DISABLE_WARNING_("-Wauto-storage-class")
 # define EZTEST_REENABLE_WAUTO_STORAGE_CLASS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WAUTO_STORAGE_CLASS_
@@ -127,7 +127,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WBACKSLASH_NEWLINE_ESCAPE_                             \
-  EZTEST_DISABLE_WARNING_("-Wbackslash-newline-escape")
+     EZTEST_DISABLE_WARNING_("-Wbackslash-newline-escape")
 # define EZTEST_REENABLE_WBACKSLASH_NEWLINE_ESCAPE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WBACKSLASH_NEWLINE_ESCAPE_
@@ -135,7 +135,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WKEYWORD_COMPAT_                                       \
-  EZTEST_DISABLE_WARNING_("-Wkeyword-compat")
+     EZTEST_DISABLE_WARNING_("-Wkeyword-compat")
 # define EZTEST_REENABLE_WKEYWORD_COMPAT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WKEYWORD_COMPAT_
@@ -143,16 +143,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WFUNCTION_DEF_IN_OBJC_CONTAINER_                       \
-  EZTEST_DISABLE_WARNING_("-Wfunction-def-in-objc-container")
+     EZTEST_DISABLE_WARNING_("-Wfunction-def-in-objc-container")
 # define EZTEST_REENABLE_WFUNCTION_DEF_IN_OBJC_CONTAINER_                      \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFUNCTION_DEF_IN_OBJC_CONTAINER_
 # define EZTEST_REENABLE_WFUNCTION_DEF_IN_OBJC_CONTAINER_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WRETURN_STACK_ADDRESS_                                 \
-  EZTEST_DISABLE_WARNING_("-Wreturn-stack-address")
+     EZTEST_DISABLE_WARNING_("-Wreturn-stack-address")
 # define EZTEST_REENABLE_WRETURN_STACK_ADDRESS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WRETURN_STACK_ADDRESS_
@@ -160,7 +160,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WABSTRACT_FINAL_CLASS_                                 \
-  EZTEST_DISABLE_WARNING_("-Wabstract-final-class")
+     EZTEST_DISABLE_WARNING_("-Wabstract-final-class")
 # define EZTEST_REENABLE_WABSTRACT_FINAL_CLASS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WABSTRACT_FINAL_CLASS_
@@ -168,7 +168,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WINCLUDE_NEXT_OUTSIDE_HEADER_                          \
-  EZTEST_DISABLE_WARNING_("-Winclude-next-outside-header")
+     EZTEST_DISABLE_WARNING_("-Winclude-next-outside-header")
 # define EZTEST_REENABLE_WINCLUDE_NEXT_OUTSIDE_HEADER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINCLUDE_NEXT_OUTSIDE_HEADER_
@@ -176,7 +176,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOBJC_LITERAL_CONVERSION_                              \
-  EZTEST_DISABLE_WARNING_("-Wobjc-literal-conversion")
+     EZTEST_DISABLE_WARNING_("-Wobjc-literal-conversion")
 # define EZTEST_REENABLE_WOBJC_LITERAL_CONVERSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_LITERAL_CONVERSION_
@@ -184,7 +184,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WPARTIAL_AVAILABILITY_                                 \
-  EZTEST_DISABLE_WARNING_("-Wpartial-availability")
+     EZTEST_DISABLE_WARNING_("-Wpartial-availability")
 # define EZTEST_REENABLE_WPARTIAL_AVAILABILITY_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPARTIAL_AVAILABILITY_
@@ -192,7 +192,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOPENMP_CLAUSES_                                       \
-  EZTEST_DISABLE_WARNING_("-Wopenmp-clauses")
+     EZTEST_DISABLE_WARNING_("-Wopenmp-clauses")
 # define EZTEST_REENABLE_WOPENMP_CLAUSES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOPENMP_CLAUSES_
@@ -207,7 +207,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WANONYMOUS_PACK_PARENS_                                \
-  EZTEST_DISABLE_WARNING_("-Wanonymous-pack-parens")
+     EZTEST_DISABLE_WARNING_("-Wanonymous-pack-parens")
 # define EZTEST_REENABLE_WANONYMOUS_PACK_PARENS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANONYMOUS_PACK_PARENS_
@@ -222,16 +222,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WNON_MODULAR_INCLUDE_IN_MODULE_                        \
-  EZTEST_DISABLE_WARNING_("-Wnon-modular-include-in-module")
+     EZTEST_DISABLE_WARNING_("-Wnon-modular-include-in-module")
 # define EZTEST_REENABLE_WNON_MODULAR_INCLUDE_IN_MODULE_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNON_MODULAR_INCLUDE_IN_MODULE_
 # define EZTEST_REENABLE_WNON_MODULAR_INCLUDE_IN_MODULE_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WSHADOW_UNCAPTURED_LOCAL_                              \
-  EZTEST_DISABLE_WARNING_("-Wshadow-uncaptured-local")
+     EZTEST_DISABLE_WARNING_("-Wshadow-uncaptured-local")
 # define EZTEST_REENABLE_WSHADOW_UNCAPTURED_LOCAL_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSHADOW_UNCAPTURED_LOCAL_
@@ -239,16 +239,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNNEEDED_INTERNAL_DECLARATION_                        \
-  EZTEST_DISABLE_WARNING_("-Wunneeded-internal-declaration")
+     EZTEST_DISABLE_WARNING_("-Wunneeded-internal-declaration")
 # define EZTEST_REENABLE_WUNNEEDED_INTERNAL_DECLARATION_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNNEEDED_INTERNAL_DECLARATION_
 # define EZTEST_REENABLE_WUNNEEDED_INTERNAL_DECLARATION_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WINCOMPLETE_IMPLEMENTATION_                            \
-  EZTEST_DISABLE_WARNING_("-Wincomplete-implementation")
+     EZTEST_DISABLE_WARNING_("-Wincomplete-implementation")
 # define EZTEST_REENABLE_WINCOMPLETE_IMPLEMENTATION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINCOMPLETE_IMPLEMENTATION_
@@ -263,7 +263,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCXX14_COMPAT_PEDANTIC_                                \
-  EZTEST_DISABLE_WARNING_("-Wc++14-compat-pedantic")
+     EZTEST_DISABLE_WARNING_("-Wc++14-compat-pedantic")
 # define EZTEST_REENABLE_WCXX14_COMPAT_PEDANTIC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX14_COMPAT_PEDANTIC_
@@ -271,7 +271,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WGNU_STATIC_FLOAT_INIT_                                \
-  EZTEST_DISABLE_WARNING_("-Wgnu-static-float-init")
+     EZTEST_DISABLE_WARNING_("-Wgnu-static-float-init")
 # define EZTEST_REENABLE_WGNU_STATIC_FLOAT_INIT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_STATIC_FLOAT_INIT_
@@ -279,7 +279,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_EXCEPTION_SPEC_                             \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-exception-spec")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-exception-spec")
 # define EZTEST_REENABLE_WMICROSOFT_EXCEPTION_SPEC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_EXCEPTION_SPEC_
@@ -287,25 +287,25 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WSTATIC_INLINE_EXPLICIT_INSTANTIATION_                 \
-  EZTEST_DISABLE_WARNING_("-Wstatic-inline-explicit-instantiation")
+     EZTEST_DISABLE_WARNING_("-Wstatic-inline-explicit-instantiation")
 # define EZTEST_REENABLE_WSTATIC_INLINE_EXPLICIT_INSTANTIATION_                \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSTATIC_INLINE_EXPLICIT_INSTANTIATION_
 # define EZTEST_REENABLE_WSTATIC_INLINE_EXPLICIT_INSTANTIATION_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WGNU_STRING_LITERAL_OPERATOR_TEMPLATE_                 \
-  EZTEST_DISABLE_WARNING_("-Wgnu-string-literal-operator-template")
+     EZTEST_DISABLE_WARNING_("-Wgnu-string-literal-operator-template")
 # define EZTEST_REENABLE_WGNU_STRING_LITERAL_OPERATOR_TEMPLATE_                \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_STRING_LITERAL_OPERATOR_TEMPLATE_
 # define EZTEST_REENABLE_WGNU_STRING_LITERAL_OPERATOR_TEMPLATE_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WNULLABILITY_DECLSPEC_                                 \
-  EZTEST_DISABLE_WARNING_("-Wnullability-declspec")
+     EZTEST_DISABLE_WARNING_("-Wnullability-declspec")
 # define EZTEST_REENABLE_WNULLABILITY_DECLSPEC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNULLABILITY_DECLSPEC_
@@ -320,7 +320,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WFLEXIBLE_ARRAY_EXTENSIONS_                            \
-  EZTEST_DISABLE_WARNING_("-Wflexible-array-extensions")
+     EZTEST_DISABLE_WARNING_("-Wflexible-array-extensions")
 # define EZTEST_REENABLE_WFLEXIBLE_ARRAY_EXTENSIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFLEXIBLE_ARRAY_EXTENSIONS_
@@ -328,7 +328,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMAIN_RETURN_TYPE_                                     \
-  EZTEST_DISABLE_WARNING_("-Wmain-return-type")
+     EZTEST_DISABLE_WARNING_("-Wmain-return-type")
 # define EZTEST_REENABLE_WMAIN_RETURN_TYPE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMAIN_RETURN_TYPE_
@@ -336,7 +336,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WTHREAD_SAFETY_NEGATIVE_                               \
-  EZTEST_DISABLE_WARNING_("-Wthread-safety-negative")
+     EZTEST_DISABLE_WARNING_("-Wthread-safety-negative")
 # define EZTEST_REENABLE_WTHREAD_SAFETY_NEGATIVE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WTHREAD_SAFETY_NEGATIVE_
@@ -344,7 +344,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WSELF_ASSIGN_FIELD_                                    \
-  EZTEST_DISABLE_WARNING_("-Wself-assign-field")
+     EZTEST_DISABLE_WARNING_("-Wself-assign-field")
 # define EZTEST_REENABLE_WSELF_ASSIGN_FIELD_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSELF_ASSIGN_FIELD_
@@ -352,16 +352,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WINSTANTIATION_AFTER_SPECIALIZATION_                   \
-  EZTEST_DISABLE_WARNING_("-Winstantiation-after-specialization")
+     EZTEST_DISABLE_WARNING_("-Winstantiation-after-specialization")
 # define EZTEST_REENABLE_WINSTANTIATION_AFTER_SPECIALIZATION_                  \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINSTANTIATION_AFTER_SPECIALIZATION_
 # define EZTEST_REENABLE_WINSTANTIATION_AFTER_SPECIALIZATION_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_SEALED_                                     \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-sealed")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-sealed")
 # define EZTEST_REENABLE_WMICROSOFT_SEALED_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_SEALED_
@@ -369,7 +369,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_TEMPLATE_                                   \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-template")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-template")
 # define EZTEST_REENABLE_WMICROSOFT_TEMPLATE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_TEMPLATE_
@@ -377,7 +377,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WBITWISE_OP_PARENTHESES_                               \
-  EZTEST_DISABLE_WARNING_("-Wbitwise-op-parentheses")
+     EZTEST_DISABLE_WARNING_("-Wbitwise-op-parentheses")
 # define EZTEST_REENABLE_WBITWISE_OP_PARENTHESES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WBITWISE_OP_PARENTHESES_
@@ -385,7 +385,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WSTATIC_LOCAL_IN_INLINE_                               \
-  EZTEST_DISABLE_WARNING_("-Wstatic-local-in-inline")
+     EZTEST_DISABLE_WARNING_("-Wstatic-local-in-inline")
 # define EZTEST_REENABLE_WSTATIC_LOCAL_IN_INLINE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSTATIC_LOCAL_IN_INLINE_
@@ -393,16 +393,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WINCONSISTENT_MISSING_OVERRIDE_                        \
-  EZTEST_DISABLE_WARNING_("-Winconsistent-missing-override")
+     EZTEST_DISABLE_WARNING_("-Winconsistent-missing-override")
 # define EZTEST_REENABLE_WINCONSISTENT_MISSING_OVERRIDE_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINCONSISTENT_MISSING_OVERRIDE_
 # define EZTEST_REENABLE_WINCONSISTENT_MISSING_OVERRIDE_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WSELECTOR_TYPE_MISMATCH_                               \
-  EZTEST_DISABLE_WARNING_("-Wselector-type-mismatch")
+     EZTEST_DISABLE_WARNING_("-Wselector-type-mismatch")
 # define EZTEST_REENABLE_WSELECTOR_TYPE_MISMATCH_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSELECTOR_TYPE_MISMATCH_
@@ -417,7 +417,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WNULLABILITY_EXTENSION_                                \
-  EZTEST_DISABLE_WARNING_("-Wnullability-extension")
+     EZTEST_DISABLE_WARNING_("-Wnullability-extension")
 # define EZTEST_REENABLE_WNULLABILITY_EXTENSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNULLABILITY_EXTENSION_
@@ -425,7 +425,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNSUPPORTED_CB_                                       \
-  EZTEST_DISABLE_WARNING_("-Wunsupported-cb")
+     EZTEST_DISABLE_WARNING_("-Wunsupported-cb")
 # define EZTEST_REENABLE_WUNSUPPORTED_CB_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNSUPPORTED_CB_
@@ -433,7 +433,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WATOMIC_MEMORY_ORDERING_                               \
-  EZTEST_DISABLE_WARNING_("-Watomic-memory-ordering")
+     EZTEST_DISABLE_WARNING_("-Watomic-memory-ordering")
 # define EZTEST_REENABLE_WATOMIC_MEMORY_ORDERING_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WATOMIC_MEMORY_ORDERING_
@@ -441,16 +441,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WTENTATIVE_DEFINITION_INCOMPLETE_TYPE_                 \
-  EZTEST_DISABLE_WARNING_("-Wtentative-definition-incomplete-type")
+     EZTEST_DISABLE_WARNING_("-Wtentative-definition-incomplete-type")
 # define EZTEST_REENABLE_WTENTATIVE_DEFINITION_INCOMPLETE_TYPE_                \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WTENTATIVE_DEFINITION_INCOMPLETE_TYPE_
 # define EZTEST_REENABLE_WTENTATIVE_DEFINITION_INCOMPLETE_TYPE_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WSIGNED_ENUM_BITFIELD_                                 \
-  EZTEST_DISABLE_WARNING_("-Wsigned-enum-bitfield")
+     EZTEST_DISABLE_WARNING_("-Wsigned-enum-bitfield")
 # define EZTEST_REENABLE_WSIGNED_ENUM_BITFIELD_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSIGNED_ENUM_BITFIELD_
@@ -458,7 +458,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNREACHABLE_CODE_RETURN_                              \
-  EZTEST_DISABLE_WARNING_("-Wunreachable-code-return")
+     EZTEST_DISABLE_WARNING_("-Wunreachable-code-return")
 # define EZTEST_REENABLE_WUNREACHABLE_CODE_RETURN_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNREACHABLE_CODE_RETURN_
@@ -466,7 +466,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCFSTRING_LITERAL_                                     \
-  EZTEST_DISABLE_WARNING_("-WCFString-literal")
+     EZTEST_DISABLE_WARNING_("-WCFString-literal")
 # define EZTEST_REENABLE_WCFSTRING_LITERAL_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCFSTRING_LITERAL_
@@ -482,7 +482,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WSTATIC_FLOAT_INIT_                                    \
-  EZTEST_DISABLE_WARNING_("-Wstatic-float-init")
+     EZTEST_DISABLE_WARNING_("-Wstatic-float-init")
 # define EZTEST_REENABLE_WSTATIC_FLOAT_INIT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSTATIC_FLOAT_INIT_
@@ -490,7 +490,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCAST_OF_SEL_TYPE_                                     \
-  EZTEST_DISABLE_WARNING_("-Wcast-of-sel-type")
+     EZTEST_DISABLE_WARNING_("-Wcast-of-sel-type")
 # define EZTEST_REENABLE_WCAST_OF_SEL_TYPE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCAST_OF_SEL_TYPE_
@@ -498,7 +498,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WINCOMPATIBLE_PROPERTY_TYPE_                           \
-  EZTEST_DISABLE_WARNING_("-Wincompatible-property-type")
+     EZTEST_DISABLE_WARNING_("-Wincompatible-property-type")
 # define EZTEST_REENABLE_WINCOMPATIBLE_PROPERTY_TYPE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINCOMPATIBLE_PROPERTY_TYPE_
@@ -506,7 +506,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WLOGICAL_OP_PARENTHESES_                               \
-  EZTEST_DISABLE_WARNING_("-Wlogical-op-parentheses")
+     EZTEST_DISABLE_WARNING_("-Wlogical-op-parentheses")
 # define EZTEST_REENABLE_WLOGICAL_OP_PARENTHESES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WLOGICAL_OP_PARENTHESES_
@@ -514,7 +514,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WFORMAT_EXTRA_ARGS_                                    \
-  EZTEST_DISABLE_WARNING_("-Wformat-extra-args")
+     EZTEST_DISABLE_WARNING_("-Wformat-extra-args")
 # define EZTEST_REENABLE_WFORMAT_EXTRA_ARGS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFORMAT_EXTRA_ARGS_
@@ -529,7 +529,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WGNU_CASE_RANGE_                                       \
-  EZTEST_DISABLE_WARNING_("-Wgnu-case-range")
+     EZTEST_DISABLE_WARNING_("-Wgnu-case-range")
 # define EZTEST_REENABLE_WGNU_CASE_RANGE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_CASE_RANGE_
@@ -551,7 +551,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNEVALUATED_EXPRESSION_                               \
-  EZTEST_DISABLE_WARNING_("-Wunevaluated-expression")
+     EZTEST_DISABLE_WARNING_("-Wunevaluated-expression")
 # define EZTEST_REENABLE_WUNEVALUATED_EXPRESSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNEVALUATED_EXPRESSION_
@@ -559,16 +559,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WTAUTOLOGICAL_UNDEFINED_COMPARE_                       \
-  EZTEST_DISABLE_WARNING_("-Wtautological-undefined-compare")
+     EZTEST_DISABLE_WARNING_("-Wtautological-undefined-compare")
 # define EZTEST_REENABLE_WTAUTOLOGICAL_UNDEFINED_COMPARE_                      \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WTAUTOLOGICAL_UNDEFINED_COMPARE_
 # define EZTEST_REENABLE_WTAUTOLOGICAL_UNDEFINED_COMPARE_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WBRACED_SCALAR_INIT_                                   \
-  EZTEST_DISABLE_WARNING_("-Wbraced-scalar-init")
+     EZTEST_DISABLE_WARNING_("-Wbraced-scalar-init")
 # define EZTEST_REENABLE_WBRACED_SCALAR_INIT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WBRACED_SCALAR_INIT_
@@ -576,7 +576,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCUSTOM_ATOMIC_PROPERTIES_                             \
-  EZTEST_DISABLE_WARNING_("-Wcustom-atomic-properties")
+     EZTEST_DISABLE_WARNING_("-Wcustom-atomic-properties")
 # define EZTEST_REENABLE_WCUSTOM_ATOMIC_PROPERTIES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCUSTOM_ATOMIC_PROPERTIES_
@@ -584,7 +584,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUSER_DEFINED_WARNINGS_                                \
-  EZTEST_DISABLE_WARNING_("-Wuser-defined-warnings")
+     EZTEST_DISABLE_WARNING_("-Wuser-defined-warnings")
 # define EZTEST_REENABLE_WUSER_DEFINED_WARNINGS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUSER_DEFINED_WARNINGS_
@@ -592,7 +592,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDUPLICATE_ENUM_                                       \
-  EZTEST_DISABLE_WARNING_("-Wduplicate-enum")
+     EZTEST_DISABLE_WARNING_("-Wduplicate-enum")
 # define EZTEST_REENABLE_WDUPLICATE_ENUM_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDUPLICATE_ENUM_
@@ -600,7 +600,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOPENMP_LOOP_FORM_                                     \
-  EZTEST_DISABLE_WARNING_("-Wopenmp-loop-form")
+     EZTEST_DISABLE_WARNING_("-Wopenmp-loop-form")
 # define EZTEST_REENABLE_WOPENMP_LOOP_FORM_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOPENMP_LOOP_FORM_
@@ -608,7 +608,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WSTATIC_SELF_INIT_                                     \
-  EZTEST_DISABLE_WARNING_("-Wstatic-self-init")
+     EZTEST_DISABLE_WARNING_("-Wstatic-self-init")
 # define EZTEST_REENABLE_WSTATIC_SELF_INIT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSTATIC_SELF_INIT_
@@ -616,16 +616,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WGNU_CONDITIONAL_OMITTED_OPERAND_                      \
-  EZTEST_DISABLE_WARNING_("-Wgnu-conditional-omitted-operand")
+     EZTEST_DISABLE_WARNING_("-Wgnu-conditional-omitted-operand")
 # define EZTEST_REENABLE_WGNU_CONDITIONAL_OMITTED_OPERAND_                     \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_CONDITIONAL_OMITTED_OPERAND_
 # define EZTEST_REENABLE_WGNU_CONDITIONAL_OMITTED_OPERAND_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDEPRECATED_REGISTER_                                  \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-register")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-register")
 # define EZTEST_REENABLE_WDEPRECATED_REGISTER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_REGISTER_
@@ -633,7 +633,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_FIXED_ENUM_                                 \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-fixed-enum")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-fixed-enum")
 # define EZTEST_REENABLE_WMICROSOFT_FIXED_ENUM_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_FIXED_ENUM_
@@ -641,7 +641,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WPRIVATE_EXTERN_                                       \
-  EZTEST_DISABLE_WARNING_("-Wprivate-extern")
+     EZTEST_DISABLE_WARNING_("-Wprivate-extern")
 # define EZTEST_REENABLE_WPRIVATE_EXTERN_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPRIVATE_EXTERN_
@@ -656,16 +656,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMANY_BRACES_AROUND_SCALAR_INIT_                       \
-  EZTEST_DISABLE_WARNING_("-Wmany-braces-around-scalar-init")
+     EZTEST_DISABLE_WARNING_("-Wmany-braces-around-scalar-init")
 # define EZTEST_REENABLE_WMANY_BRACES_AROUND_SCALAR_INIT_                      \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMANY_BRACES_AROUND_SCALAR_INIT_
 # define EZTEST_REENABLE_WMANY_BRACES_AROUND_SCALAR_INIT_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(6, 1, 0))
 # define EZTEST_DISABLE_WTAUTOLOGICAL_COMPARE_                                 \
-  EZTEST_DISABLE_WARNING_("-Wtautological-compare")
+     EZTEST_DISABLE_WARNING_("-Wtautological-compare")
 # define EZTEST_REENABLE_WTAUTOLOGICAL_COMPARE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WTAUTOLOGICAL_COMPARE_
@@ -673,7 +673,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMODULE_IMPORT_IN_EXTERN_C_                            \
-  EZTEST_DISABLE_WARNING_("-Wmodule-import-in-extern-c")
+     EZTEST_DISABLE_WARNING_("-Wmodule-import-in-extern-c")
 # define EZTEST_REENABLE_WMODULE_IMPORT_IN_EXTERN_C_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMODULE_IMPORT_IN_EXTERN_C_
@@ -681,7 +681,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNNEEDED_MEMBER_FUNCTION_                             \
-  EZTEST_DISABLE_WARNING_("-Wunneeded-member-function")
+     EZTEST_DISABLE_WARNING_("-Wunneeded-member-function")
 # define EZTEST_REENABLE_WUNNEEDED_MEMBER_FUNCTION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNNEEDED_MEMBER_FUNCTION_
@@ -689,16 +689,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_EXTRA_QUALIFICATION_                        \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-extra-qualification")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-extra-qualification")
 # define EZTEST_REENABLE_WMICROSOFT_EXTRA_QUALIFICATION_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_EXTRA_QUALIFICATION_
 # define EZTEST_REENABLE_WMICROSOFT_EXTRA_QUALIFICATION_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WPARENTHESES_EQUALITY_                                 \
-  EZTEST_DISABLE_WARNING_("-Wparentheses-equality")
+     EZTEST_DISABLE_WARNING_("-Wparentheses-equality")
 # define EZTEST_REENABLE_WPARENTHESES_EQUALITY_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPARENTHESES_EQUALITY_
@@ -706,7 +706,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WPRIVATE_MODULE_                                       \
-  EZTEST_DISABLE_WARNING_("-Wprivate-module")
+     EZTEST_DISABLE_WARNING_("-Wprivate-module")
 # define EZTEST_REENABLE_WPRIVATE_MODULE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPRIVATE_MODULE_
@@ -714,7 +714,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WSTRING_PLUS_INT_                                      \
-  EZTEST_DISABLE_WARNING_("-Wstring-plus-int")
+     EZTEST_DISABLE_WARNING_("-Wstring-plus-int")
 # define EZTEST_REENABLE_WSTRING_PLUS_INT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSTRING_PLUS_INT_
@@ -729,7 +729,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOPENMP_TARGET_                                        \
-  EZTEST_DISABLE_WARNING_("-Wopenmp-target")
+     EZTEST_DISABLE_WARNING_("-Wopenmp-target")
 # define EZTEST_REENABLE_WOPENMP_TARGET_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOPENMP_TARGET_
@@ -744,7 +744,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WEXTENDED_OFFSETOF_                                    \
-  EZTEST_DISABLE_WARNING_("-Wextended-offsetof")
+     EZTEST_DISABLE_WARNING_("-Wextended-offsetof")
 # define EZTEST_REENABLE_WEXTENDED_OFFSETOF_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WEXTENDED_OFFSETOF_
@@ -752,16 +752,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WNULLABLE_TO_NONNULL_CONVERSION_                       \
-  EZTEST_DISABLE_WARNING_("-Wnullable-to-nonnull-conversion")
+     EZTEST_DISABLE_WARNING_("-Wnullable-to-nonnull-conversion")
 # define EZTEST_REENABLE_WNULLABLE_TO_NONNULL_CONVERSION_                      \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNULLABLE_TO_NONNULL_CONVERSION_
 # define EZTEST_REENABLE_WNULLABLE_TO_NONNULL_CONVERSION_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WFUTURE_COMPAT_                                        \
-  EZTEST_DISABLE_WARNING_("-Wfuture-compat")
+     EZTEST_DISABLE_WARNING_("-Wfuture-compat")
 # define EZTEST_REENABLE_WFUTURE_COMPAT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFUTURE_COMPAT_
@@ -769,7 +769,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_ENUM_VALUE_                                 \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-enum-value")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-enum-value")
 # define EZTEST_REENABLE_WMICROSOFT_ENUM_VALUE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_ENUM_VALUE_
@@ -777,16 +777,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WPROTOCOL_PROPERTY_SYNTHESIS_AMBIGUITY_                \
-  EZTEST_DISABLE_WARNING_("-Wprotocol-property-synthesis-ambiguity")
+     EZTEST_DISABLE_WARNING_("-Wprotocol-property-synthesis-ambiguity")
 # define EZTEST_REENABLE_WPROTOCOL_PROPERTY_SYNTHESIS_AMBIGUITY_               \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPROTOCOL_PROPERTY_SYNTHESIS_AMBIGUITY_
 # define EZTEST_REENABLE_WPROTOCOL_PROPERTY_SYNTHESIS_AMBIGUITY_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDANGLING_FIELD_                                       \
-  EZTEST_DISABLE_WARNING_("-Wdangling-field")
+     EZTEST_DISABLE_WARNING_("-Wdangling-field")
 # define EZTEST_REENABLE_WDANGLING_FIELD_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDANGLING_FIELD_
@@ -794,7 +794,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WARC_NON_POD_MEMACCESS_                                \
-  EZTEST_DISABLE_WARNING_("-Warc-non-pod-memaccess")
+     EZTEST_DISABLE_WARNING_("-Warc-non-pod-memaccess")
 # define EZTEST_REENABLE_WARC_NON_POD_MEMACCESS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WARC_NON_POD_MEMACCESS_
@@ -802,7 +802,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WBOOL_CONVERSIONS_                                     \
-  EZTEST_DISABLE_WARNING_("-Wbool-conversions")
+     EZTEST_DISABLE_WARNING_("-Wbool-conversions")
 # define EZTEST_REENABLE_WBOOL_CONVERSIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WBOOL_CONVERSIONS_
@@ -810,7 +810,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(7, 1, 0))
 # define EZTEST_DISABLE_WEXPANSION_TO_DEFINED_                                 \
-  EZTEST_DISABLE_WARNING_("-Wexpansion-to-defined")
+     EZTEST_DISABLE_WARNING_("-Wexpansion-to-defined")
 # define EZTEST_REENABLE_WEXPANSION_TO_DEFINED_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WEXPANSION_TO_DEFINED_
@@ -834,7 +834,7 @@
 
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_COMMENT_PASTE_                              \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-comment-paste")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-comment-paste")
 # define EZTEST_REENABLE_WMICROSOFT_COMMENT_PASTE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_COMMENT_PASTE_
@@ -842,7 +842,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNUSED_LOCAL_TYPEDEF_                                 \
-  EZTEST_DISABLE_WARNING_("-Wunused-local-typedef")
+     EZTEST_DISABLE_WARNING_("-Wunused-local-typedef")
 # define EZTEST_REENABLE_WUNUSED_LOCAL_TYPEDEF_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNUSED_LOCAL_TYPEDEF_
@@ -850,7 +850,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WSOURCE_USES_OPENMP_                                   \
-  EZTEST_DISABLE_WARNING_("-Wsource-uses-openmp")
+     EZTEST_DISABLE_WARNING_("-Wsource-uses-openmp")
 # define EZTEST_REENABLE_WSOURCE_USES_OPENMP_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSOURCE_USES_OPENMP_
@@ -858,7 +858,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WINCOMPATIBLE_SYSROOT_                                 \
-  EZTEST_DISABLE_WARNING_("-Wincompatible-sysroot")
+     EZTEST_DISABLE_WARNING_("-Wincompatible-sysroot")
 # define EZTEST_REENABLE_WINCOMPATIBLE_SYSROOT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINCOMPATIBLE_SYSROOT_
@@ -866,7 +866,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WIGNORED_PRAGMAS_                                      \
-  EZTEST_DISABLE_WARNING_("-Wignored-pragmas")
+     EZTEST_DISABLE_WARNING_("-Wignored-pragmas")
 # define EZTEST_REENABLE_WIGNORED_PRAGMAS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WIGNORED_PRAGMAS_
@@ -874,7 +874,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WRECEIVER_EXPR_                                        \
-  EZTEST_DISABLE_WARNING_("-Wreceiver-expr")
+     EZTEST_DISABLE_WARNING_("-Wreceiver-expr")
 # define EZTEST_REENABLE_WRECEIVER_EXPR_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WRECEIVER_EXPR_
@@ -882,18 +882,18 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WGNU_COMPOUND_LITERAL_INITIALIZER_                     \
-  EZTEST_DISABLE_WARNING_("-Wgnu-compound-literal-initializer")
+     EZTEST_DISABLE_WARNING_("-Wgnu-compound-literal-initializer")
 # define EZTEST_REENABLE_WGNU_COMPOUND_LITERAL_INITIALIZER_                    \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_COMPOUND_LITERAL_INITIALIZER_
 # define EZTEST_REENABLE_WGNU_COMPOUND_LITERAL_INITIALIZER_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDEBUG_COMPRESSION_UNAVAILABLE_                        \
-  EZTEST_DISABLE_WARNING_("-Wdebug-compression-unavailable")
+     EZTEST_DISABLE_WARNING_("-Wdebug-compression-unavailable")
 # define EZTEST_REENABLE_WDEBUG_COMPRESSION_UNAVAILABLE_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEBUG_COMPRESSION_UNAVAILABLE_
 # define EZTEST_REENABLE_WDEBUG_COMPRESSION_UNAVAILABLE_
@@ -914,7 +914,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOUT_OF_LINE_DECLARATION_                              \
-  EZTEST_DISABLE_WARNING_("-Wout-of-line-declaration")
+     EZTEST_DISABLE_WARNING_("-Wout-of-line-declaration")
 # define EZTEST_REENABLE_WOUT_OF_LINE_DECLARATION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOUT_OF_LINE_DECLARATION_
@@ -922,7 +922,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WGNU_AUTO_TYPE_                                        \
-  EZTEST_DISABLE_WARNING_("-Wgnu-auto-type")
+     EZTEST_DISABLE_WARNING_("-Wgnu-auto-type")
 # define EZTEST_REENABLE_WGNU_AUTO_TYPE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_AUTO_TYPE_
@@ -930,7 +930,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_ANON_TAG_                                   \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-anon-tag")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-anon-tag")
 # define EZTEST_REENABLE_WMICROSOFT_ANON_TAG_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_ANON_TAG_
@@ -938,9 +938,9 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WSHADOW_FIELD_IN_CONSTRUCTOR_MODIFIED_                 \
-  EZTEST_DISABLE_WARNING_("-Wshadow-field-in-constructor-modified")
+     EZTEST_DISABLE_WARNING_("-Wshadow-field-in-constructor-modified")
 # define EZTEST_REENABLE_WSHADOW_FIELD_IN_CONSTRUCTOR_MODIFIED_                \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSHADOW_FIELD_IN_CONSTRUCTOR_MODIFIED_
 # define EZTEST_REENABLE_WSHADOW_FIELD_IN_CONSTRUCTOR_MODIFIED_
@@ -954,7 +954,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WRESERVED_ID_MACRO_                                    \
-  EZTEST_DISABLE_WARNING_("-Wreserved-id-macro")
+     EZTEST_DISABLE_WARNING_("-Wreserved-id-macro")
 # define EZTEST_REENABLE_WRESERVED_ID_MACRO_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WRESERVED_ID_MACRO_
@@ -962,7 +962,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WNULL_CHARACTER_                                       \
-  EZTEST_DISABLE_WARNING_("-Wnull-character")
+     EZTEST_DISABLE_WARNING_("-Wnull-character")
 # define EZTEST_REENABLE_WNULL_CHARACTER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNULL_CHARACTER_
@@ -970,7 +970,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WABSTRACT_VBASE_INIT_                                  \
-  EZTEST_DISABLE_WARNING_("-Wabstract-vbase-init")
+     EZTEST_DISABLE_WARNING_("-Wabstract-vbase-init")
 # define EZTEST_REENABLE_WABSTRACT_VBASE_INIT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WABSTRACT_VBASE_INIT_
@@ -978,7 +978,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WGNU_INCLUDE_NEXT_                                     \
-  EZTEST_DISABLE_WARNING_("-Wgnu-include-next")
+     EZTEST_DISABLE_WARNING_("-Wgnu-include-next")
 # define EZTEST_REENABLE_WGNU_INCLUDE_NEXT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_INCLUDE_NEXT_
@@ -986,7 +986,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WEXTERN_INITIALIZER_                                   \
-  EZTEST_DISABLE_WARNING_("-Wextern-initializer")
+     EZTEST_DISABLE_WARNING_("-Wextern-initializer")
 # define EZTEST_REENABLE_WEXTERN_INITIALIZER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WEXTERN_INITIALIZER_
@@ -994,7 +994,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOBJC_INTERFACE_IVARS_                                 \
-  EZTEST_DISABLE_WARNING_("-Wobjc-interface-ivars")
+     EZTEST_DISABLE_WARNING_("-Wobjc-interface-ivars")
 # define EZTEST_REENABLE_WOBJC_INTERFACE_IVARS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_INTERFACE_IVARS_
@@ -1002,7 +1002,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOVERRIDING_T_OPTION_                                  \
-  EZTEST_DISABLE_WARNING_("-Woverriding-t-option")
+     EZTEST_DISABLE_WARNING_("-Woverriding-t-option")
 # define EZTEST_REENABLE_WOVERRIDING_T_OPTION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOVERRIDING_T_OPTION_
@@ -1010,7 +1010,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(5, 1, 0))
 # define EZTEST_DISABLE_WSHIFT_COUNT_OVERFLOW_                                 \
-  EZTEST_DISABLE_WARNING_("-Wshift-count-overflow")
+     EZTEST_DISABLE_WARNING_("-Wshift-count-overflow")
 # define EZTEST_REENABLE_WSHIFT_COUNT_OVERFLOW_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSHIFT_COUNT_OVERFLOW_
@@ -1018,7 +1018,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNDEFINED_INTERNAL_                                   \
-  EZTEST_DISABLE_WARNING_("-Wundefined-internal")
+     EZTEST_DISABLE_WARNING_("-Wundefined-internal")
 # define EZTEST_REENABLE_WUNDEFINED_INTERNAL_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNDEFINED_INTERNAL_
@@ -1026,7 +1026,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WVECTOR_CONVERSION_                                    \
-  EZTEST_DISABLE_WARNING_("-Wvector-conversion")
+     EZTEST_DISABLE_WARNING_("-Wvector-conversion")
 # define EZTEST_REENABLE_WVECTOR_CONVERSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WVECTOR_CONVERSION_
@@ -1034,7 +1034,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WEXPLICIT_INITIALIZE_CALL_                             \
-  EZTEST_DISABLE_WARNING_("-Wexplicit-initialize-call")
+     EZTEST_DISABLE_WARNING_("-Wexplicit-initialize-call")
 # define EZTEST_REENABLE_WEXPLICIT_INITIALIZE_CALL_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WEXPLICIT_INITIALIZE_CALL_
@@ -1049,16 +1049,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOBJC_PROTOCOL_PROPERTY_SYNTHESIS_                     \
-  EZTEST_DISABLE_WARNING_("-Wobjc-protocol-property-synthesis")
+     EZTEST_DISABLE_WARNING_("-Wobjc-protocol-property-synthesis")
 # define EZTEST_REENABLE_WOBJC_PROTOCOL_PROPERTY_SYNTHESIS_                    \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_PROTOCOL_PROPERTY_SYNTHESIS_
 # define EZTEST_REENABLE_WOBJC_PROTOCOL_PROPERTY_SYNTHESIS_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WBLOCK_CAPTURE_AUTORELEASING_                          \
-  EZTEST_DISABLE_WARNING_("-Wblock-capture-autoreleasing")
+     EZTEST_DISABLE_WARNING_("-Wblock-capture-autoreleasing")
 # define EZTEST_REENABLE_WBLOCK_CAPTURE_AUTORELEASING_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WBLOCK_CAPTURE_AUTORELEASING_
@@ -1066,7 +1066,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDYNAMIC_CLASS_MEMACCESS_                              \
-  EZTEST_DISABLE_WARNING_("-Wdynamic-class-memaccess")
+     EZTEST_DISABLE_WARNING_("-Wdynamic-class-memaccess")
 # define EZTEST_REENABLE_WDYNAMIC_CLASS_MEMACCESS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDYNAMIC_CLASS_MEMACCESS_
@@ -1074,7 +1074,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WFLOAT_ZERO_CONVERSION_                                \
-  EZTEST_DISABLE_WARNING_("-Wfloat-zero-conversion")
+     EZTEST_DISABLE_WARNING_("-Wfloat-zero-conversion")
 # define EZTEST_REENABLE_WFLOAT_ZERO_CONVERSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFLOAT_ZERO_CONVERSION_
@@ -1082,7 +1082,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WNESTED_ANON_TYPES_                                    \
-  EZTEST_DISABLE_WARNING_("-Wnested-anon-types")
+     EZTEST_DISABLE_WARNING_("-Wnested-anon-types")
 # define EZTEST_REENABLE_WNESTED_ANON_TYPES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNESTED_ANON_TYPES_
@@ -1090,9 +1090,9 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WIMPLICIT_FALLTHROUGH_PER_FUNCTION_                    \
-  EZTEST_DISABLE_WARNING_("-Wimplicit-fallthrough-per-function")
+     EZTEST_DISABLE_WARNING_("-Wimplicit-fallthrough-per-function")
 # define EZTEST_REENABLE_WIMPLICIT_FALLTHROUGH_PER_FUNCTION_                   \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WIMPLICIT_FALLTHROUGH_PER_FUNCTION_
 # define EZTEST_REENABLE_WIMPLICIT_FALLTHROUGH_PER_FUNCTION_
@@ -1113,7 +1113,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNUSED_ARGUMENT_                                      \
-  EZTEST_DISABLE_WARNING_("-Wunused-argument")
+     EZTEST_DISABLE_WARNING_("-Wunused-argument")
 # define EZTEST_REENABLE_WUNUSED_ARGUMENT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNUSED_ARGUMENT_
@@ -1121,7 +1121,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNGUARDED_AVAILABILITY_                               \
-  EZTEST_DISABLE_WARNING_("-Wunguarded-availability")
+     EZTEST_DISABLE_WARNING_("-Wunguarded-availability")
 # define EZTEST_REENABLE_WUNGUARDED_AVAILABILITY_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNGUARDED_AVAILABILITY_
@@ -1129,7 +1129,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_CPP_MACRO_                                  \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-cpp-macro")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-cpp-macro")
 # define EZTEST_REENABLE_WMICROSOFT_CPP_MACRO_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_CPP_MACRO_
@@ -1137,7 +1137,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCXX14_BINARY_LITERAL_                                 \
-  EZTEST_DISABLE_WARNING_("-Wc++14-binary-literal")
+     EZTEST_DISABLE_WARNING_("-Wc++14-binary-literal")
 # define EZTEST_REENABLE_WCXX14_BINARY_LITERAL_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX14_BINARY_LITERAL_
@@ -1145,7 +1145,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WPROFILE_INSTR_UNPROFILED_                             \
-  EZTEST_DISABLE_WARNING_("-Wprofile-instr-unprofiled")
+     EZTEST_DISABLE_WARNING_("-Wprofile-instr-unprofiled")
 # define EZTEST_REENABLE_WPROFILE_INSTR_UNPROFILED_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPROFILE_INSTR_UNPROFILED_
@@ -1153,7 +1153,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMETHOD_SIGNATURES_                                    \
-  EZTEST_DISABLE_WARNING_("-Wmethod-signatures")
+     EZTEST_DISABLE_WARNING_("-Wmethod-signatures")
 # define EZTEST_REENABLE_WMETHOD_SIGNATURES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMETHOD_SIGNATURES_
@@ -1161,7 +1161,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WTHREAD_SAFETY_ANALYSIS_                               \
-  EZTEST_DISABLE_WARNING_("-Wthread-safety-analysis")
+     EZTEST_DISABLE_WARNING_("-Wthread-safety-analysis")
 # define EZTEST_REENABLE_WTHREAD_SAFETY_ANALYSIS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WTHREAD_SAFETY_ANALYSIS_
@@ -1169,7 +1169,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOBJC_METHOD_ACCESS_                                   \
-  EZTEST_DISABLE_WARNING_("-Wobjc-method-access")
+     EZTEST_DISABLE_WARNING_("-Wobjc-method-access")
 # define EZTEST_REENABLE_WOBJC_METHOD_ACCESS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_METHOD_ACCESS_
@@ -1177,7 +1177,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WOVERLENGTH_STRINGS_                                   \
-  EZTEST_DISABLE_WARNING_("-Woverlength-strings")
+     EZTEST_DISABLE_WARNING_("-Woverlength-strings")
 # define EZTEST_REENABLE_WOVERLENGTH_STRINGS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOVERLENGTH_STRINGS_
@@ -1192,7 +1192,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDOCUMENTATION_PEDANTIC_                               \
-  EZTEST_DISABLE_WARNING_("-Wdocumentation-pedantic")
+     EZTEST_DISABLE_WARNING_("-Wdocumentation-pedantic")
 # define EZTEST_REENABLE_WDOCUMENTATION_PEDANTIC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDOCUMENTATION_PEDANTIC_
@@ -1200,7 +1200,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WIGNORED_QUALIFIERS_                                   \
-  EZTEST_DISABLE_WARNING_("-Wignored-qualifiers")
+     EZTEST_DISABLE_WARNING_("-Wignored-qualifiers")
 # define EZTEST_REENABLE_WIGNORED_QUALIFIERS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WIGNORED_QUALIFIERS_
@@ -1208,16 +1208,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_UNION_MEMBER_REFERENCE_                     \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-union-member-reference")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-union-member-reference")
 # define EZTEST_REENABLE_WMICROSOFT_UNION_MEMBER_REFERENCE_                    \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_UNION_MEMBER_REFERENCE_
 # define EZTEST_REENABLE_WMICROSOFT_UNION_MEMBER_REFERENCE_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUSER_DEFINED_LITERALS_                                \
-  EZTEST_DISABLE_WARNING_("-Wuser-defined-literals")
+     EZTEST_DISABLE_WARNING_("-Wuser-defined-literals")
 # define EZTEST_REENABLE_WUSER_DEFINED_LITERALS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUSER_DEFINED_LITERALS_
@@ -1239,7 +1239,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WTHREAD_SAFETY_REFERENCE_                              \
-  EZTEST_DISABLE_WARNING_("-Wthread-safety-reference")
+     EZTEST_DISABLE_WARNING_("-Wthread-safety-reference")
 # define EZTEST_REENABLE_WTHREAD_SAFETY_REFERENCE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WTHREAD_SAFETY_REFERENCE_
@@ -1247,7 +1247,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WIDIOMATIC_PARENTHESES_                                \
-  EZTEST_DISABLE_WARNING_("-Widiomatic-parentheses")
+     EZTEST_DISABLE_WARNING_("-Widiomatic-parentheses")
 # define EZTEST_REENABLE_WIDIOMATIC_PARENTHESES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WIDIOMATIC_PARENTHESES_
@@ -1255,16 +1255,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDEPRECATED_OBJC_POINTER_INTROSPECTION_                \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-objc-pointer-introspection")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-objc-pointer-introspection")
 # define EZTEST_REENABLE_WDEPRECATED_OBJC_POINTER_INTROSPECTION_               \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_OBJC_POINTER_INTROSPECTION_
 # define EZTEST_REENABLE_WDEPRECATED_OBJC_POINTER_INTROSPECTION_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WAMBIGUOUS_DELETE_                                     \
-  EZTEST_DISABLE_WARNING_("-Wambiguous-delete")
+     EZTEST_DISABLE_WARNING_("-Wambiguous-delete")
 # define EZTEST_REENABLE_WAMBIGUOUS_DELETE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WAMBIGUOUS_DELETE_
@@ -1272,7 +1272,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WTAUTOLOGICAL_OVERLAP_COMPARE_                         \
-  EZTEST_DISABLE_WARNING_("-Wtautological-overlap-compare")
+     EZTEST_DISABLE_WARNING_("-Wtautological-overlap-compare")
 # define EZTEST_REENABLE_WTAUTOLOGICAL_OVERLAP_COMPARE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WTAUTOLOGICAL_OVERLAP_COMPARE_
@@ -1280,9 +1280,9 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOBJC_NONCOPY_RETAIN_BLOCK_PROPERTY_                   \
-  EZTEST_DISABLE_WARNING_("-Wobjc-noncopy-retain-block-property")
+     EZTEST_DISABLE_WARNING_("-Wobjc-noncopy-retain-block-property")
 # define EZTEST_REENABLE_WOBJC_NONCOPY_RETAIN_BLOCK_PROPERTY_                  \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_NONCOPY_RETAIN_BLOCK_PROPERTY_
 # define EZTEST_REENABLE_WOBJC_NONCOPY_RETAIN_BLOCK_PROPERTY_
@@ -1296,7 +1296,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCXX98_CXX11_COMPAT_                                   \
-  EZTEST_DISABLE_WARNING_("-Wc++98-c++11-compat")
+     EZTEST_DISABLE_WARNING_("-Wc++98-c++11-compat")
 # define EZTEST_REENABLE_WCXX98_CXX11_COMPAT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX98_CXX11_COMPAT_
@@ -1304,7 +1304,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_INCLUDE_                                    \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-include")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-include")
 # define EZTEST_REENABLE_WMICROSOFT_INCLUDE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_INCLUDE_
@@ -1312,9 +1312,9 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WINVALID_OR_NONEXISTENT_DIRECTORY_                     \
-  EZTEST_DISABLE_WARNING_("-Winvalid-or-nonexistent-directory")
+     EZTEST_DISABLE_WARNING_("-Winvalid-or-nonexistent-directory")
 # define EZTEST_REENABLE_WINVALID_OR_NONEXISTENT_DIRECTORY_                    \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINVALID_OR_NONEXISTENT_DIRECTORY_
 # define EZTEST_REENABLE_WINVALID_OR_NONEXISTENT_DIRECTORY_
@@ -1328,7 +1328,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(11, 1, 0))
 # define EZTEST_DISABLE_WNSOBJECT_ATTRIBUTE_                                   \
-  EZTEST_DISABLE_WARNING_("-WNSObject-attribute")
+     EZTEST_DISABLE_WARNING_("-WNSObject-attribute")
 # define EZTEST_REENABLE_WNSOBJECT_ATTRIBUTE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNSOBJECT_ATTRIBUTE_
@@ -1336,7 +1336,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WWEAK_TEMPLATE_VTABLES_                                \
-  EZTEST_DISABLE_WARNING_("-Wweak-template-vtables")
+     EZTEST_DISABLE_WARNING_("-Wweak-template-vtables")
 # define EZTEST_REENABLE_WWEAK_TEMPLATE_VTABLES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WWEAK_TEMPLATE_VTABLES_
@@ -1358,7 +1358,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCXX1Y_EXTENSIONS_                                     \
-  EZTEST_DISABLE_WARNING_("-Wc++1y-extensions")
+     EZTEST_DISABLE_WARNING_("-Wc++1y-extensions")
 # define EZTEST_REENABLE_WCXX1Y_EXTENSIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX1Y_EXTENSIONS_
@@ -1366,7 +1366,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WMISSING_INCLUDE_DIRS_                                 \
-  EZTEST_DISABLE_WARNING_("-Wmissing-include-dirs")
+     EZTEST_DISABLE_WARNING_("-Wmissing-include-dirs")
 # define EZTEST_REENABLE_WMISSING_INCLUDE_DIRS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMISSING_INCLUDE_DIRS_
@@ -1374,7 +1374,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WFOUR_CHAR_CONSTANTS_                                  \
-  EZTEST_DISABLE_WARNING_("-Wfour-char-constants")
+     EZTEST_DISABLE_WARNING_("-Wfour-char-constants")
 # define EZTEST_REENABLE_WFOUR_CHAR_CONSTANTS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFOUR_CHAR_CONSTANTS_
@@ -1382,7 +1382,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WKNR_PROMOTED_PARAMETER_                               \
-  EZTEST_DISABLE_WARNING_("-Wknr-promoted-parameter")
+     EZTEST_DISABLE_WARNING_("-Wknr-promoted-parameter")
 # define EZTEST_REENABLE_WKNR_PROMOTED_PARAMETER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WKNR_PROMOTED_PARAMETER_
@@ -1390,7 +1390,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WNONPORTABLE_INCLUDE_PATH_                             \
-  EZTEST_DISABLE_WARNING_("-Wnonportable-include-path")
+     EZTEST_DISABLE_WARNING_("-Wnonportable-include-path")
 # define EZTEST_REENABLE_WNONPORTABLE_INCLUDE_PATH_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNONPORTABLE_INCLUDE_PATH_
@@ -1398,7 +1398,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNSUPPORTED_VISIBILITY_                               \
-  EZTEST_DISABLE_WARNING_("-Wunsupported-visibility")
+     EZTEST_DISABLE_WARNING_("-Wunsupported-visibility")
 # define EZTEST_REENABLE_WUNSUPPORTED_VISIBILITY_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNSUPPORTED_VISIBILITY_
@@ -1413,7 +1413,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WENUM_TOO_LARGE_                                       \
-  EZTEST_DISABLE_WARNING_("-Wenum-too-large")
+     EZTEST_DISABLE_WARNING_("-Wenum-too-large")
 # define EZTEST_REENABLE_WENUM_TOO_LARGE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WENUM_TOO_LARGE_
@@ -1421,7 +1421,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WNEW_RETURNS_NULL_                                     \
-  EZTEST_DISABLE_WARNING_("-Wnew-returns-null")
+     EZTEST_DISABLE_WARNING_("-Wnew-returns-null")
 # define EZTEST_REENABLE_WNEW_RETURNS_NULL_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNEW_RETURNS_NULL_
@@ -1436,7 +1436,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WVECTOR_CONVERSIONS_                                   \
-  EZTEST_DISABLE_WARNING_("-Wvector-conversions")
+     EZTEST_DISABLE_WARNING_("-Wvector-conversions")
 # define EZTEST_REENABLE_WVECTOR_CONVERSIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WVECTOR_CONVERSIONS_
@@ -1444,7 +1444,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WEXPLICIT_OWNERSHIP_TYPE_                              \
-  EZTEST_DISABLE_WARNING_("-Wexplicit-ownership-type")
+     EZTEST_DISABLE_WARNING_("-Wexplicit-ownership-type")
 # define EZTEST_REENABLE_WEXPLICIT_OWNERSHIP_TYPE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WEXPLICIT_OWNERSHIP_TYPE_
@@ -1452,7 +1452,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMISSING_EXCEPTION_SPEC_                               \
-  EZTEST_DISABLE_WARNING_("-Wmissing-exception-spec")
+     EZTEST_DISABLE_WARNING_("-Wmissing-exception-spec")
 # define EZTEST_REENABLE_WMISSING_EXCEPTION_SPEC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMISSING_EXCEPTION_SPEC_
@@ -1460,7 +1460,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WSHIFT_SIGN_OVERFLOW_                                  \
-  EZTEST_DISABLE_WARNING_("-Wshift-sign-overflow")
+     EZTEST_DISABLE_WARNING_("-Wshift-sign-overflow")
 # define EZTEST_REENABLE_WSHIFT_SIGN_OVERFLOW_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSHIFT_SIGN_OVERFLOW_
@@ -1468,7 +1468,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(6, 1, 0))
 # define EZTEST_DISABLE_WSIGN_CONVERSION_                                      \
-  EZTEST_DISABLE_WARNING_("-Wsign-conversion")
+     EZTEST_DISABLE_WARNING_("-Wsign-conversion")
 # define EZTEST_REENABLE_WSIGN_CONVERSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSIGN_CONVERSION_
@@ -1476,7 +1476,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WGLOBAL_CONSTRUCTORS_                                  \
-  EZTEST_DISABLE_WARNING_("-Wglobal-constructors")
+     EZTEST_DISABLE_WARNING_("-Wglobal-constructors")
 # define EZTEST_REENABLE_WGLOBAL_CONSTRUCTORS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGLOBAL_CONSTRUCTORS_
@@ -1484,7 +1484,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WFORMAT_INVALID_SPECIFIER_                             \
-  EZTEST_DISABLE_WARNING_("-Wformat-invalid-specifier")
+     EZTEST_DISABLE_WARNING_("-Wformat-invalid-specifier")
 # define EZTEST_REENABLE_WFORMAT_INVALID_SPECIFIER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFORMAT_INVALID_SPECIFIER_
@@ -1499,7 +1499,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOBJC_PROPERTY_SYNTHESIS_                              \
-  EZTEST_DISABLE_WARNING_("-Wobjc-property-synthesis")
+     EZTEST_DISABLE_WARNING_("-Wobjc-property-synthesis")
 # define EZTEST_REENABLE_WOBJC_PROPERTY_SYNTHESIS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_PROPERTY_SYNTHESIS_
@@ -1507,7 +1507,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNAVAILABLE_DECLARATIONS_                             \
-  EZTEST_DISABLE_WARNING_("-Wunavailable-declarations")
+     EZTEST_DISABLE_WARNING_("-Wunavailable-declarations")
 # define EZTEST_REENABLE_WUNAVAILABLE_DECLARATIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNAVAILABLE_DECLARATIONS_
@@ -1515,7 +1515,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNDEFINED_INLINE_                                     \
-  EZTEST_DISABLE_WARNING_("-Wundefined-inline")
+     EZTEST_DISABLE_WARNING_("-Wundefined-inline")
 # define EZTEST_REENABLE_WUNDEFINED_INLINE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNDEFINED_INLINE_
@@ -1523,7 +1523,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOBJC_REDUNDANT_LITERAL_USE_                           \
-  EZTEST_DISABLE_WARNING_("-Wobjc-redundant-literal-use")
+     EZTEST_DISABLE_WARNING_("-Wobjc-redundant-literal-use")
 # define EZTEST_REENABLE_WOBJC_REDUNDANT_LITERAL_USE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_REDUNDANT_LITERAL_USE_
@@ -1531,7 +1531,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDEPRECATED_OBJC_ISA_USAGE_                            \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-objc-isa-usage")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-objc-isa-usage")
 # define EZTEST_REENABLE_WDEPRECATED_OBJC_ISA_USAGE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_OBJC_ISA_USAGE_
@@ -1539,7 +1539,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WBIND_TO_TEMPORARY_COPY_                               \
-  EZTEST_DISABLE_WARNING_("-Wbind-to-temporary-copy")
+     EZTEST_DISABLE_WARNING_("-Wbind-to-temporary-copy")
 # define EZTEST_REENABLE_WBIND_TO_TEMPORARY_COPY_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WBIND_TO_TEMPORARY_COPY_
@@ -1554,16 +1554,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNSUPPORTED_DLL_BASE_CLASS_TEMPLATE_                  \
-  EZTEST_DISABLE_WARNING_("-Wunsupported-dll-base-class-template")
+     EZTEST_DISABLE_WARNING_("-Wunsupported-dll-base-class-template")
 # define EZTEST_REENABLE_WUNSUPPORTED_DLL_BASE_CLASS_TEMPLATE_                 \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNSUPPORTED_DLL_BASE_CLASS_TEMPLATE_
 # define EZTEST_REENABLE_WUNSUPPORTED_DLL_BASE_CLASS_TEMPLATE_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDEPRECATED_ATTRIBUTES_                                \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-attributes")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-attributes")
 # define EZTEST_REENABLE_WDEPRECATED_ATTRIBUTES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_ATTRIBUTES_
@@ -1571,7 +1571,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCAST_CALLING_CONVENTION_                              \
-  EZTEST_DISABLE_WARNING_("-Wcast-calling-convention")
+     EZTEST_DISABLE_WARNING_("-Wcast-calling-convention")
 # define EZTEST_REENABLE_WCAST_CALLING_CONVENTION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCAST_CALLING_CONVENTION_
@@ -1579,7 +1579,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WGNU_BINARY_LITERAL_                                   \
-  EZTEST_DISABLE_WARNING_("-Wgnu-binary-literal")
+     EZTEST_DISABLE_WARNING_("-Wgnu-binary-literal")
 # define EZTEST_REENABLE_WGNU_BINARY_LITERAL_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_BINARY_LITERAL_
@@ -1587,7 +1587,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WINCOMPLETE_MODULE_                                    \
-  EZTEST_DISABLE_WARNING_("-Wincomplete-module")
+     EZTEST_DISABLE_WARNING_("-Wincomplete-module")
 # define EZTEST_REENABLE_WINCOMPLETE_MODULE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINCOMPLETE_MODULE_
@@ -1595,7 +1595,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCONSTEXPR_NOT_CONST_                                  \
-  EZTEST_DISABLE_WARNING_("-Wconstexpr-not-const")
+     EZTEST_DISABLE_WARNING_("-Wconstexpr-not-const")
 # define EZTEST_REENABLE_WCONSTEXPR_NOT_CONST_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCONSTEXPR_NOT_CONST_
@@ -1603,7 +1603,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WRETURN_TYPE_C_LINKAGE_                                \
-  EZTEST_DISABLE_WARNING_("-Wreturn-type-c-linkage")
+     EZTEST_DISABLE_WARNING_("-Wreturn-type-c-linkage")
 # define EZTEST_REENABLE_WRETURN_TYPE_C_LINKAGE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WRETURN_TYPE_C_LINKAGE_
@@ -1611,7 +1611,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WSTRING_PLUS_CHAR_                                     \
-  EZTEST_DISABLE_WARNING_("-Wstring-plus-char")
+     EZTEST_DISABLE_WARNING_("-Wstring-plus-char")
 # define EZTEST_REENABLE_WSTRING_PLUS_CHAR_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSTRING_PLUS_CHAR_
@@ -1619,7 +1619,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WUNUSED_VARIABLE_                                      \
-  EZTEST_DISABLE_WARNING_("-Wunused-variable")
+     EZTEST_DISABLE_WARNING_("-Wunused-variable")
 # define EZTEST_REENABLE_WUNUSED_VARIABLE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNUSED_VARIABLE_
@@ -1641,7 +1641,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(6, 1, 0))
 # define EZTEST_DISABLE_WFLOAT_CONVERSION_                                     \
-  EZTEST_DISABLE_WARNING_("-Wfloat-conversion")
+     EZTEST_DISABLE_WARNING_("-Wfloat-conversion")
 # define EZTEST_REENABLE_WFLOAT_CONVERSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFLOAT_CONVERSION_
@@ -1649,7 +1649,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WMISSING_FORMAT_ATTRIBUTE_                             \
-  EZTEST_DISABLE_WARNING_("-Wmissing-format-attribute")
+     EZTEST_DISABLE_WARNING_("-Wmissing-format-attribute")
 # define EZTEST_REENABLE_WMISSING_FORMAT_ATTRIBUTE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMISSING_FORMAT_ATTRIBUTE_
@@ -1657,16 +1657,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMODULES_AMBIGUOUS_INTERNAL_LINKAGE_                   \
-  EZTEST_DISABLE_WARNING_("-Wmodules-ambiguous-internal-linkage")
+     EZTEST_DISABLE_WARNING_("-Wmodules-ambiguous-internal-linkage")
 # define EZTEST_REENABLE_WMODULES_AMBIGUOUS_INTERNAL_LINKAGE_                  \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMODULES_AMBIGUOUS_INTERNAL_LINKAGE_
 # define EZTEST_REENABLE_WMODULES_AMBIGUOUS_INTERNAL_LINKAGE_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WSTRLCPY_STRLCAT_SIZE_                                 \
-  EZTEST_DISABLE_WARNING_("-Wstrlcpy-strlcat-size")
+     EZTEST_DISABLE_WARNING_("-Wstrlcpy-strlcat-size")
 # define EZTEST_REENABLE_WSTRLCPY_STRLCAT_SIZE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSTRLCPY_STRLCAT_SIZE_
@@ -1681,16 +1681,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WIGNORED_OPTIMIZATION_ARGUMENT_                        \
-  EZTEST_DISABLE_WARNING_("-Wignored-optimization-argument")
+     EZTEST_DISABLE_WARNING_("-Wignored-optimization-argument")
 # define EZTEST_REENABLE_WIGNORED_OPTIMIZATION_ARGUMENT_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WIGNORED_OPTIMIZATION_ARGUMENT_
 # define EZTEST_REENABLE_WIGNORED_OPTIMIZATION_ARGUMENT_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WPRAGMA_ONCE_OUTSIDE_HEADER_                           \
-  EZTEST_DISABLE_WARNING_("-Wpragma-once-outside-header")
+     EZTEST_DISABLE_WARNING_("-Wpragma-once-outside-header")
 # define EZTEST_REENABLE_WPRAGMA_ONCE_OUTSIDE_HEADER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPRAGMA_ONCE_OUTSIDE_HEADER_
@@ -1698,7 +1698,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 8, 1))
 # define EZTEST_DISABLE_WSIZEOF_POINTER_MEMACCESS_                             \
-  EZTEST_DISABLE_WARNING_("-Wsizeof-pointer-memaccess")
+     EZTEST_DISABLE_WARNING_("-Wsizeof-pointer-memaccess")
 # define EZTEST_REENABLE_WSIZEOF_POINTER_MEMACCESS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSIZEOF_POINTER_MEMACCESS_
@@ -1706,7 +1706,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WLANGUAGE_EXTENSION_TOKEN_                             \
-  EZTEST_DISABLE_WARNING_("-Wlanguage-extension-token")
+     EZTEST_DISABLE_WARNING_("-Wlanguage-extension-token")
 # define EZTEST_REENABLE_WLANGUAGE_EXTENSION_TOKEN_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WLANGUAGE_EXTENSION_TOKEN_
@@ -1714,7 +1714,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WTHREAD_SAFETY_ATTRIBUTES_                             \
-  EZTEST_DISABLE_WARNING_("-Wthread-safety-attributes")
+     EZTEST_DISABLE_WARNING_("-Wthread-safety-attributes")
 # define EZTEST_REENABLE_WTHREAD_SAFETY_ATTRIBUTES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WTHREAD_SAFETY_ATTRIBUTES_
@@ -1722,7 +1722,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WUNREACHABLE_CODE_                                     \
-  EZTEST_DISABLE_WARNING_("-Wunreachable-code")
+     EZTEST_DISABLE_WARNING_("-Wunreachable-code")
 # define EZTEST_REENABLE_WUNREACHABLE_CODE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNREACHABLE_CODE_
@@ -1730,7 +1730,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_FLEXIBLE_ARRAY_                             \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-flexible-array")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-flexible-array")
 # define EZTEST_REENABLE_WMICROSOFT_FLEXIBLE_ARRAY_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_FLEXIBLE_ARRAY_
@@ -1738,7 +1738,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WPOINTER_ARITH_                                        \
-  EZTEST_DISABLE_WARNING_("-Wpointer-arith")
+     EZTEST_DISABLE_WARNING_("-Wpointer-arith")
 # define EZTEST_REENABLE_WPOINTER_ARITH_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPOINTER_ARITH_
@@ -1746,7 +1746,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCOVERED_SWITCH_DEFAULT_                               \
-  EZTEST_DISABLE_WARNING_("-Wcovered-switch-default")
+     EZTEST_DISABLE_WARNING_("-Wcovered-switch-default")
 # define EZTEST_REENABLE_WCOVERED_SWITCH_DEFAULT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCOVERED_SWITCH_DEFAULT_
@@ -1754,7 +1754,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WINCREMENT_BOOL_                                       \
-  EZTEST_DISABLE_WARNING_("-Wincrement-bool")
+     EZTEST_DISABLE_WARNING_("-Wincrement-bool")
 # define EZTEST_REENABLE_WINCREMENT_BOOL_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINCREMENT_BOOL_
@@ -1762,7 +1762,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMISMATCHED_PARAMETER_TYPES_                           \
-  EZTEST_DISABLE_WARNING_("-Wmismatched-parameter-types")
+     EZTEST_DISABLE_WARNING_("-Wmismatched-parameter-types")
 # define EZTEST_REENABLE_WMISMATCHED_PARAMETER_TYPES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMISMATCHED_PARAMETER_TYPES_
@@ -1770,7 +1770,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDUPLICATE_METHOD_ARG_                                 \
-  EZTEST_DISABLE_WARNING_("-Wduplicate-method-arg")
+     EZTEST_DISABLE_WARNING_("-Wduplicate-method-arg")
 # define EZTEST_REENABLE_WDUPLICATE_METHOD_ARG_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDUPLICATE_METHOD_ARG_
@@ -1778,7 +1778,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WFORMAT_SECURITY_                                      \
-  EZTEST_DISABLE_WARNING_("-Wformat-security")
+     EZTEST_DISABLE_WARNING_("-Wformat-security")
 # define EZTEST_REENABLE_WFORMAT_SECURITY_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFORMAT_SECURITY_
@@ -1786,7 +1786,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNICODE_WHITESPACE_                                   \
-  EZTEST_DISABLE_WARNING_("-Wunicode-whitespace")
+     EZTEST_DISABLE_WARNING_("-Wunicode-whitespace")
 # define EZTEST_REENABLE_WUNICODE_WHITESPACE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNICODE_WHITESPACE_
@@ -1794,7 +1794,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WGNU_ARRAY_MEMBER_PAREN_INIT_                          \
-  EZTEST_DISABLE_WARNING_("-Wgnu-array-member-paren-init")
+     EZTEST_DISABLE_WARNING_("-Wgnu-array-member-paren-init")
 # define EZTEST_REENABLE_WGNU_ARRAY_MEMBER_PAREN_INIT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_ARRAY_MEMBER_PAREN_INIT_
@@ -1802,7 +1802,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WPRIVATE_HEADER_                                       \
-  EZTEST_DISABLE_WARNING_("-Wprivate-header")
+     EZTEST_DISABLE_WARNING_("-Wprivate-header")
 # define EZTEST_REENABLE_WPRIVATE_HEADER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPRIVATE_HEADER_
@@ -1810,16 +1810,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDOCUMENTATION_UNKNOWN_COMMAND_                        \
-  EZTEST_DISABLE_WARNING_("-Wdocumentation-unknown-command")
+     EZTEST_DISABLE_WARNING_("-Wdocumentation-unknown-command")
 # define EZTEST_REENABLE_WDOCUMENTATION_UNKNOWN_COMMAND_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDOCUMENTATION_UNKNOWN_COMMAND_
 # define EZTEST_REENABLE_WDOCUMENTATION_UNKNOWN_COMMAND_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WNONPORTABLE_CFSTRINGS_                                \
-  EZTEST_DISABLE_WARNING_("-Wnonportable-cfstrings")
+     EZTEST_DISABLE_WARNING_("-Wnonportable-cfstrings")
 # define EZTEST_REENABLE_WNONPORTABLE_CFSTRINGS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNONPORTABLE_CFSTRINGS_
@@ -1834,7 +1834,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WSEMICOLON_BEFORE_METHOD_BODY_                         \
-  EZTEST_DISABLE_WARNING_("-Wsemicolon-before-method-body")
+     EZTEST_DISABLE_WARNING_("-Wsemicolon-before-method-body")
 # define EZTEST_REENABLE_WSEMICOLON_BEFORE_METHOD_BODY_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSEMICOLON_BEFORE_METHOD_BODY_
@@ -1849,25 +1849,25 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOBJC_AUTOSYNTHESIS_PROPERTY_IVAR_NAME_MATCH_          \
-  EZTEST_DISABLE_WARNING_("-Wobjc-autosynthesis-property-ivar-name-match")
+     EZTEST_DISABLE_WARNING_("-Wobjc-autosynthesis-property-ivar-name-match")
 # define EZTEST_REENABLE_WOBJC_AUTOSYNTHESIS_PROPERTY_IVAR_NAME_MATCH_         \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_AUTOSYNTHESIS_PROPERTY_IVAR_NAME_MATCH_
 # define EZTEST_REENABLE_WOBJC_AUTOSYNTHESIS_PROPERTY_IVAR_NAME_MATCH_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WIMPLICIT_EXCEPTION_SPEC_MISMATCH_                     \
-  EZTEST_DISABLE_WARNING_("-Wimplicit-exception-spec-mismatch")
+     EZTEST_DISABLE_WARNING_("-Wimplicit-exception-spec-mismatch")
 # define EZTEST_REENABLE_WIMPLICIT_EXCEPTION_SPEC_MISMATCH_                    \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WIMPLICIT_EXCEPTION_SPEC_MISMATCH_
 # define EZTEST_REENABLE_WIMPLICIT_EXCEPTION_SPEC_MISMATCH_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WAUTO_DISABLE_VPTR_SANITIZER_                          \
-  EZTEST_DISABLE_WARNING_("-Wauto-disable-vptr-sanitizer")
+     EZTEST_DISABLE_WARNING_("-Wauto-disable-vptr-sanitizer")
 # define EZTEST_REENABLE_WAUTO_DISABLE_VPTR_SANITIZER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WAUTO_DISABLE_VPTR_SANITIZER_
@@ -1875,7 +1875,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WSOMETIMES_UNINITIALIZED_                              \
-  EZTEST_DISABLE_WARNING_("-Wsometimes-uninitialized")
+     EZTEST_DISABLE_WARNING_("-Wsometimes-uninitialized")
 # define EZTEST_REENABLE_WSOMETIMES_UNINITIALIZED_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSOMETIMES_UNINITIALIZED_
@@ -1883,7 +1883,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WPOINTER_TYPE_MISMATCH_                                \
-  EZTEST_DISABLE_WARNING_("-Wpointer-type-mismatch")
+     EZTEST_DISABLE_WARNING_("-Wpointer-type-mismatch")
 # define EZTEST_REENABLE_WPOINTER_TYPE_MISMATCH_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPOINTER_TYPE_MISMATCH_
@@ -1891,7 +1891,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WSHORTEN_64_TO_32_                                     \
-  EZTEST_DISABLE_WARNING_("-Wshorten-64-to-32")
+     EZTEST_DISABLE_WARNING_("-Wshorten-64-to-32")
 # define EZTEST_REENABLE_WSHORTEN_64_TO_32_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSHORTEN_64_TO_32_
@@ -1899,7 +1899,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNUSED_PRIVATE_FIELD_                                 \
-  EZTEST_DISABLE_WARNING_("-Wunused-private-field")
+     EZTEST_DISABLE_WARNING_("-Wunused-private-field")
 # define EZTEST_REENABLE_WUNUSED_PRIVATE_FIELD_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNUSED_PRIVATE_FIELD_
@@ -1907,7 +1907,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCXX11_LONG_LONG_                                      \
-  EZTEST_DISABLE_WARNING_("-Wc++11-long-long")
+     EZTEST_DISABLE_WARNING_("-Wc++11-long-long")
 # define EZTEST_REENABLE_WCXX11_LONG_LONG_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX11_LONG_LONG_
@@ -1915,7 +1915,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WLITERAL_RANGE_                                        \
-  EZTEST_DISABLE_WARNING_("-Wliteral-range")
+     EZTEST_DISABLE_WARNING_("-Wliteral-range")
 # define EZTEST_REENABLE_WLITERAL_RANGE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WLITERAL_RANGE_
@@ -1923,7 +1923,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOBJC_PROPERTY_IMPLEMENTATION_                         \
-  EZTEST_DISABLE_WARNING_("-Wobjc-property-implementation")
+     EZTEST_DISABLE_WARNING_("-Wobjc-property-implementation")
 # define EZTEST_REENABLE_WOBJC_PROPERTY_IMPLEMENTATION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_PROPERTY_IMPLEMENTATION_
@@ -1931,7 +1931,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOPENCL_UNSUPPORTED_RGBA_                              \
-  EZTEST_DISABLE_WARNING_("-Wopencl-unsupported-rgba")
+     EZTEST_DISABLE_WARNING_("-Wopencl-unsupported-rgba")
 # define EZTEST_REENABLE_WOPENCL_UNSUPPORTED_RGBA_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOPENCL_UNSUPPORTED_RGBA_
@@ -1939,7 +1939,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDUPLICATE_PROTOCOL_                                   \
-  EZTEST_DISABLE_WARNING_("-Wduplicate-protocol")
+     EZTEST_DISABLE_WARNING_("-Wduplicate-protocol")
 # define EZTEST_REENABLE_WDUPLICATE_PROTOCOL_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDUPLICATE_PROTOCOL_
@@ -1947,7 +1947,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(7, 1, 0))
 # define EZTEST_DISABLE_WIMPLICIT_FALLTHROUGH_                                 \
-  EZTEST_DISABLE_WARNING_("-Wimplicit-fallthrough")
+     EZTEST_DISABLE_WARNING_("-Wimplicit-fallthrough")
 # define EZTEST_REENABLE_WIMPLICIT_FALLTHROUGH_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WIMPLICIT_FALLTHROUGH_
@@ -1955,7 +1955,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCXX11_EXTRA_SEMI_                                     \
-  EZTEST_DISABLE_WARNING_("-Wc++11-extra-semi")
+     EZTEST_DISABLE_WARNING_("-Wc++11-extra-semi")
 # define EZTEST_REENABLE_WCXX11_EXTRA_SEMI_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX11_EXTRA_SEMI_
@@ -1963,7 +1963,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WBUILTIN_REQUIRES_HEADER_                              \
-  EZTEST_DISABLE_WARNING_("-Wbuiltin-requires-header")
+     EZTEST_DISABLE_WARNING_("-Wbuiltin-requires-header")
 # define EZTEST_REENABLE_WBUILTIN_REQUIRES_HEADER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WBUILTIN_REQUIRES_HEADER_
@@ -1978,7 +1978,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WREDUNDANT_DECLS_                                      \
-  EZTEST_DISABLE_WARNING_("-Wredundant-decls")
+     EZTEST_DISABLE_WARNING_("-Wredundant-decls")
 # define EZTEST_REENABLE_WREDUNDANT_DECLS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WREDUNDANT_DECLS_
@@ -1993,7 +1993,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WINITIALIZER_OVERRIDES_                                \
-  EZTEST_DISABLE_WARNING_("-Winitializer-overrides")
+     EZTEST_DISABLE_WARNING_("-Winitializer-overrides")
 # define EZTEST_REENABLE_WINITIALIZER_OVERRIDES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINITIALIZER_OVERRIDES_
@@ -2001,7 +2001,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMISMATCHED_RETURN_TYPES_                              \
-  EZTEST_DISABLE_WARNING_("-Wmismatched-return-types")
+     EZTEST_DISABLE_WARNING_("-Wmismatched-return-types")
 # define EZTEST_REENABLE_WMISMATCHED_RETURN_TYPES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMISMATCHED_RETURN_TYPES_
@@ -2009,7 +2009,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(10, 1, 0))
 # define EZTEST_DISABLE_WSTRING_COMPARE_                                       \
-  EZTEST_DISABLE_WARNING_("-Wstring-compare")
+     EZTEST_DISABLE_WARNING_("-Wstring-compare")
 # define EZTEST_REENABLE_WSTRING_COMPARE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSTRING_COMPARE_
@@ -2017,7 +2017,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WPEDANTIC_CORE_FEATURES_                               \
-  EZTEST_DISABLE_WARNING_("-Wpedantic-core-features")
+     EZTEST_DISABLE_WARNING_("-Wpedantic-core-features")
 # define EZTEST_REENABLE_WPEDANTIC_CORE_FEATURES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPEDANTIC_CORE_FEATURES_
@@ -2025,9 +2025,9 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_DEFAULT_ARG_REDEFINITION_                   \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-default-arg-redefinition")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-default-arg-redefinition")
 # define EZTEST_REENABLE_WMICROSOFT_DEFAULT_ARG_REDEFINITION_                  \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_DEFAULT_ARG_REDEFINITION_
 # define EZTEST_REENABLE_WMICROSOFT_DEFAULT_ARG_REDEFINITION_
@@ -2041,16 +2041,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOBJC_MISSING_PROPERTY_SYNTHESIS_                      \
-  EZTEST_DISABLE_WARNING_("-Wobjc-missing-property-synthesis")
+     EZTEST_DISABLE_WARNING_("-Wobjc-missing-property-synthesis")
 # define EZTEST_REENABLE_WOBJC_MISSING_PROPERTY_SYNTHESIS_                     \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_MISSING_PROPERTY_SYNTHESIS_
 # define EZTEST_REENABLE_WOBJC_MISSING_PROPERTY_SYNTHESIS_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WSTRICT_OVERFLOW_                                      \
-  EZTEST_DISABLE_WARNING_("-Wstrict-overflow")
+     EZTEST_DISABLE_WARNING_("-Wstrict-overflow")
 # define EZTEST_REENABLE_WSTRICT_OVERFLOW_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSTRICT_OVERFLOW_
@@ -2058,16 +2058,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDLLEXPORT_EXPLICIT_INSTANTIATION_DECL_                \
-  EZTEST_DISABLE_WARNING_("-Wdllexport-explicit-instantiation-decl")
+     EZTEST_DISABLE_WARNING_("-Wdllexport-explicit-instantiation-decl")
 # define EZTEST_REENABLE_WDLLEXPORT_EXPLICIT_INSTANTIATION_DECL_               \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDLLEXPORT_EXPLICIT_INSTANTIATION_DECL_
 # define EZTEST_REENABLE_WDLLEXPORT_EXPLICIT_INSTANTIATION_DECL_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WGNU_LABEL_AS_VALUE_                                   \
-  EZTEST_DISABLE_WARNING_("-Wgnu-label-as-value")
+     EZTEST_DISABLE_WARNING_("-Wgnu-label-as-value")
 # define EZTEST_REENABLE_WGNU_LABEL_AS_VALUE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_LABEL_AS_VALUE_
@@ -2075,7 +2075,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WGNU_IMAGINARY_CONSTANT_                               \
-  EZTEST_DISABLE_WARNING_("-Wgnu-imaginary-constant")
+     EZTEST_DISABLE_WARNING_("-Wgnu-imaginary-constant")
 # define EZTEST_REENABLE_WGNU_IMAGINARY_CONSTANT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_IMAGINARY_CONSTANT_
@@ -2083,7 +2083,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WFORMAT_PEDANTIC_                                      \
-  EZTEST_DISABLE_WARNING_("-Wformat-pedantic")
+     EZTEST_DISABLE_WARNING_("-Wformat-pedantic")
 # define EZTEST_REENABLE_WFORMAT_PEDANTIC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFORMAT_PEDANTIC_
@@ -2091,7 +2091,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WNULL_ARITHMETIC_                                      \
-  EZTEST_DISABLE_WARNING_("-Wnull-arithmetic")
+     EZTEST_DISABLE_WARNING_("-Wnull-arithmetic")
 # define EZTEST_REENABLE_WNULL_ARITHMETIC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNULL_ARITHMETIC_
@@ -2099,7 +2099,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOBJC_STRING_COMPARE_                                  \
-  EZTEST_DISABLE_WARNING_("-Wobjc-string-compare")
+     EZTEST_DISABLE_WARNING_("-Wobjc-string-compare")
 # define EZTEST_REENABLE_WOBJC_STRING_COMPARE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_STRING_COMPARE_
@@ -2107,7 +2107,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNUSED_COMPARISON_                                    \
-  EZTEST_DISABLE_WARNING_("-Wunused-comparison")
+     EZTEST_DISABLE_WARNING_("-Wunused-comparison")
 # define EZTEST_REENABLE_WUNUSED_COMPARISON_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNUSED_COMPARISON_
@@ -2115,7 +2115,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOBJC_DESIGNATED_INITIALIZERS_                         \
-  EZTEST_DISABLE_WARNING_("-Wobjc-designated-initializers")
+     EZTEST_DISABLE_WARNING_("-Wobjc-designated-initializers")
 # define EZTEST_REENABLE_WOBJC_DESIGNATED_INITIALIZERS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_DESIGNATED_INITIALIZERS_
@@ -2123,16 +2123,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WARRAY_BOUNDS_POINTER_ARITHMETIC_                      \
-  EZTEST_DISABLE_WARNING_("-Warray-bounds-pointer-arithmetic")
+     EZTEST_DISABLE_WARNING_("-Warray-bounds-pointer-arithmetic")
 # define EZTEST_REENABLE_WARRAY_BOUNDS_POINTER_ARITHMETIC_                     \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WARRAY_BOUNDS_POINTER_ARITHMETIC_
 # define EZTEST_REENABLE_WARRAY_BOUNDS_POINTER_ARITHMETIC_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_CAST_                                       \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-cast")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-cast")
 # define EZTEST_REENABLE_WMICROSOFT_CAST_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_CAST_
@@ -2140,7 +2140,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WTHREAD_SAFETY_BETA_                                   \
-  EZTEST_DISABLE_WARNING_("-Wthread-safety-beta")
+     EZTEST_DISABLE_WARNING_("-Wthread-safety-beta")
 # define EZTEST_REENABLE_WTHREAD_SAFETY_BETA_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WTHREAD_SAFETY_BETA_
@@ -2148,7 +2148,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WPROFILE_INSTR_OUT_OF_DATE_                            \
-  EZTEST_DISABLE_WARNING_("-Wprofile-instr-out-of-date")
+     EZTEST_DISABLE_WARNING_("-Wprofile-instr-out-of-date")
 # define EZTEST_REENABLE_WPROFILE_INSTR_OUT_OF_DATE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPROFILE_INSTR_OUT_OF_DATE_
@@ -2156,7 +2156,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMEMSIZE_COMPARISON_                                   \
-  EZTEST_DISABLE_WARNING_("-Wmemsize-comparison")
+     EZTEST_DISABLE_WARNING_("-Wmemsize-comparison")
 # define EZTEST_REENABLE_WMEMSIZE_COMPARISON_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMEMSIZE_COMPARISON_
@@ -2164,7 +2164,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WUNUSED_FUNCTION_                                      \
-  EZTEST_DISABLE_WARNING_("-Wunused-function")
+     EZTEST_DISABLE_WARNING_("-Wunused-function")
 # define EZTEST_REENABLE_WUNUSED_FUNCTION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNUSED_FUNCTION_
@@ -2172,7 +2172,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WPROPERTY_ATTRIBUTE_MISMATCH_                          \
-  EZTEST_DISABLE_WARNING_("-Wproperty-attribute-mismatch")
+     EZTEST_DISABLE_WARNING_("-Wproperty-attribute-mismatch")
 # define EZTEST_REENABLE_WPROPERTY_ATTRIBUTE_MISMATCH_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPROPERTY_ATTRIBUTE_MISMATCH_
@@ -2180,7 +2180,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WINCONSISTENT_DLLIMPORT_                               \
-  EZTEST_DISABLE_WARNING_("-Winconsistent-dllimport")
+     EZTEST_DISABLE_WARNING_("-Winconsistent-dllimport")
 # define EZTEST_REENABLE_WINCONSISTENT_DLLIMPORT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINCONSISTENT_DLLIMPORT_
@@ -2188,7 +2188,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDIRECT_IVAR_ACCESS_                                   \
-  EZTEST_DISABLE_WARNING_("-Wdirect-ivar-access")
+     EZTEST_DISABLE_WARNING_("-Wdirect-ivar-access")
 # define EZTEST_REENABLE_WDIRECT_IVAR_ACCESS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDIRECT_IVAR_ACCESS_
@@ -2196,7 +2196,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCOMPLEX_COMPONENT_INIT_                               \
-  EZTEST_DISABLE_WARNING_("-Wcomplex-component-init")
+     EZTEST_DISABLE_WARNING_("-Wcomplex-component-init")
 # define EZTEST_REENABLE_WCOMPLEX_COMPONENT_INIT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCOMPLEX_COMPONENT_INIT_
@@ -2211,7 +2211,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WSWITCH_DEFAULT_                                       \
-  EZTEST_DISABLE_WARNING_("-Wswitch-default")
+     EZTEST_DISABLE_WARNING_("-Wswitch-default")
 # define EZTEST_REENABLE_WSWITCH_DEFAULT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSWITCH_DEFAULT_
@@ -2219,7 +2219,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WVEC_ELEM_SIZE_                                        \
-  EZTEST_DISABLE_WARNING_("-Wvec-elem-size")
+     EZTEST_DISABLE_WARNING_("-Wvec-elem-size")
 # define EZTEST_REENABLE_WVEC_ELEM_SIZE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WVEC_ELEM_SIZE_
@@ -2227,7 +2227,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WNULL_CONVERSION_                                      \
-  EZTEST_DISABLE_WARNING_("-Wnull-conversion")
+     EZTEST_DISABLE_WARNING_("-Wnull-conversion")
 # define EZTEST_REENABLE_WNULL_CONVERSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNULL_CONVERSION_
@@ -2235,16 +2235,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WARC_MAYBE_REPEATED_USE_OF_WEAK_                       \
-  EZTEST_DISABLE_WARNING_("-Warc-maybe-repeated-use-of-weak")
+     EZTEST_DISABLE_WARNING_("-Warc-maybe-repeated-use-of-weak")
 # define EZTEST_REENABLE_WARC_MAYBE_REPEATED_USE_OF_WEAK_                      \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WARC_MAYBE_REPEATED_USE_OF_WEAK_
 # define EZTEST_REENABLE_WARC_MAYBE_REPEATED_USE_OF_WEAK_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOPTION_IGNORED_                                       \
-  EZTEST_DISABLE_WARNING_("-Woption-ignored")
+     EZTEST_DISABLE_WARNING_("-Woption-ignored")
 # define EZTEST_REENABLE_WOPTION_IGNORED_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOPTION_IGNORED_
@@ -2252,7 +2252,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WFORMAT_NON_ISO_                                       \
-  EZTEST_DISABLE_WARNING_("-Wformat-non-iso")
+     EZTEST_DISABLE_WARNING_("-Wformat-non-iso")
 # define EZTEST_REENABLE_WFORMAT_NON_ISO_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFORMAT_NON_ISO_
@@ -2260,25 +2260,25 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WINVALID_INITIALIZER_FROM_SYSTEM_HEADER_               \
-  EZTEST_DISABLE_WARNING_("-Winvalid-initializer-from-system-header")
+     EZTEST_DISABLE_WARNING_("-Winvalid-initializer-from-system-header")
 # define EZTEST_REENABLE_WINVALID_INITIALIZER_FROM_SYSTEM_HEADER_              \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINVALID_INITIALIZER_FROM_SYSTEM_HEADER_
 # define EZTEST_REENABLE_WINVALID_INITIALIZER_FROM_SYSTEM_HEADER_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOVERLOADED_SHIFT_OP_PARENTHESES_                      \
-  EZTEST_DISABLE_WARNING_("-Woverloaded-shift-op-parentheses")
+     EZTEST_DISABLE_WARNING_("-Woverloaded-shift-op-parentheses")
 # define EZTEST_REENABLE_WOVERLOADED_SHIFT_OP_PARENTHESES_                     \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOVERLOADED_SHIFT_OP_PARENTHESES_
 # define EZTEST_REENABLE_WOVERLOADED_SHIFT_OP_PARENTHESES_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WTAUTOLOGICAL_POINTER_COMPARE_                         \
-  EZTEST_DISABLE_WARNING_("-Wtautological-pointer-compare")
+     EZTEST_DISABLE_WARNING_("-Wtautological-pointer-compare")
 # define EZTEST_REENABLE_WTAUTOLOGICAL_POINTER_COMPARE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WTAUTOLOGICAL_POINTER_COMPARE_
@@ -2286,7 +2286,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_USING_DECL_                                 \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-using-decl")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-using-decl")
 # define EZTEST_REENABLE_WMICROSOFT_USING_DECL_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_USING_DECL_
@@ -2294,16 +2294,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WIMPLICIT_CONVERSION_FLOATING_POINT_TO_BOOL_           \
-  EZTEST_DISABLE_WARNING_("-Wimplicit-conversion-floating-point-to-bool")
+     EZTEST_DISABLE_WARNING_("-Wimplicit-conversion-floating-point-to-bool")
 # define EZTEST_REENABLE_WIMPLICIT_CONVERSION_FLOATING_POINT_TO_BOOL_          \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WIMPLICIT_CONVERSION_FLOATING_POINT_TO_BOOL_
 # define EZTEST_REENABLE_WIMPLICIT_CONVERSION_FLOATING_POINT_TO_BOOL_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WBOOL_CONVERSION_                                      \
-  EZTEST_DISABLE_WARNING_("-Wbool-conversion")
+     EZTEST_DISABLE_WARNING_("-Wbool-conversion")
 # define EZTEST_REENABLE_WBOOL_CONVERSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WBOOL_CONVERSION_
@@ -2318,7 +2318,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDEPRECATED_IMPLEMENTATIONS_                           \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-implementations")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-implementations")
 # define EZTEST_REENABLE_WDEPRECATED_IMPLEMENTATIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_IMPLEMENTATIONS_
@@ -2326,16 +2326,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCXX11_COMPAT_DEPRECATED_WRITABLE_STRINGS_             \
-  EZTEST_DISABLE_WARNING_("-Wc++11-compat-deprecated-writable-strings")
+     EZTEST_DISABLE_WARNING_("-Wc++11-compat-deprecated-writable-strings")
 # define EZTEST_REENABLE_WCXX11_COMPAT_DEPRECATED_WRITABLE_STRINGS_            \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX11_COMPAT_DEPRECATED_WRITABLE_STRINGS_
 # define EZTEST_REENABLE_WCXX11_COMPAT_DEPRECATED_WRITABLE_STRINGS_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOBJC_PROTOCOL_QUALIFIERS_                             \
-  EZTEST_DISABLE_WARNING_("-Wobjc-protocol-qualifiers")
+     EZTEST_DISABLE_WARNING_("-Wobjc-protocol-qualifiers")
 # define EZTEST_REENABLE_WOBJC_PROTOCOL_QUALIFIERS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_PROTOCOL_QUALIFIERS_
@@ -2343,7 +2343,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WGNU_ANONYMOUS_STRUCT_                                 \
-  EZTEST_DISABLE_WARNING_("-Wgnu-anonymous-struct")
+     EZTEST_DISABLE_WARNING_("-Wgnu-anonymous-struct")
 # define EZTEST_REENABLE_WGNU_ANONYMOUS_STRUCT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_ANONYMOUS_STRUCT_
@@ -2351,7 +2351,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMULTIPLE_MOVE_VBASE_                                  \
-  EZTEST_DISABLE_WARNING_("-Wmultiple-move-vbase")
+     EZTEST_DISABLE_WARNING_("-Wmultiple-move-vbase")
 # define EZTEST_REENABLE_WMULTIPLE_MOVE_VBASE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMULTIPLE_MOVE_VBASE_
@@ -2366,7 +2366,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOBJC_CIRCULAR_CONTAINER_                              \
-  EZTEST_DISABLE_WARNING_("-Wobjc-circular-container")
+     EZTEST_DISABLE_WARNING_("-Wobjc-circular-container")
 # define EZTEST_REENABLE_WOBJC_CIRCULAR_CONTAINER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_CIRCULAR_CONTAINER_
@@ -2374,7 +2374,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WLOOP_ANALYSIS_                                        \
-  EZTEST_DISABLE_WARNING_("-Wloop-analysis")
+     EZTEST_DISABLE_WARNING_("-Wloop-analysis")
 # define EZTEST_REENABLE_WLOOP_ANALYSIS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WLOOP_ANALYSIS_
@@ -2382,7 +2382,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNKNOWN_ARGUMENT_                                     \
-  EZTEST_DISABLE_WARNING_("-Wunknown-argument")
+     EZTEST_DISABLE_WARNING_("-Wunknown-argument")
 # define EZTEST_REENABLE_WUNKNOWN_ARGUMENT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNKNOWN_ARGUMENT_
@@ -2390,7 +2390,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WSTRING_CONVERSION_                                    \
-  EZTEST_DISABLE_WARNING_("-Wstring-conversion")
+     EZTEST_DISABLE_WARNING_("-Wstring-conversion")
 # define EZTEST_REENABLE_WSTRING_CONVERSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSTRING_CONVERSION_
@@ -2398,7 +2398,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WREQUIRES_SUPER_ATTRIBUTE_                             \
-  EZTEST_DISABLE_WARNING_("-Wrequires-super-attribute")
+     EZTEST_DISABLE_WARNING_("-Wrequires-super-attribute")
 # define EZTEST_REENABLE_WREQUIRES_SUPER_ATTRIBUTE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WREQUIRES_SUPER_ATTRIBUTE_
@@ -2406,7 +2406,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WANALYZER_INCOMPATIBLE_PLUGIN_                         \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-incompatible-plugin")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-incompatible-plugin")
 # define EZTEST_REENABLE_WANALYZER_INCOMPATIBLE_PLUGIN_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_INCOMPATIBLE_PLUGIN_
@@ -2414,7 +2414,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCXX11_NARROWING_                                      \
-  EZTEST_DISABLE_WARNING_("-Wc++11-narrowing")
+     EZTEST_DISABLE_WARNING_("-Wc++11-narrowing")
 # define EZTEST_REENABLE_WCXX11_NARROWING_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX11_NARROWING_
@@ -2422,16 +2422,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WGNU_FLEXIBLE_ARRAY_INITIALIZER_                       \
-  EZTEST_DISABLE_WARNING_("-Wgnu-flexible-array-initializer")
+     EZTEST_DISABLE_WARNING_("-Wgnu-flexible-array-initializer")
 # define EZTEST_REENABLE_WGNU_FLEXIBLE_ARRAY_INITIALIZER_                      \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_FLEXIBLE_ARRAY_INITIALIZER_
 # define EZTEST_REENABLE_WGNU_FLEXIBLE_ARRAY_INITIALIZER_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCXX11_COMPAT_PEDANTIC_                                \
-  EZTEST_DISABLE_WARNING_("-Wc++11-compat-pedantic")
+     EZTEST_DISABLE_WARNING_("-Wc++11-compat-pedantic")
 # define EZTEST_REENABLE_WCXX11_COMPAT_PEDANTIC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX11_COMPAT_PEDANTIC_
@@ -2439,7 +2439,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WVOLATILE_REGISTER_VAR_                                \
-  EZTEST_DISABLE_WARNING_("-Wvolatile-register-var")
+     EZTEST_DISABLE_WARNING_("-Wvolatile-register-var")
 # define EZTEST_REENABLE_WVOLATILE_REGISTER_VAR_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WVOLATILE_REGISTER_VAR_
@@ -2447,7 +2447,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCONSTANT_CONVERSION_                                  \
-  EZTEST_DISABLE_WARNING_("-Wconstant-conversion")
+     EZTEST_DISABLE_WARNING_("-Wconstant-conversion")
 # define EZTEST_REENABLE_WCONSTANT_CONVERSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCONSTANT_CONVERSION_
@@ -2455,16 +2455,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOBJC_PROPERTY_MATCHES_COCOA_OWNERSHIP_RULE_           \
-  EZTEST_DISABLE_WARNING_("-Wobjc-property-matches-cocoa-ownership-rule")
+     EZTEST_DISABLE_WARNING_("-Wobjc-property-matches-cocoa-ownership-rule")
 # define EZTEST_REENABLE_WOBJC_PROPERTY_MATCHES_COCOA_OWNERSHIP_RULE_          \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_PROPERTY_MATCHES_COCOA_OWNERSHIP_RULE_
 # define EZTEST_REENABLE_WOBJC_PROPERTY_MATCHES_COCOA_OWNERSHIP_RULE_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WVLA_EXTENSION_                                        \
-  EZTEST_DISABLE_WARNING_("-Wvla-extension")
+     EZTEST_DISABLE_WARNING_("-Wvla-extension")
 # define EZTEST_REENABLE_WVLA_EXTENSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WVLA_EXTENSION_
@@ -2479,7 +2479,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WVOID_PTR_DEREFERENCE_                                 \
-  EZTEST_DISABLE_WARNING_("-Wvoid-ptr-dereference")
+     EZTEST_DISABLE_WARNING_("-Wvoid-ptr-dereference")
 # define EZTEST_REENABLE_WVOID_PTR_DEREFERENCE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WVOID_PTR_DEREFERENCE_
@@ -2494,28 +2494,28 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOBJC_PROPERTY_IMPLICIT_MISMATCH_                      \
-  EZTEST_DISABLE_WARNING_("-Wobjc-property-implicit-mismatch")
+     EZTEST_DISABLE_WARNING_("-Wobjc-property-implicit-mismatch")
 # define EZTEST_REENABLE_WOBJC_PROPERTY_IMPLICIT_MISMATCH_                     \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_PROPERTY_IMPLICIT_MISMATCH_
 # define EZTEST_REENABLE_WOBJC_PROPERTY_IMPLICIT_MISMATCH_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDEPRECATED_OBJC_POINTER_INTROSPECTION_PERFORMSELECTOR_ \
-  EZTEST_DISABLE_WARNING_(                                                      \
-      "-Wdeprecated-objc-pointer-introspection-performSelector")
+     EZTEST_DISABLE_WARNING_(                                                   \
+         "-Wdeprecated-objc-pointer-introspection-performSelector")
 # define EZTEST_REENABLE_WDEPRECATED_OBJC_POINTER_INTROSPECTION_PERFORMSELECTOR_ \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_OBJC_POINTER_INTROSPECTION_PERFORMSELECTOR_
 # define EZTEST_REENABLE_WDEPRECATED_OBJC_POINTER_INTROSPECTION_PERFORMSELECTOR_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDEPRECATED_DYNAMIC_EXCEPTION_SPEC_                    \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-dynamic-exception-spec")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-dynamic-exception-spec")
 # define EZTEST_REENABLE_WDEPRECATED_DYNAMIC_EXCEPTION_SPEC_                   \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_DYNAMIC_EXCEPTION_SPEC_
 # define EZTEST_REENABLE_WDEPRECATED_DYNAMIC_EXCEPTION_SPEC_
@@ -2529,7 +2529,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOBJC_COCOA_API_                                       \
-  EZTEST_DISABLE_WARNING_("-Wobjc-cocoa-api")
+     EZTEST_DISABLE_WARNING_("-Wobjc-cocoa-api")
 # define EZTEST_REENABLE_WOBJC_COCOA_API_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_COCOA_API_
@@ -2537,7 +2537,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNUSED_COMMAND_LINE_ARGUMENT_                         \
-  EZTEST_DISABLE_WARNING_("-Wunused-command-line-argument")
+     EZTEST_DISABLE_WARNING_("-Wunused-command-line-argument")
 # define EZTEST_REENABLE_WUNUSED_COMMAND_LINE_ARGUMENT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNUSED_COMMAND_LINE_ARGUMENT_
@@ -2545,16 +2545,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDOCUMENTATION_DEPRECATED_SYNC_                        \
-  EZTEST_DISABLE_WARNING_("-Wdocumentation-deprecated-sync")
+     EZTEST_DISABLE_WARNING_("-Wdocumentation-deprecated-sync")
 # define EZTEST_REENABLE_WDOCUMENTATION_DEPRECATED_SYNC_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDOCUMENTATION_DEPRECATED_SYNC_
 # define EZTEST_REENABLE_WDOCUMENTATION_DEPRECATED_SYNC_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDELEGATING_CTOR_CYCLES_                               \
-  EZTEST_DISABLE_WARNING_("-Wdelegating-ctor-cycles")
+     EZTEST_DISABLE_WARNING_("-Wdelegating-ctor-cycles")
 # define EZTEST_REENABLE_WDELEGATING_CTOR_CYCLES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDELEGATING_CTOR_CYCLES_
@@ -2562,7 +2562,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDEPRECATED_WRITABLE_STRINGS_                          \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-writable-strings")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-writable-strings")
 # define EZTEST_REENABLE_WDEPRECATED_WRITABLE_STRINGS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_WRITABLE_STRINGS_
@@ -2570,7 +2570,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 7, 1))
 # define EZTEST_DISABLE_WUNUSED_LOCAL_TYPEDEFS_                                \
-  EZTEST_DISABLE_WARNING_("-Wunused-local-typedefs")
+     EZTEST_DISABLE_WARNING_("-Wunused-local-typedefs")
 # define EZTEST_REENABLE_WUNUSED_LOCAL_TYPEDEFS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNUSED_LOCAL_TYPEDEFS_
@@ -2578,7 +2578,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WEMBEDDED_DIRECTIVE_                                   \
-  EZTEST_DISABLE_WARNING_("-Wembedded-directive")
+     EZTEST_DISABLE_WARNING_("-Wembedded-directive")
 # define EZTEST_REENABLE_WEMBEDDED_DIRECTIVE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WEMBEDDED_DIRECTIVE_
@@ -2586,7 +2586,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WGNU_EMPTY_INITIALIZER_                                \
-  EZTEST_DISABLE_WARNING_("-Wgnu-empty-initializer")
+     EZTEST_DISABLE_WARNING_("-Wgnu-empty-initializer")
 # define EZTEST_REENABLE_WGNU_EMPTY_INITIALIZER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_EMPTY_INITIALIZER_
@@ -2594,7 +2594,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WHEADER_HYGIENE_                                       \
-  EZTEST_DISABLE_WARNING_("-Wheader-hygiene")
+     EZTEST_DISABLE_WARNING_("-Wheader-hygiene")
 # define EZTEST_REENABLE_WHEADER_HYGIENE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WHEADER_HYGIENE_
@@ -2609,7 +2609,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WINT_CONVERSIONS_                                      \
-  EZTEST_DISABLE_WARNING_("-Wint-conversions")
+     EZTEST_DISABLE_WARNING_("-Wint-conversions")
 # define EZTEST_REENABLE_WINT_CONVERSIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINT_CONVERSIONS_
@@ -2617,7 +2617,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WSERIALIZED_DIAGNOSTICS_                               \
-  EZTEST_DISABLE_WARNING_("-Wserialized-diagnostics")
+     EZTEST_DISABLE_WARNING_("-Wserialized-diagnostics")
 # define EZTEST_REENABLE_WSERIALIZED_DIAGNOSTICS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSERIALIZED_DIAGNOSTICS_
@@ -2632,7 +2632,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WPOINTER_BOOL_CONVERSION_                              \
-  EZTEST_DISABLE_WARNING_("-Wpointer-bool-conversion")
+     EZTEST_DISABLE_WARNING_("-Wpointer-bool-conversion")
 # define EZTEST_REENABLE_WPOINTER_BOOL_CONVERSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPOINTER_BOOL_CONVERSION_
@@ -2640,7 +2640,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMAX_UNSIGNED_ZERO_                                    \
-  EZTEST_DISABLE_WARNING_("-Wmax-unsigned-zero")
+     EZTEST_DISABLE_WARNING_("-Wmax-unsigned-zero")
 # define EZTEST_REENABLE_WMAX_UNSIGNED_ZERO_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMAX_UNSIGNED_ZERO_
@@ -2648,7 +2648,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WNON_LITERAL_NULL_CONVERSION_                          \
-  EZTEST_DISABLE_WARNING_("-Wnon-literal-null-conversion")
+     EZTEST_DISABLE_WARNING_("-Wnon-literal-null-conversion")
 # define EZTEST_REENABLE_WNON_LITERAL_NULL_CONVERSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNON_LITERAL_NULL_CONVERSION_
@@ -2656,7 +2656,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WSTATIC_IN_INLINE_                                     \
-  EZTEST_DISABLE_WARNING_("-Wstatic-in-inline")
+     EZTEST_DISABLE_WARNING_("-Wstatic-in-inline")
 # define EZTEST_REENABLE_WSTATIC_IN_INLINE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSTATIC_IN_INLINE_
@@ -2664,7 +2664,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(7, 1, 0))
 # define EZTEST_DISABLE_WDANGLING_ELSE_                                        \
-  EZTEST_DISABLE_WARNING_("-Wdangling-else")
+     EZTEST_DISABLE_WARNING_("-Wdangling-else")
 # define EZTEST_REENABLE_WDANGLING_ELSE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDANGLING_ELSE_
@@ -2672,9 +2672,9 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCXX98_CXX11_CXX14_COMPAT_PEDANTIC_                    \
-  EZTEST_DISABLE_WARNING_("-Wc++98-c++11-c++14-compat-pedantic")
+     EZTEST_DISABLE_WARNING_("-Wc++98-c++11-c++14-compat-pedantic")
 # define EZTEST_REENABLE_WCXX98_CXX11_CXX14_COMPAT_PEDANTIC_                   \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX98_CXX11_CXX14_COMPAT_PEDANTIC_
 # define EZTEST_REENABLE_WCXX98_CXX11_CXX14_COMPAT_PEDANTIC_
@@ -2688,7 +2688,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WGNU_ALIGNOF_EXPRESSION_                               \
-  EZTEST_DISABLE_WARNING_("-Wgnu-alignof-expression")
+     EZTEST_DISABLE_WARNING_("-Wgnu-alignof-expression")
 # define EZTEST_REENABLE_WGNU_ALIGNOF_EXPRESSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_ALIGNOF_EXPRESSION_
@@ -2696,7 +2696,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WINVALID_TOKEN_PASTE_                                  \
-  EZTEST_DISABLE_WARNING_("-Winvalid-token-paste")
+     EZTEST_DISABLE_WARNING_("-Winvalid-token-paste")
 # define EZTEST_REENABLE_WINVALID_TOKEN_PASTE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINVALID_TOKEN_PASTE_
@@ -2704,7 +2704,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(5, 1, 0))
 # define EZTEST_DISABLE_WLOGICAL_NOT_PARENTHESES_                              \
-  EZTEST_DISABLE_WARNING_("-Wlogical-not-parentheses")
+     EZTEST_DISABLE_WARNING_("-Wlogical-not-parentheses")
 # define EZTEST_REENABLE_WLOGICAL_NOT_PARENTHESES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WLOGICAL_NOT_PARENTHESES_
@@ -2712,7 +2712,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WCHAR_SUBSCRIPTS_                                      \
-  EZTEST_DISABLE_WARNING_("-Wchar-subscripts")
+     EZTEST_DISABLE_WARNING_("-Wchar-subscripts")
 # define EZTEST_REENABLE_WCHAR_SUBSCRIPTS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCHAR_SUBSCRIPTS_
@@ -2720,16 +2720,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WPOTENTIALLY_EVALUATED_EXPRESSION_                     \
-  EZTEST_DISABLE_WARNING_("-Wpotentially-evaluated-expression")
+     EZTEST_DISABLE_WARNING_("-Wpotentially-evaluated-expression")
 # define EZTEST_REENABLE_WPOTENTIALLY_EVALUATED_EXPRESSION_                    \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPOTENTIALLY_EVALUATED_EXPRESSION_
 # define EZTEST_REENABLE_WPOTENTIALLY_EVALUATED_EXPRESSION_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNDEFINED_BOOL_CONVERSION_                            \
-  EZTEST_DISABLE_WARNING_("-Wundefined-bool-conversion")
+     EZTEST_DISABLE_WARNING_("-Wundefined-bool-conversion")
 # define EZTEST_REENABLE_WUNDEFINED_BOOL_CONVERSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNDEFINED_BOOL_CONVERSION_
@@ -2737,7 +2737,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(9, 1, 0))
 # define EZTEST_DISABLE_WADDRESS_OF_PACKED_MEMBER_                             \
-  EZTEST_DISABLE_WARNING_("-Waddress-of-packed-member")
+     EZTEST_DISABLE_WARNING_("-Waddress-of-packed-member")
 # define EZTEST_REENABLE_WADDRESS_OF_PACKED_MEMBER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WADDRESS_OF_PACKED_MEMBER_
@@ -2745,7 +2745,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WEMPTY_TRANSLATION_UNIT_                               \
-  EZTEST_DISABLE_WARNING_("-Wempty-translation-unit")
+     EZTEST_DISABLE_WARNING_("-Wempty-translation-unit")
 # define EZTEST_REENABLE_WEMPTY_TRANSLATION_UNIT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WEMPTY_TRANSLATION_UNIT_
@@ -2753,9 +2753,9 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMODULES_IMPORT_NESTED_REDUNDANT_                      \
-  EZTEST_DISABLE_WARNING_("-Wmodules-import-nested-redundant")
+     EZTEST_DISABLE_WARNING_("-Wmodules-import-nested-redundant")
 # define EZTEST_REENABLE_WMODULES_IMPORT_NESTED_REDUNDANT_                     \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMODULES_IMPORT_NESTED_REDUNDANT_
 # define EZTEST_REENABLE_WMODULES_IMPORT_NESTED_REDUNDANT_
@@ -2783,7 +2783,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WARC_PERFORMSELECTOR_LEAKS_                            \
-  EZTEST_DISABLE_WARNING_("-Warc-performSelector-leaks")
+     EZTEST_DISABLE_WARNING_("-Warc-performSelector-leaks")
 # define EZTEST_REENABLE_WARC_PERFORMSELECTOR_LEAKS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WARC_PERFORMSELECTOR_LEAKS_
@@ -2791,7 +2791,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WREDECLARED_CLASS_MEMBER_                              \
-  EZTEST_DISABLE_WARNING_("-Wredeclared-class-member")
+     EZTEST_DISABLE_WARNING_("-Wredeclared-class-member")
 # define EZTEST_REENABLE_WREDECLARED_CLASS_MEMBER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WREDECLARED_CLASS_MEMBER_
@@ -2799,7 +2799,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDANGLING_INITIALIZER_LIST_                            \
-  EZTEST_DISABLE_WARNING_("-Wdangling-initializer-list")
+     EZTEST_DISABLE_WARNING_("-Wdangling-initializer-list")
 # define EZTEST_REENABLE_WDANGLING_INITIALIZER_LIST_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDANGLING_INITIALIZER_LIST_
@@ -2807,9 +2807,9 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOBJC_FORWARD_CLASS_REDEFINITION_                      \
-  EZTEST_DISABLE_WARNING_("-Wobjc-forward-class-redefinition")
+     EZTEST_DISABLE_WARNING_("-Wobjc-forward-class-redefinition")
 # define EZTEST_REENABLE_WOBJC_FORWARD_CLASS_REDEFINITION_                     \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_FORWARD_CLASS_REDEFINITION_
 # define EZTEST_REENABLE_WOBJC_FORWARD_CLASS_REDEFINITION_
@@ -2823,7 +2823,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMISSING_SELECTOR_NAME_                                \
-  EZTEST_DISABLE_WARNING_("-Wmissing-selector-name")
+     EZTEST_DISABLE_WARNING_("-Wmissing-selector-name")
 # define EZTEST_REENABLE_WMISSING_SELECTOR_NAME_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMISSING_SELECTOR_NAME_
@@ -2831,7 +2831,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(12, 1, 0))
 # define EZTEST_DISABLE_WINFINITE_RECURSION_                                   \
-  EZTEST_DISABLE_WARNING_("-Winfinite-recursion")
+     EZTEST_DISABLE_WARNING_("-Winfinite-recursion")
 # define EZTEST_REENABLE_WINFINITE_RECURSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINFINITE_RECURSION_
@@ -2839,7 +2839,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WNULLABILITY_COMPLETENESS_                             \
-  EZTEST_DISABLE_WARNING_("-Wnullability-completeness")
+     EZTEST_DISABLE_WARNING_("-Wnullability-completeness")
 # define EZTEST_REENABLE_WNULLABILITY_COMPLETENESS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNULLABILITY_COMPLETENESS_
@@ -2847,7 +2847,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WFLOAT_OVERFLOW_CONVERSION_                            \
-  EZTEST_DISABLE_WARNING_("-Wfloat-overflow-conversion")
+     EZTEST_DISABLE_WARNING_("-Wfloat-overflow-conversion")
 # define EZTEST_REENABLE_WFLOAT_OVERFLOW_CONVERSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFLOAT_OVERFLOW_CONVERSION_
@@ -2855,7 +2855,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WGNU_UNION_CAST_                                       \
-  EZTEST_DISABLE_WARNING_("-Wgnu-union-cast")
+     EZTEST_DISABLE_WARNING_("-Wgnu-union-cast")
 # define EZTEST_REENABLE_WGNU_UNION_CAST_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_UNION_CAST_
@@ -2863,7 +2863,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WINVALID_NORETURN_                                     \
-  EZTEST_DISABLE_WARNING_("-Winvalid-noreturn")
+     EZTEST_DISABLE_WARNING_("-Winvalid-noreturn")
 # define EZTEST_REENABLE_WINVALID_NORETURN_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINVALID_NORETURN_
@@ -2871,7 +2871,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WSTRICT_ALIASING_                                      \
-  EZTEST_DISABLE_WARNING_("-Wstrict-aliasing")
+     EZTEST_DISABLE_WARNING_("-Wstrict-aliasing")
 # define EZTEST_REENABLE_WSTRICT_ALIASING_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSTRICT_ALIASING_
@@ -2879,7 +2879,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WDEPRECATED_DECLARATIONS_                              \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-declarations")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-declarations")
 # define EZTEST_REENABLE_WDEPRECATED_DECLARATIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_DECLARATIONS_
@@ -2887,7 +2887,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WWRITE_STRINGS_                                        \
-  EZTEST_DISABLE_WARNING_("-Wwrite-strings")
+     EZTEST_DISABLE_WARNING_("-Wwrite-strings")
 # define EZTEST_REENABLE_WWRITE_STRINGS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WWRITE_STRINGS_
@@ -2895,7 +2895,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCLASS_VARARGS_                                        \
-  EZTEST_DISABLE_WARNING_("-Wclass-varargs")
+     EZTEST_DISABLE_WARNING_("-Wclass-varargs")
 # define EZTEST_REENABLE_WCLASS_VARARGS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCLASS_VARARGS_
@@ -2910,7 +2910,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WUNKNOWN_PRAGMAS_                                      \
-  EZTEST_DISABLE_WARNING_("-Wunknown-pragmas")
+     EZTEST_DISABLE_WARNING_("-Wunknown-pragmas")
 # define EZTEST_REENABLE_WUNKNOWN_PRAGMAS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNKNOWN_PRAGMAS_
@@ -2918,7 +2918,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WINCOMPATIBLE_MS_STRUCT_                               \
-  EZTEST_DISABLE_WARNING_("-Wincompatible-ms-struct")
+     EZTEST_DISABLE_WARNING_("-Wincompatible-ms-struct")
 # define EZTEST_REENABLE_WINCOMPATIBLE_MS_STRUCT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINCOMPATIBLE_MS_STRUCT_
@@ -2926,16 +2926,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WGNU_ZERO_VARIADIC_MACRO_ARGUMENTS_                    \
-  EZTEST_DISABLE_WARNING_("-Wgnu-zero-variadic-macro-arguments")
+     EZTEST_DISABLE_WARNING_("-Wgnu-zero-variadic-macro-arguments")
 # define EZTEST_REENABLE_WGNU_ZERO_VARIADIC_MACRO_ARGUMENTS_                   \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_ZERO_VARIADIC_MACRO_ARGUMENTS_
 # define EZTEST_REENABLE_WGNU_ZERO_VARIADIC_MACRO_ARGUMENTS_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WSIZEOF_ARRAY_DECAY_                                   \
-  EZTEST_DISABLE_WARNING_("-Wsizeof-array-decay")
+     EZTEST_DISABLE_WARNING_("-Wsizeof-array-decay")
 # define EZTEST_REENABLE_WSIZEOF_ARRAY_DECAY_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSIZEOF_ARRAY_DECAY_
@@ -2943,7 +2943,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_GOTO_                                       \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-goto")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-goto")
 # define EZTEST_REENABLE_WMICROSOFT_GOTO_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_GOTO_
@@ -2951,7 +2951,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WTYPEDEF_REDEFINITION_                                 \
-  EZTEST_DISABLE_WARNING_("-Wtypedef-redefinition")
+     EZTEST_DISABLE_WARNING_("-Wtypedef-redefinition")
 # define EZTEST_REENABLE_WTYPEDEF_REDEFINITION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WTYPEDEF_REDEFINITION_
@@ -2959,7 +2959,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCONFIG_MACROS_                                        \
-  EZTEST_DISABLE_WARNING_("-Wconfig-macros")
+     EZTEST_DISABLE_WARNING_("-Wconfig-macros")
 # define EZTEST_REENABLE_WCONFIG_MACROS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCONFIG_MACROS_
@@ -2967,7 +2967,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(6, 1, 0))
 # define EZTEST_DISABLE_WIGNORED_ATTRIBUTES_                                   \
-  EZTEST_DISABLE_WARNING_("-Wignored-attributes")
+     EZTEST_DISABLE_WARNING_("-Wignored-attributes")
 # define EZTEST_REENABLE_WIGNORED_ATTRIBUTES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WIGNORED_ATTRIBUTES_
@@ -2975,7 +2975,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_REDECLARE_STATIC_                           \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-redeclare-static")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-redeclare-static")
 # define EZTEST_REENABLE_WMICROSOFT_REDECLARE_STATIC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_REDECLARE_STATIC_
@@ -2983,7 +2983,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WGNU_FOLDING_CONSTANT_                                 \
-  EZTEST_DISABLE_WARNING_("-Wgnu-folding-constant")
+     EZTEST_DISABLE_WARNING_("-Wgnu-folding-constant")
 # define EZTEST_REENABLE_WGNU_FOLDING_CONSTANT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_FOLDING_CONSTANT_
@@ -2998,9 +2998,9 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WATTRIBUTE_PACKED_FOR_BITFIELD_                        \
-  EZTEST_DISABLE_WARNING_("-Wattribute-packed-for-bitfield")
+     EZTEST_DISABLE_WARNING_("-Wattribute-packed-for-bitfield")
 # define EZTEST_REENABLE_WATTRIBUTE_PACKED_FOR_BITFIELD_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WATTRIBUTE_PACKED_FOR_BITFIELD_
 # define EZTEST_REENABLE_WATTRIBUTE_PACKED_FOR_BITFIELD_
@@ -3008,7 +3008,7 @@
 #if ((EZTEST_HAS_GCC_VER_(4, 4, 7)) && EZTEST_C_LANG_) ||                      \
     (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 6, 4))
 # define EZTEST_DISABLE_WINT_TO_POINTER_CAST_                                  \
-  EZTEST_DISABLE_WARNING_("-Wint-to-pointer-cast")
+     EZTEST_DISABLE_WARNING_("-Wint-to-pointer-cast")
 # define EZTEST_REENABLE_WINT_TO_POINTER_CAST_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINT_TO_POINTER_CAST_
@@ -3016,7 +3016,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WADDRESS_OF_ARRAY_TEMPORARY_                           \
-  EZTEST_DISABLE_WARNING_("-Waddress-of-array-temporary")
+     EZTEST_DISABLE_WARNING_("-Waddress-of-array-temporary")
 # define EZTEST_REENABLE_WADDRESS_OF_ARRAY_TEMPORARY_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WADDRESS_OF_ARRAY_TEMPORARY_
@@ -3024,7 +3024,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WINLINE_NEW_DELETE_                                    \
-  EZTEST_DISABLE_WARNING_("-Winline-new-delete")
+     EZTEST_DISABLE_WARNING_("-Winline-new-delete")
 # define EZTEST_REENABLE_WINLINE_NEW_DELETE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINLINE_NEW_DELETE_
@@ -3033,7 +3033,7 @@
 #if ((EZTEST_HAS_GCC_VER_(4, 4, 7)) && EZTEST_C_LANG_) ||                      \
     (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 7, 1))
 # define EZTEST_DISABLE_WFORMAT_ZERO_LENGTH_                                   \
-  EZTEST_DISABLE_WARNING_("-Wformat-zero-length")
+     EZTEST_DISABLE_WARNING_("-Wformat-zero-length")
 # define EZTEST_REENABLE_WFORMAT_ZERO_LENGTH_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFORMAT_ZERO_LENGTH_
@@ -3041,7 +3041,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WVARIADIC_MACROS_                                      \
-  EZTEST_DISABLE_WARNING_("-Wvariadic-macros")
+     EZTEST_DISABLE_WARNING_("-Wvariadic-macros")
 # define EZTEST_REENABLE_WVARIADIC_MACROS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WVARIADIC_MACROS_
@@ -3063,7 +3063,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WARC_REPEATED_USE_OF_WEAK_                             \
-  EZTEST_DISABLE_WARNING_("-Warc-repeated-use-of-weak")
+     EZTEST_DISABLE_WARNING_("-Warc-repeated-use-of-weak")
 # define EZTEST_REENABLE_WARC_REPEATED_USE_OF_WEAK_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WARC_REPEATED_USE_OF_WEAK_
@@ -3071,7 +3071,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WIMPLICIT_ATOMIC_PROPERTIES_                           \
-  EZTEST_DISABLE_WARNING_("-Wimplicit-atomic-properties")
+     EZTEST_DISABLE_WARNING_("-Wimplicit-atomic-properties")
 # define EZTEST_REENABLE_WIMPLICIT_ATOMIC_PROPERTIES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WIMPLICIT_ATOMIC_PROPERTIES_
@@ -3079,7 +3079,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_CONST_INIT_                                 \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-const-init")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-const-init")
 # define EZTEST_REENABLE_WMICROSOFT_CONST_INIT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_CONST_INIT_
@@ -3087,7 +3087,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOBJC_MACRO_REDEFINITION_                              \
-  EZTEST_DISABLE_WARNING_("-Wobjc-macro-redefinition")
+     EZTEST_DISABLE_WARNING_("-Wobjc-macro-redefinition")
 # define EZTEST_REENABLE_WOBJC_MACRO_REDEFINITION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_MACRO_REDEFINITION_
@@ -3095,7 +3095,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WDISABLED_OPTIMIZATION_                                \
-  EZTEST_DISABLE_WARNING_("-Wdisabled-optimization")
+     EZTEST_DISABLE_WARNING_("-Wdisabled-optimization")
 # define EZTEST_REENABLE_WDISABLED_OPTIMIZATION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDISABLED_OPTIMIZATION_
@@ -3103,7 +3103,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WTHREAD_SAFETY_                                        \
-  EZTEST_DISABLE_WARNING_("-Wthread-safety")
+     EZTEST_DISABLE_WARNING_("-Wthread-safety")
 # define EZTEST_REENABLE_WTHREAD_SAFETY_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WTHREAD_SAFETY_
@@ -3111,7 +3111,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WWRITABLE_STRINGS_                                     \
-  EZTEST_DISABLE_WARNING_("-Wwritable-strings")
+     EZTEST_DISABLE_WARNING_("-Wwritable-strings")
 # define EZTEST_REENABLE_WWRITABLE_STRINGS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WWRITABLE_STRINGS_
@@ -3119,7 +3119,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WINVALID_PP_TOKEN_                                     \
-  EZTEST_DISABLE_WARNING_("-Winvalid-pp-token")
+     EZTEST_DISABLE_WARNING_("-Winvalid-pp-token")
 # define EZTEST_REENABLE_WINVALID_PP_TOKEN_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINVALID_PP_TOKEN_
@@ -3127,7 +3127,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WAGGREGATE_RETURN_                                     \
-  EZTEST_DISABLE_WARNING_("-Waggregate-return")
+     EZTEST_DISABLE_WARNING_("-Waggregate-return")
 # define EZTEST_REENABLE_WAGGREGATE_RETURN_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WAGGREGATE_RETURN_
@@ -3135,7 +3135,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOBJC_STRING_CONCATENATION_                            \
-  EZTEST_DISABLE_WARNING_("-Wobjc-string-concatenation")
+     EZTEST_DISABLE_WARNING_("-Wobjc-string-concatenation")
 # define EZTEST_REENABLE_WOBJC_STRING_CONCATENATION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_STRING_CONCATENATION_
@@ -3150,7 +3150,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMALFORMED_WARNING_CHECK_                              \
-  EZTEST_DISABLE_WARNING_("-Wmalformed-warning-check")
+     EZTEST_DISABLE_WARNING_("-Wmalformed-warning-check")
 # define EZTEST_REENABLE_WMALFORMED_WARNING_CHECK_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMALFORMED_WARNING_CHECK_
@@ -3158,7 +3158,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_CHARIZE_                                    \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-charize")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-charize")
 # define EZTEST_REENABLE_WMICROSOFT_CHARIZE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_CHARIZE_
@@ -3166,7 +3166,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNUSED_VOLATILE_LVALUE_                               \
-  EZTEST_DISABLE_WARNING_("-Wunused-volatile-lvalue")
+     EZTEST_DISABLE_WARNING_("-Wunused-volatile-lvalue")
 # define EZTEST_REENABLE_WUNUSED_VOLATILE_LVALUE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNUSED_VOLATILE_LVALUE_
@@ -3174,9 +3174,9 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WPRAGMA_SYSTEM_HEADER_OUTSIDE_HEADER_                  \
-  EZTEST_DISABLE_WARNING_("-Wpragma-system-header-outside-header")
+     EZTEST_DISABLE_WARNING_("-Wpragma-system-header-outside-header")
 # define EZTEST_REENABLE_WPRAGMA_SYSTEM_HEADER_OUTSIDE_HEADER_                 \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPRAGMA_SYSTEM_HEADER_OUTSIDE_HEADER_
 # define EZTEST_REENABLE_WPRAGMA_SYSTEM_HEADER_OUTSIDE_HEADER_
@@ -3190,7 +3190,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDISTRIBUTED_OBJECT_MODIFIERS_                         \
-  EZTEST_DISABLE_WARNING_("-Wdistributed-object-modifiers")
+     EZTEST_DISABLE_WARNING_("-Wdistributed-object-modifiers")
 # define EZTEST_REENABLE_WDISTRIBUTED_OBJECT_MODIFIERS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDISTRIBUTED_OBJECT_MODIFIERS_
@@ -3198,7 +3198,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WADDRESS_OF_TEMPORARY_                                 \
-  EZTEST_DISABLE_WARNING_("-Waddress-of-temporary")
+     EZTEST_DISABLE_WARNING_("-Waddress-of-temporary")
 # define EZTEST_REENABLE_WADDRESS_OF_TEMPORARY_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WADDRESS_OF_TEMPORARY_
@@ -3206,7 +3206,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNKNOWN_ATTRIBUTES_                                   \
-  EZTEST_DISABLE_WARNING_("-Wunknown-attributes")
+     EZTEST_DISABLE_WARNING_("-Wunknown-attributes")
 # define EZTEST_REENABLE_WUNKNOWN_ATTRIBUTES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNKNOWN_ATTRIBUTES_
@@ -3214,7 +3214,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WREINTERPRET_BASE_CLASS_                               \
-  EZTEST_DISABLE_WARNING_("-Wreinterpret-base-class")
+     EZTEST_DISABLE_WARNING_("-Wreinterpret-base-class")
 # define EZTEST_REENABLE_WREINTERPRET_BASE_CLASS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WREINTERPRET_BASE_CLASS_
@@ -3229,25 +3229,25 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_EXPLICIT_CONSTRUCTOR_CALL_                  \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-explicit-constructor-call")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-explicit-constructor-call")
 # define EZTEST_REENABLE_WMICROSOFT_EXPLICIT_CONSTRUCTOR_CALL_                 \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_EXPLICIT_CONSTRUCTOR_CALL_
 # define EZTEST_REENABLE_WMICROSOFT_EXPLICIT_CONSTRUCTOR_CALL_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_ENUM_FORWARD_REFERENCE_                     \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-enum-forward-reference")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-enum-forward-reference")
 # define EZTEST_REENABLE_WMICROSOFT_ENUM_FORWARD_REFERENCE_                    \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_ENUM_FORWARD_REFERENCE_
 # define EZTEST_REENABLE_WMICROSOFT_ENUM_FORWARD_REFERENCE_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 6, 4))
 # define EZTEST_DISABLE_WDOUBLE_PROMOTION_                                     \
-  EZTEST_DISABLE_WARNING_("-Wdouble-promotion")
+     EZTEST_DISABLE_WARNING_("-Wdouble-promotion")
 # define EZTEST_REENABLE_WDOUBLE_PROMOTION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDOUBLE_PROMOTION_
@@ -3255,7 +3255,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNREACHABLE_CODE_BREAK_                               \
-  EZTEST_DISABLE_WARNING_("-Wunreachable-code-break")
+     EZTEST_DISABLE_WARNING_("-Wunreachable-code-break")
 # define EZTEST_REENABLE_WUNREACHABLE_CODE_BREAK_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNREACHABLE_CODE_BREAK_
@@ -3263,7 +3263,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WTHREAD_SAFETY_PRECISE_                                \
-  EZTEST_DISABLE_WARNING_("-Wthread-safety-precise")
+     EZTEST_DISABLE_WARNING_("-Wthread-safety-precise")
 # define EZTEST_REENABLE_WTHREAD_SAFETY_PRECISE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WTHREAD_SAFETY_PRECISE_
@@ -3271,7 +3271,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_MUTABLE_REFERENCE_                          \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-mutable-reference")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-mutable-reference")
 # define EZTEST_REENABLE_WMICROSOFT_MUTABLE_REFERENCE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_MUTABLE_REFERENCE_
@@ -3279,7 +3279,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WTHREAD_SAFETY_VERBOSE_                                \
-  EZTEST_DISABLE_WARNING_("-Wthread-safety-verbose")
+     EZTEST_DISABLE_WARNING_("-Wthread-safety-verbose")
 # define EZTEST_REENABLE_WTHREAD_SAFETY_VERBOSE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WTHREAD_SAFETY_VERBOSE_
@@ -3287,7 +3287,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMISSING_METHOD_RETURN_TYPE_                           \
-  EZTEST_DISABLE_WARNING_("-Wmissing-method-return-type")
+     EZTEST_DISABLE_WARNING_("-Wmissing-method-return-type")
 # define EZTEST_REENABLE_WMISSING_METHOD_RETURN_TYPE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMISSING_METHOD_RETURN_TYPE_
@@ -3295,7 +3295,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMACRO_REDEFINED_                                      \
-  EZTEST_DISABLE_WARNING_("-Wmacro-redefined")
+     EZTEST_DISABLE_WARNING_("-Wmacro-redefined")
 # define EZTEST_REENABLE_WMACRO_REDEFINED_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMACRO_REDEFINED_
@@ -3303,7 +3303,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOBJC_PROPERTY_NO_ATTRIBUTE_                           \
-  EZTEST_DISABLE_WARNING_("-Wobjc-property-no-attribute")
+     EZTEST_DISABLE_WARNING_("-Wobjc-property-no-attribute")
 # define EZTEST_REENABLE_WOBJC_PROPERTY_NO_ATTRIBUTE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_PROPERTY_NO_ATTRIBUTE_
@@ -3311,7 +3311,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WUNINITIALIZED_                                        \
-  EZTEST_DISABLE_WARNING_("-Wuninitialized")
+     EZTEST_DISABLE_WARNING_("-Wuninitialized")
 # define EZTEST_REENABLE_WUNINITIALIZED_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNINITIALIZED_
@@ -3319,7 +3319,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNNAMED_TYPE_TEMPLATE_ARGS_                           \
-  EZTEST_DISABLE_WARNING_("-Wunnamed-type-template-args")
+     EZTEST_DISABLE_WARNING_("-Wunnamed-type-template-args")
 # define EZTEST_REENABLE_WUNNAMED_TYPE_TEMPLATE_ARGS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNNAMED_TYPE_TEMPLATE_ARGS_
@@ -3334,16 +3334,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCXX98_COMPAT_UNNAMED_TYPE_TEMPLATE_ARGS_              \
-  EZTEST_DISABLE_WARNING_("-Wc++98-compat-unnamed-type-template-args")
+     EZTEST_DISABLE_WARNING_("-Wc++98-compat-unnamed-type-template-args")
 # define EZTEST_REENABLE_WCXX98_COMPAT_UNNAMED_TYPE_TEMPLATE_ARGS_             \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX98_COMPAT_UNNAMED_TYPE_TEMPLATE_ARGS_
 # define EZTEST_REENABLE_WCXX98_COMPAT_UNNAMED_TYPE_TEMPLATE_ARGS_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_VOID_PSEUDO_DTOR_                           \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-void-pseudo-dtor")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-void-pseudo-dtor")
 # define EZTEST_REENABLE_WMICROSOFT_VOID_PSEUDO_DTOR_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_VOID_PSEUDO_DTOR_
@@ -3351,7 +3351,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOBJC_NONUNIFIED_EXCEPTIONS_                           \
-  EZTEST_DISABLE_WARNING_("-Wobjc-nonunified-exceptions")
+     EZTEST_DISABLE_WARNING_("-Wobjc-nonunified-exceptions")
 # define EZTEST_REENABLE_WOBJC_NONUNIFIED_EXCEPTIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_NONUNIFIED_EXCEPTIONS_
@@ -3359,7 +3359,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WINCLUDE_NEXT_ABSOLUTE_PATH_                           \
-  EZTEST_DISABLE_WARNING_("-Winclude-next-absolute-path")
+     EZTEST_DISABLE_WARNING_("-Winclude-next-absolute-path")
 # define EZTEST_REENABLE_WINCLUDE_NEXT_ABSOLUTE_PATH_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINCLUDE_NEXT_ABSOLUTE_PATH_
@@ -3367,7 +3367,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WPCH_DATE_TIME_                                        \
-  EZTEST_DISABLE_WARNING_("-Wpch-date-time")
+     EZTEST_DISABLE_WARNING_("-Wpch-date-time")
 # define EZTEST_REENABLE_WPCH_DATE_TIME_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPCH_DATE_TIME_
@@ -3375,7 +3375,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNSUPPORTED_NAN_                                      \
-  EZTEST_DISABLE_WARNING_("-Wunsupported-nan")
+     EZTEST_DISABLE_WARNING_("-Wunsupported-nan")
 # define EZTEST_REENABLE_WUNSUPPORTED_NAN_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNSUPPORTED_NAN_
@@ -3397,7 +3397,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_EXISTS_                                     \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-exists")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-exists")
 # define EZTEST_REENABLE_WMICROSOFT_EXISTS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_EXISTS_
@@ -3405,7 +3405,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNDEFINED_REINTERPRET_CAST_                           \
-  EZTEST_DISABLE_WARNING_("-Wundefined-reinterpret-cast")
+     EZTEST_DISABLE_WARNING_("-Wundefined-reinterpret-cast")
 # define EZTEST_REENABLE_WUNDEFINED_REINTERPRET_CAST_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNDEFINED_REINTERPRET_CAST_
@@ -3413,7 +3413,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCONSTANT_LOGICAL_OPERAND_                             \
-  EZTEST_DISABLE_WARNING_("-Wconstant-logical-operand")
+     EZTEST_DISABLE_WARNING_("-Wconstant-logical-operand")
 # define EZTEST_REENABLE_WCONSTANT_LOGICAL_OPERAND_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCONSTANT_LOGICAL_OPERAND_
@@ -3421,7 +3421,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WATOMIC_PROPERTIES_                                    \
-  EZTEST_DISABLE_WARNING_("-Watomic-properties")
+     EZTEST_DISABLE_WARNING_("-Watomic-properties")
 # define EZTEST_REENABLE_WATOMIC_PROPERTIES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WATOMIC_PROPERTIES_
@@ -3429,7 +3429,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(5, 1, 0))
 # define EZTEST_DISABLE_WSHIFT_COUNT_NEGATIVE_                                 \
-  EZTEST_DISABLE_WARNING_("-Wshift-count-negative")
+     EZTEST_DISABLE_WARNING_("-Wshift-count-negative")
 # define EZTEST_REENABLE_WSHIFT_COUNT_NEGATIVE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSHIFT_COUNT_NEGATIVE_
@@ -3444,7 +3444,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(6, 1, 0))
 # define EZTEST_DISABLE_WSHIFT_OVERFLOW_                                       \
-  EZTEST_DISABLE_WARNING_("-Wshift-overflow")
+     EZTEST_DISABLE_WARNING_("-Wshift-overflow")
 # define EZTEST_REENABLE_WSHIFT_OVERFLOW_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSHIFT_OVERFLOW_
@@ -3452,7 +3452,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WQUALIFIED_VOID_RETURN_TYPE_                           \
-  EZTEST_DISABLE_WARNING_("-Wqualified-void-return-type")
+     EZTEST_DISABLE_WARNING_("-Wqualified-void-return-type")
 # define EZTEST_REENABLE_WQUALIFIED_VOID_RETURN_TYPE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WQUALIFIED_VOID_RETURN_TYPE_
@@ -3460,7 +3460,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDOCUMENTATION_HTML_                                   \
-  EZTEST_DISABLE_WARNING_("-Wdocumentation-html")
+     EZTEST_DISABLE_WARNING_("-Wdocumentation-html")
 # define EZTEST_REENABLE_WDOCUMENTATION_HTML_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDOCUMENTATION_HTML_
@@ -3468,7 +3468,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCXX11_INLINE_NAMESPACE_                               \
-  EZTEST_DISABLE_WARNING_("-Wc++11-inline-namespace")
+     EZTEST_DISABLE_WARNING_("-Wc++11-inline-namespace")
 # define EZTEST_REENABLE_WCXX11_INLINE_NAMESPACE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX11_INLINE_NAMESPACE_
@@ -3476,7 +3476,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WMISSING_DECLARATIONS_                                 \
-  EZTEST_DISABLE_WARNING_("-Wmissing-declarations")
+     EZTEST_DISABLE_WARNING_("-Wmissing-declarations")
 # define EZTEST_REENABLE_WMISSING_DECLARATIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMISSING_DECLARATIONS_
@@ -3484,7 +3484,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDEPRECATED_INCREMENT_BOOL_                            \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-increment-bool")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-increment-bool")
 # define EZTEST_REENABLE_WDEPRECATED_INCREMENT_BOOL_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_INCREMENT_BOOL_
@@ -3492,7 +3492,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WINCOMPLETE_UMBRELLA_                                  \
-  EZTEST_DISABLE_WARNING_("-Wincomplete-umbrella")
+     EZTEST_DISABLE_WARNING_("-Wincomplete-umbrella")
 # define EZTEST_REENABLE_WINCOMPLETE_UMBRELLA_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINCOMPLETE_UMBRELLA_
@@ -3500,7 +3500,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WSEQUENCE_POINT_                                       \
-  EZTEST_DISABLE_WARNING_("-Wsequence-point")
+     EZTEST_DISABLE_WARNING_("-Wsequence-point")
 # define EZTEST_REENABLE_WSEQUENCE_POINT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSEQUENCE_POINT_
@@ -3522,7 +3522,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOBJC_REDUNDANT_API_USE_                               \
-  EZTEST_DISABLE_WARNING_("-Wobjc-redundant-api-use")
+     EZTEST_DISABLE_WARNING_("-Wobjc-redundant-api-use")
 # define EZTEST_REENABLE_WOBJC_REDUNDANT_API_USE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_REDUNDANT_API_USE_
@@ -3530,7 +3530,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WFORMAT_NONLITERAL_                                    \
-  EZTEST_DISABLE_WARNING_("-Wformat-nonliteral")
+     EZTEST_DISABLE_WARNING_("-Wformat-nonliteral")
 # define EZTEST_REENABLE_WFORMAT_NONLITERAL_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFORMAT_NONLITERAL_
@@ -3538,7 +3538,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDLLIMPORT_STATIC_FIELD_DEF_                           \
-  EZTEST_DISABLE_WARNING_("-Wdllimport-static-field-def")
+     EZTEST_DISABLE_WARNING_("-Wdllimport-static-field-def")
 # define EZTEST_REENABLE_WDLLIMPORT_STATIC_FIELD_DEF_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDLLIMPORT_STATIC_FIELD_DEF_
@@ -3546,7 +3546,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMISSING_SYSROOT_                                      \
-  EZTEST_DISABLE_WARNING_("-Wmissing-sysroot")
+     EZTEST_DISABLE_WARNING_("-Wmissing-sysroot")
 # define EZTEST_REENABLE_WMISSING_SYSROOT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMISSING_SYSROOT_
@@ -3554,7 +3554,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNDEFINED_VAR_TEMPLATE_                               \
-  EZTEST_DISABLE_WARNING_("-Wundefined-var-template")
+     EZTEST_DISABLE_WARNING_("-Wundefined-var-template")
 # define EZTEST_REENABLE_WUNDEFINED_VAR_TEMPLATE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNDEFINED_VAR_TEMPLATE_
@@ -3562,7 +3562,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDISABLED_MACRO_EXPANSION_                             \
-  EZTEST_DISABLE_WARNING_("-Wdisabled-macro-expansion")
+     EZTEST_DISABLE_WARNING_("-Wdisabled-macro-expansion")
 # define EZTEST_REENABLE_WDISABLED_MACRO_EXPANSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDISABLED_MACRO_EXPANSION_
@@ -3570,7 +3570,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDUPLICATE_METHOD_MATCH_                               \
-  EZTEST_DISABLE_WARNING_("-Wduplicate-method-match")
+     EZTEST_DISABLE_WARNING_("-Wduplicate-method-match")
 # define EZTEST_REENABLE_WDUPLICATE_METHOD_MATCH_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDUPLICATE_METHOD_MATCH_
@@ -3578,7 +3578,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WRECEIVER_FORWARD_CLASS_                               \
-  EZTEST_DISABLE_WARNING_("-Wreceiver-forward-class")
+     EZTEST_DISABLE_WARNING_("-Wreceiver-forward-class")
 # define EZTEST_REENABLE_WRECEIVER_FORWARD_CLASS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WRECEIVER_FORWARD_CLASS_
@@ -3586,7 +3586,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WUNUSED_MACROS_                                        \
-  EZTEST_DISABLE_WARNING_("-Wunused-macros")
+     EZTEST_DISABLE_WARNING_("-Wunused-macros")
 # define EZTEST_REENABLE_WUNUSED_MACROS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNUSED_MACROS_
@@ -3594,7 +3594,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WBACKEND_PLUGIN_                                       \
-  EZTEST_DISABLE_WARNING_("-Wbackend-plugin")
+     EZTEST_DISABLE_WARNING_("-Wbackend-plugin")
 # define EZTEST_REENABLE_WBACKEND_PLUGIN_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WBACKEND_PLUGIN_
@@ -3616,9 +3616,9 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCXX98_COMPAT_LOCAL_TYPE_TEMPLATE_ARGS_                \
-  EZTEST_DISABLE_WARNING_("-Wc++98-compat-local-type-template-args")
+     EZTEST_DISABLE_WARNING_("-Wc++98-compat-local-type-template-args")
 # define EZTEST_REENABLE_WCXX98_COMPAT_LOCAL_TYPE_TEMPLATE_ARGS_               \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX98_COMPAT_LOCAL_TYPE_TEMPLATE_ARGS_
 # define EZTEST_REENABLE_WCXX98_COMPAT_LOCAL_TYPE_TEMPLATE_ARGS_
@@ -3632,7 +3632,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNUSED_MEMBER_FUNCTION_                               \
-  EZTEST_DISABLE_WARNING_("-Wunused-member-function")
+     EZTEST_DISABLE_WARNING_("-Wunused-member-function")
 # define EZTEST_REENABLE_WUNUSED_MEMBER_FUNCTION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNUSED_MEMBER_FUNCTION_
@@ -3640,7 +3640,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WEXTERN_C_COMPAT_                                      \
-  EZTEST_DISABLE_WARNING_("-Wextern-c-compat")
+     EZTEST_DISABLE_WARNING_("-Wextern-c-compat")
 # define EZTEST_REENABLE_WEXTERN_C_COMPAT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WEXTERN_C_COMPAT_
@@ -3648,7 +3648,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WBUILTIN_MACRO_REDEFINED_                              \
-  EZTEST_DISABLE_WARNING_("-Wbuiltin-macro-redefined")
+     EZTEST_DISABLE_WARNING_("-Wbuiltin-macro-redefined")
 # define EZTEST_REENABLE_WBUILTIN_MACRO_REDEFINED_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WBUILTIN_MACRO_REDEFINED_
@@ -3656,7 +3656,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNABLE_TO_OPEN_STATS_FILE_                            \
-  EZTEST_DISABLE_WARNING_("-Wunable-to-open-stats-file")
+     EZTEST_DISABLE_WARNING_("-Wunable-to-open-stats-file")
 # define EZTEST_REENABLE_WUNABLE_TO_OPEN_STATS_FILE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNABLE_TO_OPEN_STATS_FILE_
@@ -3671,16 +3671,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNREACHABLE_CODE_LOOP_INCREMENT_                      \
-  EZTEST_DISABLE_WARNING_("-Wunreachable-code-loop-increment")
+     EZTEST_DISABLE_WARNING_("-Wunreachable-code-loop-increment")
 # define EZTEST_REENABLE_WUNREACHABLE_CODE_LOOP_INCREMENT_                     \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNREACHABLE_CODE_LOOP_INCREMENT_
 # define EZTEST_REENABLE_WUNREACHABLE_CODE_LOOP_INCREMENT_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WC99_EXTENSIONS_                                       \
-  EZTEST_DISABLE_WARNING_("-Wc99-extensions")
+     EZTEST_DISABLE_WARNING_("-Wc99-extensions")
 # define EZTEST_REENABLE_WC99_EXTENSIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WC99_EXTENSIONS_
@@ -3695,7 +3695,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WIMPLICIT_RETAIN_SELF_                                 \
-  EZTEST_DISABLE_WARNING_("-Wimplicit-retain-self")
+     EZTEST_DISABLE_WARNING_("-Wimplicit-retain-self")
 # define EZTEST_REENABLE_WIMPLICIT_RETAIN_SELF_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WIMPLICIT_RETAIN_SELF_
@@ -3703,7 +3703,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WRANGE_LOOP_ANALYSIS_                                  \
-  EZTEST_DISABLE_WARNING_("-Wrange-loop-analysis")
+     EZTEST_DISABLE_WARNING_("-Wrange-loop-analysis")
 # define EZTEST_REENABLE_WRANGE_LOOP_ANALYSIS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WRANGE_LOOP_ANALYSIS_
@@ -3711,16 +3711,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WGNU_FLEXIBLE_ARRAY_UNION_MEMBER_                      \
-  EZTEST_DISABLE_WARNING_("-Wgnu-flexible-array-union-member")
+     EZTEST_DISABLE_WARNING_("-Wgnu-flexible-array-union-member")
 # define EZTEST_REENABLE_WGNU_FLEXIBLE_ARRAY_UNION_MEMBER_                     \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_FLEXIBLE_ARRAY_UNION_MEMBER_
 # define EZTEST_REENABLE_WGNU_FLEXIBLE_ARRAY_UNION_MEMBER_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNSUPPORTED_FRIEND_                                   \
-  EZTEST_DISABLE_WARNING_("-Wunsupported-friend")
+     EZTEST_DISABLE_WARNING_("-Wunsupported-friend")
 # define EZTEST_REENABLE_WUNSUPPORTED_FRIEND_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNSUPPORTED_FRIEND_
@@ -3728,7 +3728,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WINCOMPATIBLE_EXCEPTION_SPEC_                          \
-  EZTEST_DISABLE_WARNING_("-Wincompatible-exception-spec")
+     EZTEST_DISABLE_WARNING_("-Wincompatible-exception-spec")
 # define EZTEST_REENABLE_WINCOMPATIBLE_EXCEPTION_SPEC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINCOMPATIBLE_EXCEPTION_SPEC_
@@ -3743,7 +3743,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCXX98_CXX11_COMPAT_PEDANTIC_                          \
-  EZTEST_DISABLE_WARNING_("-Wc++98-c++11-compat-pedantic")
+     EZTEST_DISABLE_WARNING_("-Wc++98-c++11-compat-pedantic")
 # define EZTEST_REENABLE_WCXX98_CXX11_COMPAT_PEDANTIC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX98_CXX11_COMPAT_PEDANTIC_
@@ -3751,9 +3751,9 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDLL_ATTRIBUTE_ON_REDECLARATION_                       \
-  EZTEST_DISABLE_WARNING_("-Wdll-attribute-on-redeclaration")
+     EZTEST_DISABLE_WARNING_("-Wdll-attribute-on-redeclaration")
 # define EZTEST_REENABLE_WDLL_ATTRIBUTE_ON_REDECLARATION_                      \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDLL_ATTRIBUTE_ON_REDECLARATION_
 # define EZTEST_REENABLE_WDLL_ATTRIBUTE_ON_REDECLARATION_
@@ -3767,16 +3767,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WNONPORTABLE_SYSTEM_INCLUDE_PATH_                      \
-  EZTEST_DISABLE_WARNING_("-Wnonportable-system-include-path")
+     EZTEST_DISABLE_WARNING_("-Wnonportable-system-include-path")
 # define EZTEST_REENABLE_WNONPORTABLE_SYSTEM_INCLUDE_PATH_                     \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNONPORTABLE_SYSTEM_INCLUDE_PATH_
 # define EZTEST_REENABLE_WNONPORTABLE_SYSTEM_INCLUDE_PATH_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNREACHABLE_CODE_AGGRESSIVE_                          \
-  EZTEST_DISABLE_WARNING_("-Wunreachable-code-aggressive")
+     EZTEST_DISABLE_WARNING_("-Wunreachable-code-aggressive")
 # define EZTEST_REENABLE_WUNREACHABLE_CODE_AGGRESSIVE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNREACHABLE_CODE_AGGRESSIVE_
@@ -3784,7 +3784,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCONDITIONAL_UNINITIALIZED_                            \
-  EZTEST_DISABLE_WARNING_("-Wconditional-uninitialized")
+     EZTEST_DISABLE_WARNING_("-Wconditional-uninitialized")
 # define EZTEST_REENABLE_WCONDITIONAL_UNINITIALIZED_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCONDITIONAL_UNINITIALIZED_
@@ -3799,7 +3799,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCSTRING_FORMAT_DIRECTIVE_                             \
-  EZTEST_DISABLE_WARNING_("-Wcstring-format-directive")
+     EZTEST_DISABLE_WARNING_("-Wcstring-format-directive")
 # define EZTEST_REENABLE_WCSTRING_FORMAT_DIRECTIVE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCSTRING_FORMAT_DIRECTIVE_
@@ -3814,7 +3814,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 5, 3))
 # define EZTEST_DISABLE_WUNUSED_RESULT_                                        \
-  EZTEST_DISABLE_WARNING_("-Wunused-result")
+     EZTEST_DISABLE_WARNING_("-Wunused-result")
 # define EZTEST_REENABLE_WUNUSED_RESULT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNUSED_RESULT_
@@ -3829,9 +3829,9 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDOLLAR_IN_IDENTIFIER_EXTENSION_                       \
-  EZTEST_DISABLE_WARNING_("-Wdollar-in-identifier-extension")
+     EZTEST_DISABLE_WARNING_("-Wdollar-in-identifier-extension")
 # define EZTEST_REENABLE_WDOLLAR_IN_IDENTIFIER_EXTENSION_                      \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDOLLAR_IN_IDENTIFIER_EXTENSION_
 # define EZTEST_REENABLE_WDOLLAR_IN_IDENTIFIER_EXTENSION_
@@ -3845,7 +3845,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WBUILTIN_MEMCPY_CHK_SIZE_                              \
-  EZTEST_DISABLE_WARNING_("-Wbuiltin-memcpy-chk-size")
+     EZTEST_DISABLE_WARNING_("-Wbuiltin-memcpy-chk-size")
 # define EZTEST_REENABLE_WBUILTIN_MEMCPY_CHK_SIZE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WBUILTIN_MEMCPY_CHK_SIZE_
@@ -3853,25 +3853,25 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOBJC_READONLY_WITH_SETTER_PROPERTY_                   \
-  EZTEST_DISABLE_WARNING_("-Wobjc-readonly-with-setter-property")
+     EZTEST_DISABLE_WARNING_("-Wobjc-readonly-with-setter-property")
 # define EZTEST_REENABLE_WOBJC_READONLY_WITH_SETTER_PROPERTY_                  \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_READONLY_WITH_SETTER_PROPERTY_
 # define EZTEST_REENABLE_WOBJC_READONLY_WITH_SETTER_PROPERTY_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WNULLABILITY_COMPLETENESS_ON_ARRAYS_                   \
-  EZTEST_DISABLE_WARNING_("-Wnullability-completeness-on-arrays")
+     EZTEST_DISABLE_WARNING_("-Wnullability-completeness-on-arrays")
 # define EZTEST_REENABLE_WNULLABILITY_COMPLETENESS_ON_ARRAYS_                  \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNULLABILITY_COMPLETENESS_ON_ARRAYS_
 # define EZTEST_REENABLE_WNULLABILITY_COMPLETENESS_ON_ARRAYS_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_PURE_DEFINITION_                            \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-pure-definition")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-pure-definition")
 # define EZTEST_REENABLE_WMICROSOFT_PURE_DEFINITION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_PURE_DEFINITION_
@@ -3879,7 +3879,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(6, 1, 0))
 # define EZTEST_DISABLE_WUNUSED_CONST_VARIABLE_                                \
-  EZTEST_DISABLE_WARNING_("-Wunused-const-variable")
+     EZTEST_DISABLE_WARNING_("-Wunused-const-variable")
 # define EZTEST_REENABLE_WUNUSED_CONST_VARIABLE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNUSED_CONST_VARIABLE_
@@ -3887,7 +3887,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNKNOWN_ESCAPE_SEQUENCE_                              \
-  EZTEST_DISABLE_WARNING_("-Wunknown-escape-sequence")
+     EZTEST_DISABLE_WARNING_("-Wunknown-escape-sequence")
 # define EZTEST_REENABLE_WUNKNOWN_ESCAPE_SEQUENCE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNKNOWN_ESCAPE_SEQUENCE_
@@ -3895,7 +3895,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCXX98_COMPAT_PEDANTIC_                                \
-  EZTEST_DISABLE_WARNING_("-Wc++98-compat-pedantic")
+     EZTEST_DISABLE_WARNING_("-Wc++98-compat-pedantic")
 # define EZTEST_REENABLE_WCXX98_COMPAT_PEDANTIC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX98_COMPAT_PEDANTIC_
@@ -3903,7 +3903,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WIGNORED_PRAGMA_INTRINSIC_                             \
-  EZTEST_DISABLE_WARNING_("-Wignored-pragma-intrinsic")
+     EZTEST_DISABLE_WARNING_("-Wignored-pragma-intrinsic")
 # define EZTEST_REENABLE_WIGNORED_PRAGMA_INTRINSIC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WIGNORED_PRAGMA_INTRINSIC_
@@ -3911,7 +3911,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WPROPERTY_ACCESS_DOT_SYNTAX_                           \
-  EZTEST_DISABLE_WARNING_("-Wproperty-access-dot-syntax")
+     EZTEST_DISABLE_WARNING_("-Wproperty-access-dot-syntax")
 # define EZTEST_REENABLE_WPROPERTY_ACCESS_DOT_SYNTAX_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPROPERTY_ACCESS_DOT_SYNTAX_
@@ -3933,7 +3933,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WASM_OPERAND_WIDTHS_                                   \
-  EZTEST_DISABLE_WARNING_("-Wasm-operand-widths")
+     EZTEST_DISABLE_WARNING_("-Wasm-operand-widths")
 # define EZTEST_REENABLE_WASM_OPERAND_WIDTHS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WASM_OPERAND_WIDTHS_
@@ -3948,7 +3948,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNKNOWN_WARNING_OPTION_                               \
-  EZTEST_DISABLE_WARNING_("-Wunknown-warning-option")
+     EZTEST_DISABLE_WARNING_("-Wunknown-warning-option")
 # define EZTEST_REENABLE_WUNKNOWN_WARNING_OPTION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNKNOWN_WARNING_OPTION_
@@ -3956,7 +3956,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WGNU_EMPTY_STRUCT_                                     \
-  EZTEST_DISABLE_WARNING_("-Wgnu-empty-struct")
+     EZTEST_DISABLE_WARNING_("-Wgnu-empty-struct")
 # define EZTEST_REENABLE_WGNU_EMPTY_STRUCT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_EMPTY_STRUCT_
@@ -3964,7 +3964,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WMISSING_NORETURN_                                     \
-  EZTEST_DISABLE_WARNING_("-Wmissing-noreturn")
+     EZTEST_DISABLE_WARNING_("-Wmissing-noreturn")
 # define EZTEST_REENABLE_WMISSING_NORETURN_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMISSING_NORETURN_
@@ -3972,7 +3972,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WLARGE_BY_VALUE_COPY_                                  \
-  EZTEST_DISABLE_WARNING_("-Wlarge-by-value-copy")
+     EZTEST_DISABLE_WARNING_("-Wlarge-by-value-copy")
 # define EZTEST_REENABLE_WLARGE_BY_VALUE_COPY_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WLARGE_BY_VALUE_COPY_
@@ -3987,7 +3987,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMISSING_PROTOTYPE_FOR_CC_                             \
-  EZTEST_DISABLE_WARNING_("-Wmissing-prototype-for-cc")
+     EZTEST_DISABLE_WARNING_("-Wmissing-prototype-for-cc")
 # define EZTEST_REENABLE_WMISSING_PROTOTYPE_FOR_CC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMISSING_PROTOTYPE_FOR_CC_
@@ -3995,7 +3995,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOVERRIDE_MODULE_                                      \
-  EZTEST_DISABLE_WARNING_("-Woverride-module")
+     EZTEST_DISABLE_WARNING_("-Woverride-module")
 # define EZTEST_REENABLE_WOVERRIDE_MODULE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOVERRIDE_MODULE_
@@ -4003,7 +4003,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDOCUMENTATION_                                        \
-  EZTEST_DISABLE_WARNING_("-Wdocumentation")
+     EZTEST_DISABLE_WARNING_("-Wdocumentation")
 # define EZTEST_REENABLE_WDOCUMENTATION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDOCUMENTATION_
@@ -4018,7 +4018,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(6, 1, 0))
 # define EZTEST_DISABLE_WSHIFT_NEGATIVE_VALUE_                                 \
-  EZTEST_DISABLE_WARNING_("-Wshift-negative-value")
+     EZTEST_DISABLE_WARNING_("-Wshift-negative-value")
 # define EZTEST_REENABLE_WSHIFT_NEGATIVE_VALUE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSHIFT_NEGATIVE_VALUE_
@@ -4027,7 +4027,7 @@
 #if ((EZTEST_HAS_GCC_VER_(10, 1, 0)) && EZTEST_C_LANG_) ||                     \
     (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(11, 1, 0))
 # define EZTEST_DISABLE_WENUM_CONVERSION_                                      \
-  EZTEST_DISABLE_WARNING_("-Wenum-conversion")
+     EZTEST_DISABLE_WARNING_("-Wenum-conversion")
 # define EZTEST_REENABLE_WENUM_CONVERSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WENUM_CONVERSION_
@@ -4035,16 +4035,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCXX11_COMPAT_RESERVED_USER_DEFINED_LITERAL_           \
-  EZTEST_DISABLE_WARNING_("-Wc++11-compat-reserved-user-defined-literal")
+     EZTEST_DISABLE_WARNING_("-Wc++11-compat-reserved-user-defined-literal")
 # define EZTEST_REENABLE_WCXX11_COMPAT_RESERVED_USER_DEFINED_LITERAL_          \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX11_COMPAT_RESERVED_USER_DEFINED_LITERAL_
 # define EZTEST_REENABLE_WCXX11_COMPAT_RESERVED_USER_DEFINED_LITERAL_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNKNOWN_SANITIZERS_                                   \
-  EZTEST_DISABLE_WARNING_("-Wunknown-sanitizers")
+     EZTEST_DISABLE_WARNING_("-Wunknown-sanitizers")
 # define EZTEST_REENABLE_WUNKNOWN_SANITIZERS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNKNOWN_SANITIZERS_
@@ -4052,7 +4052,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDEALLOC_IN_CATEGORY_                                  \
-  EZTEST_DISABLE_WARNING_("-Wdealloc-in-category")
+     EZTEST_DISABLE_WARNING_("-Wdealloc-in-category")
 # define EZTEST_REENABLE_WDEALLOC_IN_CATEGORY_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEALLOC_IN_CATEGORY_
@@ -4067,7 +4067,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCONDITIONAL_TYPE_MISMATCH_                            \
-  EZTEST_DISABLE_WARNING_("-Wconditional-type-mismatch")
+     EZTEST_DISABLE_WARNING_("-Wconditional-type-mismatch")
 # define EZTEST_REENABLE_WCONDITIONAL_TYPE_MISMATCH_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCONDITIONAL_TYPE_MISMATCH_
@@ -4075,7 +4075,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WAMBIGUOUS_MEMBER_TEMPLATE_                            \
-  EZTEST_DISABLE_WARNING_("-Wambiguous-member-template")
+     EZTEST_DISABLE_WARNING_("-Wambiguous-member-template")
 # define EZTEST_REENABLE_WAMBIGUOUS_MEMBER_TEMPLATE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WAMBIGUOUS_MEMBER_TEMPLATE_
@@ -4083,16 +4083,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WIMPORT_PREPROCESSOR_DIRECTIVE_PEDANTIC_               \
-  EZTEST_DISABLE_WARNING_("-Wimport-preprocessor-directive-pedantic")
+     EZTEST_DISABLE_WARNING_("-Wimport-preprocessor-directive-pedantic")
 # define EZTEST_REENABLE_WIMPORT_PREPROCESSOR_DIRECTIVE_PEDANTIC_              \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WIMPORT_PREPROCESSOR_DIRECTIVE_PEDANTIC_
 # define EZTEST_REENABLE_WIMPORT_PREPROCESSOR_DIRECTIVE_PEDANTIC_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WDIVISION_BY_ZERO_                                     \
-  EZTEST_DISABLE_WARNING_("-Wdivision-by-zero")
+     EZTEST_DISABLE_WARNING_("-Wdivision-by-zero")
 # define EZTEST_REENABLE_WDIVISION_BY_ZERO_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDIVISION_BY_ZERO_
@@ -4100,7 +4100,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WSUPER_CLASS_METHOD_MISMATCH_                          \
-  EZTEST_DISABLE_WARNING_("-Wsuper-class-method-mismatch")
+     EZTEST_DISABLE_WARNING_("-Wsuper-class-method-mismatch")
 # define EZTEST_REENABLE_WSUPER_CLASS_METHOD_MISMATCH_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSUPER_CLASS_METHOD_MISMATCH_
@@ -4108,7 +4108,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(6, 1, 0))
 # define EZTEST_DISABLE_WNULL_DEREFERENCE_                                     \
-  EZTEST_DISABLE_WARNING_("-Wnull-dereference")
+     EZTEST_DISABLE_WARNING_("-Wnull-dereference")
 # define EZTEST_REENABLE_WNULL_DEREFERENCE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNULL_DEREFERENCE_
@@ -4116,7 +4116,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WGNU_ZERO_LINE_DIRECTIVE_                              \
-  EZTEST_DISABLE_WARNING_("-Wgnu-zero-line-directive")
+     EZTEST_DISABLE_WARNING_("-Wgnu-zero-line-directive")
 # define EZTEST_REENABLE_WGNU_ZERO_LINE_DIRECTIVE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_ZERO_LINE_DIRECTIVE_
@@ -4124,7 +4124,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WGNU_COMPLEX_INTEGER_                                  \
-  EZTEST_DISABLE_WARNING_("-Wgnu-complex-integer")
+     EZTEST_DISABLE_WARNING_("-Wgnu-complex-integer")
 # define EZTEST_REENABLE_WGNU_COMPLEX_INTEGER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_COMPLEX_INTEGER_
@@ -4132,7 +4132,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WEXTRA_QUALIFICATION_                                  \
-  EZTEST_DISABLE_WARNING_("-Wextra-qualification")
+     EZTEST_DISABLE_WARNING_("-Wextra-qualification")
 # define EZTEST_REENABLE_WEXTRA_QUALIFICATION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WEXTRA_QUALIFICATION_
@@ -4140,7 +4140,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNDEFINED_FUNC_TEMPLATE_                              \
-  EZTEST_DISABLE_WARNING_("-Wundefined-func-template")
+     EZTEST_DISABLE_WARNING_("-Wundefined-func-template")
 # define EZTEST_REENABLE_WUNDEFINED_FUNC_TEMPLATE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNDEFINED_FUNC_TEMPLATE_
@@ -4148,7 +4148,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WC11_EXTENSIONS_                                       \
-  EZTEST_DISABLE_WARNING_("-Wc11-extensions")
+     EZTEST_DISABLE_WARNING_("-Wc11-extensions")
 # define EZTEST_REENABLE_WC11_EXTENSIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WC11_EXTENSIONS_
@@ -4156,25 +4156,25 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WARC_BRIDGE_CASTS_DISALLOWED_IN_NONARC_                \
-  EZTEST_DISABLE_WARNING_("-Warc-bridge-casts-disallowed-in-nonarc")
+     EZTEST_DISABLE_WARNING_("-Warc-bridge-casts-disallowed-in-nonarc")
 # define EZTEST_REENABLE_WARC_BRIDGE_CASTS_DISALLOWED_IN_NONARC_               \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WARC_BRIDGE_CASTS_DISALLOWED_IN_NONARC_
 # define EZTEST_REENABLE_WARC_BRIDGE_CASTS_DISALLOWED_IN_NONARC_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNUSABLE_PARTIAL_SPECIALIZATION_                      \
-  EZTEST_DISABLE_WARNING_("-Wunusable-partial-specialization")
+     EZTEST_DISABLE_WARNING_("-Wunusable-partial-specialization")
 # define EZTEST_REENABLE_WUNUSABLE_PARTIAL_SPECIALIZATION_                     \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNUSABLE_PARTIAL_SPECIALIZATION_
 # define EZTEST_REENABLE_WUNUSABLE_PARTIAL_SPECIALIZATION_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOBJC_MISSING_SUPER_CALLS_                             \
-  EZTEST_DISABLE_WARNING_("-Wobjc-missing-super-calls")
+     EZTEST_DISABLE_WARNING_("-Wobjc-missing-super-calls")
 # define EZTEST_REENABLE_WOBJC_MISSING_SUPER_CALLS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_MISSING_SUPER_CALLS_
@@ -4189,7 +4189,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUSED_BUT_MARKED_UNUSED_                               \
-  EZTEST_DISABLE_WARNING_("-Wused-but-marked-unused")
+     EZTEST_DISABLE_WARNING_("-Wused-but-marked-unused")
 # define EZTEST_REENABLE_WUSED_BUT_MARKED_UNUSED_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUSED_BUT_MARKED_UNUSED_
@@ -4197,7 +4197,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WKEYWORD_MACRO_                                        \
-  EZTEST_DISABLE_WARNING_("-Wkeyword-macro")
+     EZTEST_DISABLE_WARNING_("-Wkeyword-macro")
 # define EZTEST_REENABLE_WKEYWORD_MACRO_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WKEYWORD_MACRO_
@@ -4205,7 +4205,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WSHIFT_OP_PARENTHESES_                                 \
-  EZTEST_DISABLE_WARNING_("-Wshift-op-parentheses")
+     EZTEST_DISABLE_WARNING_("-Wshift-op-parentheses")
 # define EZTEST_REENABLE_WSHIFT_OP_PARENTHESES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSHIFT_OP_PARENTHESES_
@@ -4213,7 +4213,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(5, 1, 0))
 # define EZTEST_DISABLE_WSIZEOF_ARRAY_ARGUMENT_                                \
-  EZTEST_DISABLE_WARNING_("-Wsizeof-array-argument")
+     EZTEST_DISABLE_WARNING_("-Wsizeof-array-argument")
 # define EZTEST_REENABLE_WSIZEOF_ARRAY_ARGUMENT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSIZEOF_ARRAY_ARGUMENT_
@@ -4221,7 +4221,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WINDEPENDENTCLASS_ATTRIBUTE_                           \
-  EZTEST_DISABLE_WARNING_("-WIndependentClass-attribute")
+     EZTEST_DISABLE_WARNING_("-WIndependentClass-attribute")
 # define EZTEST_REENABLE_WINDEPENDENTCLASS_ATTRIBUTE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINDEPENDENTCLASS_ATTRIBUTE_
@@ -4237,7 +4237,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNUSED_EXCEPTION_PARAMETER_                           \
-  EZTEST_DISABLE_WARNING_("-Wunused-exception-parameter")
+     EZTEST_DISABLE_WARNING_("-Wunused-exception-parameter")
 # define EZTEST_REENABLE_WUNUSED_EXCEPTION_PARAMETER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNUSED_EXCEPTION_PARAMETER_
@@ -4245,18 +4245,18 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WNULLABILITY_INFERRED_ON_NESTED_TYPE_                  \
-  EZTEST_DISABLE_WARNING_("-Wnullability-inferred-on-nested-type")
+     EZTEST_DISABLE_WARNING_("-Wnullability-inferred-on-nested-type")
 # define EZTEST_REENABLE_WNULLABILITY_INFERRED_ON_NESTED_TYPE_                 \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNULLABILITY_INFERRED_ON_NESTED_TYPE_
 # define EZTEST_REENABLE_WNULLABILITY_INFERRED_ON_NESTED_TYPE_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WINCOMPATIBLE_LIBRARY_REDECLARATION_                   \
-  EZTEST_DISABLE_WARNING_("-Wincompatible-library-redeclaration")
+     EZTEST_DISABLE_WARNING_("-Wincompatible-library-redeclaration")
 # define EZTEST_REENABLE_WINCOMPATIBLE_LIBRARY_REDECLARATION_                  \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINCOMPATIBLE_LIBRARY_REDECLARATION_
 # define EZTEST_REENABLE_WINCOMPATIBLE_LIBRARY_REDECLARATION_
@@ -4270,7 +4270,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_END_OF_FILE_                                \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-end-of-file")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-end-of-file")
 # define EZTEST_REENABLE_WMICROSOFT_END_OF_FILE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_END_OF_FILE_
@@ -4278,16 +4278,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WSYNC_FETCH_AND_NAND_SEMANTICS_CHANGED_                \
-  EZTEST_DISABLE_WARNING_("-Wsync-fetch-and-nand-semantics-changed")
+     EZTEST_DISABLE_WARNING_("-Wsync-fetch-and-nand-semantics-changed")
 # define EZTEST_REENABLE_WSYNC_FETCH_AND_NAND_SEMANTICS_CHANGED_               \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSYNC_FETCH_AND_NAND_SEMANTICS_CHANGED_
 # define EZTEST_REENABLE_WSYNC_FETCH_AND_NAND_SEMANTICS_CHANGED_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_UNQUALIFIED_FRIEND_                         \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-unqualified-friend")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-unqualified-friend")
 # define EZTEST_REENABLE_WMICROSOFT_UNQUALIFIED_FRIEND_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_UNQUALIFIED_FRIEND_
@@ -4295,7 +4295,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WARC_RETAIN_CYCLES_                                    \
-  EZTEST_DISABLE_WARNING_("-Warc-retain-cycles")
+     EZTEST_DISABLE_WARNING_("-Warc-retain-cycles")
 # define EZTEST_REENABLE_WARC_RETAIN_CYCLES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WARC_RETAIN_CYCLES_
@@ -4303,7 +4303,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCXX0X_NARROWING_                                      \
-  EZTEST_DISABLE_WARNING_("-Wc++0x-narrowing")
+     EZTEST_DISABLE_WARNING_("-Wc++0x-narrowing")
 # define EZTEST_REENABLE_WCXX0X_NARROWING_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX0X_NARROWING_
@@ -4311,7 +4311,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WEXIT_TIME_DESTRUCTORS_                                \
-  EZTEST_DISABLE_WARNING_("-Wexit-time-destructors")
+     EZTEST_DISABLE_WARNING_("-Wexit-time-destructors")
 # define EZTEST_REENABLE_WEXIT_TIME_DESTRUCTORS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WEXIT_TIME_DESTRUCTORS_
@@ -4319,7 +4319,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WRETAINED_LANGUAGE_LINKAGE_                            \
-  EZTEST_DISABLE_WARNING_("-Wretained-language-linkage")
+     EZTEST_DISABLE_WARNING_("-Wretained-language-linkage")
 # define EZTEST_REENABLE_WRETAINED_LANGUAGE_LINKAGE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WRETAINED_LANGUAGE_LINKAGE_
@@ -4334,7 +4334,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WGNU_DESIGNATOR_                                       \
-  EZTEST_DISABLE_WARNING_("-Wgnu-designator")
+     EZTEST_DISABLE_WARNING_("-Wgnu-designator")
 # define EZTEST_REENABLE_WGNU_DESIGNATOR_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_DESIGNATOR_
@@ -4342,7 +4342,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMODULE_CONFLICT_                                      \
-  EZTEST_DISABLE_WARNING_("-Wmodule-conflict")
+     EZTEST_DISABLE_WARNING_("-Wmodule-conflict")
 # define EZTEST_REENABLE_WMODULE_CONFLICT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMODULE_CONFLICT_
@@ -4350,7 +4350,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WSHADOW_FIELD_IN_CONSTRUCTOR_                          \
-  EZTEST_DISABLE_WARNING_("-Wshadow-field-in-constructor")
+     EZTEST_DISABLE_WARNING_("-Wshadow-field-in-constructor")
 # define EZTEST_REENABLE_WSHADOW_FIELD_IN_CONSTRUCTOR_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSHADOW_FIELD_IN_CONSTRUCTOR_
@@ -4358,7 +4358,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOBJC_LITERAL_COMPARE_                                 \
-  EZTEST_DISABLE_WARNING_("-Wobjc-literal-compare")
+     EZTEST_DISABLE_WARNING_("-Wobjc-literal-compare")
 # define EZTEST_REENABLE_WOBJC_LITERAL_COMPARE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_LITERAL_COMPARE_
@@ -4366,25 +4366,25 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WATOMIC_PROPERTY_WITH_USER_DEFINED_ACCESSOR_           \
-  EZTEST_DISABLE_WARNING_("-Watomic-property-with-user-defined-accessor")
+     EZTEST_DISABLE_WARNING_("-Watomic-property-with-user-defined-accessor")
 # define EZTEST_REENABLE_WATOMIC_PROPERTY_WITH_USER_DEFINED_ACCESSOR_          \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WATOMIC_PROPERTY_WITH_USER_DEFINED_ACCESSOR_
 # define EZTEST_REENABLE_WATOMIC_PROPERTY_WITH_USER_DEFINED_ACCESSOR_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WRESERVED_USER_DEFINED_LITERAL_                        \
-  EZTEST_DISABLE_WARNING_("-Wreserved-user-defined-literal")
+     EZTEST_DISABLE_WARNING_("-Wreserved-user-defined-literal")
 # define EZTEST_REENABLE_WRESERVED_USER_DEFINED_LITERAL_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WRESERVED_USER_DEFINED_LITERAL_
 # define EZTEST_REENABLE_WRESERVED_USER_DEFINED_LITERAL_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WARC_UNSAFE_RETAINED_ASSIGN_                           \
-  EZTEST_DISABLE_WARNING_("-Warc-unsafe-retained-assign")
+     EZTEST_DISABLE_WARNING_("-Warc-unsafe-retained-assign")
 # define EZTEST_REENABLE_WARC_UNSAFE_RETAINED_ASSIGN_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WARC_UNSAFE_RETAINED_ASSIGN_
@@ -4392,7 +4392,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCXX1Z_EXTENSIONS_                                     \
-  EZTEST_DISABLE_WARNING_("-Wc++1z-extensions")
+     EZTEST_DISABLE_WARNING_("-Wc++1z-extensions")
 # define EZTEST_REENABLE_WCXX1Z_EXTENSIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX1Z_EXTENSIONS_
@@ -4407,7 +4407,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WREADONLY_IBOUTLET_PROPERTY_                           \
-  EZTEST_DISABLE_WARNING_("-Wreadonly-iboutlet-property")
+     EZTEST_DISABLE_WARNING_("-Wreadonly-iboutlet-property")
 # define EZTEST_REENABLE_WREADONLY_IBOUTLET_PROPERTY_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WREADONLY_IBOUTLET_PROPERTY_
@@ -4415,9 +4415,9 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WINCOMPATIBLE_POINTER_TYPES_DISCARDS_QUALIFIERS_       \
-  EZTEST_DISABLE_WARNING_("-Wincompatible-pointer-types-discards-qualifiers")
+     EZTEST_DISABLE_WARNING_("-Wincompatible-pointer-types-discards-qualifiers")
 # define EZTEST_REENABLE_WINCOMPATIBLE_POINTER_TYPES_DISCARDS_QUALIFIERS_      \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINCOMPATIBLE_POINTER_TYPES_DISCARDS_QUALIFIERS_
 # define EZTEST_REENABLE_WINCOMPATIBLE_POINTER_TYPES_DISCARDS_QUALIFIERS_
@@ -4431,7 +4431,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WGNU_STATEMENT_EXPRESSION_                             \
-  EZTEST_DISABLE_WARNING_("-Wgnu-statement-expression")
+     EZTEST_DISABLE_WARNING_("-Wgnu-statement-expression")
 # define EZTEST_REENABLE_WGNU_STATEMENT_EXPRESSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_STATEMENT_EXPRESSION_
@@ -4439,7 +4439,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WJUMP_SEH_FINALLY_                                     \
-  EZTEST_DISABLE_WARNING_("-Wjump-seh-finally")
+     EZTEST_DISABLE_WARNING_("-Wjump-seh-finally")
 # define EZTEST_REENABLE_WJUMP_SEH_FINALLY_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WJUMP_SEH_FINALLY_
@@ -4447,7 +4447,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WINTEGER_OVERFLOW_                                     \
-  EZTEST_DISABLE_WARNING_("-Winteger-overflow")
+     EZTEST_DISABLE_WARNING_("-Winteger-overflow")
 # define EZTEST_REENABLE_WINTEGER_OVERFLOW_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINTEGER_OVERFLOW_
@@ -4455,7 +4455,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WEMPTY_DECOMPOSITION_                                  \
-  EZTEST_DISABLE_WARNING_("-Wempty-decomposition")
+     EZTEST_DISABLE_WARNING_("-Wempty-decomposition")
 # define EZTEST_REENABLE_WEMPTY_DECOMPOSITION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WEMPTY_DECOMPOSITION_
@@ -4463,7 +4463,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WLOCAL_TYPE_TEMPLATE_ARGS_                             \
-  EZTEST_DISABLE_WARNING_("-Wlocal-type-template-args")
+     EZTEST_DISABLE_WARNING_("-Wlocal-type-template-args")
 # define EZTEST_REENABLE_WLOCAL_TYPE_TEMPLATE_ARGS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WLOCAL_TYPE_TEMPLATE_ARGS_
@@ -4478,7 +4478,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMODULE_FILE_EXTENSION_                                \
-  EZTEST_DISABLE_WARNING_("-Wmodule-file-extension")
+     EZTEST_DISABLE_WARNING_("-Wmodule-file-extension")
 # define EZTEST_REENABLE_WMODULE_FILE_EXTENSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMODULE_FILE_EXTENSION_
@@ -4486,7 +4486,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WLITERAL_CONVERSION_                                   \
-  EZTEST_DISABLE_WARNING_("-Wliteral-conversion")
+     EZTEST_DISABLE_WARNING_("-Wliteral-conversion")
 # define EZTEST_REENABLE_WLITERAL_CONVERSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WLITERAL_CONVERSION_
@@ -4494,7 +4494,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WAMBIGUOUS_ELLIPSIS_                                   \
-  EZTEST_DISABLE_WARNING_("-Wambiguous-ellipsis")
+     EZTEST_DISABLE_WARNING_("-Wambiguous-ellipsis")
 # define EZTEST_REENABLE_WAMBIGUOUS_ELLIPSIS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WAMBIGUOUS_ELLIPSIS_
@@ -4502,7 +4502,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WINT_TO_VOID_POINTER_CAST_                             \
-  EZTEST_DISABLE_WARNING_("-Wint-to-void-pointer-cast")
+     EZTEST_DISABLE_WARNING_("-Wint-to-void-pointer-cast")
 # define EZTEST_REENABLE_WINT_TO_VOID_POINTER_CAST_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINT_TO_VOID_POINTER_CAST_
@@ -4517,7 +4517,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WMISSING_FIELD_INITIALIZERS_                           \
-  EZTEST_DISABLE_WARNING_("-Wmissing-field-initializers")
+     EZTEST_DISABLE_WARNING_("-Wmissing-field-initializers")
 # define EZTEST_REENABLE_WMISSING_FIELD_INITIALIZERS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMISSING_FIELD_INITIALIZERS_
@@ -4539,7 +4539,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WTYPENAME_MISSING_                                     \
-  EZTEST_DISABLE_WARNING_("-Wtypename-missing")
+     EZTEST_DISABLE_WARNING_("-Wtypename-missing")
 # define EZTEST_REENABLE_WTYPENAME_MISSING_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WTYPENAME_MISSING_
@@ -4547,16 +4547,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOBJC_PROTOCOL_METHOD_IMPLEMENTATION_                  \
-  EZTEST_DISABLE_WARNING_("-Wobjc-protocol-method-implementation")
+     EZTEST_DISABLE_WARNING_("-Wobjc-protocol-method-implementation")
 # define EZTEST_REENABLE_WOBJC_PROTOCOL_METHOD_IMPLEMENTATION_                 \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_PROTOCOL_METHOD_IMPLEMENTATION_
 # define EZTEST_REENABLE_WOBJC_PROTOCOL_METHOD_IMPLEMENTATION_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WIMPLICITLY_UNSIGNED_LITERAL_                          \
-  EZTEST_DISABLE_WARNING_("-Wimplicitly-unsigned-literal")
+     EZTEST_DISABLE_WARNING_("-Wimplicitly-unsigned-literal")
 # define EZTEST_REENABLE_WIMPLICITLY_UNSIGNED_LITERAL_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WIMPLICITLY_UNSIGNED_LITERAL_
@@ -4564,7 +4564,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WUNUSED_GETTER_RETURN_VALUE_                           \
-  EZTEST_DISABLE_WARNING_("-Wunused-getter-return-value")
+     EZTEST_DISABLE_WARNING_("-Wunused-getter-return-value")
 # define EZTEST_REENABLE_WUNUSED_GETTER_RETURN_VALUE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNUSED_GETTER_RETURN_VALUE_
@@ -4572,16 +4572,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WINVALID_COMMAND_LINE_ARGUMENT_                        \
-  EZTEST_DISABLE_WARNING_("-Winvalid-command-line-argument")
+     EZTEST_DISABLE_WARNING_("-Winvalid-command-line-argument")
 # define EZTEST_REENABLE_WINVALID_COMMAND_LINE_ARGUMENT_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINVALID_COMMAND_LINE_ARGUMENT_
 # define EZTEST_REENABLE_WINVALID_COMMAND_LINE_ARGUMENT_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WZERO_LENGTH_ARRAY_                                    \
-  EZTEST_DISABLE_WARNING_("-Wzero-length-array")
+     EZTEST_DISABLE_WARNING_("-Wzero-length-array")
 # define EZTEST_REENABLE_WZERO_LENGTH_ARRAY_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WZERO_LENGTH_ARRAY_
@@ -4589,7 +4589,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WMISSING_BRACES_                                       \
-  EZTEST_DISABLE_WARNING_("-Wmissing-braces")
+     EZTEST_DISABLE_WARNING_("-Wmissing-braces")
 # define EZTEST_REENABLE_WMISSING_BRACES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMISSING_BRACES_
@@ -4597,7 +4597,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WMODULE_FILE_CONFIG_MISMATCH_                          \
-  EZTEST_DISABLE_WARNING_("-Wmodule-file-config-mismatch")
+     EZTEST_DISABLE_WARNING_("-Wmodule-file-config-mismatch")
 # define EZTEST_REENABLE_WMODULE_FILE_CONFIG_MISMATCH_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMODULE_FILE_CONFIG_MISMATCH_
@@ -4605,7 +4605,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WFOR_LOOP_ANALYSIS_                                    \
-  EZTEST_DISABLE_WARNING_("-Wfor-loop-analysis")
+     EZTEST_DISABLE_WARNING_("-Wfor-loop-analysis")
 # define EZTEST_REENABLE_WFOR_LOOP_ANALYSIS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFOR_LOOP_ANALYSIS_
@@ -4613,34 +4613,34 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WINVALID_PARTIAL_SPECIALIZATION_                       \
-  EZTEST_DISABLE_WARNING_("-Winvalid-partial-specialization")
+     EZTEST_DISABLE_WARNING_("-Winvalid-partial-specialization")
 # define EZTEST_REENABLE_WINVALID_PARTIAL_SPECIALIZATION_                      \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINVALID_PARTIAL_SPECIALIZATION_
 # define EZTEST_REENABLE_WINVALID_PARTIAL_SPECIALIZATION_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WPREDEFINED_IDENTIFIER_OUTSIDE_FUNCTION_               \
-  EZTEST_DISABLE_WARNING_("-Wpredefined-identifier-outside-function")
+     EZTEST_DISABLE_WARNING_("-Wpredefined-identifier-outside-function")
 # define EZTEST_REENABLE_WPREDEFINED_IDENTIFIER_OUTSIDE_FUNCTION_              \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPREDEFINED_IDENTIFIER_OUTSIDE_FUNCTION_
 # define EZTEST_REENABLE_WPREDEFINED_IDENTIFIER_OUTSIDE_FUNCTION_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WNON_MODULAR_INCLUDE_IN_FRAMEWORK_MODULE_              \
-  EZTEST_DISABLE_WARNING_("-Wnon-modular-include-in-framework-module")
+     EZTEST_DISABLE_WARNING_("-Wnon-modular-include-in-framework-module")
 # define EZTEST_REENABLE_WNON_MODULAR_INCLUDE_IN_FRAMEWORK_MODULE_             \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNON_MODULAR_INCLUDE_IN_FRAMEWORK_MODULE_
 # define EZTEST_REENABLE_WNON_MODULAR_INCLUDE_IN_FRAMEWORK_MODULE_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WNON_POD_VARARGS_                                      \
-  EZTEST_DISABLE_WARNING_("-Wnon-pod-varargs")
+     EZTEST_DISABLE_WARNING_("-Wnon-pod-varargs")
 # define EZTEST_REENABLE_WNON_POD_VARARGS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNON_POD_VARARGS_
@@ -4648,7 +4648,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WALLOCA_WITH_ALIGN_ALIGNOF_                            \
-  EZTEST_DISABLE_WARNING_("-Walloca-with-align-alignof")
+     EZTEST_DISABLE_WARNING_("-Walloca-with-align-alignof")
 # define EZTEST_REENABLE_WALLOCA_WITH_ALIGN_ALIGNOF_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WALLOCA_WITH_ALIGN_ALIGNOF_
@@ -4656,16 +4656,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WTAUTOLOGICAL_CONSTANT_OUT_OF_RANGE_COMPARE_           \
-  EZTEST_DISABLE_WARNING_("-Wtautological-constant-out-of-range-compare")
+     EZTEST_DISABLE_WARNING_("-Wtautological-constant-out-of-range-compare")
 # define EZTEST_REENABLE_WTAUTOLOGICAL_CONSTANT_OUT_OF_RANGE_COMPARE_          \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WTAUTOLOGICAL_CONSTANT_OUT_OF_RANGE_COMPARE_
 # define EZTEST_REENABLE_WTAUTOLOGICAL_CONSTANT_OUT_OF_RANGE_COMPARE_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WBITFIELD_CONSTANT_CONVERSION_                         \
-  EZTEST_DISABLE_WARNING_("-Wbitfield-constant-conversion")
+     EZTEST_DISABLE_WARNING_("-Wbitfield-constant-conversion")
 # define EZTEST_REENABLE_WBITFIELD_CONSTANT_CONVERSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WBITFIELD_CONSTANT_CONVERSION_
@@ -4680,7 +4680,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WINVALID_SOURCE_ENCODING_                              \
-  EZTEST_DISABLE_WARNING_("-Winvalid-source-encoding")
+     EZTEST_DISABLE_WARNING_("-Winvalid-source-encoding")
 # define EZTEST_REENABLE_WINVALID_SOURCE_ENCODING_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINVALID_SOURCE_ENCODING_
@@ -4688,16 +4688,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WGNU_VARIABLE_SIZED_TYPE_NOT_AT_END_                   \
-  EZTEST_DISABLE_WARNING_("-Wgnu-variable-sized-type-not-at-end")
+     EZTEST_DISABLE_WARNING_("-Wgnu-variable-sized-type-not-at-end")
 # define EZTEST_REENABLE_WGNU_VARIABLE_SIZED_TYPE_NOT_AT_END_                  \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_VARIABLE_SIZED_TYPE_NOT_AT_END_
 # define EZTEST_REENABLE_WGNU_VARIABLE_SIZED_TYPE_NOT_AT_END_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WAMBIGUOUS_MACRO_                                      \
-  EZTEST_DISABLE_WARNING_("-Wambiguous-macro")
+     EZTEST_DISABLE_WARNING_("-Wambiguous-macro")
 # define EZTEST_REENABLE_WAMBIGUOUS_MACRO_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WAMBIGUOUS_MACRO_
@@ -4705,7 +4705,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WOBJC_MULTIPLE_METHOD_NAMES_                           \
-  EZTEST_DISABLE_WARNING_("-Wobjc-multiple-method-names")
+     EZTEST_DISABLE_WARNING_("-Wobjc-multiple-method-names")
 # define EZTEST_REENABLE_WOBJC_MULTIPLE_METHOD_NAMES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_MULTIPLE_METHOD_NAMES_
@@ -4720,9 +4720,9 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WINCOMPATIBLE_FUNCTION_POINTER_TYPES_                  \
-  EZTEST_DISABLE_WARNING_("-Wincompatible-function-pointer-types")
+     EZTEST_DISABLE_WARNING_("-Wincompatible-function-pointer-types")
 # define EZTEST_REENABLE_WINCOMPATIBLE_FUNCTION_POINTER_TYPES_                 \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINCOMPATIBLE_FUNCTION_POINTER_TYPES_
 # define EZTEST_REENABLE_WINCOMPATIBLE_FUNCTION_POINTER_TYPES_
@@ -4736,7 +4736,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCXX98_CXX11_CXX14_COMPAT_                             \
-  EZTEST_DISABLE_WARNING_("-Wc++98-c++11-c++14-compat")
+     EZTEST_DISABLE_WARNING_("-Wc++98-c++11-c++14-compat")
 # define EZTEST_REENABLE_WCXX98_CXX11_CXX14_COMPAT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX98_CXX11_CXX14_COMPAT_
@@ -4744,25 +4744,25 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WCXX98_COMPAT_BIND_TO_TEMPORARY_COPY_                  \
-  EZTEST_DISABLE_WARNING_("-Wc++98-compat-bind-to-temporary-copy")
+     EZTEST_DISABLE_WARNING_("-Wc++98-compat-bind-to-temporary-copy")
 # define EZTEST_REENABLE_WCXX98_COMPAT_BIND_TO_TEMPORARY_COPY_                 \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX98_COMPAT_BIND_TO_TEMPORARY_COPY_
 # define EZTEST_REENABLE_WCXX98_COMPAT_BIND_TO_TEMPORARY_COPY_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WNONPORTABLE_VECTOR_INITIALIZATION_                    \
-  EZTEST_DISABLE_WARNING_("-Wnonportable-vector-initialization")
+     EZTEST_DISABLE_WARNING_("-Wnonportable-vector-initialization")
 # define EZTEST_REENABLE_WNONPORTABLE_VECTOR_INITIALIZATION_                   \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNONPORTABLE_VECTOR_INITIALIZATION_
 # define EZTEST_REENABLE_WNONPORTABLE_VECTOR_INITIALIZATION_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(4, 0, 0))
 # define EZTEST_DISABLE_WRTTI_FOR_EXCEPTIONS_                                  \
-  EZTEST_DISABLE_WARNING_("-Wrtti-for-exceptions")
+     EZTEST_DISABLE_WARNING_("-Wrtti-for-exceptions")
 # define EZTEST_REENABLE_WRTTI_FOR_EXCEPTIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WRTTI_FOR_EXCEPTIONS_
@@ -4770,7 +4770,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(5, 0, 0))
 # define EZTEST_DISABLE_WUNUSED_TEMPLATE_                                      \
-  EZTEST_DISABLE_WARNING_("-Wunused-template")
+     EZTEST_DISABLE_WARNING_("-Wunused-template")
 # define EZTEST_REENABLE_WUNUSED_TEMPLATE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNUSED_TEMPLATE_
@@ -4778,18 +4778,18 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(5, 0, 0))
 # define EZTEST_DISABLE_WINVALID_IOS_DEPLOYMENT_TARGET_                        \
-  EZTEST_DISABLE_WARNING_("-Winvalid-ios-deployment-target")
+     EZTEST_DISABLE_WARNING_("-Winvalid-ios-deployment-target")
 # define EZTEST_REENABLE_WINVALID_IOS_DEPLOYMENT_TARGET_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINVALID_IOS_DEPLOYMENT_TARGET_
 # define EZTEST_REENABLE_WINVALID_IOS_DEPLOYMENT_TARGET_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(5, 0, 0))
 # define EZTEST_DISABLE_WALIGNED_ALLOCATION_UNAVAILABLE_                       \
-  EZTEST_DISABLE_WARNING_("-Waligned-allocation-unavailable")
+     EZTEST_DISABLE_WARNING_("-Waligned-allocation-unavailable")
 # define EZTEST_REENABLE_WALIGNED_ALLOCATION_UNAVAILABLE_                      \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WALIGNED_ALLOCATION_UNAVAILABLE_
 # define EZTEST_REENABLE_WALIGNED_ALLOCATION_UNAVAILABLE_
@@ -4803,7 +4803,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(5, 0, 0))
 # define EZTEST_DISABLE_WOBJC_UNSAFE_PERFORM_SELECTOR_                         \
-  EZTEST_DISABLE_WARNING_("-Wobjc-unsafe-perform-selector")
+     EZTEST_DISABLE_WARNING_("-Wobjc-unsafe-perform-selector")
 # define EZTEST_REENABLE_WOBJC_UNSAFE_PERFORM_SELECTOR_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_UNSAFE_PERFORM_SELECTOR_
@@ -4818,7 +4818,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(5, 0, 0))
 # define EZTEST_DISABLE_WBITFIELD_ENUM_CONVERSION_                             \
-  EZTEST_DISABLE_WARNING_("-Wbitfield-enum-conversion")
+     EZTEST_DISABLE_WARNING_("-Wbitfield-enum-conversion")
 # define EZTEST_REENABLE_WBITFIELD_ENUM_CONVERSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WBITFIELD_ENUM_CONVERSION_
@@ -4826,9 +4826,9 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(5, 0, 0))
 # define EZTEST_DISABLE_WINCONSISTENT_MISSING_DESTRUCTOR_OVERRIDE_             \
-  EZTEST_DISABLE_WARNING_("-Winconsistent-missing-destructor-override")
+     EZTEST_DISABLE_WARNING_("-Winconsistent-missing-destructor-override")
 # define EZTEST_REENABLE_WINCONSISTENT_MISSING_DESTRUCTOR_OVERRIDE_            \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINCONSISTENT_MISSING_DESTRUCTOR_OVERRIDE_
 # define EZTEST_REENABLE_WINCONSISTENT_MISSING_DESTRUCTOR_OVERRIDE_
@@ -4842,7 +4842,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(5, 0, 0))
 # define EZTEST_DISABLE_WSLASH_U_FILENAME_                                     \
-  EZTEST_DISABLE_WARNING_("-Wslash-u-filename")
+     EZTEST_DISABLE_WARNING_("-Wslash-u-filename")
 # define EZTEST_REENABLE_WSLASH_U_FILENAME_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSLASH_U_FILENAME_
@@ -4850,7 +4850,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(5, 0, 0))
 # define EZTEST_DISABLE_WMSVC_NOT_FOUND_                                       \
-  EZTEST_DISABLE_WARNING_("-Wmsvc-not-found")
+     EZTEST_DISABLE_WARNING_("-Wmsvc-not-found")
 # define EZTEST_REENABLE_WMSVC_NOT_FOUND_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMSVC_NOT_FOUND_
@@ -4858,7 +4858,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(5, 0, 0))
 # define EZTEST_DISABLE_WINJECTED_CLASS_NAME_                                  \
-  EZTEST_DISABLE_WARNING_("-Winjected-class-name")
+     EZTEST_DISABLE_WARNING_("-Winjected-class-name")
 # define EZTEST_REENABLE_WINJECTED_CLASS_NAME_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINJECTED_CLASS_NAME_
@@ -4866,16 +4866,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(5, 0, 0))
 # define EZTEST_DISABLE_WUNSUPPORTED_AVAILABILITY_GUARD_                       \
-  EZTEST_DISABLE_WARNING_("-Wunsupported-availability-guard")
+     EZTEST_DISABLE_WARNING_("-Wunsupported-availability-guard")
 # define EZTEST_REENABLE_WUNSUPPORTED_AVAILABILITY_GUARD_                      \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNSUPPORTED_AVAILABILITY_GUARD_
 # define EZTEST_REENABLE_WUNSUPPORTED_AVAILABILITY_GUARD_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(5, 0, 0))
 # define EZTEST_DISABLE_WPROFILE_INSTR_MISSING_                                \
-  EZTEST_DISABLE_WARNING_("-Wprofile-instr-missing")
+     EZTEST_DISABLE_WARNING_("-Wprofile-instr-missing")
 # define EZTEST_REENABLE_WPROFILE_INSTR_MISSING_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPROFILE_INSTR_MISSING_
@@ -4883,7 +4883,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(5, 0, 0))
 # define EZTEST_DISABLE_WCXX17_COMPAT_MANGLING_                                \
-  EZTEST_DISABLE_WARNING_("-Wc++17-compat-mangling")
+     EZTEST_DISABLE_WARNING_("-Wc++17-compat-mangling")
 # define EZTEST_REENABLE_WCXX17_COMPAT_MANGLING_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX17_COMPAT_MANGLING_
@@ -4891,7 +4891,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(5, 0, 0))
 # define EZTEST_DISABLE_WCXX1Z_COMPAT_MANGLING_                                \
-  EZTEST_DISABLE_WARNING_("-Wc++1z-compat-mangling")
+     EZTEST_DISABLE_WARNING_("-Wc++1z-compat-mangling")
 # define EZTEST_REENABLE_WCXX1Z_COMPAT_MANGLING_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX1Z_COMPAT_MANGLING_
@@ -4899,7 +4899,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(5, 0, 0))
 # define EZTEST_DISABLE_WUNUSED_LAMBDA_CAPTURE_                                \
-  EZTEST_DISABLE_WARNING_("-Wunused-lambda-capture")
+     EZTEST_DISABLE_WARNING_("-Wunused-lambda-capture")
 # define EZTEST_REENABLE_WUNUSED_LAMBDA_CAPTURE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNUSED_LAMBDA_CAPTURE_
@@ -4907,7 +4907,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(5, 0, 0))
 # define EZTEST_DISABLE_WUNGUARDED_AVAILABILITY_NEW_                           \
-  EZTEST_DISABLE_WARNING_("-Wunguarded-availability-new")
+     EZTEST_DISABLE_WARNING_("-Wunguarded-availability-new")
 # define EZTEST_REENABLE_WUNGUARDED_AVAILABILITY_NEW_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNGUARDED_AVAILABILITY_NEW_
@@ -4915,7 +4915,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(5, 0, 0))
 # define EZTEST_DISABLE_WPRAGMA_CLANG_ATTRIBUTE_                               \
-  EZTEST_DISABLE_WARNING_("-Wpragma-clang-attribute")
+     EZTEST_DISABLE_WARNING_("-Wpragma-clang-attribute")
 # define EZTEST_REENABLE_WPRAGMA_CLANG_ATTRIBUTE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPRAGMA_CLANG_ATTRIBUTE_
@@ -4923,16 +4923,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(5, 0, 0))
 # define EZTEST_DISABLE_WCOROUTINE_MISSING_UNHANDLED_EXCEPTION_                \
-  EZTEST_DISABLE_WARNING_("-Wcoroutine-missing-unhandled-exception")
+     EZTEST_DISABLE_WARNING_("-Wcoroutine-missing-unhandled-exception")
 # define EZTEST_REENABLE_WCOROUTINE_MISSING_UNHANDLED_EXCEPTION_               \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCOROUTINE_MISSING_UNHANDLED_EXCEPTION_
 # define EZTEST_REENABLE_WCOROUTINE_MISSING_UNHANDLED_EXCEPTION_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(6, 0, 0))
 # define EZTEST_DISABLE_WUNICODE_HOMOGLYPH_                                    \
-  EZTEST_DISABLE_WARNING_("-Wunicode-homoglyph")
+     EZTEST_DISABLE_WARNING_("-Wunicode-homoglyph")
 # define EZTEST_REENABLE_WUNICODE_HOMOGLYPH_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNICODE_HOMOGLYPH_
@@ -4940,7 +4940,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(6, 0, 0))
 # define EZTEST_DISABLE_WMISSING_NOESCAPE_                                     \
-  EZTEST_DISABLE_WARNING_("-Wmissing-noescape")
+     EZTEST_DISABLE_WARNING_("-Wmissing-noescape")
 # define EZTEST_REENABLE_WMISSING_NOESCAPE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMISSING_NOESCAPE_
@@ -4948,16 +4948,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(6, 0, 0))
 # define EZTEST_DISABLE_WTAUTOLOGICAL_CONSTANT_IN_RANGE_COMPARE_               \
-  EZTEST_DISABLE_WARNING_("-Wtautological-constant-in-range-compare")
+     EZTEST_DISABLE_WARNING_("-Wtautological-constant-in-range-compare")
 # define EZTEST_REENABLE_WTAUTOLOGICAL_CONSTANT_IN_RANGE_COMPARE_              \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WTAUTOLOGICAL_CONSTANT_IN_RANGE_COMPARE_
 # define EZTEST_REENABLE_WTAUTOLOGICAL_CONSTANT_IN_RANGE_COMPARE_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(6, 0, 0))
 # define EZTEST_DISABLE_WOUT_OF_SCOPE_FUNCTION_                                \
-  EZTEST_DISABLE_WARNING_("-Wout-of-scope-function")
+     EZTEST_DISABLE_WARNING_("-Wout-of-scope-function")
 # define EZTEST_REENABLE_WOUT_OF_SCOPE_FUNCTION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOUT_OF_SCOPE_FUNCTION_
@@ -4965,7 +4965,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(6, 0, 0))
 # define EZTEST_DISABLE_WOBJC_MESSAGING_ID_                                    \
-  EZTEST_DISABLE_WARNING_("-Wobjc-messaging-id")
+     EZTEST_DISABLE_WARNING_("-Wobjc-messaging-id")
 # define EZTEST_REENABLE_WOBJC_MESSAGING_ID_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_MESSAGING_ID_
@@ -4973,25 +4973,25 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(6, 0, 0))
 # define EZTEST_DISABLE_WTAUTOLOGICAL_UNSIGNED_ZERO_COMPARE_                   \
-  EZTEST_DISABLE_WARNING_("-Wtautological-unsigned-zero-compare")
+     EZTEST_DISABLE_WARNING_("-Wtautological-unsigned-zero-compare")
 # define EZTEST_REENABLE_WTAUTOLOGICAL_UNSIGNED_ZERO_COMPARE_                  \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WTAUTOLOGICAL_UNSIGNED_ZERO_COMPARE_
 # define EZTEST_REENABLE_WTAUTOLOGICAL_UNSIGNED_ZERO_COMPARE_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(6, 0, 0))
 # define EZTEST_DISABLE_WTAUTOLOGICAL_TYPE_LIMIT_COMPARE_                      \
-  EZTEST_DISABLE_WARNING_("-Wtautological-type-limit-compare")
+     EZTEST_DISABLE_WARNING_("-Wtautological-type-limit-compare")
 # define EZTEST_REENABLE_WTAUTOLOGICAL_TYPE_LIMIT_COMPARE_                     \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WTAUTOLOGICAL_TYPE_LIMIT_COMPARE_
 # define EZTEST_REENABLE_WTAUTOLOGICAL_TYPE_LIMIT_COMPARE_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(6, 0, 0))
 # define EZTEST_DISABLE_WUNSUPPORTED_ABS_                                      \
-  EZTEST_DISABLE_WARNING_("-Wunsupported-abs")
+     EZTEST_DISABLE_WARNING_("-Wunsupported-abs")
 # define EZTEST_REENABLE_WUNSUPPORTED_ABS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNSUPPORTED_ABS_
@@ -4999,16 +4999,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(6, 0, 0))
 # define EZTEST_DISABLE_WCXX98_CXX11_CXX14_CXX17_COMPAT_                       \
-  EZTEST_DISABLE_WARNING_("-Wc++98-c++11-c++14-c++17-compat")
+     EZTEST_DISABLE_WARNING_("-Wc++98-c++11-c++14-c++17-compat")
 # define EZTEST_REENABLE_WCXX98_CXX11_CXX14_CXX17_COMPAT_                      \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX98_CXX11_CXX14_CXX17_COMPAT_
 # define EZTEST_REENABLE_WCXX98_CXX11_CXX14_CXX17_COMPAT_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(6, 0, 0))
 # define EZTEST_DISABLE_WEXPERIMENTAL_ISEL_                                    \
-  EZTEST_DISABLE_WARNING_("-Wexperimental-isel")
+     EZTEST_DISABLE_WARNING_("-Wexperimental-isel")
 # define EZTEST_REENABLE_WEXPERIMENTAL_ISEL_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WEXPERIMENTAL_ISEL_
@@ -5016,34 +5016,34 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(6, 0, 0))
 # define EZTEST_DISABLE_WPRAGMA_PACK_SUSPICIOUS_INCLUDE_                       \
-  EZTEST_DISABLE_WARNING_("-Wpragma-pack-suspicious-include")
+     EZTEST_DISABLE_WARNING_("-Wpragma-pack-suspicious-include")
 # define EZTEST_REENABLE_WPRAGMA_PACK_SUSPICIOUS_INCLUDE_                      \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPRAGMA_PACK_SUSPICIOUS_INCLUDE_
 # define EZTEST_REENABLE_WPRAGMA_PACK_SUSPICIOUS_INCLUDE_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(6, 0, 0))
 # define EZTEST_DISABLE_WTAUTOLOGICAL_CONSTANT_COMPARE_                        \
-  EZTEST_DISABLE_WARNING_("-Wtautological-constant-compare")
+     EZTEST_DISABLE_WARNING_("-Wtautological-constant-compare")
 # define EZTEST_REENABLE_WTAUTOLOGICAL_CONSTANT_COMPARE_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WTAUTOLOGICAL_CONSTANT_COMPARE_
 # define EZTEST_REENABLE_WTAUTOLOGICAL_CONSTANT_COMPARE_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(6, 0, 0))
 # define EZTEST_DISABLE_WCXX98_CXX11_CXX14_CXX17_COMPAT_PEDANTIC_              \
-  EZTEST_DISABLE_WARNING_("-Wc++98-c++11-c++14-c++17-compat-pedantic")
+     EZTEST_DISABLE_WARNING_("-Wc++98-c++11-c++14-c++17-compat-pedantic")
 # define EZTEST_REENABLE_WCXX98_CXX11_CXX14_CXX17_COMPAT_PEDANTIC_             \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX98_CXX11_CXX14_CXX17_COMPAT_PEDANTIC_
 # define EZTEST_REENABLE_WCXX98_CXX11_CXX14_CXX17_COMPAT_PEDANTIC_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(6, 0, 0))
 # define EZTEST_DISABLE_WUNSUPPORTED_GPOPT_                                    \
-  EZTEST_DISABLE_WARNING_("-Wunsupported-gpopt")
+     EZTEST_DISABLE_WARNING_("-Wunsupported-gpopt")
 # define EZTEST_REENABLE_WUNSUPPORTED_GPOPT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNSUPPORTED_GPOPT_
@@ -5051,7 +5051,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(6, 0, 0))
 # define EZTEST_DISABLE_WENUM_COMPARE_SWITCH_                                  \
-  EZTEST_DISABLE_WARNING_("-Wenum-compare-switch")
+     EZTEST_DISABLE_WARNING_("-Wenum-compare-switch")
 # define EZTEST_REENABLE_WENUM_COMPARE_SWITCH_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WENUM_COMPARE_SWITCH_
@@ -5059,7 +5059,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(6, 0, 0))
 # define EZTEST_DISABLE_WNSCONSUMED_MISMATCH_                                  \
-  EZTEST_DISABLE_WARNING_("-Wnsconsumed-mismatch")
+     EZTEST_DISABLE_WARNING_("-Wnsconsumed-mismatch")
 # define EZTEST_REENABLE_WNSCONSUMED_MISMATCH_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNSCONSUMED_MISMATCH_
@@ -5067,7 +5067,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(6, 0, 0))
 # define EZTEST_DISABLE_WREDUNDANT_PARENS_                                     \
-  EZTEST_DISABLE_WARNING_("-Wredundant-parens")
+     EZTEST_DISABLE_WARNING_("-Wredundant-parens")
 # define EZTEST_REENABLE_WREDUNDANT_PARENS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WREDUNDANT_PARENS_
@@ -5075,7 +5075,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(6, 0, 0))
 # define EZTEST_DISABLE_WNULL_POINTER_ARITHMETIC_                              \
-  EZTEST_DISABLE_WARNING_("-Wnull-pointer-arithmetic")
+     EZTEST_DISABLE_WARNING_("-Wnull-pointer-arithmetic")
 # define EZTEST_REENABLE_WNULL_POINTER_ARITHMETIC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNULL_POINTER_ARITHMETIC_
@@ -5083,9 +5083,9 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(6, 0, 0))
 # define EZTEST_DISABLE_WCXX98_CXX11_COMPAT_BINARY_LITERAL_                    \
-  EZTEST_DISABLE_WARNING_("-Wc++98-c++11-compat-binary-literal")
+     EZTEST_DISABLE_WARNING_("-Wc++98-c++11-compat-binary-literal")
 # define EZTEST_REENABLE_WCXX98_CXX11_COMPAT_BINARY_LITERAL_                   \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX98_CXX11_COMPAT_BINARY_LITERAL_
 # define EZTEST_REENABLE_WCXX98_CXX11_COMPAT_BINARY_LITERAL_
@@ -5099,7 +5099,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(6, 0, 0))
 # define EZTEST_DISABLE_WCXX17_COMPAT_PEDANTIC_                                \
-  EZTEST_DISABLE_WARNING_("-Wc++17-compat-pedantic")
+     EZTEST_DISABLE_WARNING_("-Wc++17-compat-pedantic")
 # define EZTEST_REENABLE_WCXX17_COMPAT_PEDANTIC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX17_COMPAT_PEDANTIC_
@@ -5107,7 +5107,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(6, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_INACCESSIBLE_BASE_                          \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-inaccessible-base")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-inaccessible-base")
 # define EZTEST_REENABLE_WMICROSOFT_INACCESSIBLE_BASE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_INACCESSIBLE_BASE_
@@ -5115,7 +5115,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(6, 0, 0))
 # define EZTEST_DISABLE_WBINDING_IN_CONDITION_                                 \
-  EZTEST_DISABLE_WARNING_("-Wbinding-in-condition")
+     EZTEST_DISABLE_WARNING_("-Wbinding-in-condition")
 # define EZTEST_REENABLE_WBINDING_IN_CONDITION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WBINDING_IN_CONDITION_
@@ -5123,7 +5123,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(6, 0, 0))
 # define EZTEST_DISABLE_WOBJC_FLEXIBLE_ARRAY_                                  \
-  EZTEST_DISABLE_WARNING_("-Wobjc-flexible-array")
+     EZTEST_DISABLE_WARNING_("-Wobjc-flexible-array")
 # define EZTEST_REENABLE_WOBJC_FLEXIBLE_ARRAY_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_FLEXIBLE_ARRAY_
@@ -5131,7 +5131,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(6, 0, 0))
 # define EZTEST_DISABLE_WCXX2A_COMPAT_PEDANTIC_                                \
-  EZTEST_DISABLE_WARNING_("-Wc++2a-compat-pedantic")
+     EZTEST_DISABLE_WARNING_("-Wc++2a-compat-pedantic")
 # define EZTEST_REENABLE_WCXX2A_COMPAT_PEDANTIC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX2A_COMPAT_PEDANTIC_
@@ -5139,16 +5139,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(6, 0, 0))
 # define EZTEST_DISABLE_WTAUTOLOGICAL_UNSIGNED_ENUM_ZERO_COMPARE_              \
-  EZTEST_DISABLE_WARNING_("-Wtautological-unsigned-enum-zero-compare")
+     EZTEST_DISABLE_WARNING_("-Wtautological-unsigned-enum-zero-compare")
 # define EZTEST_REENABLE_WTAUTOLOGICAL_UNSIGNED_ENUM_ZERO_COMPARE_             \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WTAUTOLOGICAL_UNSIGNED_ENUM_ZERO_COMPARE_
 # define EZTEST_REENABLE_WTAUTOLOGICAL_UNSIGNED_ENUM_ZERO_COMPARE_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(6, 0, 0))
 # define EZTEST_DISABLE_WCXX2A_EXTENSIONS_                                     \
-  EZTEST_DISABLE_WARNING_("-Wc++2a-extensions")
+     EZTEST_DISABLE_WARNING_("-Wc++2a-extensions")
 # define EZTEST_REENABLE_WCXX2A_EXTENSIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX2A_EXTENSIONS_
@@ -5156,7 +5156,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(6, 0, 0))
 # define EZTEST_DISABLE_WNSRETURNS_MISMATCH_                                   \
-  EZTEST_DISABLE_WARNING_("-Wnsreturns-mismatch")
+     EZTEST_DISABLE_WARNING_("-Wnsreturns-mismatch")
 # define EZTEST_REENABLE_WNSRETURNS_MISMATCH_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNSRETURNS_MISMATCH_
@@ -5164,7 +5164,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(6, 0, 0))
 # define EZTEST_DISABLE_WBINARY_LITERAL_                                       \
-  EZTEST_DISABLE_WARNING_("-Wbinary-literal")
+     EZTEST_DISABLE_WARNING_("-Wbinary-literal")
 # define EZTEST_REENABLE_WBINARY_LITERAL_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WBINARY_LITERAL_
@@ -5172,7 +5172,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(6, 0, 0))
 # define EZTEST_DISABLE_WUNDEFINED_INTERNAL_TYPE_                              \
-  EZTEST_DISABLE_WARNING_("-Wundefined-internal-type")
+     EZTEST_DISABLE_WARNING_("-Wundefined-internal-type")
 # define EZTEST_REENABLE_WUNDEFINED_INTERNAL_TYPE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNDEFINED_INTERNAL_TYPE_
@@ -5180,7 +5180,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(7, 0, 0))
 # define EZTEST_DISABLE_WATOMIC_ALIGNMENT_                                     \
-  EZTEST_DISABLE_WARNING_("-Watomic-alignment")
+     EZTEST_DISABLE_WARNING_("-Watomic-alignment")
 # define EZTEST_REENABLE_WATOMIC_ALIGNMENT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WATOMIC_ALIGNMENT_
@@ -5188,16 +5188,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(7, 0, 0))
 # define EZTEST_DISABLE_WQUOTED_INCLUDE_IN_FRAMEWORK_HEADER_                   \
-  EZTEST_DISABLE_WARNING_("-Wquoted-include-in-framework-header")
+     EZTEST_DISABLE_WARNING_("-Wquoted-include-in-framework-header")
 # define EZTEST_REENABLE_WQUOTED_INCLUDE_IN_FRAMEWORK_HEADER_                  \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WQUOTED_INCLUDE_IN_FRAMEWORK_HEADER_
 # define EZTEST_REENABLE_WQUOTED_INCLUDE_IN_FRAMEWORK_HEADER_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(7, 0, 0))
 # define EZTEST_DISABLE_WUNSUPPORTED_TARGET_OPT_                               \
-  EZTEST_DISABLE_WARNING_("-Wunsupported-target-opt")
+     EZTEST_DISABLE_WARNING_("-Wunsupported-target-opt")
 # define EZTEST_REENABLE_WUNSUPPORTED_TARGET_OPT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNSUPPORTED_TARGET_OPT_
@@ -5205,7 +5205,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(7, 0, 0))
 # define EZTEST_DISABLE_WARGUMENT_OUTSIDE_RANGE_                               \
-  EZTEST_DISABLE_WARNING_("-Wargument-outside-range")
+     EZTEST_DISABLE_WARNING_("-Wargument-outside-range")
 # define EZTEST_REENABLE_WARGUMENT_OUTSIDE_RANGE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WARGUMENT_OUTSIDE_RANGE_
@@ -5213,7 +5213,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(7, 0, 0))
 # define EZTEST_DISABLE_WFUNCTION_MULTIVERSION_                                \
-  EZTEST_DISABLE_WARNING_("-Wfunction-multiversion")
+     EZTEST_DISABLE_WARNING_("-Wfunction-multiversion")
 # define EZTEST_REENABLE_WFUNCTION_MULTIVERSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFUNCTION_MULTIVERSION_
@@ -5221,7 +5221,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(7, 0, 0))
 # define EZTEST_DISABLE_WSELF_ASSIGN_OVERLOADED_                               \
-  EZTEST_DISABLE_WARNING_("-Wself-assign-overloaded")
+     EZTEST_DISABLE_WARNING_("-Wself-assign-overloaded")
 # define EZTEST_REENABLE_WSELF_ASSIGN_OVERLOADED_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSELF_ASSIGN_OVERLOADED_
@@ -5229,7 +5229,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(7, 0, 0))
 # define EZTEST_DISABLE_WSUSPICIOUS_BZERO_                                     \
-  EZTEST_DISABLE_WARNING_("-Wsuspicious-bzero")
+     EZTEST_DISABLE_WARNING_("-Wsuspicious-bzero")
 # define EZTEST_REENABLE_WSUSPICIOUS_BZERO_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSUSPICIOUS_BZERO_
@@ -5237,7 +5237,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(7, 0, 0))
 # define EZTEST_DISABLE_WCAST_QUAL_UNRELATED_                                  \
-  EZTEST_DISABLE_WARNING_("-Wcast-qual-unrelated")
+     EZTEST_DISABLE_WARNING_("-Wcast-qual-unrelated")
 # define EZTEST_REENABLE_WCAST_QUAL_UNRELATED_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCAST_QUAL_UNRELATED_
@@ -5245,16 +5245,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(7, 0, 0))
 # define EZTEST_DISABLE_WORDERED_COMPARE_FUNCTION_POINTERS_                    \
-  EZTEST_DISABLE_WARNING_("-Wordered-compare-function-pointers")
+     EZTEST_DISABLE_WARNING_("-Wordered-compare-function-pointers")
 # define EZTEST_REENABLE_WORDERED_COMPARE_FUNCTION_POINTERS_                   \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WORDERED_COMPARE_FUNCTION_POINTERS_
 # define EZTEST_REENABLE_WORDERED_COMPARE_FUNCTION_POINTERS_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(7, 0, 0))
 # define EZTEST_DISABLE_WIGNORED_PRAGMA_OPTIMIZE_                              \
-  EZTEST_DISABLE_WARNING_("-Wignored-pragma-optimize")
+     EZTEST_DISABLE_WARNING_("-Wignored-pragma-optimize")
 # define EZTEST_REENABLE_WIGNORED_PRAGMA_OPTIMIZE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WIGNORED_PRAGMA_OPTIMIZE_
@@ -5262,7 +5262,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(7, 0, 0) || EZTEST_HAS_GCC_VER_(5, 1, 0))
 # define EZTEST_DISABLE_WMEMSET_TRANSPOSED_ARGS_                               \
-  EZTEST_DISABLE_WARNING_("-Wmemset-transposed-args")
+     EZTEST_DISABLE_WARNING_("-Wmemset-transposed-args")
 # define EZTEST_REENABLE_WMEMSET_TRANSPOSED_ARGS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMEMSET_TRANSPOSED_ARGS_
@@ -5270,7 +5270,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(7, 0, 0))
 # define EZTEST_DISABLE_WSTDLIBCXX_NOT_FOUND_                                  \
-  EZTEST_DISABLE_WARNING_("-Wstdlibcxx-not-found")
+     EZTEST_DISABLE_WARNING_("-Wstdlibcxx-not-found")
 # define EZTEST_REENABLE_WSTDLIBCXX_NOT_FOUND_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSTDLIBCXX_NOT_FOUND_
@@ -5278,7 +5278,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(7, 0, 0))
 # define EZTEST_DISABLE_WCXX98_COMPAT_EXTRA_SEMI_                              \
-  EZTEST_DISABLE_WARNING_("-Wc++98-compat-extra-semi")
+     EZTEST_DISABLE_WARNING_("-Wc++98-compat-extra-semi")
 # define EZTEST_REENABLE_WCXX98_COMPAT_EXTRA_SEMI_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX98_COMPAT_EXTRA_SEMI_
@@ -5286,7 +5286,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(7, 0, 0))
 # define EZTEST_DISABLE_WRETURN_STD_MOVE_IN_CXX11_                             \
-  EZTEST_DISABLE_WARNING_("-Wreturn-std-move-in-c++11")
+     EZTEST_DISABLE_WARNING_("-Wreturn-std-move-in-c++11")
 # define EZTEST_REENABLE_WRETURN_STD_MOVE_IN_CXX11_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WRETURN_STD_MOVE_IN_CXX11_
@@ -5294,16 +5294,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(7, 0, 0))
 # define EZTEST_DISABLE_WINCOMPLETE_FRAMEWORK_MODULE_DECLARATION_              \
-  EZTEST_DISABLE_WARNING_("-Wincomplete-framework-module-declaration")
+     EZTEST_DISABLE_WARNING_("-Wincomplete-framework-module-declaration")
 # define EZTEST_REENABLE_WINCOMPLETE_FRAMEWORK_MODULE_DECLARATION_             \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINCOMPLETE_FRAMEWORK_MODULE_DECLARATION_
 # define EZTEST_REENABLE_WINCOMPLETE_FRAMEWORK_MODULE_DECLARATION_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(7, 0, 0))
 # define EZTEST_DISABLE_WATIMPORT_IN_FRAMEWORK_HEADER_                         \
-  EZTEST_DISABLE_WARNING_("-Watimport-in-framework-header")
+     EZTEST_DISABLE_WARNING_("-Watimport-in-framework-header")
 # define EZTEST_REENABLE_WATIMPORT_IN_FRAMEWORK_HEADER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WATIMPORT_IN_FRAMEWORK_HEADER_
@@ -5318,16 +5318,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(7, 0, 0))
 # define EZTEST_DISABLE_WFRAMEWORK_INCLUDE_PRIVATE_FROM_PUBLIC_                \
-  EZTEST_DISABLE_WARNING_("-Wframework-include-private-from-public")
+     EZTEST_DISABLE_WARNING_("-Wframework-include-private-from-public")
 # define EZTEST_REENABLE_WFRAMEWORK_INCLUDE_PRIVATE_FROM_PUBLIC_               \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFRAMEWORK_INCLUDE_PRIVATE_FROM_PUBLIC_
 # define EZTEST_REENABLE_WFRAMEWORK_INCLUDE_PRIVATE_FROM_PUBLIC_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(7, 0, 0))
 # define EZTEST_DISABLE_WRETURN_STD_MOVE_                                      \
-  EZTEST_DISABLE_WARNING_("-Wreturn-std-move")
+     EZTEST_DISABLE_WARNING_("-Wreturn-std-move")
 # define EZTEST_REENABLE_WRETURN_STD_MOVE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WRETURN_STD_MOVE_
@@ -5335,7 +5335,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(7, 0, 0))
 # define EZTEST_DISABLE_WSUSPICIOUS_MEMACCESS_                                 \
-  EZTEST_DISABLE_WARNING_("-Wsuspicious-memaccess")
+     EZTEST_DISABLE_WARNING_("-Wsuspicious-memaccess")
 # define EZTEST_REENABLE_WSUSPICIOUS_MEMACCESS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSUSPICIOUS_MEMACCESS_
@@ -5343,7 +5343,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(7, 0, 0))
 # define EZTEST_DISABLE_WNONTRIVIAL_MEMACCESS_                                 \
-  EZTEST_DISABLE_WARNING_("-Wnontrivial-memaccess")
+     EZTEST_DISABLE_WARNING_("-Wnontrivial-memaccess")
 # define EZTEST_REENABLE_WNONTRIVIAL_MEMACCESS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNONTRIVIAL_MEMACCESS_
@@ -5351,7 +5351,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(7, 0, 0))
 # define EZTEST_DISABLE_WDEPRECATED_THIS_CAPTURE_                              \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-this-capture")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-this-capture")
 # define EZTEST_REENABLE_WDEPRECATED_THIS_CAPTURE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_THIS_CAPTURE_
@@ -5359,7 +5359,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(8, 0, 0))
 # define EZTEST_DISABLE_WPOINTER_INTEGER_COMPARE_                              \
-  EZTEST_DISABLE_WARNING_("-Wpointer-integer-compare")
+     EZTEST_DISABLE_WARNING_("-Wpointer-integer-compare")
 # define EZTEST_REENABLE_WPOINTER_INTEGER_COMPARE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPOINTER_INTEGER_COMPARE_
@@ -5367,7 +5367,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(8, 0, 0))
 # define EZTEST_DISABLE_WATOMIC_IMPLICIT_SEQ_CST_                              \
-  EZTEST_DISABLE_WARNING_("-Watomic-implicit-seq-cst")
+     EZTEST_DISABLE_WARNING_("-Watomic-implicit-seq-cst")
 # define EZTEST_REENABLE_WATOMIC_IMPLICIT_SEQ_CST_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WATOMIC_IMPLICIT_SEQ_CST_
@@ -5375,7 +5375,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(8, 0, 0))
 # define EZTEST_DISABLE_WFIXED_ENUM_EXTENSION_                                 \
-  EZTEST_DISABLE_WARNING_("-Wfixed-enum-extension")
+     EZTEST_DISABLE_WARNING_("-Wfixed-enum-extension")
 # define EZTEST_REENABLE_WFIXED_ENUM_EXTENSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFIXED_ENUM_EXTENSION_
@@ -5390,7 +5390,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(8, 0, 0))
 # define EZTEST_DISABLE_WDARWIN_SDK_SETTINGS_                                  \
-  EZTEST_DISABLE_WARNING_("-Wdarwin-sdk-settings")
+     EZTEST_DISABLE_WARNING_("-Wdarwin-sdk-settings")
 # define EZTEST_REENABLE_WDARWIN_SDK_SETTINGS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDARWIN_SDK_SETTINGS_
@@ -5398,7 +5398,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(8, 0, 0))
 # define EZTEST_DISABLE_WIMPLICIT_INT_CONVERSION_                              \
-  EZTEST_DISABLE_WARNING_("-Wimplicit-int-conversion")
+     EZTEST_DISABLE_WARNING_("-Wimplicit-int-conversion")
 # define EZTEST_REENABLE_WIMPLICIT_INT_CONVERSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WIMPLICIT_INT_CONVERSION_
@@ -5406,7 +5406,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(8, 0, 0))
 # define EZTEST_DISABLE_WEXTRA_SEMI_STMT_                                      \
-  EZTEST_DISABLE_WARNING_("-Wextra-semi-stmt")
+     EZTEST_DISABLE_WARNING_("-Wextra-semi-stmt")
 # define EZTEST_REENABLE_WEXTRA_SEMI_STMT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WEXTRA_SEMI_STMT_
@@ -5414,25 +5414,25 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(8, 0, 0))
 # define EZTEST_DISABLE_WCALL_TO_PURE_VIRTUAL_FROM_CTOR_DTOR_                  \
-  EZTEST_DISABLE_WARNING_("-Wcall-to-pure-virtual-from-ctor-dtor")
+     EZTEST_DISABLE_WARNING_("-Wcall-to-pure-virtual-from-ctor-dtor")
 # define EZTEST_REENABLE_WCALL_TO_PURE_VIRTUAL_FROM_CTOR_DTOR_                 \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCALL_TO_PURE_VIRTUAL_FROM_CTOR_DTOR_
 # define EZTEST_REENABLE_WCALL_TO_PURE_VIRTUAL_FROM_CTOR_DTOR_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(8, 0, 0))
 # define EZTEST_DISABLE_WDELETE_ABSTRACT_NON_VIRTUAL_DTOR_                     \
-  EZTEST_DISABLE_WARNING_("-Wdelete-abstract-non-virtual-dtor")
+     EZTEST_DISABLE_WARNING_("-Wdelete-abstract-non-virtual-dtor")
 # define EZTEST_REENABLE_WDELETE_ABSTRACT_NON_VIRTUAL_DTOR_                    \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDELETE_ABSTRACT_NON_VIRTUAL_DTOR_
 # define EZTEST_REENABLE_WDELETE_ABSTRACT_NON_VIRTUAL_DTOR_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(8, 0, 0))
 # define EZTEST_DISABLE_WEMPTY_INIT_STMT_                                      \
-  EZTEST_DISABLE_WARNING_("-Wempty-init-stmt")
+     EZTEST_DISABLE_WARNING_("-Wempty-init-stmt")
 # define EZTEST_REENABLE_WEMPTY_INIT_STMT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WEMPTY_INIT_STMT_
@@ -5440,7 +5440,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(8, 0, 0))
 # define EZTEST_DISABLE_WIMPLICIT_FLOAT_CONVERSION_                            \
-  EZTEST_DISABLE_WARNING_("-Wimplicit-float-conversion")
+     EZTEST_DISABLE_WARNING_("-Wimplicit-float-conversion")
 # define EZTEST_REENABLE_WIMPLICIT_FLOAT_CONVERSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
@@ -5448,9 +5448,9 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(8, 0, 0))
 # define EZTEST_DISABLE_WOBJC_PROPERTY_ASSIGN_ON_OBJECT_TYPE_                  \
-  EZTEST_DISABLE_WARNING_("-Wobjc-property-assign-on-object-type")
+     EZTEST_DISABLE_WARNING_("-Wobjc-property-assign-on-object-type")
 # define EZTEST_REENABLE_WOBJC_PROPERTY_ASSIGN_ON_OBJECT_TYPE_                 \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_PROPERTY_ASSIGN_ON_OBJECT_TYPE_
 # define EZTEST_REENABLE_WOBJC_PROPERTY_ASSIGN_ON_OBJECT_TYPE_
@@ -5464,7 +5464,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(8, 0, 0) || EZTEST_HAS_GCC_VER_(8, 1, 0))
 # define EZTEST_DISABLE_WSIZEOF_POINTER_DIV_                                   \
-  EZTEST_DISABLE_WARNING_("-Wsizeof-pointer-div")
+     EZTEST_DISABLE_WARNING_("-Wsizeof-pointer-div")
 # define EZTEST_REENABLE_WSIZEOF_POINTER_DIV_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSIZEOF_POINTER_DIV_
@@ -5472,16 +5472,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(8, 0, 0))
 # define EZTEST_DISABLE_WDELETE_NON_ABSTRACT_NON_VIRTUAL_DTOR_                 \
-  EZTEST_DISABLE_WARNING_("-Wdelete-non-abstract-non-virtual-dtor")
+     EZTEST_DISABLE_WARNING_("-Wdelete-non-abstract-non-virtual-dtor")
 # define EZTEST_REENABLE_WDELETE_NON_ABSTRACT_NON_VIRTUAL_DTOR_                \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDELETE_NON_ABSTRACT_NON_VIRTUAL_DTOR_
 # define EZTEST_REENABLE_WDELETE_NON_ABSTRACT_NON_VIRTUAL_DTOR_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(8, 0, 0))
 # define EZTEST_DISABLE_WUNICODE_ZERO_WIDTH_                                   \
-  EZTEST_DISABLE_WARNING_("-Wunicode-zero-width")
+     EZTEST_DISABLE_WARNING_("-Wunicode-zero-width")
 # define EZTEST_REENABLE_WUNICODE_ZERO_WIDTH_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNICODE_ZERO_WIDTH_
@@ -5489,7 +5489,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(8, 0, 0))
 # define EZTEST_DISABLE_WDEFAULTED_FUNCTION_DELETED_                           \
-  EZTEST_DISABLE_WARNING_("-Wdefaulted-function-deleted")
+     EZTEST_DISABLE_WARNING_("-Wdefaulted-function-deleted")
 # define EZTEST_REENABLE_WDEFAULTED_FUNCTION_DELETED_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEFAULTED_FUNCTION_DELETED_
@@ -5497,7 +5497,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(9, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_DRECTVE_SECTION_                            \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-drectve-section")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-drectve-section")
 # define EZTEST_REENABLE_WMICROSOFT_DRECTVE_SECTION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_DRECTVE_SECTION_
@@ -5505,16 +5505,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(9, 0, 0))
 # define EZTEST_DISABLE_WINCOMPLETE_SETJMP_DECLARATION_                        \
-  EZTEST_DISABLE_WARNING_("-Wincomplete-setjmp-declaration")
+     EZTEST_DISABLE_WARNING_("-Wincomplete-setjmp-declaration")
 # define EZTEST_REENABLE_WINCOMPLETE_SETJMP_DECLARATION_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINCOMPLETE_SETJMP_DECLARATION_
 # define EZTEST_REENABLE_WINCOMPLETE_SETJMP_DECLARATION_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(9, 0, 0))
 # define EZTEST_DISABLE_WAVR_RTLIB_LINKING_QUIRKS_                             \
-  EZTEST_DISABLE_WARNING_("-Wavr-rtlib-linking-quirks")
+     EZTEST_DISABLE_WARNING_("-Wavr-rtlib-linking-quirks")
 # define EZTEST_REENABLE_WAVR_RTLIB_LINKING_QUIRKS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WAVR_RTLIB_LINKING_QUIRKS_
@@ -5522,7 +5522,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(9, 0, 0))
 # define EZTEST_DISABLE_WCONCEPTS_TS_COMPAT_                                   \
-  EZTEST_DISABLE_WARNING_("-Wconcepts-ts-compat")
+     EZTEST_DISABLE_WARNING_("-Wconcepts-ts-compat")
 # define EZTEST_REENABLE_WCONCEPTS_TS_COMPAT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCONCEPTS_TS_COMPAT_
@@ -5530,27 +5530,27 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(9, 0, 0))
 # define EZTEST_DISABLE_WUNDERALIGNED_EXCEPTION_OBJECT_                        \
-  EZTEST_DISABLE_WARNING_("-Wunderaligned-exception-object")
+     EZTEST_DISABLE_WARNING_("-Wunderaligned-exception-object")
 # define EZTEST_REENABLE_WUNDERALIGNED_EXCEPTION_OBJECT_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNDERALIGNED_EXCEPTION_OBJECT_
 # define EZTEST_REENABLE_WUNDERALIGNED_EXCEPTION_OBJECT_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(9, 0, 0))
 # define EZTEST_DISABLE_WIMPLICIT_FIXED_POINT_CONVERSION_                      \
-  EZTEST_DISABLE_WARNING_("-Wimplicit-fixed-point-conversion")
+     EZTEST_DISABLE_WARNING_("-Wimplicit-fixed-point-conversion")
 # define EZTEST_REENABLE_WIMPLICIT_FIXED_POINT_CONVERSION_                     \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WIMPLICIT_FIXED_POINT_CONVERSION_
 # define EZTEST_REENABLE_WIMPLICIT_FIXED_POINT_CONVERSION_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(9, 0, 0))
 # define EZTEST_DISABLE_WOBJC_BOOL_CONSTANT_CONVERSION_                        \
-  EZTEST_DISABLE_WARNING_("-Wobjc-bool-constant-conversion")
+     EZTEST_DISABLE_WARNING_("-Wobjc-bool-constant-conversion")
 # define EZTEST_REENABLE_WOBJC_BOOL_CONSTANT_CONVERSION_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_BOOL_CONSTANT_CONVERSION_
 # define EZTEST_REENABLE_WOBJC_BOOL_CONSTANT_CONVERSION_
@@ -5564,16 +5564,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(9, 0, 0))
 # define EZTEST_DISABLE_WTAUTOLOGICAL_OBJC_BOOL_COMPARE_                       \
-  EZTEST_DISABLE_WARNING_("-Wtautological-objc-bool-compare")
+     EZTEST_DISABLE_WARNING_("-Wtautological-objc-bool-compare")
 # define EZTEST_REENABLE_WTAUTOLOGICAL_OBJC_BOOL_COMPARE_                      \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WTAUTOLOGICAL_OBJC_BOOL_COMPARE_
 # define EZTEST_REENABLE_WTAUTOLOGICAL_OBJC_BOOL_COMPARE_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(9, 0, 0))
 # define EZTEST_DISABLE_WEXPORT_UNNAMED_                                       \
-  EZTEST_DISABLE_WARNING_("-Wexport-unnamed")
+     EZTEST_DISABLE_WARNING_("-Wexport-unnamed")
 # define EZTEST_REENABLE_WEXPORT_UNNAMED_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WEXPORT_UNNAMED_
@@ -5581,7 +5581,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(9, 0, 0))
 # define EZTEST_DISABLE_WFORTIFY_SOURCE_                                       \
-  EZTEST_DISABLE_WARNING_("-Wfortify-source")
+     EZTEST_DISABLE_WARNING_("-Wfortify-source")
 # define EZTEST_REENABLE_WFORTIFY_SOURCE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFORTIFY_SOURCE_
@@ -5589,7 +5589,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(9, 0, 0))
 # define EZTEST_DISABLE_WEXPORT_USING_DIRECTIVE_                               \
-  EZTEST_DISABLE_WARNING_("-Wexport-using-directive")
+     EZTEST_DISABLE_WARNING_("-Wexport-using-directive")
 # define EZTEST_REENABLE_WEXPORT_USING_DIRECTIVE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WEXPORT_USING_DIRECTIVE_
@@ -5597,7 +5597,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WPOISON_SYSTEM_DIRECTORIES_                            \
-  EZTEST_DISABLE_WARNING_("-Wpoison-system-directories")
+     EZTEST_DISABLE_WARNING_("-Wpoison-system-directories")
 # define EZTEST_REENABLE_WPOISON_SYSTEM_DIRECTORIES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPOISON_SYSTEM_DIRECTORIES_
@@ -5605,7 +5605,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WREQUIRES_EXPRESSION_                                  \
-  EZTEST_DISABLE_WARNING_("-Wrequires-expression")
+     EZTEST_DISABLE_WARNING_("-Wrequires-expression")
 # define EZTEST_REENABLE_WREQUIRES_EXPRESSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WREQUIRES_EXPRESSION_
@@ -5613,16 +5613,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WBITWISE_CONDITIONAL_PARENTHESES_                      \
-  EZTEST_DISABLE_WARNING_("-Wbitwise-conditional-parentheses")
+     EZTEST_DISABLE_WARNING_("-Wbitwise-conditional-parentheses")
 # define EZTEST_REENABLE_WBITWISE_CONDITIONAL_PARENTHESES_                     \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WBITWISE_CONDITIONAL_PARENTHESES_
 # define EZTEST_REENABLE_WBITWISE_CONDITIONAL_PARENTHESES_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0) || EZTEST_HAS_GCC_VER_(7, 1, 0))
 # define EZTEST_DISABLE_WPOINTER_COMPARE_                                      \
-  EZTEST_DISABLE_WARNING_("-Wpointer-compare")
+     EZTEST_DISABLE_WARNING_("-Wpointer-compare")
 # define EZTEST_REENABLE_WPOINTER_COMPARE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPOINTER_COMPARE_
@@ -5630,7 +5630,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WFINAL_DTOR_NON_FINAL_CLASS_                           \
-  EZTEST_DISABLE_WARNING_("-Wfinal-dtor-non-final-class")
+     EZTEST_DISABLE_WARNING_("-Wfinal-dtor-non-final-class")
 # define EZTEST_REENABLE_WFINAL_DTOR_NON_FINAL_CLASS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFINAL_DTOR_NON_FINAL_CLASS_
@@ -5638,16 +5638,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WDEPRECATED_ANON_ENUM_ENUM_CONVERSION_                 \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-anon-enum-enum-conversion")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-anon-enum-enum-conversion")
 # define EZTEST_REENABLE_WDEPRECATED_ANON_ENUM_ENUM_CONVERSION_                \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_ANON_ENUM_ENUM_CONVERSION_
 # define EZTEST_REENABLE_WDEPRECATED_ANON_ENUM_ENUM_CONVERSION_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WCXX20_DESIGNATOR_                                     \
-  EZTEST_DISABLE_WARNING_("-Wc++20-designator")
+     EZTEST_DISABLE_WARNING_("-Wc++20-designator")
 # define EZTEST_REENABLE_WCXX20_DESIGNATOR_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX20_DESIGNATOR_
@@ -5655,7 +5655,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WENUM_ENUM_CONVERSION_                                 \
-  EZTEST_DISABLE_WARNING_("-Wenum-enum-conversion")
+     EZTEST_DISABLE_WARNING_("-Wenum-enum-conversion")
 # define EZTEST_REENABLE_WENUM_ENUM_CONVERSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WENUM_ENUM_CONVERSION_
@@ -5663,7 +5663,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WDEPRECATED_ARRAY_COMPARE_                             \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-array-compare")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-array-compare")
 # define EZTEST_REENABLE_WDEPRECATED_ARRAY_COMPARE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_ARRAY_COMPARE_
@@ -5671,9 +5671,9 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WBUILTIN_ASSUME_ALIGNED_ALIGNMENT_                     \
-  EZTEST_DISABLE_WARNING_("-Wbuiltin-assume-aligned-alignment")
+     EZTEST_DISABLE_WARNING_("-Wbuiltin-assume-aligned-alignment")
 # define EZTEST_REENABLE_WBUILTIN_ASSUME_ALIGNED_ALIGNMENT_                    \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WBUILTIN_ASSUME_ALIGNED_ALIGNMENT_
 # define EZTEST_REENABLE_WBUILTIN_ASSUME_ALIGNED_ALIGNMENT_
@@ -5687,7 +5687,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WTAUTOLOGICAL_BITWISE_COMPARE_                         \
-  EZTEST_DISABLE_WARNING_("-Wtautological-bitwise-compare")
+     EZTEST_DISABLE_WARNING_("-Wtautological-bitwise-compare")
 # define EZTEST_REENABLE_WTAUTOLOGICAL_BITWISE_COMPARE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WTAUTOLOGICAL_BITWISE_COMPARE_
@@ -5695,7 +5695,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WUNKNOWN_CUDA_VERSION_                                 \
-  EZTEST_DISABLE_WARNING_("-Wunknown-cuda-version")
+     EZTEST_DISABLE_WARNING_("-Wunknown-cuda-version")
 # define EZTEST_REENABLE_WUNKNOWN_CUDA_VERSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNKNOWN_CUDA_VERSION_
@@ -5710,7 +5710,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WAMBIGUOUS_REVERSED_OPERATOR_                          \
-  EZTEST_DISABLE_WARNING_("-Wambiguous-reversed-operator")
+     EZTEST_DISABLE_WARNING_("-Wambiguous-reversed-operator")
 # define EZTEST_REENABLE_WAMBIGUOUS_REVERSED_OPERATOR_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WAMBIGUOUS_REVERSED_OPERATOR_
@@ -5718,7 +5718,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WENUM_FLOAT_CONVERSION_                                \
-  EZTEST_DISABLE_WARNING_("-Wenum-float-conversion")
+     EZTEST_DISABLE_WARNING_("-Wenum-float-conversion")
 # define EZTEST_REENABLE_WENUM_FLOAT_CONVERSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WENUM_FLOAT_CONVERSION_
@@ -5726,7 +5726,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WENUM_COMPARE_CONDITIONAL_                             \
-  EZTEST_DISABLE_WARNING_("-Wenum-compare-conditional")
+     EZTEST_DISABLE_WARNING_("-Wenum-compare-conditional")
 # define EZTEST_REENABLE_WENUM_COMPARE_CONDITIONAL_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WENUM_COMPARE_CONDITIONAL_
@@ -5734,7 +5734,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WANON_ENUM_ENUM_CONVERSION_                            \
-  EZTEST_DISABLE_WARNING_("-Wanon-enum-enum-conversion")
+     EZTEST_DISABLE_WARNING_("-Wanon-enum-enum-conversion")
 # define EZTEST_REENABLE_WANON_ENUM_ENUM_CONVERSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANON_ENUM_ENUM_CONVERSION_
@@ -5742,16 +5742,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WDEPRECATED_ENUM_COMPARE_CONDITIONAL_                  \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-enum-compare-conditional")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-enum-compare-conditional")
 # define EZTEST_REENABLE_WDEPRECATED_ENUM_COMPARE_CONDITIONAL_                 \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_ENUM_COMPARE_CONDITIONAL_
 # define EZTEST_REENABLE_WDEPRECATED_ENUM_COMPARE_CONDITIONAL_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0) || EZTEST_HAS_GCC_VER_(7, 1, 0))
 # define EZTEST_DISABLE_WINT_IN_BOOL_CONTEXT_                                  \
-  EZTEST_DISABLE_WARNING_("-Wint-in-bool-context")
+     EZTEST_DISABLE_WARNING_("-Wint-in-bool-context")
 # define EZTEST_REENABLE_WINT_IN_BOOL_CONTEXT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINT_IN_BOOL_CONTEXT_
@@ -5759,7 +5759,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WDEPRECATED_ENUM_COMPARE_                              \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-enum-compare")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-enum-compare")
 # define EZTEST_REENABLE_WDEPRECATED_ENUM_COMPARE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_ENUM_COMPARE_
@@ -5767,7 +5767,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WOPENMP_MAPPING_                                       \
-  EZTEST_DISABLE_WARNING_("-Wopenmp-mapping")
+     EZTEST_DISABLE_WARNING_("-Wopenmp-mapping")
 # define EZTEST_REENABLE_WOPENMP_MAPPING_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOPENMP_MAPPING_
@@ -5775,7 +5775,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0) || EZTEST_HAS_GCC_VER_(6, 1, 0))
 # define EZTEST_DISABLE_WMISLEADING_INDENTATION_                               \
-  EZTEST_DISABLE_WARNING_("-Wmisleading-indentation")
+     EZTEST_DISABLE_WARNING_("-Wmisleading-indentation")
 # define EZTEST_REENABLE_WMISLEADING_INDENTATION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMISLEADING_INDENTATION_
@@ -5783,7 +5783,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0) || EZTEST_HAS_GCC_VER_(13, 1, 0))
 # define EZTEST_DISABLE_WXOR_USED_AS_POW_                                      \
-  EZTEST_DISABLE_WARNING_("-Wxor-used-as-pow")
+     EZTEST_DISABLE_WARNING_("-Wxor-used-as-pow")
 # define EZTEST_REENABLE_WXOR_USED_AS_POW_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WXOR_USED_AS_POW_
@@ -5791,7 +5791,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WFORMAT_TYPE_CONFUSION_                                \
-  EZTEST_DISABLE_WARNING_("-Wformat-type-confusion")
+     EZTEST_DISABLE_WARNING_("-Wformat-type-confusion")
 # define EZTEST_REENABLE_WFORMAT_TYPE_CONFUSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFORMAT_TYPE_CONFUSION_
@@ -5799,7 +5799,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WCONSTANT_EVALUATED_                                   \
-  EZTEST_DISABLE_WARNING_("-Wconstant-evaluated")
+     EZTEST_DISABLE_WARNING_("-Wconstant-evaluated")
 # define EZTEST_REENABLE_WCONSTANT_EVALUATED_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCONSTANT_EVALUATED_
@@ -5807,7 +5807,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WREORDER_INIT_LIST_                                    \
-  EZTEST_DISABLE_WARNING_("-Wreorder-init-list")
+     EZTEST_DISABLE_WARNING_("-Wreorder-init-list")
 # define EZTEST_REENABLE_WREORDER_INIT_LIST_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WREORDER_INIT_LIST_
@@ -5815,7 +5815,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0) || EZTEST_HAS_GCC_VER_(11, 1, 0))
 # define EZTEST_DISABLE_WSIZEOF_ARRAY_DIV_                                     \
-  EZTEST_DISABLE_WARNING_("-Wsizeof-array-div")
+     EZTEST_DISABLE_WARNING_("-Wsizeof-array-div")
 # define EZTEST_REENABLE_WSIZEOF_ARRAY_DIV_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSIZEOF_ARRAY_DIV_
@@ -5823,9 +5823,9 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WGNU_INLINE_CPP_WITHOUT_EXTERN_                        \
-  EZTEST_DISABLE_WARNING_("-Wgnu-inline-cpp-without-extern")
+     EZTEST_DISABLE_WARNING_("-Wgnu-inline-cpp-without-extern")
 # define EZTEST_REENABLE_WGNU_INLINE_CPP_WITHOUT_EXTERN_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_INLINE_CPP_WITHOUT_EXTERN_
 # define EZTEST_REENABLE_WGNU_INLINE_CPP_WITHOUT_EXTERN_
@@ -5839,7 +5839,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WSIGNED_UNSIGNED_WCHAR_                                \
-  EZTEST_DISABLE_WARNING_("-Wsigned-unsigned-wchar")
+     EZTEST_DISABLE_WARNING_("-Wsigned-unsigned-wchar")
 # define EZTEST_REENABLE_WSIGNED_UNSIGNED_WCHAR_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSIGNED_UNSIGNED_WCHAR_
@@ -5847,7 +5847,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WDEPRECATED_COMMA_SUBSCRIPT_                           \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-comma-subscript")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-comma-subscript")
 # define EZTEST_REENABLE_WDEPRECATED_COMMA_SUBSCRIPT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_COMMA_SUBSCRIPT_
@@ -5855,7 +5855,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WMISSING_CONSTINIT_                                    \
-  EZTEST_DISABLE_WARNING_("-Wmissing-constinit")
+     EZTEST_DISABLE_WARNING_("-Wmissing-constinit")
 # define EZTEST_REENABLE_WMISSING_CONSTINIT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMISSING_CONSTINIT_
@@ -5863,7 +5863,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WINVALID_NO_BUILTIN_NAMES_                             \
-  EZTEST_DISABLE_WARNING_("-Winvalid-no-builtin-names")
+     EZTEST_DISABLE_WARNING_("-Winvalid-no-builtin-names")
 # define EZTEST_REENABLE_WINVALID_NO_BUILTIN_NAMES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINVALID_NO_BUILTIN_NAMES_
@@ -5878,7 +5878,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WCXX20_COMPAT_PEDANTIC_                                \
-  EZTEST_DISABLE_WARNING_("-Wc++20-compat-pedantic")
+     EZTEST_DISABLE_WARNING_("-Wc++20-compat-pedantic")
 # define EZTEST_REENABLE_WCXX20_COMPAT_PEDANTIC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX20_COMPAT_PEDANTIC_
@@ -5886,7 +5886,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_TEMPLATE_SHADOW_                            \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-template-shadow")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-template-shadow")
 # define EZTEST_REENABLE_WMICROSOFT_TEMPLATE_SHADOW_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_TEMPLATE_SHADOW_
@@ -5894,7 +5894,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WSTACK_EXHAUSTED_                                      \
-  EZTEST_DISABLE_WARNING_("-Wstack-exhausted")
+     EZTEST_DISABLE_WARNING_("-Wstack-exhausted")
 # define EZTEST_REENABLE_WSTACK_EXHAUSTED_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSTACK_EXHAUSTED_
@@ -5902,7 +5902,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WC99_DESIGNATOR_                                       \
-  EZTEST_DISABLE_WARNING_("-Wc99-designator")
+     EZTEST_DISABLE_WARNING_("-Wc99-designator")
 # define EZTEST_REENABLE_WC99_DESIGNATOR_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WC99_DESIGNATOR_
@@ -5917,7 +5917,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WRANGE_LOOP_BIND_REFERENCE_                            \
-  EZTEST_DISABLE_WARNING_("-Wrange-loop-bind-reference")
+     EZTEST_DISABLE_WARNING_("-Wrange-loop-bind-reference")
 # define EZTEST_REENABLE_WRANGE_LOOP_BIND_REFERENCE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WRANGE_LOOP_BIND_REFERENCE_
@@ -5925,7 +5925,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WOBJC_SIGNED_CHAR_BOOL_                                \
-  EZTEST_DISABLE_WARNING_("-Wobjc-signed-char-bool")
+     EZTEST_DISABLE_WARNING_("-Wobjc-signed-char-bool")
 # define EZTEST_REENABLE_WOBJC_SIGNED_CHAR_BOOL_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_SIGNED_CHAR_BOOL_
@@ -5940,16 +5940,17 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WOBJC_SIGNED_CHAR_BOOL_IMPLICIT_FLOAT_CONVERSION_      \
-  EZTEST_DISABLE_WARNING_("-Wobjc-signed-char-bool-implicit-float-conversion")
+     EZTEST_DISABLE_WARNING_(                                                  \
+         "-Wobjc-signed-char-bool-implicit-float-conversion")
 # define EZTEST_REENABLE_WOBJC_SIGNED_CHAR_BOOL_IMPLICIT_FLOAT_CONVERSION_     \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_SIGNED_CHAR_BOOL_IMPLICIT_FLOAT_CONVERSION_
 # define EZTEST_REENABLE_WOBJC_SIGNED_CHAR_BOOL_IMPLICIT_FLOAT_CONVERSION_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WDEPRECATED_VOLATILE_                                  \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-volatile")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-volatile")
 # define EZTEST_REENABLE_WDEPRECATED_VOLATILE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_VOLATILE_
@@ -5957,25 +5958,25 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WIMPLICIT_INT_FLOAT_CONVERSION_                        \
-  EZTEST_DISABLE_WARNING_("-Wimplicit-int-float-conversion")
+     EZTEST_DISABLE_WARNING_("-Wimplicit-int-float-conversion")
 # define EZTEST_REENABLE_WIMPLICIT_INT_FLOAT_CONVERSION_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WIMPLICIT_INT_FLOAT_CONVERSION_
 # define EZTEST_REENABLE_WIMPLICIT_INT_FLOAT_CONVERSION_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0))
 # define EZTEST_DISABLE_WOBJC_SIGNED_CHAR_BOOL_IMPLICIT_INT_CONVERSION_        \
-  EZTEST_DISABLE_WARNING_("-Wobjc-signed-char-bool-implicit-int-conversion")
+     EZTEST_DISABLE_WARNING_("-Wobjc-signed-char-bool-implicit-int-conversion")
 # define EZTEST_REENABLE_WOBJC_SIGNED_CHAR_BOOL_IMPLICIT_INT_CONVERSION_       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_SIGNED_CHAR_BOOL_IMPLICIT_INT_CONVERSION_
 # define EZTEST_REENABLE_WOBJC_SIGNED_CHAR_BOOL_IMPLICIT_INT_CONVERSION_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(10, 0, 0) || EZTEST_HAS_GCC_VER_(7, 1, 0))
 # define EZTEST_DISABLE_WBOOL_OPERATION_                                       \
-  EZTEST_DISABLE_WARNING_("-Wbool-operation")
+     EZTEST_DISABLE_WARNING_("-Wbool-operation")
 # define EZTEST_REENABLE_WBOOL_OPERATION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WBOOL_OPERATION_
@@ -5990,16 +5991,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(11, 0, 0))
 # define EZTEST_DISABLE_WINLINE_NAMESPACE_REOPENED_NONINLINE_                  \
-  EZTEST_DISABLE_WARNING_("-Winline-namespace-reopened-noninline")
+     EZTEST_DISABLE_WARNING_("-Winline-namespace-reopened-noninline")
 # define EZTEST_REENABLE_WINLINE_NAMESPACE_REOPENED_NONINLINE_                 \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINLINE_NAMESPACE_REOPENED_NONINLINE_
 # define EZTEST_REENABLE_WINLINE_NAMESPACE_REOPENED_NONINLINE_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(11, 0, 0) || EZTEST_HAS_GCC_VER_(6, 1, 0))
 # define EZTEST_DISABLE_WFRAME_ADDRESS_                                        \
-  EZTEST_DISABLE_WARNING_("-Wframe-address")
+     EZTEST_DISABLE_WARNING_("-Wframe-address")
 # define EZTEST_REENABLE_WFRAME_ADDRESS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFRAME_ADDRESS_
@@ -6007,7 +6008,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(11, 0, 0))
 # define EZTEST_DISABLE_WNON_C_TYPEDEF_FOR_LINKAGE_                            \
-  EZTEST_DISABLE_WARNING_("-Wnon-c-typedef-for-linkage")
+     EZTEST_DISABLE_WARNING_("-Wnon-c-typedef-for-linkage")
 # define EZTEST_REENABLE_WNON_C_TYPEDEF_FOR_LINKAGE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNON_C_TYPEDEF_FOR_LINKAGE_
@@ -6022,18 +6023,18 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(11, 0, 0))
 # define EZTEST_DISABLE_WUNINITIALIZED_CONST_REFERENCE_                        \
-  EZTEST_DISABLE_WARNING_("-Wuninitialized-const-reference")
+     EZTEST_DISABLE_WARNING_("-Wuninitialized-const-reference")
 # define EZTEST_REENABLE_WUNINITIALIZED_CONST_REFERENCE_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNINITIALIZED_CONST_REFERENCE_
 # define EZTEST_REENABLE_WUNINITIALIZED_CONST_REFERENCE_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(11, 0, 0))
 # define EZTEST_DISABLE_WOBJC_DICTIONARY_DUPLICATE_KEYS_                       \
-  EZTEST_DISABLE_WARNING_("-Wobjc-dictionary-duplicate-keys")
+     EZTEST_DISABLE_WARNING_("-Wobjc-dictionary-duplicate-keys")
 # define EZTEST_REENABLE_WOBJC_DICTIONARY_DUPLICATE_KEYS_                      \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_DICTIONARY_DUPLICATE_KEYS_
 # define EZTEST_REENABLE_WOBJC_DICTIONARY_DUPLICATE_KEYS_
@@ -6047,7 +6048,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(11, 0, 0))
 # define EZTEST_DISABLE_WREWRITE_NOT_BOOL_                                     \
-  EZTEST_DISABLE_WARNING_("-Wrewrite-not-bool")
+     EZTEST_DISABLE_WARNING_("-Wrewrite-not-bool")
 # define EZTEST_REENABLE_WREWRITE_NOT_BOOL_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WREWRITE_NOT_BOOL_
@@ -6055,7 +6056,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(11, 0, 0))
 # define EZTEST_DISABLE_WELABORATED_ENUM_CLASS_                                \
-  EZTEST_DISABLE_WARNING_("-Welaborated-enum-class")
+     EZTEST_DISABLE_WARNING_("-Welaborated-enum-class")
 # define EZTEST_REENABLE_WELABORATED_ENUM_CLASS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WELABORATED_ENUM_CLASS_
@@ -6064,7 +6065,7 @@
 #if (EZTEST_HAS_CLANG_VER_(11, 0, 0)) ||                                       \
     ((EZTEST_HAS_GCC_VER_(14, 0, 0)) && EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WELABORATED_ENUM_BASE_                                 \
-  EZTEST_DISABLE_WARNING_("-Welaborated-enum-base")
+     EZTEST_DISABLE_WARNING_("-Welaborated-enum-base")
 # define EZTEST_REENABLE_WELABORATED_ENUM_BASE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WELABORATED_ENUM_BASE_
@@ -6072,7 +6073,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(11, 0, 0))
 # define EZTEST_DISABLE_WC2X_EXTENSIONS_                                       \
-  EZTEST_DISABLE_WARNING_("-Wc2x-extensions")
+     EZTEST_DISABLE_WARNING_("-Wc2x-extensions")
 # define EZTEST_REENABLE_WC2X_EXTENSIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WC2X_EXTENSIONS_
@@ -6080,25 +6081,25 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(11, 0, 0))
 # define EZTEST_DISABLE_WIMPLICIT_CONST_INT_FLOAT_CONVERSION_                  \
-  EZTEST_DISABLE_WARNING_("-Wimplicit-const-int-float-conversion")
+     EZTEST_DISABLE_WARNING_("-Wimplicit-const-int-float-conversion")
 # define EZTEST_REENABLE_WIMPLICIT_CONST_INT_FLOAT_CONVERSION_                 \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WIMPLICIT_CONST_INT_FLOAT_CONVERSION_
 # define EZTEST_REENABLE_WIMPLICIT_CONST_INT_FLOAT_CONVERSION_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(11, 0, 0))
 # define EZTEST_DISABLE_WUNSUPPORTED_FLOATING_POINT_OPT_                       \
-  EZTEST_DISABLE_WARNING_("-Wunsupported-floating-point-opt")
+     EZTEST_DISABLE_WARNING_("-Wunsupported-floating-point-opt")
 # define EZTEST_REENABLE_WUNSUPPORTED_FLOATING_POINT_OPT_                      \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNSUPPORTED_FLOATING_POINT_OPT_
 # define EZTEST_REENABLE_WUNSUPPORTED_FLOATING_POINT_OPT_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(11, 0, 0))
 # define EZTEST_DISABLE_WVOID_POINTER_TO_ENUM_CAST_                            \
-  EZTEST_DISABLE_WARNING_("-Wvoid-pointer-to-enum-cast")
+     EZTEST_DISABLE_WARNING_("-Wvoid-pointer-to-enum-cast")
 # define EZTEST_REENABLE_WVOID_POINTER_TO_ENUM_CAST_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WVOID_POINTER_TO_ENUM_CAST_
@@ -6113,7 +6114,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(11, 0, 0))
 # define EZTEST_DISABLE_WSUGGEST_DESTRUCTOR_OVERRIDE_                          \
-  EZTEST_DISABLE_WARNING_("-Wsuggest-destructor-override")
+     EZTEST_DISABLE_WARNING_("-Wsuggest-destructor-override")
 # define EZTEST_REENABLE_WSUGGEST_DESTRUCTOR_OVERRIDE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSUGGEST_DESTRUCTOR_OVERRIDE_
@@ -6121,7 +6122,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(11, 0, 0))
 # define EZTEST_DISABLE_WEXCESS_INITIALIZERS_                                  \
-  EZTEST_DISABLE_WARNING_("-Wexcess-initializers")
+     EZTEST_DISABLE_WARNING_("-Wexcess-initializers")
 # define EZTEST_REENABLE_WEXCESS_INITIALIZERS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WEXCESS_INITIALIZERS_
@@ -6129,7 +6130,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(11, 0, 0))
 # define EZTEST_DISABLE_WPOTENTIALLY_DIRECT_SELECTOR_                          \
-  EZTEST_DISABLE_WARNING_("-Wpotentially-direct-selector")
+     EZTEST_DISABLE_WARNING_("-Wpotentially-direct-selector")
 # define EZTEST_REENABLE_WPOTENTIALLY_DIRECT_SELECTOR_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPOTENTIALLY_DIRECT_SELECTOR_
@@ -6137,7 +6138,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(11, 0, 0))
 # define EZTEST_DISABLE_WWASM_EXCEPTION_SPEC_                                  \
-  EZTEST_DISABLE_WARNING_("-Wwasm-exception-spec")
+     EZTEST_DISABLE_WARNING_("-Wwasm-exception-spec")
 # define EZTEST_REENABLE_WWASM_EXCEPTION_SPEC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WWASM_EXCEPTION_SPEC_
@@ -6152,7 +6153,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(11, 0, 0))
 # define EZTEST_DISABLE_WFIXED_POINT_OVERFLOW_                                 \
-  EZTEST_DISABLE_WARNING_("-Wfixed-point-overflow")
+     EZTEST_DISABLE_WARNING_("-Wfixed-point-overflow")
 # define EZTEST_REENABLE_WFIXED_POINT_OVERFLOW_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFIXED_POINT_OVERFLOW_
@@ -6160,7 +6161,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(11, 0, 0))
 # define EZTEST_DISABLE_WCMSE_UNION_LEAK_                                      \
-  EZTEST_DISABLE_WARNING_("-Wcmse-union-leak")
+     EZTEST_DISABLE_WARNING_("-Wcmse-union-leak")
 # define EZTEST_REENABLE_WCMSE_UNION_LEAK_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCMSE_UNION_LEAK_
@@ -6168,7 +6169,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(11, 0, 0))
 # define EZTEST_DISABLE_WVOID_POINTER_TO_INT_CAST_                             \
-  EZTEST_DISABLE_WARNING_("-Wvoid-pointer-to-int-cast")
+     EZTEST_DISABLE_WARNING_("-Wvoid-pointer-to-int-cast")
 # define EZTEST_REENABLE_WVOID_POINTER_TO_INT_CAST_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WVOID_POINTER_TO_INT_CAST_
@@ -6176,7 +6177,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(11, 0, 0))
 # define EZTEST_DISABLE_WNON_POWER_OF_TWO_ALIGNMENT_                           \
-  EZTEST_DISABLE_WARNING_("-Wnon-power-of-two-alignment")
+     EZTEST_DISABLE_WARNING_("-Wnon-power-of-two-alignment")
 # define EZTEST_REENABLE_WNON_POWER_OF_TWO_ALIGNMENT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNON_POWER_OF_TWO_ALIGNMENT_
@@ -6191,16 +6192,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(11, 0, 0))
 # define EZTEST_DISABLE_WSTRICT_POTENTIALLY_DIRECT_SELECTOR_                   \
-  EZTEST_DISABLE_WARNING_("-Wstrict-potentially-direct-selector")
+     EZTEST_DISABLE_WARNING_("-Wstrict-potentially-direct-selector")
 # define EZTEST_REENABLE_WSTRICT_POTENTIALLY_DIRECT_SELECTOR_                  \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSTRICT_POTENTIALLY_DIRECT_SELECTOR_
 # define EZTEST_REENABLE_WSTRICT_POTENTIALLY_DIRECT_SELECTOR_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(11, 0, 0))
 # define EZTEST_DISABLE_WPOINTER_TO_ENUM_CAST_                                 \
-  EZTEST_DISABLE_WARNING_("-Wpointer-to-enum-cast")
+     EZTEST_DISABLE_WARNING_("-Wpointer-to-enum-cast")
 # define EZTEST_REENABLE_WPOINTER_TO_ENUM_CAST_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPOINTER_TO_ENUM_CAST_
@@ -6215,7 +6216,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(12, 0, 0))
 # define EZTEST_DISABLE_WCOMPOUND_TOKEN_SPLIT_                                 \
-  EZTEST_DISABLE_WARNING_("-Wcompound-token-split")
+     EZTEST_DISABLE_WARNING_("-Wcompound-token-split")
 # define EZTEST_REENABLE_WCOMPOUND_TOKEN_SPLIT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCOMPOUND_TOKEN_SPLIT_
@@ -6223,7 +6224,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(12, 0, 0))
 # define EZTEST_DISABLE_WUNKNOWN_ASSUMPTION_                                   \
-  EZTEST_DISABLE_WARNING_("-Wunknown-assumption")
+     EZTEST_DISABLE_WARNING_("-Wunknown-assumption")
 # define EZTEST_REENABLE_WUNKNOWN_ASSUMPTION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNKNOWN_ASSUMPTION_
@@ -6231,7 +6232,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(12, 0, 0) || EZTEST_HAS_GCC_VER_(4, 7, 1))
 # define EZTEST_DISABLE_WFREE_NONHEAP_OBJECT_                                  \
-  EZTEST_DISABLE_WARNING_("-Wfree-nonheap-object")
+     EZTEST_DISABLE_WARNING_("-Wfree-nonheap-object")
 # define EZTEST_REENABLE_WFREE_NONHEAP_OBJECT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFREE_NONHEAP_OBJECT_
@@ -6246,7 +6247,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(12, 0, 0))
 # define EZTEST_DISABLE_WSWIFT_NAME_ATTRIBUTE_                                 \
-  EZTEST_DISABLE_WARNING_("-Wswift-name-attribute")
+     EZTEST_DISABLE_WARNING_("-Wswift-name-attribute")
 # define EZTEST_REENABLE_WSWIFT_NAME_ATTRIBUTE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSWIFT_NAME_ATTRIBUTE_
@@ -6254,7 +6255,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(12, 0, 0))
 # define EZTEST_DISABLE_WTCB_ENFORCEMENT_                                      \
-  EZTEST_DISABLE_WARNING_("-Wtcb-enforcement")
+     EZTEST_DISABLE_WARNING_("-Wtcb-enforcement")
 # define EZTEST_REENABLE_WTCB_ENFORCEMENT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WTCB_ENFORCEMENT_
@@ -6269,7 +6270,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(12, 0, 0))
 # define EZTEST_DISABLE_WFORMAT_INSUFFICIENT_ARGS_                             \
-  EZTEST_DISABLE_WARNING_("-Wformat-insufficient-args")
+     EZTEST_DISABLE_WARNING_("-Wformat-insufficient-args")
 # define EZTEST_REENABLE_WFORMAT_INSUFFICIENT_ARGS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFORMAT_INSUFFICIENT_ARGS_
@@ -6277,16 +6278,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(12, 0, 0))
 # define EZTEST_DISABLE_WCOMPOUND_TOKEN_SPLIT_BY_SPACE_                        \
-  EZTEST_DISABLE_WARNING_("-Wcompound-token-split-by-space")
+     EZTEST_DISABLE_WARNING_("-Wcompound-token-split-by-space")
 # define EZTEST_REENABLE_WCOMPOUND_TOKEN_SPLIT_BY_SPACE_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCOMPOUND_TOKEN_SPLIT_BY_SPACE_
 # define EZTEST_REENABLE_WCOMPOUND_TOKEN_SPLIT_BY_SPACE_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(12, 0, 0))
 # define EZTEST_DISABLE_WSTRING_CONCATENATION_                                 \
-  EZTEST_DISABLE_WARNING_("-Wstring-concatenation")
+     EZTEST_DISABLE_WARNING_("-Wstring-concatenation")
 # define EZTEST_REENABLE_WSTRING_CONCATENATION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSTRING_CONCATENATION_
@@ -6294,16 +6295,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(12, 0, 0))
 # define EZTEST_DISABLE_WTAUTOLOGICAL_VALUE_RANGE_COMPARE_                     \
-  EZTEST_DISABLE_WARNING_("-Wtautological-value-range-compare")
+     EZTEST_DISABLE_WARNING_("-Wtautological-value-range-compare")
 # define EZTEST_REENABLE_WTAUTOLOGICAL_VALUE_RANGE_COMPARE_                    \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WTAUTOLOGICAL_VALUE_RANGE_COMPARE_
 # define EZTEST_REENABLE_WTAUTOLOGICAL_VALUE_RANGE_COMPARE_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(12, 0, 0))
 # define EZTEST_DISABLE_WCOMPLETION_HANDLER_                                   \
-  EZTEST_DISABLE_WARNING_("-Wcompletion-handler")
+     EZTEST_DISABLE_WARNING_("-Wcompletion-handler")
 # define EZTEST_REENABLE_WCOMPLETION_HANDLER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCOMPLETION_HANDLER_
@@ -6311,7 +6312,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(12, 0, 0))
 # define EZTEST_DISABLE_WCALLED_ONCE_PARAMETER_                                \
-  EZTEST_DISABLE_WARNING_("-Wcalled-once-parameter")
+     EZTEST_DISABLE_WARNING_("-Wcalled-once-parameter")
 # define EZTEST_REENABLE_WCALLED_ONCE_PARAMETER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCALLED_ONCE_PARAMETER_
@@ -6319,7 +6320,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(12, 0, 0))
 # define EZTEST_DISABLE_WMISSPELLED_ASSUMPTION_                                \
-  EZTEST_DISABLE_WARNING_("-Wmisspelled-assumption")
+     EZTEST_DISABLE_WARNING_("-Wmisspelled-assumption")
 # define EZTEST_REENABLE_WMISSPELLED_ASSUMPTION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMISSPELLED_ASSUMPTION_
@@ -6327,25 +6328,25 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(12, 0, 0))
 # define EZTEST_DISABLE_WCOMPOUND_TOKEN_SPLIT_BY_MACRO_                        \
-  EZTEST_DISABLE_WARNING_("-Wcompound-token-split-by-macro")
+     EZTEST_DISABLE_WARNING_("-Wcompound-token-split-by-macro")
 # define EZTEST_REENABLE_WCOMPOUND_TOKEN_SPLIT_BY_MACRO_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCOMPOUND_TOKEN_SPLIT_BY_MACRO_
 # define EZTEST_REENABLE_WCOMPOUND_TOKEN_SPLIT_BY_MACRO_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0))
 # define EZTEST_DISABLE_WDEPRECATED_ALTIVEC_SRC_COMPAT_                        \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-altivec-src-compat")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-altivec-src-compat")
 # define EZTEST_REENABLE_WDEPRECATED_ALTIVEC_SRC_COMPAT_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_ALTIVEC_SRC_COMPAT_
 # define EZTEST_REENABLE_WDEPRECATED_ALTIVEC_SRC_COMPAT_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0))
 # define EZTEST_DISABLE_WDEPRECATED_COPY_WITH_DTOR_                            \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-copy-with-dtor")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-copy-with-dtor")
 # define EZTEST_REENABLE_WDEPRECATED_COPY_WITH_DTOR_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_COPY_WITH_DTOR_
@@ -6353,7 +6354,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0))
 # define EZTEST_DISABLE_WOPENMP_51_EXTENSIONS_                                 \
-  EZTEST_DISABLE_WARNING_("-Wopenmp-51-extensions")
+     EZTEST_DISABLE_WARNING_("-Wopenmp-51-extensions")
 # define EZTEST_REENABLE_WOPENMP_51_EXTENSIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOPENMP_51_EXTENSIONS_
@@ -6361,7 +6362,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0))
 # define EZTEST_DISABLE_WPRE_CXX14_COMPAT_                                     \
-  EZTEST_DISABLE_WARNING_("-Wpre-c++14-compat")
+     EZTEST_DISABLE_WARNING_("-Wpre-c++14-compat")
 # define EZTEST_REENABLE_WPRE_CXX14_COMPAT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPRE_CXX14_COMPAT_
@@ -6369,7 +6370,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0))
 # define EZTEST_DISABLE_WPRE_CXX2B_COMPAT_PEDANTIC_                            \
-  EZTEST_DISABLE_WARNING_("-Wpre-c++2b-compat-pedantic")
+     EZTEST_DISABLE_WARNING_("-Wpre-c++2b-compat-pedantic")
 # define EZTEST_REENABLE_WPRE_CXX2B_COMPAT_PEDANTIC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPRE_CXX2B_COMPAT_PEDANTIC_
@@ -6384,7 +6385,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0))
 # define EZTEST_DISABLE_WCXX2B_EXTENSIONS_                                     \
-  EZTEST_DISABLE_WARNING_("-Wc++2b-extensions")
+     EZTEST_DISABLE_WARNING_("-Wc++2b-extensions")
 # define EZTEST_REENABLE_WCXX2B_EXTENSIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX2B_EXTENSIONS_
@@ -6392,16 +6393,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0))
 # define EZTEST_DISABLE_WIGNORED_AVAILABILITY_WITHOUT_SDK_SETTINGS_            \
-  EZTEST_DISABLE_WARNING_("-Wignored-availability-without-sdk-settings")
+     EZTEST_DISABLE_WARNING_("-Wignored-availability-without-sdk-settings")
 # define EZTEST_REENABLE_WIGNORED_AVAILABILITY_WITHOUT_SDK_SETTINGS_           \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WIGNORED_AVAILABILITY_WITHOUT_SDK_SETTINGS_
 # define EZTEST_REENABLE_WIGNORED_AVAILABILITY_WITHOUT_SDK_SETTINGS_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0) || EZTEST_HAS_GCC_VER_(6, 1, 0))
 # define EZTEST_DISABLE_WFRAME_LARGER_THAN_                                    \
-  EZTEST_DISABLE_WARNING_("-Wframe-larger-than")
+     EZTEST_DISABLE_WARNING_("-Wframe-larger-than")
 # define EZTEST_REENABLE_WFRAME_LARGER_THAN_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFRAME_LARGER_THAN_
@@ -6409,7 +6410,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0))
 # define EZTEST_DISABLE_WPRE_CXX17_COMPAT_PEDANTIC_                            \
-  EZTEST_DISABLE_WARNING_("-Wpre-c++17-compat-pedantic")
+     EZTEST_DISABLE_WARNING_("-Wpre-c++17-compat-pedantic")
 # define EZTEST_REENABLE_WPRE_CXX17_COMPAT_PEDANTIC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPRE_CXX17_COMPAT_PEDANTIC_
@@ -6417,7 +6418,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0))
 # define EZTEST_DISABLE_WALIGN_MISMATCH_                                       \
-  EZTEST_DISABLE_WARNING_("-Walign-mismatch")
+     EZTEST_DISABLE_WARNING_("-Walign-mismatch")
 # define EZTEST_REENABLE_WALIGN_MISMATCH_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WALIGN_MISMATCH_
@@ -6425,16 +6426,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0))
 # define EZTEST_DISABLE_WTAUTOLOGICAL_UNSIGNED_CHAR_ZERO_COMPARE_              \
-  EZTEST_DISABLE_WARNING_("-Wtautological-unsigned-char-zero-compare")
+     EZTEST_DISABLE_WARNING_("-Wtautological-unsigned-char-zero-compare")
 # define EZTEST_REENABLE_WTAUTOLOGICAL_UNSIGNED_CHAR_ZERO_COMPARE_             \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WTAUTOLOGICAL_UNSIGNED_CHAR_ZERO_COMPARE_
 # define EZTEST_REENABLE_WTAUTOLOGICAL_UNSIGNED_CHAR_ZERO_COMPARE_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0))
 # define EZTEST_DISABLE_WRESERVED_MACRO_IDENTIFIER_                            \
-  EZTEST_DISABLE_WARNING_("-Wreserved-macro-identifier")
+     EZTEST_DISABLE_WARNING_("-Wreserved-macro-identifier")
 # define EZTEST_REENABLE_WRESERVED_MACRO_IDENTIFIER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WRESERVED_MACRO_IDENTIFIER_
@@ -6442,7 +6443,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_STATIC_ASSERT_                              \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-static-assert")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-static-assert")
 # define EZTEST_REENABLE_WMICROSOFT_STATIC_ASSERT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_STATIC_ASSERT_
@@ -6450,7 +6451,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0))
 # define EZTEST_DISABLE_WRESERVED_IDENTIFIER_                                  \
-  EZTEST_DISABLE_WARNING_("-Wreserved-identifier")
+     EZTEST_DISABLE_WARNING_("-Wreserved-identifier")
 # define EZTEST_REENABLE_WRESERVED_IDENTIFIER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WRESERVED_IDENTIFIER_
@@ -6458,7 +6459,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0))
 # define EZTEST_DISABLE_WPRE_CXX14_COMPAT_PEDANTIC_                            \
-  EZTEST_DISABLE_WARNING_("-Wpre-c++14-compat-pedantic")
+     EZTEST_DISABLE_WARNING_("-Wpre-c++14-compat-pedantic")
 # define EZTEST_REENABLE_WPRE_CXX14_COMPAT_PEDANTIC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPRE_CXX14_COMPAT_PEDANTIC_
@@ -6466,7 +6467,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0))
 # define EZTEST_DISABLE_WPRE_CXX17_COMPAT_                                     \
-  EZTEST_DISABLE_WARNING_("-Wpre-c++17-compat")
+     EZTEST_DISABLE_WARNING_("-Wpre-c++17-compat")
 # define EZTEST_REENABLE_WPRE_CXX17_COMPAT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPRE_CXX17_COMPAT_
@@ -6474,7 +6475,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0) || EZTEST_HAS_GCC_VER_(4, 6, 4))
 # define EZTEST_DISABLE_WUNUSED_BUT_SET_VARIABLE_                              \
-  EZTEST_DISABLE_WARNING_("-Wunused-but-set-variable")
+     EZTEST_DISABLE_WARNING_("-Wunused-but-set-variable")
 # define EZTEST_REENABLE_WUNUSED_BUT_SET_VARIABLE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNUSED_BUT_SET_VARIABLE_
@@ -6489,7 +6490,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_ABSTRACT_                                   \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-abstract")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-abstract")
 # define EZTEST_REENABLE_WMICROSOFT_ABSTRACT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_ABSTRACT_
@@ -6497,7 +6498,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0))
 # define EZTEST_DISABLE_WNULL_POINTER_SUBTRACTION_                             \
-  EZTEST_DISABLE_WARNING_("-Wnull-pointer-subtraction")
+     EZTEST_DISABLE_WARNING_("-Wnull-pointer-subtraction")
 # define EZTEST_REENABLE_WNULL_POINTER_SUBTRACTION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNULL_POINTER_SUBTRACTION_
@@ -6505,7 +6506,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0))
 # define EZTEST_DISABLE_WPRE_CXX2B_COMPAT_                                     \
-  EZTEST_DISABLE_WARNING_("-Wpre-c++2b-compat")
+     EZTEST_DISABLE_WARNING_("-Wpre-c++2b-compat")
 # define EZTEST_REENABLE_WPRE_CXX2B_COMPAT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPRE_CXX2B_COMPAT_
@@ -6513,7 +6514,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0) || EZTEST_HAS_GCC_VER_(8, 1, 0))
 # define EZTEST_DISABLE_WCAST_FUNCTION_TYPE_                                   \
-  EZTEST_DISABLE_WARNING_("-Wcast-function-type")
+     EZTEST_DISABLE_WARNING_("-Wcast-function-type")
 # define EZTEST_REENABLE_WCAST_FUNCTION_TYPE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCAST_FUNCTION_TYPE_
@@ -6521,7 +6522,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0))
 # define EZTEST_DISABLE_WPRE_OPENMP_51_COMPAT_                                 \
-  EZTEST_DISABLE_WARNING_("-Wpre-openmp-51-compat")
+     EZTEST_DISABLE_WARNING_("-Wpre-openmp-51-compat")
 # define EZTEST_REENABLE_WPRE_OPENMP_51_COMPAT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPRE_OPENMP_51_COMPAT_
@@ -6529,7 +6530,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0))
 # define EZTEST_DISABLE_WPRE_CXX20_COMPAT_                                     \
-  EZTEST_DISABLE_WARNING_("-Wpre-c++20-compat")
+     EZTEST_DISABLE_WARNING_("-Wpre-c++20-compat")
 # define EZTEST_REENABLE_WPRE_CXX20_COMPAT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPRE_CXX20_COMPAT_
@@ -6537,7 +6538,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0))
 # define EZTEST_DISABLE_WPRE_C2X_COMPAT_PEDANTIC_                              \
-  EZTEST_DISABLE_WARNING_("-Wpre-c2x-compat-pedantic")
+     EZTEST_DISABLE_WARNING_("-Wpre-c2x-compat-pedantic")
 # define EZTEST_REENABLE_WPRE_C2X_COMPAT_PEDANTIC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPRE_C2X_COMPAT_PEDANTIC_
@@ -6545,7 +6546,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0))
 # define EZTEST_DISABLE_WINTERRUPT_SERVICE_ROUTINE_                            \
-  EZTEST_DISABLE_WARNING_("-Winterrupt-service-routine")
+     EZTEST_DISABLE_WARNING_("-Winterrupt-service-routine")
 # define EZTEST_REENABLE_WINTERRUPT_SERVICE_ROUTINE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINTERRUPT_SERVICE_ROUTINE_
@@ -6553,16 +6554,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0))
 # define EZTEST_DISABLE_WDEPRECATED_COPY_WITH_USER_PROVIDED_COPY_              \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-copy-with-user-provided-copy")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-copy-with-user-provided-copy")
 # define EZTEST_REENABLE_WDEPRECATED_COPY_WITH_USER_PROVIDED_COPY_             \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_COPY_WITH_USER_PROVIDED_COPY_
 # define EZTEST_REENABLE_WDEPRECATED_COPY_WITH_USER_PROVIDED_COPY_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0))
 # define EZTEST_DISABLE_WPRE_CXX20_COMPAT_PEDANTIC_                            \
-  EZTEST_DISABLE_WARNING_("-Wpre-c++20-compat-pedantic")
+     EZTEST_DISABLE_WARNING_("-Wpre-c++20-compat-pedantic")
 # define EZTEST_REENABLE_WPRE_CXX20_COMPAT_PEDANTIC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPRE_CXX20_COMPAT_PEDANTIC_
@@ -6570,7 +6571,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0))
 # define EZTEST_DISABLE_WCXX_ATTRIBUTE_EXTENSION_                              \
-  EZTEST_DISABLE_WARNING_("-Wcxx-attribute-extension")
+     EZTEST_DISABLE_WARNING_("-Wcxx-attribute-extension")
 # define EZTEST_REENABLE_WCXX_ATTRIBUTE_EXTENSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX_ATTRIBUTE_EXTENSION_
@@ -6578,7 +6579,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0) || EZTEST_HAS_GCC_VER_(4, 6, 4))
 # define EZTEST_DISABLE_WUNUSED_BUT_SET_PARAMETER_                             \
-  EZTEST_DISABLE_WARNING_("-Wunused-but-set-parameter")
+     EZTEST_DISABLE_WARNING_("-Wunused-but-set-parameter")
 # define EZTEST_REENABLE_WUNUSED_BUT_SET_PARAMETER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNUSED_BUT_SET_PARAMETER_
@@ -6586,7 +6587,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0))
 # define EZTEST_DISABLE_WPRE_C2X_COMPAT_                                       \
-  EZTEST_DISABLE_WARNING_("-Wpre-c2x-compat")
+     EZTEST_DISABLE_WARNING_("-Wpre-c2x-compat")
 # define EZTEST_REENABLE_WPRE_C2X_COMPAT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPRE_C2X_COMPAT_
@@ -6594,16 +6595,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(13, 0, 0))
 # define EZTEST_DISABLE_WDEPRECATED_COPY_WITH_USER_PROVIDED_DTOR_              \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-copy-with-user-provided-dtor")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-copy-with-user-provided-dtor")
 # define EZTEST_REENABLE_WDEPRECATED_COPY_WITH_USER_PROVIDED_DTOR_             \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_COPY_WITH_USER_PROVIDED_DTOR_
 # define EZTEST_REENABLE_WDEPRECATED_COPY_WITH_USER_PROVIDED_DTOR_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(14, 0, 0) || EZTEST_HAS_GCC_VER_(9, 1, 0))
 # define EZTEST_DISABLE_WATTRIBUTE_WARNING_                                    \
-  EZTEST_DISABLE_WARNING_("-Wattribute-warning")
+     EZTEST_DISABLE_WARNING_("-Wattribute-warning")
 # define EZTEST_REENABLE_WATTRIBUTE_WARNING_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WATTRIBUTE_WARNING_
@@ -6611,7 +6612,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(14, 0, 0))
 # define EZTEST_DISABLE_WPEDANTIC_MACROS_                                      \
-  EZTEST_DISABLE_WARNING_("-Wpedantic-macros")
+     EZTEST_DISABLE_WARNING_("-Wpedantic-macros")
 # define EZTEST_REENABLE_WPEDANTIC_MACROS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPEDANTIC_MACROS_
@@ -6619,16 +6620,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(14, 0, 0))
 # define EZTEST_DISABLE_WTARGET_CLONES_MIXED_SPECIFIERS_                       \
-  EZTEST_DISABLE_WARNING_("-Wtarget-clones-mixed-specifiers")
+     EZTEST_DISABLE_WARNING_("-Wtarget-clones-mixed-specifiers")
 # define EZTEST_REENABLE_WTARGET_CLONES_MIXED_SPECIFIERS_                      \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WTARGET_CLONES_MIXED_SPECIFIERS_
 # define EZTEST_REENABLE_WTARGET_CLONES_MIXED_SPECIFIERS_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(14, 0, 0))
 # define EZTEST_DISABLE_WBIT_INT_EXTENSION_                                    \
-  EZTEST_DISABLE_WARNING_("-Wbit-int-extension")
+     EZTEST_DISABLE_WARNING_("-Wbit-int-extension")
 # define EZTEST_REENABLE_WBIT_INT_EXTENSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WBIT_INT_EXTENSION_
@@ -6643,7 +6644,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(14, 0, 0))
 # define EZTEST_DISABLE_WLINKER_WARNINGS_                                      \
-  EZTEST_DISABLE_WARNING_("-Wlinker-warnings")
+     EZTEST_DISABLE_WARNING_("-Wlinker-warnings")
 # define EZTEST_REENABLE_WLINKER_WARNINGS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WLINKER_WARNINGS_
@@ -6651,7 +6652,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(14, 0, 0))
 # define EZTEST_DISABLE_WARGUMENT_UNDEFINED_BEHAVIOUR_                         \
-  EZTEST_DISABLE_WARNING_("-Wargument-undefined-behaviour")
+     EZTEST_DISABLE_WARNING_("-Wargument-undefined-behaviour")
 # define EZTEST_REENABLE_WARGUMENT_UNDEFINED_BEHAVIOUR_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WARGUMENT_UNDEFINED_BEHAVIOUR_
@@ -6659,16 +6660,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(14, 0, 0))
 # define EZTEST_DISABLE_WDEPRECATED_EXPERIMENTAL_COROUTINE_                    \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-experimental-coroutine")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-experimental-coroutine")
 # define EZTEST_REENABLE_WDEPRECATED_EXPERIMENTAL_COROUTINE_                   \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_EXPERIMENTAL_COROUTINE_
 # define EZTEST_REENABLE_WDEPRECATED_EXPERIMENTAL_COROUTINE_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(14, 0, 0))
 # define EZTEST_DISABLE_WREDUNDANT_CONSTEVAL_IF_                               \
-  EZTEST_DISABLE_WARNING_("-Wredundant-consteval-if")
+     EZTEST_DISABLE_WARNING_("-Wredundant-consteval-if")
 # define EZTEST_REENABLE_WREDUNDANT_CONSTEVAL_IF_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WREDUNDANT_CONSTEVAL_IF_
@@ -6676,7 +6677,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(14, 0, 0))
 # define EZTEST_DISABLE_WFUTURE_ATTRIBUTE_EXTENSIONS_                          \
-  EZTEST_DISABLE_WARNING_("-Wfuture-attribute-extensions")
+     EZTEST_DISABLE_WARNING_("-Wfuture-attribute-extensions")
 # define EZTEST_REENABLE_WFUTURE_ATTRIBUTE_EXTENSIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFUTURE_ATTRIBUTE_EXTENSIONS_
@@ -6684,7 +6685,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(14, 0, 0))
 # define EZTEST_DISABLE_WBRANCH_PROTECTION_                                    \
-  EZTEST_DISABLE_WARNING_("-Wbranch-protection")
+     EZTEST_DISABLE_WARNING_("-Wbranch-protection")
 # define EZTEST_REENABLE_WBRANCH_PROTECTION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WBRANCH_PROTECTION_
@@ -6692,7 +6693,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(14, 0, 0))
 # define EZTEST_DISABLE_WBITWISE_INSTEAD_OF_LOGICAL_                           \
-  EZTEST_DISABLE_WARNING_("-Wbitwise-instead-of-logical")
+     EZTEST_DISABLE_WARNING_("-Wbitwise-instead-of-logical")
 # define EZTEST_REENABLE_WBITWISE_INSTEAD_OF_LOGICAL_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WBITWISE_INSTEAD_OF_LOGICAL_
@@ -6700,7 +6701,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(14, 0, 0))
 # define EZTEST_DISABLE_WGPU_MAYBE_WRONG_SIDE_                                 \
-  EZTEST_DISABLE_WARNING_("-Wgpu-maybe-wrong-side")
+     EZTEST_DISABLE_WARNING_("-Wgpu-maybe-wrong-side")
 # define EZTEST_REENABLE_WGPU_MAYBE_WRONG_SIDE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGPU_MAYBE_WRONG_SIDE_
@@ -6708,7 +6709,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(14, 0, 0))
 # define EZTEST_DISABLE_WCXX14_ATTRIBUTE_EXTENSIONS_                           \
-  EZTEST_DISABLE_WARNING_("-Wc++14-attribute-extensions")
+     EZTEST_DISABLE_WARNING_("-Wc++14-attribute-extensions")
 # define EZTEST_REENABLE_WCXX14_ATTRIBUTE_EXTENSIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX14_ATTRIBUTE_EXTENSIONS_
@@ -6716,16 +6717,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(14, 0, 0))
 # define EZTEST_DISABLE_WDELIMITED_ESCAPE_SEQUENCE_EXTENSION_                  \
-  EZTEST_DISABLE_WARNING_("-Wdelimited-escape-sequence-extension")
+     EZTEST_DISABLE_WARNING_("-Wdelimited-escape-sequence-extension")
 # define EZTEST_REENABLE_WDELIMITED_ESCAPE_SEQUENCE_EXTENSION_                 \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDELIMITED_ESCAPE_SEQUENCE_EXTENSION_
 # define EZTEST_REENABLE_WDELIMITED_ESCAPE_SEQUENCE_EXTENSION_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(14, 0, 0))
 # define EZTEST_DISABLE_WDEPRECATED_TYPE_                                      \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-type")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-type")
 # define EZTEST_REENABLE_WDEPRECATED_TYPE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_TYPE_
@@ -6733,7 +6734,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(14, 0, 0))
 # define EZTEST_DISABLE_WUNSUPPORTED_ABI_                                      \
-  EZTEST_DISABLE_WARNING_("-Wunsupported-abi")
+     EZTEST_DISABLE_WARNING_("-Wunsupported-abi")
 # define EZTEST_REENABLE_WUNSUPPORTED_ABI_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNSUPPORTED_ABI_
@@ -6741,7 +6742,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(14, 0, 0))
 # define EZTEST_DISABLE_WDEPRECATED_COROUTINE_                                 \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-coroutine")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-coroutine")
 # define EZTEST_REENABLE_WDEPRECATED_COROUTINE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_COROUTINE_
@@ -6749,7 +6750,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(14, 0, 0))
 # define EZTEST_DISABLE_WUNREACHABLE_CODE_FALLTHROUGH_                         \
-  EZTEST_DISABLE_WARNING_("-Wunreachable-code-fallthrough")
+     EZTEST_DISABLE_WARNING_("-Wunreachable-code-fallthrough")
 # define EZTEST_REENABLE_WUNREACHABLE_CODE_FALLTHROUGH_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNREACHABLE_CODE_FALLTHROUGH_
@@ -6764,7 +6765,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(14, 0, 0))
 # define EZTEST_DISABLE_WIGNORED_REFERENCE_QUALIFIERS_                         \
-  EZTEST_DISABLE_WARNING_("-Wignored-reference-qualifiers")
+     EZTEST_DISABLE_WARNING_("-Wignored-reference-qualifiers")
 # define EZTEST_REENABLE_WIGNORED_REFERENCE_QUALIFIERS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WIGNORED_REFERENCE_QUALIFIERS_
@@ -6772,7 +6773,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(14, 0, 0))
 # define EZTEST_DISABLE_WCXX20_ATTRIBUTE_EXTENSIONS_                           \
-  EZTEST_DISABLE_WARNING_("-Wc++20-attribute-extensions")
+     EZTEST_DISABLE_WARNING_("-Wc++20-attribute-extensions")
 # define EZTEST_REENABLE_WCXX20_ATTRIBUTE_EXTENSIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX20_ATTRIBUTE_EXTENSIONS_
@@ -6780,7 +6781,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(14, 0, 0))
 # define EZTEST_DISABLE_WRESTRICT_EXPANSION_                                   \
-  EZTEST_DISABLE_WARNING_("-Wrestrict-expansion")
+     EZTEST_DISABLE_WARNING_("-Wrestrict-expansion")
 # define EZTEST_REENABLE_WRESTRICT_EXPANSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WRESTRICT_EXPANSION_
@@ -6788,7 +6789,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(14, 0, 0))
 # define EZTEST_DISABLE_WCXX17_ATTRIBUTE_EXTENSIONS_                           \
-  EZTEST_DISABLE_WARNING_("-Wc++17-attribute-extensions")
+     EZTEST_DISABLE_WARNING_("-Wc++17-attribute-extensions")
 # define EZTEST_REENABLE_WCXX17_ATTRIBUTE_EXTENSIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX17_ATTRIBUTE_EXTENSIONS_
@@ -6796,7 +6797,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(14, 0, 0))
 # define EZTEST_DISABLE_WUNALIGNED_ACCESS_                                     \
-  EZTEST_DISABLE_WARNING_("-Wunaligned-access")
+     EZTEST_DISABLE_WARNING_("-Wunaligned-access")
 # define EZTEST_REENABLE_WUNALIGNED_ACCESS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNALIGNED_ACCESS_
@@ -6804,7 +6805,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(14, 0, 0))
 # define EZTEST_DISABLE_WDEPRECATED_PRAGMA_                                    \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-pragma")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-pragma")
 # define EZTEST_REENABLE_WDEPRECATED_PRAGMA_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_PRAGMA_
@@ -6812,16 +6813,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(15, 0, 0))
 # define EZTEST_DISABLE_WUNALIGNED_QUALIFIER_IMPLICIT_CAST_                    \
-  EZTEST_DISABLE_WARNING_("-Wunaligned-qualifier-implicit-cast")
+     EZTEST_DISABLE_WARNING_("-Wunaligned-qualifier-implicit-cast")
 # define EZTEST_REENABLE_WUNALIGNED_QUALIFIER_IMPLICIT_CAST_                   \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNALIGNED_QUALIFIER_IMPLICIT_CAST_
 # define EZTEST_REENABLE_WUNALIGNED_QUALIFIER_IMPLICIT_CAST_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(15, 0, 0))
 # define EZTEST_DISABLE_WHLSL_EXTENSIONS_                                      \
-  EZTEST_DISABLE_WARNING_("-Whlsl-extensions")
+     EZTEST_DISABLE_WARNING_("-Whlsl-extensions")
 # define EZTEST_REENABLE_WHLSL_EXTENSIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WHLSL_EXTENSIONS_
@@ -6829,16 +6830,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(15, 0, 0))
 # define EZTEST_DISABLE_WDEPRECATED_STATIC_ANALYZER_FLAG_                      \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-static-analyzer-flag")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-static-analyzer-flag")
 # define EZTEST_REENABLE_WDEPRECATED_STATIC_ANALYZER_FLAG_                     \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_STATIC_ANALYZER_FLAG_
 # define EZTEST_REENABLE_WDEPRECATED_STATIC_ANALYZER_FLAG_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(15, 0, 0))
 # define EZTEST_DISABLE_WGNU_POINTER_ARITH_                                    \
-  EZTEST_DISABLE_WARNING_("-Wgnu-pointer-arith")
+     EZTEST_DISABLE_WARNING_("-Wgnu-pointer-arith")
 # define EZTEST_REENABLE_WGNU_POINTER_ARITH_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_POINTER_ARITH_
@@ -6846,7 +6847,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(15, 0, 0))
 # define EZTEST_DISABLE_WALWAYS_INLINE_COROUTINE_                              \
-  EZTEST_DISABLE_WARNING_("-Walways-inline-coroutine")
+     EZTEST_DISABLE_WARNING_("-Walways-inline-coroutine")
 # define EZTEST_REENABLE_WALWAYS_INLINE_COROUTINE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WALWAYS_INLINE_COROUTINE_
@@ -6854,16 +6855,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(15, 0, 0))
 # define EZTEST_DISABLE_WGNU_STATEMENT_EXPRESSION_FROM_MACRO_EXPANSION_        \
-  EZTEST_DISABLE_WARNING_("-Wgnu-statement-expression-from-macro-expansion")
+     EZTEST_DISABLE_WARNING_("-Wgnu-statement-expression-from-macro-expansion")
 # define EZTEST_REENABLE_WGNU_STATEMENT_EXPRESSION_FROM_MACRO_EXPANSION_       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_STATEMENT_EXPRESSION_FROM_MACRO_EXPANSION_
 # define EZTEST_REENABLE_WGNU_STATEMENT_EXPRESSION_FROM_MACRO_EXPANSION_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(15, 0, 0))
 # define EZTEST_DISABLE_WDEPRECATED_NON_PROTOTYPE_                             \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-non-prototype")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-non-prototype")
 # define EZTEST_REENABLE_WDEPRECATED_NON_PROTOTYPE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_NON_PROTOTYPE_
@@ -6871,7 +6872,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(15, 0, 0) || EZTEST_HAS_GCC_VER_(11, 1, 0))
 # define EZTEST_DISABLE_WARRAY_PARAMETER_                                      \
-  EZTEST_DISABLE_WARNING_("-Warray-parameter")
+     EZTEST_DISABLE_WARNING_("-Warray-parameter")
 # define EZTEST_REENABLE_WARRAY_PARAMETER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WARRAY_PARAMETER_
@@ -6879,7 +6880,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(15, 0, 0))
 # define EZTEST_DISABLE_WGNU_NULL_POINTER_ARITHMETIC_                          \
-  EZTEST_DISABLE_WARNING_("-Wgnu-null-pointer-arithmetic")
+     EZTEST_DISABLE_WARNING_("-Wgnu-null-pointer-arithmetic")
 # define EZTEST_REENABLE_WGNU_NULL_POINTER_ARITHMETIC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_NULL_POINTER_ARITHMETIC_
@@ -6887,7 +6888,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(15, 0, 0))
 # define EZTEST_DISABLE_WSARIF_FORMAT_UNSTABLE_                                \
-  EZTEST_DISABLE_WARNING_("-Wsarif-format-unstable")
+     EZTEST_DISABLE_WARNING_("-Wsarif-format-unstable")
 # define EZTEST_REENABLE_WSARIF_FORMAT_UNSTABLE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSARIF_FORMAT_UNSTABLE_
@@ -6895,7 +6896,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(15, 0, 0))
 # define EZTEST_DISABLE_WDEPRECATE_LAX_VEC_CONV_ALL_                           \
-  EZTEST_DISABLE_WARNING_("-Wdeprecate-lax-vec-conv-all")
+     EZTEST_DISABLE_WARNING_("-Wdeprecate-lax-vec-conv-all")
 # define EZTEST_REENABLE_WDEPRECATE_LAX_VEC_CONV_ALL_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATE_LAX_VEC_CONV_ALL_
@@ -6903,7 +6904,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(15, 0, 0))
 # define EZTEST_DISABLE_WUNKNOWN_DIRECTIVES_                                   \
-  EZTEST_DISABLE_WARNING_("-Wunknown-directives")
+     EZTEST_DISABLE_WARNING_("-Wunknown-directives")
 # define EZTEST_REENABLE_WUNKNOWN_DIRECTIVES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNKNOWN_DIRECTIVES_
@@ -6911,16 +6912,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(15, 0, 0))
 # define EZTEST_DISABLE_WUNREACHABLE_CODE_GENERIC_ASSOC_                       \
-  EZTEST_DISABLE_WARNING_("-Wunreachable-code-generic-assoc")
+     EZTEST_DISABLE_WARNING_("-Wunreachable-code-generic-assoc")
 # define EZTEST_REENABLE_WUNREACHABLE_CODE_GENERIC_ASSOC_                      \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNREACHABLE_CODE_GENERIC_ASSOC_
 # define EZTEST_REENABLE_WUNREACHABLE_CODE_GENERIC_ASSOC_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(15, 0, 0))
 # define EZTEST_DISABLE_WDEPRECATED_BUILTINS_                                  \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-builtins")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-builtins")
 # define EZTEST_REENABLE_WDEPRECATED_BUILTINS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_BUILTINS_
@@ -6928,7 +6929,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(15, 0, 0))
 # define EZTEST_DISABLE_WUNQUALIFIED_STD_CAST_CALL_                            \
-  EZTEST_DISABLE_WARNING_("-Wunqualified-std-cast-call")
+     EZTEST_DISABLE_WARNING_("-Wunqualified-std-cast-call")
 # define EZTEST_REENABLE_WUNQUALIFIED_STD_CAST_CALL_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNQUALIFIED_STD_CAST_CALL_
@@ -6943,7 +6944,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(15, 0, 0))
 # define EZTEST_DISABLE_WATOMIC_ACCESS_                                        \
-  EZTEST_DISABLE_WARNING_("-Watomic-access")
+     EZTEST_DISABLE_WARNING_("-Watomic-access")
 # define EZTEST_REENABLE_WATOMIC_ACCESS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WATOMIC_ACCESS_
@@ -6951,7 +6952,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(15, 0, 0))
 # define EZTEST_DISABLE_WGNU_LINE_MARKER_                                      \
-  EZTEST_DISABLE_WARNING_("-Wgnu-line-marker")
+     EZTEST_DISABLE_WARNING_("-Wgnu-line-marker")
 # define EZTEST_REENABLE_WGNU_LINE_MARKER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_LINE_MARKER_
@@ -6959,7 +6960,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(16, 0, 0))
 # define EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_                                  \
-  EZTEST_DISABLE_WARNING_("-Wunsafe-buffer-usage")
+     EZTEST_DISABLE_WARNING_("-Wunsafe-buffer-usage")
 # define EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_
@@ -6967,7 +6968,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(16, 0, 0))
 # define EZTEST_DISABLE_WGNU_OFFSETOF_EXTENSIONS_                              \
-  EZTEST_DISABLE_WARNING_("-Wgnu-offsetof-extensions")
+     EZTEST_DISABLE_WARNING_("-Wgnu-offsetof-extensions")
 # define EZTEST_REENABLE_WGNU_OFFSETOF_EXTENSIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGNU_OFFSETOF_EXTENSIONS_
@@ -6975,7 +6976,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(16, 0, 0))
 # define EZTEST_DISABLE_WENUM_CONSTEXPR_CONVERSION_                            \
-  EZTEST_DISABLE_WARNING_("-Wenum-constexpr-conversion")
+     EZTEST_DISABLE_WARNING_("-Wenum-constexpr-conversion")
 # define EZTEST_REENABLE_WENUM_CONSTEXPR_CONVERSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WENUM_CONSTEXPR_CONVERSION_
@@ -6983,7 +6984,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(16, 0, 0))
 # define EZTEST_DISABLE_WPACKED_NON_POD_                                       \
-  EZTEST_DISABLE_WARNING_("-Wpacked-non-pod")
+     EZTEST_DISABLE_WARNING_("-Wpacked-non-pod")
 # define EZTEST_REENABLE_WPACKED_NON_POD_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPACKED_NON_POD_
@@ -6991,7 +6992,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(16, 0, 0) || EZTEST_HAS_GCC_VER_(4, 8, 1))
 # define EZTEST_DISABLE_WRETURN_LOCAL_ADDR_                                    \
-  EZTEST_DISABLE_WARNING_("-Wreturn-local-addr")
+     EZTEST_DISABLE_WARNING_("-Wreturn-local-addr")
 # define EZTEST_REENABLE_WRETURN_LOCAL_ADDR_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WRETURN_LOCAL_ADDR_
@@ -6999,7 +7000,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(16, 0, 0))
 # define EZTEST_DISABLE_WCAST_FUNCTION_TYPE_STRICT_                            \
-  EZTEST_DISABLE_WARNING_("-Wcast-function-type-strict")
+     EZTEST_DISABLE_WARNING_("-Wcast-function-type-strict")
 # define EZTEST_REENABLE_WCAST_FUNCTION_TYPE_STRICT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCAST_FUNCTION_TYPE_STRICT_
@@ -7007,16 +7008,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(16, 0, 0))
 # define EZTEST_DISABLE_WINCOMPATIBLE_FUNCTION_POINTER_TYPES_STRICT_           \
-  EZTEST_DISABLE_WARNING_("-Wincompatible-function-pointer-types-strict")
+     EZTEST_DISABLE_WARNING_("-Wincompatible-function-pointer-types-strict")
 # define EZTEST_REENABLE_WINCOMPATIBLE_FUNCTION_POINTER_TYPES_STRICT_          \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINCOMPATIBLE_FUNCTION_POINTER_TYPES_STRICT_
 # define EZTEST_REENABLE_WINCOMPATIBLE_FUNCTION_POINTER_TYPES_STRICT_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(16, 0, 0))
 # define EZTEST_DISABLE_WREAD_ONLY_TYPES_                                      \
-  EZTEST_DISABLE_WARNING_("-Wread-only-types")
+     EZTEST_DISABLE_WARNING_("-Wread-only-types")
 # define EZTEST_REENABLE_WREAD_ONLY_TYPES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WREAD_ONLY_TYPES_
@@ -7024,9 +7025,9 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(16, 0, 0))
 # define EZTEST_DISABLE_WSINGLE_BIT_BITFIELD_CONSTANT_CONVERSION_              \
-  EZTEST_DISABLE_WARNING_("-Wsingle-bit-bitfield-constant-conversion")
+     EZTEST_DISABLE_WARNING_("-Wsingle-bit-bitfield-constant-conversion")
 # define EZTEST_REENABLE_WSINGLE_BIT_BITFIELD_CONSTANT_CONVERSION_             \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSINGLE_BIT_BITFIELD_CONSTANT_CONVERSION_
 # define EZTEST_REENABLE_WSINGLE_BIT_BITFIELD_CONSTANT_CONVERSION_
@@ -7040,25 +7041,25 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(16, 0, 0))
 # define EZTEST_DISABLE_WCORO_NON_ALIGNED_ALLOCATION_FUNCITON_                 \
-  EZTEST_DISABLE_WARNING_("-Wcoro-non-aligned-allocation-funciton")
+     EZTEST_DISABLE_WARNING_("-Wcoro-non-aligned-allocation-funciton")
 # define EZTEST_REENABLE_WCORO_NON_ALIGNED_ALLOCATION_FUNCITON_                \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCORO_NON_ALIGNED_ALLOCATION_FUNCITON_
 # define EZTEST_REENABLE_WCORO_NON_ALIGNED_ALLOCATION_FUNCITON_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(16, 0, 0))
 # define EZTEST_DISABLE_WMATHEMATICAL_NOTATION_IDENTIFIER_EXTENSION_           \
-  EZTEST_DISABLE_WARNING_("-Wmathematical-notation-identifier-extension")
+     EZTEST_DISABLE_WARNING_("-Wmathematical-notation-identifier-extension")
 # define EZTEST_REENABLE_WMATHEMATICAL_NOTATION_IDENTIFIER_EXTENSION_          \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMATHEMATICAL_NOTATION_IDENTIFIER_EXTENSION_
 # define EZTEST_REENABLE_WMATHEMATICAL_NOTATION_IDENTIFIER_EXTENSION_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(16, 0, 0))
 # define EZTEST_DISABLE_WDEPRECATED_MODULE_TS_                                 \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-module-ts")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-module-ts")
 # define EZTEST_REENABLE_WDEPRECATED_MODULE_TS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_MODULE_TS_
@@ -7066,16 +7067,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(17, 0, 0))
 # define EZTEST_DISABLE_WCORO_NON_ALIGNED_ALLOCATION_FUNCTION_                 \
-  EZTEST_DISABLE_WARNING_("-Wcoro-non-aligned-allocation-function")
+     EZTEST_DISABLE_WARNING_("-Wcoro-non-aligned-allocation-function")
 # define EZTEST_REENABLE_WCORO_NON_ALIGNED_ALLOCATION_FUNCTION_                \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCORO_NON_ALIGNED_ALLOCATION_FUNCTION_
 # define EZTEST_REENABLE_WCORO_NON_ALIGNED_ALLOCATION_FUNCTION_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(17, 0, 0))
 # define EZTEST_DISABLE_WPRE_CXX23_COMPAT_                                     \
-  EZTEST_DISABLE_WARNING_("-Wpre-c++23-compat")
+     EZTEST_DISABLE_WARNING_("-Wpre-c++23-compat")
 # define EZTEST_REENABLE_WPRE_CXX23_COMPAT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPRE_CXX23_COMPAT_
@@ -7083,7 +7084,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(17, 0, 0))
 # define EZTEST_DISABLE_WDEPRECATED_LITERAL_OPERATOR_                          \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-literal-operator")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-literal-operator")
 # define EZTEST_REENABLE_WDEPRECATED_LITERAL_OPERATOR_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_LITERAL_OPERATOR_
@@ -7091,7 +7092,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(17, 0, 0))
 # define EZTEST_DISABLE_WPRE_CXX26_COMPAT_                                     \
-  EZTEST_DISABLE_WARNING_("-Wpre-c++26-compat")
+     EZTEST_DISABLE_WARNING_("-Wpre-c++26-compat")
 # define EZTEST_REENABLE_WPRE_CXX26_COMPAT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPRE_CXX26_COMPAT_
@@ -7099,7 +7100,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(17, 0, 0))
 # define EZTEST_DISABLE_WDXIL_VALIDATION_                                      \
-  EZTEST_DISABLE_WARNING_("-Wdxil-validation")
+     EZTEST_DISABLE_WARNING_("-Wdxil-validation")
 # define EZTEST_REENABLE_WDXIL_VALIDATION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDXIL_VALIDATION_
@@ -7107,16 +7108,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(17, 0, 0))
 # define EZTEST_DISABLE_WOBJC_DUPLICATE_CATEGORY_DEFINITION_                   \
-  EZTEST_DISABLE_WARNING_("-Wobjc-duplicate-category-definition")
+     EZTEST_DISABLE_WARNING_("-Wobjc-duplicate-category-definition")
 # define EZTEST_REENABLE_WOBJC_DUPLICATE_CATEGORY_DEFINITION_                  \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOBJC_DUPLICATE_CATEGORY_DEFINITION_
 # define EZTEST_REENABLE_WOBJC_DUPLICATE_CATEGORY_DEFINITION_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(17, 0, 0))
 # define EZTEST_DISABLE_WPRE_CXX23_COMPAT_PEDANTIC_                            \
-  EZTEST_DISABLE_WARNING_("-Wpre-c++23-compat-pedantic")
+     EZTEST_DISABLE_WARNING_("-Wpre-c++23-compat-pedantic")
 # define EZTEST_REENABLE_WPRE_CXX23_COMPAT_PEDANTIC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPRE_CXX23_COMPAT_PEDANTIC_
@@ -7124,34 +7125,34 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(17, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_INIT_FROM_PREDEFINED_                       \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-init-from-predefined")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-init-from-predefined")
 # define EZTEST_REENABLE_WMICROSOFT_INIT_FROM_PREDEFINED_                      \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_INIT_FROM_PREDEFINED_
 # define EZTEST_REENABLE_WMICROSOFT_INIT_FROM_PREDEFINED_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(17, 0, 0))
 # define EZTEST_DISABLE_WINVALID_STATIC_ASSERT_MESSAGE_                        \
-  EZTEST_DISABLE_WARNING_("-Winvalid-static-assert-message")
+     EZTEST_DISABLE_WARNING_("-Winvalid-static-assert-message")
 # define EZTEST_REENABLE_WINVALID_STATIC_ASSERT_MESSAGE_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINVALID_STATIC_ASSERT_MESSAGE_
 # define EZTEST_REENABLE_WINVALID_STATIC_ASSERT_MESSAGE_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(17, 0, 0))
 # define EZTEST_DISABLE_WCXX23_DEFAULT_COMP_RELAXED_CONSTEXPR_                 \
-  EZTEST_DISABLE_WARNING_("-Wc++23-default-comp-relaxed-constexpr")
+     EZTEST_DISABLE_WARNING_("-Wc++23-default-comp-relaxed-constexpr")
 # define EZTEST_REENABLE_WCXX23_DEFAULT_COMP_RELAXED_CONSTEXPR_                \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX23_DEFAULT_COMP_RELAXED_CONSTEXPR_
 # define EZTEST_REENABLE_WCXX23_DEFAULT_COMP_RELAXED_CONSTEXPR_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(17, 0, 0))
 # define EZTEST_DISABLE_WEXPERIMENTAL_HEADER_UNITS_                            \
-  EZTEST_DISABLE_WARNING_("-Wexperimental-header-units")
+     EZTEST_DISABLE_WARNING_("-Wexperimental-header-units")
 # define EZTEST_REENABLE_WEXPERIMENTAL_HEADER_UNITS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WEXPERIMENTAL_HEADER_UNITS_
@@ -7159,16 +7160,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(17, 0, 0))
 # define EZTEST_DISABLE_WDEPRECATED_REDUNDANT_CONSTEXPR_STATIC_DEF_            \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-redundant-constexpr-static-def")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-redundant-constexpr-static-def")
 # define EZTEST_REENABLE_WDEPRECATED_REDUNDANT_CONSTEXPR_STATIC_DEF_           \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_REDUNDANT_CONSTEXPR_STATIC_DEF_
 # define EZTEST_REENABLE_WDEPRECATED_REDUNDANT_CONSTEXPR_STATIC_DEF_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(17, 0, 0))
 # define EZTEST_DISABLE_WRESERVED_MODULE_IDENTIFIER_                           \
-  EZTEST_DISABLE_WARNING_("-Wreserved-module-identifier")
+     EZTEST_DISABLE_WARNING_("-Wreserved-module-identifier")
 # define EZTEST_REENABLE_WRESERVED_MODULE_IDENTIFIER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WRESERVED_MODULE_IDENTIFIER_
@@ -7183,7 +7184,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(17, 0, 0))
 # define EZTEST_DISABLE_WPRE_CXX2C_COMPAT_                                     \
-  EZTEST_DISABLE_WARNING_("-Wpre-c++2c-compat")
+     EZTEST_DISABLE_WARNING_("-Wpre-c++2c-compat")
 # define EZTEST_REENABLE_WPRE_CXX2C_COMPAT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPRE_CXX2C_COMPAT_
@@ -7191,7 +7192,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(17, 0, 0))
 # define EZTEST_DISABLE_WSYNC_ALIGNMENT_                                       \
-  EZTEST_DISABLE_WARNING_("-Wsync-alignment")
+     EZTEST_DISABLE_WARNING_("-Wsync-alignment")
 # define EZTEST_REENABLE_WSYNC_ALIGNMENT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSYNC_ALIGNMENT_
@@ -7199,7 +7200,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(17, 0, 0))
 # define EZTEST_DISABLE_WHIP_OMP_TARGET_DIRECTIVES_                            \
-  EZTEST_DISABLE_WARNING_("-Whip-omp-target-directives")
+     EZTEST_DISABLE_WARNING_("-Whip-omp-target-directives")
 # define EZTEST_REENABLE_WHIP_OMP_TARGET_DIRECTIVES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WHIP_OMP_TARGET_DIRECTIVES_
@@ -7207,7 +7208,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(17, 0, 0))
 # define EZTEST_DISABLE_WCXX26_EXTENSIONS_                                     \
-  EZTEST_DISABLE_WARNING_("-Wc++26-extensions")
+     EZTEST_DISABLE_WARNING_("-Wc++26-extensions")
 # define EZTEST_REENABLE_WCXX26_EXTENSIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX26_EXTENSIONS_
@@ -7215,7 +7216,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(17, 0, 0))
 # define EZTEST_DISABLE_WGENERIC_TYPE_EXTENSION_                               \
-  EZTEST_DISABLE_WARNING_("-Wgeneric-type-extension")
+     EZTEST_DISABLE_WARNING_("-Wgeneric-type-extension")
 # define EZTEST_REENABLE_WGENERIC_TYPE_EXTENSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WGENERIC_TYPE_EXTENSION_
@@ -7223,7 +7224,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(17, 0, 0))
 # define EZTEST_DISABLE_WREAD_MODULES_IMPLICITLY_                              \
-  EZTEST_DISABLE_WARNING_("-Wread-modules-implicitly")
+     EZTEST_DISABLE_WARNING_("-Wread-modules-implicitly")
 # define EZTEST_REENABLE_WREAD_MODULES_IMPLICITLY_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WREAD_MODULES_IMPLICITLY_
@@ -7231,7 +7232,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(17, 0, 0))
 # define EZTEST_DISABLE_WPRE_CXX2C_COMPAT_PEDANTIC_                            \
-  EZTEST_DISABLE_WARNING_("-Wpre-c++2c-compat-pedantic")
+     EZTEST_DISABLE_WARNING_("-Wpre-c++2c-compat-pedantic")
 # define EZTEST_REENABLE_WPRE_CXX2C_COMPAT_PEDANTIC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPRE_CXX2C_COMPAT_PEDANTIC_
@@ -7239,7 +7240,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(17, 0, 0))
 # define EZTEST_DISABLE_WMISSING_MULTILIB_                                     \
-  EZTEST_DISABLE_WARNING_("-Wmissing-multilib")
+     EZTEST_DISABLE_WARNING_("-Wmissing-multilib")
 # define EZTEST_REENABLE_WMISSING_MULTILIB_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMISSING_MULTILIB_
@@ -7247,7 +7248,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(17, 0, 0))
 # define EZTEST_DISABLE_WEAGER_LOAD_CXX_NAMED_MODULES_                         \
-  EZTEST_DISABLE_WARNING_("-Weager-load-cxx-named-modules")
+     EZTEST_DISABLE_WARNING_("-Weager-load-cxx-named-modules")
 # define EZTEST_REENABLE_WEAGER_LOAD_CXX_NAMED_MODULES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WEAGER_LOAD_CXX_NAMED_MODULES_
@@ -7255,7 +7256,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(17, 0, 0))
 # define EZTEST_DISABLE_WPRE_CXX26_COMPAT_PEDANTIC_                            \
-  EZTEST_DISABLE_WARNING_("-Wpre-c++26-compat-pedantic")
+     EZTEST_DISABLE_WARNING_("-Wpre-c++26-compat-pedantic")
 # define EZTEST_REENABLE_WPRE_CXX26_COMPAT_PEDANTIC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPRE_CXX26_COMPAT_PEDANTIC_
@@ -7263,7 +7264,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(17, 0, 0))
 # define EZTEST_DISABLE_WCXX2C_EXTENSIONS_                                     \
-  EZTEST_DISABLE_WARNING_("-Wc++2c-extensions")
+     EZTEST_DISABLE_WARNING_("-Wc++2c-extensions")
 # define EZTEST_REENABLE_WCXX2C_EXTENSIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX2C_EXTENSIONS_
@@ -7271,25 +7272,25 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(18, 0, 0))
 # define EZTEST_DISABLE_WINCOMPATIBLE_MS_PRAGMA_SECTION_                       \
-  EZTEST_DISABLE_WARNING_("-Wincompatible-ms-pragma-section")
+     EZTEST_DISABLE_WARNING_("-Wincompatible-ms-pragma-section")
 # define EZTEST_REENABLE_WINCOMPATIBLE_MS_PRAGMA_SECTION_                      \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINCOMPATIBLE_MS_PRAGMA_SECTION_
 # define EZTEST_REENABLE_WINCOMPATIBLE_MS_PRAGMA_SECTION_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(18, 0, 0))
 # define EZTEST_DISABLE_WMICROSOFT_STRING_LITERAL_FROM_PREDEFINED_             \
-  EZTEST_DISABLE_WARNING_("-Wmicrosoft-string-literal-from-predefined")
+     EZTEST_DISABLE_WARNING_("-Wmicrosoft-string-literal-from-predefined")
 # define EZTEST_REENABLE_WMICROSOFT_STRING_LITERAL_FROM_PREDEFINED_            \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMICROSOFT_STRING_LITERAL_FROM_PREDEFINED_
 # define EZTEST_REENABLE_WMICROSOFT_STRING_LITERAL_FROM_PREDEFINED_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(18, 0, 0))
 # define EZTEST_DISABLE_WC23_EXTENSIONS_                                       \
-  EZTEST_DISABLE_WARNING_("-Wc23-extensions")
+     EZTEST_DISABLE_WARNING_("-Wc23-extensions")
 # define EZTEST_REENABLE_WC23_EXTENSIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WC23_EXTENSIONS_
@@ -7297,16 +7298,16 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(18, 0, 0))
 # define EZTEST_DISABLE_WTAUTOLOGICAL_NEGATION_COMPARE_                        \
-  EZTEST_DISABLE_WARNING_("-Wtautological-negation-compare")
+     EZTEST_DISABLE_WARNING_("-Wtautological-negation-compare")
 # define EZTEST_REENABLE_WTAUTOLOGICAL_NEGATION_COMPARE_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WTAUTOLOGICAL_NEGATION_COMPARE_
 # define EZTEST_REENABLE_WTAUTOLOGICAL_NEGATION_COMPARE_
 #endif
 #if (EZTEST_HAS_CLANG_VER_(18, 0, 0))
 # define EZTEST_DISABLE_WOVERRIDING_OPTION_                                    \
-  EZTEST_DISABLE_WARNING_("-Woverriding-option")
+     EZTEST_DISABLE_WARNING_("-Woverriding-option")
 # define EZTEST_REENABLE_WOVERRIDING_OPTION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOVERRIDING_OPTION_
@@ -7321,7 +7322,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(18, 0, 0))
 # define EZTEST_DISABLE_WINVALID_UNEVALUATED_STRING_                           \
-  EZTEST_DISABLE_WARNING_("-Winvalid-unevaluated-string")
+     EZTEST_DISABLE_WARNING_("-Winvalid-unevaluated-string")
 # define EZTEST_REENABLE_WINVALID_UNEVALUATED_STRING_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINVALID_UNEVALUATED_STRING_
@@ -7329,7 +7330,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(18, 0, 0))
 # define EZTEST_DISABLE_WPRE_C23_COMPAT_PEDANTIC_                              \
-  EZTEST_DISABLE_WARNING_("-Wpre-c23-compat-pedantic")
+     EZTEST_DISABLE_WARNING_("-Wpre-c23-compat-pedantic")
 # define EZTEST_REENABLE_WPRE_C23_COMPAT_PEDANTIC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPRE_C23_COMPAT_PEDANTIC_
@@ -7337,7 +7338,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(18, 0, 0))
 # define EZTEST_DISABLE_WOPENMP_EXTENSIONS_                                    \
-  EZTEST_DISABLE_WARNING_("-Wopenmp-extensions")
+     EZTEST_DISABLE_WARNING_("-Wopenmp-extensions")
 # define EZTEST_REENABLE_WOPENMP_EXTENSIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOPENMP_EXTENSIONS_
@@ -7345,7 +7346,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(18, 0, 0))
 # define EZTEST_DISABLE_WPRE_C23_COMPAT_                                       \
-  EZTEST_DISABLE_WARNING_("-Wpre-c23-compat")
+     EZTEST_DISABLE_WARNING_("-Wpre-c23-compat")
 # define EZTEST_REENABLE_WPRE_C23_COMPAT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPRE_C23_COMPAT_
@@ -7360,7 +7361,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WCOVERAGE_MISMATCH_                                    \
-  EZTEST_DISABLE_WARNING_("-Wcoverage-mismatch")
+     EZTEST_DISABLE_WARNING_("-Wcoverage-mismatch")
 # define EZTEST_REENABLE_WCOVERAGE_MISMATCH_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCOVERAGE_MISMATCH_
@@ -7368,7 +7369,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WFORMAT_CONTAINS_NUL_                                  \
-  EZTEST_DISABLE_WARNING_("-Wformat-contains-nul")
+     EZTEST_DISABLE_WARNING_("-Wformat-contains-nul")
 # define EZTEST_REENABLE_WFORMAT_CONTAINS_NUL_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFORMAT_CONTAINS_NUL_
@@ -7383,7 +7384,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WPACKED_BITFIELD_COMPAT_                               \
-  EZTEST_DISABLE_WARNING_("-Wpacked-bitfield-compat")
+     EZTEST_DISABLE_WARNING_("-Wpacked-bitfield-compat")
 # define EZTEST_REENABLE_WPACKED_BITFIELD_COMPAT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPACKED_BITFIELD_COMPAT_
@@ -7391,7 +7392,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WUNSAFE_LOOP_OPTIMIZATIONS_                            \
-  EZTEST_DISABLE_WARNING_("-Wunsafe-loop-optimizations")
+     EZTEST_DISABLE_WARNING_("-Wunsafe-loop-optimizations")
 # define EZTEST_REENABLE_WUNSAFE_LOOP_OPTIMIZATIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNSAFE_LOOP_OPTIMIZATIONS_
@@ -7427,7 +7428,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(4, 4, 7))
 # define EZTEST_DISABLE_WSYSTEM_HEADERS_                                       \
-  EZTEST_DISABLE_WARNING_("-Wsystem-headers")
+     EZTEST_DISABLE_WARNING_("-Wsystem-headers")
 # define EZTEST_REENABLE_WSYSTEM_HEADERS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSYSTEM_HEADERS_
@@ -7442,7 +7443,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(4, 6, 4))
 # define EZTEST_DISABLE_WSUGGEST_ATTRIBUTE_                                    \
-  EZTEST_DISABLE_WARNING_("-Wsuggest-attribute")
+     EZTEST_DISABLE_WARNING_("-Wsuggest-attribute")
 # define EZTEST_REENABLE_WSUGGEST_ATTRIBUTE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSUGGEST_ATTRIBUTE_
@@ -7450,7 +7451,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(4, 7, 1))
 # define EZTEST_DISABLE_WINVALID_MEMORY_MODEL_                                 \
-  EZTEST_DISABLE_WARNING_("-Winvalid-memory-model")
+     EZTEST_DISABLE_WARNING_("-Winvalid-memory-model")
 # define EZTEST_REENABLE_WINVALID_MEMORY_MODEL_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINVALID_MEMORY_MODEL_
@@ -7458,7 +7459,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(4, 7, 1))
 # define EZTEST_DISABLE_WMAYBE_UNINITIALIZED_                                  \
-  EZTEST_DISABLE_WARNING_("-Wmaybe-uninitialized")
+     EZTEST_DISABLE_WARNING_("-Wmaybe-uninitialized")
 # define EZTEST_REENABLE_WMAYBE_UNINITIALIZED_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMAYBE_UNINITIALIZED_
@@ -7473,7 +7474,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(4, 7, 1))
 # define EZTEST_DISABLE_WVECTOR_OPERATION_PERFORMANCE_                         \
-  EZTEST_DISABLE_WARNING_("-Wvector-operation-performance")
+     EZTEST_DISABLE_WARNING_("-Wvector-operation-performance")
 # define EZTEST_REENABLE_WVECTOR_OPERATION_PERFORMANCE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WVECTOR_OPERATION_PERFORMANCE_
@@ -7481,9 +7482,9 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(4, 8, 1))
 # define EZTEST_DISABLE_WAGGRESSIVE_LOOP_OPTIMIZATIONS_                        \
-  EZTEST_DISABLE_WARNING_("-Waggressive-loop-optimizations")
+     EZTEST_DISABLE_WARNING_("-Waggressive-loop-optimizations")
 # define EZTEST_REENABLE_WAGGRESSIVE_LOOP_OPTIMIZATIONS_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WAGGRESSIVE_LOOP_OPTIMIZATIONS_
 # define EZTEST_REENABLE_WAGGRESSIVE_LOOP_OPTIMIZATIONS_
@@ -7511,7 +7512,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(5, 1, 0))
 # define EZTEST_DISABLE_WFORMAT_SIGNEDNESS_                                    \
-  EZTEST_DISABLE_WARNING_("-Wformat-signedness")
+     EZTEST_DISABLE_WARNING_("-Wformat-signedness")
 # define EZTEST_REENABLE_WFORMAT_SIGNEDNESS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFORMAT_SIGNEDNESS_
@@ -7519,7 +7520,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(5, 1, 0))
 # define EZTEST_DISABLE_WSUGGEST_FINAL_TYPES_                                  \
-  EZTEST_DISABLE_WARNING_("-Wsuggest-final-types")
+     EZTEST_DISABLE_WARNING_("-Wsuggest-final-types")
 # define EZTEST_REENABLE_WSUGGEST_FINAL_TYPES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSUGGEST_FINAL_TYPES_
@@ -7527,7 +7528,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(5, 1, 0))
 # define EZTEST_DISABLE_WSUGGEST_FINAL_METHODS_                                \
-  EZTEST_DISABLE_WARNING_("-Wsuggest-final-methods")
+     EZTEST_DISABLE_WARNING_("-Wsuggest-final-methods")
 # define EZTEST_REENABLE_WSUGGEST_FINAL_METHODS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSUGGEST_FINAL_METHODS_
@@ -7535,7 +7536,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(6, 1, 0))
 # define EZTEST_DISABLE_WLTO_TYPE_MISMATCH_                                    \
-  EZTEST_DISABLE_WARNING_("-Wlto-type-mismatch")
+     EZTEST_DISABLE_WARNING_("-Wlto-type-mismatch")
 # define EZTEST_REENABLE_WLTO_TYPE_MISMATCH_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WLTO_TYPE_MISMATCH_
@@ -7543,7 +7544,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(6, 1, 0))
 # define EZTEST_DISABLE_WSCALAR_STORAGE_ORDER_                                 \
-  EZTEST_DISABLE_WARNING_("-Wscalar-storage-order")
+     EZTEST_DISABLE_WARNING_("-Wscalar-storage-order")
 # define EZTEST_REENABLE_WSCALAR_STORAGE_ORDER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSCALAR_STORAGE_ORDER_
@@ -7551,7 +7552,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(6, 1, 0))
 # define EZTEST_DISABLE_WDUPLICATED_COND_                                      \
-  EZTEST_DISABLE_WARNING_("-Wduplicated-cond")
+     EZTEST_DISABLE_WARNING_("-Wduplicated-cond")
 # define EZTEST_REENABLE_WDUPLICATED_COND_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDUPLICATED_COND_
@@ -7566,7 +7567,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(6, 1, 0))
 # define EZTEST_DISABLE_WNONNULL_COMPARE_                                      \
-  EZTEST_DISABLE_WARNING_("-Wnonnull-compare")
+     EZTEST_DISABLE_WARNING_("-Wnonnull-compare")
 # define EZTEST_REENABLE_WNONNULL_COMPARE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNONNULL_COMPARE_
@@ -7574,7 +7575,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(7, 1, 0))
 # define EZTEST_DISABLE_WBUILTIN_DECLARATION_MISMATCH_                         \
-  EZTEST_DISABLE_WARNING_("-Wbuiltin-declaration-mismatch")
+     EZTEST_DISABLE_WARNING_("-Wbuiltin-declaration-mismatch")
 # define EZTEST_REENABLE_WBUILTIN_DECLARATION_MISMATCH_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WBUILTIN_DECLARATION_MISMATCH_
@@ -7582,7 +7583,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(7, 1, 0))
 # define EZTEST_DISABLE_WALLOCA_LARGER_THAN_                                   \
-  EZTEST_DISABLE_WARNING_("-Walloca-larger-than")
+     EZTEST_DISABLE_WARNING_("-Walloca-larger-than")
 # define EZTEST_REENABLE_WALLOCA_LARGER_THAN_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WALLOCA_LARGER_THAN_
@@ -7597,7 +7598,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(7, 1, 0))
 # define EZTEST_DISABLE_WFORMAT_TRUNCATION_                                    \
-  EZTEST_DISABLE_WARNING_("-Wformat-truncation")
+     EZTEST_DISABLE_WARNING_("-Wformat-truncation")
 # define EZTEST_REENABLE_WFORMAT_TRUNCATION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFORMAT_TRUNCATION_
@@ -7605,7 +7606,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(7, 1, 0))
 # define EZTEST_DISABLE_WSHADOW_COMPATIBLE_LOCAL_                              \
-  EZTEST_DISABLE_WARNING_("-Wshadow-compatible-local")
+     EZTEST_DISABLE_WARNING_("-Wshadow-compatible-local")
 # define EZTEST_REENABLE_WSHADOW_COMPATIBLE_LOCAL_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSHADOW_COMPATIBLE_LOCAL_
@@ -7613,7 +7614,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(7, 1, 0))
 # define EZTEST_DISABLE_WMEMSET_ELT_SIZE_                                      \
-  EZTEST_DISABLE_WARNING_("-Wmemset-elt-size")
+     EZTEST_DISABLE_WARNING_("-Wmemset-elt-size")
 # define EZTEST_REENABLE_WMEMSET_ELT_SIZE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMEMSET_ELT_SIZE_
@@ -7621,7 +7622,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(7, 1, 0))
 # define EZTEST_DISABLE_WFORMAT_OVERFLOW_                                      \
-  EZTEST_DISABLE_WARNING_("-Wformat-overflow")
+     EZTEST_DISABLE_WARNING_("-Wformat-overflow")
 # define EZTEST_REENABLE_WFORMAT_OVERFLOW_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFORMAT_OVERFLOW_
@@ -7636,7 +7637,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(7, 1, 0))
 # define EZTEST_DISABLE_WDUPLICATED_BRANCHES_                                  \
-  EZTEST_DISABLE_WARNING_("-Wduplicated-branches")
+     EZTEST_DISABLE_WARNING_("-Wduplicated-branches")
 # define EZTEST_REENABLE_WDUPLICATED_BRANCHES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDUPLICATED_BRANCHES_
@@ -7644,7 +7645,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(7, 1, 0))
 # define EZTEST_DISABLE_WSTRINGOP_OVERFLOW_                                    \
-  EZTEST_DISABLE_WARNING_("-Wstringop-overflow")
+     EZTEST_DISABLE_WARNING_("-Wstringop-overflow")
 # define EZTEST_REENABLE_WSTRINGOP_OVERFLOW_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSTRINGOP_OVERFLOW_
@@ -7652,7 +7653,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(7, 1, 0))
 # define EZTEST_DISABLE_WSWITCH_UNREACHABLE_                                   \
-  EZTEST_DISABLE_WARNING_("-Wswitch-unreachable")
+     EZTEST_DISABLE_WARNING_("-Wswitch-unreachable")
 # define EZTEST_REENABLE_WSWITCH_UNREACHABLE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSWITCH_UNREACHABLE_
@@ -7667,7 +7668,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(7, 1, 0))
 # define EZTEST_DISABLE_WVLA_LARGER_THAN_                                      \
-  EZTEST_DISABLE_WARNING_("-Wvla-larger-than")
+     EZTEST_DISABLE_WARNING_("-Wvla-larger-than")
 # define EZTEST_REENABLE_WVLA_LARGER_THAN_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WVLA_LARGER_THAN_
@@ -7675,7 +7676,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(7, 1, 0))
 # define EZTEST_DISABLE_WALLOC_SIZE_LARGER_THAN_                               \
-  EZTEST_DISABLE_WARNING_("-Walloc-size-larger-than")
+     EZTEST_DISABLE_WARNING_("-Walloc-size-larger-than")
 # define EZTEST_REENABLE_WALLOC_SIZE_LARGER_THAN_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WALLOC_SIZE_LARGER_THAN_
@@ -7683,7 +7684,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(8, 1, 0))
 # define EZTEST_DISABLE_WMULTISTATEMENT_MACROS_                                \
-  EZTEST_DISABLE_WARNING_("-Wmultistatement-macros")
+     EZTEST_DISABLE_WARNING_("-Wmultistatement-macros")
 # define EZTEST_REENABLE_WMULTISTATEMENT_MACROS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMULTISTATEMENT_MACROS_
@@ -7691,7 +7692,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(8, 1, 0))
 # define EZTEST_DISABLE_WMISSING_ATTRIBUTES_                                   \
-  EZTEST_DISABLE_WARNING_("-Wmissing-attributes")
+     EZTEST_DISABLE_WARNING_("-Wmissing-attributes")
 # define EZTEST_REENABLE_WMISSING_ATTRIBUTES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMISSING_ATTRIBUTES_
@@ -7699,7 +7700,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(8, 1, 0))
 # define EZTEST_DISABLE_WPACKED_NOT_ALIGNED_                                   \
-  EZTEST_DISABLE_WARNING_("-Wpacked-not-aligned")
+     EZTEST_DISABLE_WARNING_("-Wpacked-not-aligned")
 # define EZTEST_REENABLE_WPACKED_NOT_ALIGNED_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPACKED_NOT_ALIGNED_
@@ -7707,7 +7708,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(8, 1, 0))
 # define EZTEST_DISABLE_WIF_NOT_ALIGNED_                                       \
-  EZTEST_DISABLE_WARNING_("-Wif-not-aligned")
+     EZTEST_DISABLE_WARNING_("-Wif-not-aligned")
 # define EZTEST_REENABLE_WIF_NOT_ALIGNED_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WIF_NOT_ALIGNED_
@@ -7715,7 +7716,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(8, 1, 0))
 # define EZTEST_DISABLE_WSTRINGOP_TRUNCATION_                                  \
-  EZTEST_DISABLE_WARNING_("-Wstringop-truncation")
+     EZTEST_DISABLE_WARNING_("-Wstringop-truncation")
 # define EZTEST_REENABLE_WSTRINGOP_TRUNCATION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSTRINGOP_TRUNCATION_
@@ -7723,7 +7724,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(8, 1, 0))
 # define EZTEST_DISABLE_WATTRIBUTE_ALIAS_                                      \
-  EZTEST_DISABLE_WARNING_("-Wattribute-alias")
+     EZTEST_DISABLE_WARNING_("-Wattribute-alias")
 # define EZTEST_REENABLE_WATTRIBUTE_ALIAS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WATTRIBUTE_ALIAS_
@@ -7731,7 +7732,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(9, 1, 0))
 # define EZTEST_DISABLE_WPRIO_CTOR_DTOR_                                       \
-  EZTEST_DISABLE_WARNING_("-Wprio-ctor-dtor")
+     EZTEST_DISABLE_WARNING_("-Wprio-ctor-dtor")
 # define EZTEST_REENABLE_WPRIO_CTOR_DTOR_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPRIO_CTOR_DTOR_
@@ -7739,7 +7740,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(9, 1, 0))
 # define EZTEST_DISABLE_WCANNOT_PROFILE_                                       \
-  EZTEST_DISABLE_WARNING_("-Wcannot-profile")
+     EZTEST_DISABLE_WARNING_("-Wcannot-profile")
 # define EZTEST_REENABLE_WCANNOT_PROFILE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCANNOT_PROFILE_
@@ -7747,7 +7748,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(9, 1, 0))
 # define EZTEST_DISABLE_WMISSING_PROFILE_                                      \
-  EZTEST_DISABLE_WARNING_("-Wmissing-profile")
+     EZTEST_DISABLE_WARNING_("-Wmissing-profile")
 # define EZTEST_REENABLE_WMISSING_PROFILE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMISSING_PROFILE_
@@ -7755,16 +7756,16 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(10, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_EXPOSURE_THROUGH_OUTPUT_FILE_                \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-exposure-through-output-file")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-exposure-through-output-file")
 # define EZTEST_REENABLE_WANALYZER_EXPOSURE_THROUGH_OUTPUT_FILE_               \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_EXPOSURE_THROUGH_OUTPUT_FILE_
 # define EZTEST_REENABLE_WANALYZER_EXPOSURE_THROUGH_OUTPUT_FILE_
 #endif
 #if (EZTEST_HAS_GCC_VER_(10, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_DOUBLE_FREE_                                 \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-double-free")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-double-free")
 # define EZTEST_REENABLE_WANALYZER_DOUBLE_FREE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_DOUBLE_FREE_
@@ -7772,7 +7773,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(10, 1, 0))
 # define EZTEST_DISABLE_WSWITCH_OUTSIDE_RANGE_                                 \
-  EZTEST_DISABLE_WARNING_("-Wswitch-outside-range")
+     EZTEST_DISABLE_WARNING_("-Wswitch-outside-range")
 # define EZTEST_REENABLE_WSWITCH_OUTSIDE_RANGE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSWITCH_OUTSIDE_RANGE_
@@ -7780,7 +7781,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(10, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_FILE_LEAK_                                   \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-file-leak")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-file-leak")
 # define EZTEST_REENABLE_WANALYZER_FILE_LEAK_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_FILE_LEAK_
@@ -7788,7 +7789,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(10, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_NULL_DEREFERENCE_                            \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-null-dereference")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-null-dereference")
 # define EZTEST_REENABLE_WANALYZER_NULL_DEREFERENCE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_NULL_DEREFERENCE_
@@ -7796,16 +7797,16 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(10, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_UNSAFE_CALL_WITHIN_SIGNAL_HANDLER_           \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-unsafe-call-within-signal-handler")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-unsafe-call-within-signal-handler")
 # define EZTEST_REENABLE_WANALYZER_UNSAFE_CALL_WITHIN_SIGNAL_HANDLER_          \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_UNSAFE_CALL_WITHIN_SIGNAL_HANDLER_
 # define EZTEST_REENABLE_WANALYZER_UNSAFE_CALL_WITHIN_SIGNAL_HANDLER_
 #endif
 #if (EZTEST_HAS_GCC_VER_(10, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_TOO_COMPLEX_                                 \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-too-complex")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-too-complex")
 # define EZTEST_REENABLE_WANALYZER_TOO_COMPLEX_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_TOO_COMPLEX_
@@ -7813,7 +7814,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(10, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_MALLOC_LEAK_                                 \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-malloc-leak")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-malloc-leak")
 # define EZTEST_REENABLE_WANALYZER_MALLOC_LEAK_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_MALLOC_LEAK_
@@ -7821,7 +7822,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(10, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_FREE_OF_NON_HEAP_                            \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-free-of-non-heap")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-free-of-non-heap")
 # define EZTEST_REENABLE_WANALYZER_FREE_OF_NON_HEAP_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_FREE_OF_NON_HEAP_
@@ -7836,16 +7837,16 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(10, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_USE_OF_POINTER_IN_STALE_STACK_FRAME_         \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-use-of-pointer-in-stale-stack-frame")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-use-of-pointer-in-stale-stack-frame")
 # define EZTEST_REENABLE_WANALYZER_USE_OF_POINTER_IN_STALE_STACK_FRAME_        \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_USE_OF_POINTER_IN_STALE_STACK_FRAME_
 # define EZTEST_REENABLE_WANALYZER_USE_OF_POINTER_IN_STALE_STACK_FRAME_
 #endif
 #if (EZTEST_HAS_GCC_VER_(10, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_STALE_SETJMP_BUFFER_                         \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-stale-setjmp-buffer")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-stale-setjmp-buffer")
 # define EZTEST_REENABLE_WANALYZER_STALE_SETJMP_BUFFER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_STALE_SETJMP_BUFFER_
@@ -7853,25 +7854,25 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(10, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_POSSIBLE_NULL_DEREFERENCE_                   \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-possible-null-dereference")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-possible-null-dereference")
 # define EZTEST_REENABLE_WANALYZER_POSSIBLE_NULL_DEREFERENCE_                  \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_POSSIBLE_NULL_DEREFERENCE_
 # define EZTEST_REENABLE_WANALYZER_POSSIBLE_NULL_DEREFERENCE_
 #endif
 #if (EZTEST_HAS_GCC_VER_(10, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_POSSIBLE_NULL_ARGUMENT_                      \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-possible-null-argument")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-possible-null-argument")
 # define EZTEST_REENABLE_WANALYZER_POSSIBLE_NULL_ARGUMENT_                     \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_POSSIBLE_NULL_ARGUMENT_
 # define EZTEST_REENABLE_WANALYZER_POSSIBLE_NULL_ARGUMENT_
 #endif
 #if (EZTEST_HAS_GCC_VER_(10, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_TAINTED_ARRAY_INDEX_                         \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-tainted-array-index")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-tainted-array-index")
 # define EZTEST_REENABLE_WANALYZER_TAINTED_ARRAY_INDEX_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_TAINTED_ARRAY_INDEX_
@@ -7879,7 +7880,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(10, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_USE_AFTER_FREE_                              \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-use-after-free")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-use-after-free")
 # define EZTEST_REENABLE_WANALYZER_USE_AFTER_FREE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_USE_AFTER_FREE_
@@ -7887,7 +7888,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(10, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_DOUBLE_FCLOSE_                               \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-double-fclose")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-double-fclose")
 # define EZTEST_REENABLE_WANALYZER_DOUBLE_FCLOSE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_DOUBLE_FCLOSE_
@@ -7895,7 +7896,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(10, 1, 0))
 # define EZTEST_DISABLE_WZERO_LENGTH_BOUNDS_                                   \
-  EZTEST_DISABLE_WARNING_("-Wzero-length-bounds")
+     EZTEST_DISABLE_WARNING_("-Wzero-length-bounds")
 # define EZTEST_REENABLE_WZERO_LENGTH_BOUNDS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WZERO_LENGTH_BOUNDS_
@@ -7903,7 +7904,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(10, 1, 0))
 # define EZTEST_DISABLE_WARITH_CONVERSION_                                     \
-  EZTEST_DISABLE_WARNING_("-Warith-conversion")
+     EZTEST_DISABLE_WARNING_("-Warith-conversion")
 # define EZTEST_REENABLE_WARITH_CONVERSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WARITH_CONVERSION_
@@ -7911,7 +7912,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(10, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_NULL_ARGUMENT_                               \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-null-argument")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-null-argument")
 # define EZTEST_REENABLE_WANALYZER_NULL_ARGUMENT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_NULL_ARGUMENT_
@@ -7919,7 +7920,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(11, 1, 0))
 # define EZTEST_DISABLE_WVLA_PARAMETER_                                        \
-  EZTEST_DISABLE_WARNING_("-Wvla-parameter")
+     EZTEST_DISABLE_WARNING_("-Wvla-parameter")
 # define EZTEST_REENABLE_WVLA_PARAMETER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WVLA_PARAMETER_
@@ -7927,25 +7928,25 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(11, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_SHIFT_COUNT_OVERFLOW_                        \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-shift-count-overflow")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-shift-count-overflow")
 # define EZTEST_REENABLE_WANALYZER_SHIFT_COUNT_OVERFLOW_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_SHIFT_COUNT_OVERFLOW_
 # define EZTEST_REENABLE_WANALYZER_SHIFT_COUNT_OVERFLOW_
 #endif
 #if (EZTEST_HAS_GCC_VER_(11, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_SHIFT_COUNT_NEGATIVE_                        \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-shift-count-negative")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-shift-count-negative")
 # define EZTEST_REENABLE_WANALYZER_SHIFT_COUNT_NEGATIVE_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_SHIFT_COUNT_NEGATIVE_
 # define EZTEST_REENABLE_WANALYZER_SHIFT_COUNT_NEGATIVE_
 #endif
 #if (EZTEST_HAS_GCC_VER_(11, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_WRITE_TO_CONST_                              \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-write-to-const")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-write-to-const")
 # define EZTEST_REENABLE_WANALYZER_WRITE_TO_CONST_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_WRITE_TO_CONST_
@@ -7960,7 +7961,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(11, 1, 0))
 # define EZTEST_DISABLE_WSTRINGOP_OVERREAD_                                    \
-  EZTEST_DISABLE_WARNING_("-Wstringop-overread")
+     EZTEST_DISABLE_WARNING_("-Wstringop-overread")
 # define EZTEST_REENABLE_WSTRINGOP_OVERREAD_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSTRINGOP_OVERREAD_
@@ -7968,7 +7969,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(11, 1, 0))
 # define EZTEST_DISABLE_WMISMATCHED_DEALLOC_                                   \
-  EZTEST_DISABLE_WARNING_("-Wmismatched-dealloc")
+     EZTEST_DISABLE_WARNING_("-Wmismatched-dealloc")
 # define EZTEST_REENABLE_WMISMATCHED_DEALLOC_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMISMATCHED_DEALLOC_
@@ -7976,25 +7977,25 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(11, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_WRITE_TO_STRING_LITERAL_                     \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-write-to-string-literal")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-write-to-string-literal")
 # define EZTEST_REENABLE_WANALYZER_WRITE_TO_STRING_LITERAL_                    \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_WRITE_TO_STRING_LITERAL_
 # define EZTEST_REENABLE_WANALYZER_WRITE_TO_STRING_LITERAL_
 #endif
 #if (EZTEST_HAS_GCC_VER_(11, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_MISMATCHING_DEALLOCATION_                    \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-mismatching-deallocation")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-mismatching-deallocation")
 # define EZTEST_REENABLE_WANALYZER_MISMATCHING_DEALLOCATION_                   \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_MISMATCHING_DEALLOCATION_
 # define EZTEST_REENABLE_WANALYZER_MISMATCHING_DEALLOCATION_
 #endif
 #if (EZTEST_HAS_GCC_VER_(12, 1, 0))
 # define EZTEST_DISABLE_WCOVERAGE_INVALID_LINE_NUMBER_                         \
-  EZTEST_DISABLE_WARNING_("-Wcoverage-invalid-line-number")
+     EZTEST_DISABLE_WARNING_("-Wcoverage-invalid-line-number")
 # define EZTEST_REENABLE_WCOVERAGE_INVALID_LINE_NUMBER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCOVERAGE_INVALID_LINE_NUMBER_
@@ -8002,16 +8003,16 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(12, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_TAINTED_ALLOCATION_SIZE_                     \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-tainted-allocation-size")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-tainted-allocation-size")
 # define EZTEST_REENABLE_WANALYZER_TAINTED_ALLOCATION_SIZE_                    \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_TAINTED_ALLOCATION_SIZE_
 # define EZTEST_REENABLE_WANALYZER_TAINTED_ALLOCATION_SIZE_
 #endif
 #if (EZTEST_HAS_GCC_VER_(12, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_TAINTED_DIVISOR_                             \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-tainted-divisor")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-tainted-divisor")
 # define EZTEST_REENABLE_WANALYZER_TAINTED_DIVISOR_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_TAINTED_DIVISOR_
@@ -8019,7 +8020,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(12, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_TAINTED_SIZE_                                \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-tainted-size")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-tainted-size")
 # define EZTEST_REENABLE_WANALYZER_TAINTED_SIZE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_TAINTED_SIZE_
@@ -8027,7 +8028,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(12, 1, 0))
 # define EZTEST_DISABLE_WUSE_AFTER_FREE_                                       \
-  EZTEST_DISABLE_WARNING_("-Wuse-after-free")
+     EZTEST_DISABLE_WARNING_("-Wuse-after-free")
 # define EZTEST_REENABLE_WUSE_AFTER_FREE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUSE_AFTER_FREE_
@@ -8035,7 +8036,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(12, 1, 0))
 # define EZTEST_DISABLE_WARRAY_COMPARE_                                        \
-  EZTEST_DISABLE_WARNING_("-Warray-compare")
+     EZTEST_DISABLE_WARNING_("-Warray-compare")
 # define EZTEST_REENABLE_WARRAY_COMPARE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WARRAY_COMPARE_
@@ -8043,7 +8044,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(12, 1, 0))
 # define EZTEST_DISABLE_WTRIVIAL_AUTO_VAR_INIT_                                \
-  EZTEST_DISABLE_WARNING_("-Wtrivial-auto-var-init")
+     EZTEST_DISABLE_WARNING_("-Wtrivial-auto-var-init")
 # define EZTEST_REENABLE_WTRIVIAL_AUTO_VAR_INIT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WTRIVIAL_AUTO_VAR_INIT_
@@ -8051,7 +8052,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(12, 1, 0))
 # define EZTEST_DISABLE_WDANGLING_POINTER_                                     \
-  EZTEST_DISABLE_WARNING_("-Wdangling-pointer")
+     EZTEST_DISABLE_WARNING_("-Wdangling-pointer")
 # define EZTEST_REENABLE_WDANGLING_POINTER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDANGLING_POINTER_
@@ -8066,16 +8067,16 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(12, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_USE_OF_UNINITIALIZED_VALUE_                  \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-use-of-uninitialized-value")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-use-of-uninitialized-value")
 # define EZTEST_REENABLE_WANALYZER_USE_OF_UNINITIALIZED_VALUE_                 \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_USE_OF_UNINITIALIZED_VALUE_
 # define EZTEST_REENABLE_WANALYZER_USE_OF_UNINITIALIZED_VALUE_
 #endif
 #if (EZTEST_HAS_GCC_VER_(12, 1, 0))
 # define EZTEST_DISABLE_WOPENACC_PARALLELISM_                                  \
-  EZTEST_DISABLE_WARNING_("-Wopenacc-parallelism")
+     EZTEST_DISABLE_WARNING_("-Wopenacc-parallelism")
 # define EZTEST_REENABLE_WOPENACC_PARALLELISM_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOPENACC_PARALLELISM_
@@ -8083,7 +8084,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(12, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_TAINTED_OFFSET_                              \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-tainted-offset")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-tainted-offset")
 # define EZTEST_REENABLE_WANALYZER_TAINTED_OFFSET_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_TAINTED_OFFSET_
@@ -8091,16 +8092,16 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(13, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_VA_ARG_TYPE_MISMATCH_                        \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-va-arg-type-mismatch")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-va-arg-type-mismatch")
 # define EZTEST_REENABLE_WANALYZER_VA_ARG_TYPE_MISMATCH_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_VA_ARG_TYPE_MISMATCH_
 # define EZTEST_REENABLE_WANALYZER_VA_ARG_TYPE_MISMATCH_
 #endif
 #if (EZTEST_HAS_GCC_VER_(13, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_FD_USE_AFTER_CLOSE_                          \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-fd-use-after-close")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-fd-use-after-close")
 # define EZTEST_REENABLE_WANALYZER_FD_USE_AFTER_CLOSE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_FD_USE_AFTER_CLOSE_
@@ -8108,7 +8109,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(13, 1, 0))
 # define EZTEST_DISABLE_WCOMPLAIN_WRONG_LANG_                                  \
-  EZTEST_DISABLE_WARNING_("-Wcomplain-wrong-lang")
+     EZTEST_DISABLE_WARNING_("-Wcomplain-wrong-lang")
 # define EZTEST_REENABLE_WCOMPLAIN_WRONG_LANG_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCOMPLAIN_WRONG_LANG_
@@ -8116,7 +8117,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(13, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_JUMP_THROUGH_NULL_                           \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-jump-through-null")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-jump-through-null")
 # define EZTEST_REENABLE_WANALYZER_JUMP_THROUGH_NULL_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_JUMP_THROUGH_NULL_
@@ -8124,7 +8125,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(13, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_FD_LEAK_                                     \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-fd-leak")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-fd-leak")
 # define EZTEST_REENABLE_WANALYZER_FD_LEAK_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_FD_LEAK_
@@ -8132,16 +8133,16 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(13, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_EXPOSURE_THROUGH_UNINIT_COPY_                \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-exposure-through-uninit-copy")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-exposure-through-uninit-copy")
 # define EZTEST_REENABLE_WANALYZER_EXPOSURE_THROUGH_UNINIT_COPY_               \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_EXPOSURE_THROUGH_UNINIT_COPY_
 # define EZTEST_REENABLE_WANALYZER_EXPOSURE_THROUGH_UNINIT_COPY_
 #endif
 #if (EZTEST_HAS_GCC_VER_(13, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_FD_DOUBLE_CLOSE_                             \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-fd-double-close")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-fd-double-close")
 # define EZTEST_REENABLE_WANALYZER_FD_DOUBLE_CLOSE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_FD_DOUBLE_CLOSE_
@@ -8149,7 +8150,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(13, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_PUTENV_OF_AUTO_VAR_                          \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-putenv-of-auto-var")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-putenv-of-auto-var")
 # define EZTEST_REENABLE_WANALYZER_PUTENV_OF_AUTO_VAR_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_PUTENV_OF_AUTO_VAR_
@@ -8157,7 +8158,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(13, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_VA_LIST_EXHAUSTED_                           \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-va-list-exhausted")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-va-list-exhausted")
 # define EZTEST_REENABLE_WANALYZER_VA_LIST_EXHAUSTED_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_VA_LIST_EXHAUSTED_
@@ -8165,25 +8166,25 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(13, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_VA_LIST_USE_AFTER_VA_END_                    \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-va-list-use-after-va-end")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-va-list-use-after-va-end")
 # define EZTEST_REENABLE_WANALYZER_VA_LIST_USE_AFTER_VA_END_                   \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_VA_LIST_USE_AFTER_VA_END_
 # define EZTEST_REENABLE_WANALYZER_VA_LIST_USE_AFTER_VA_END_
 #endif
 #if (EZTEST_HAS_GCC_VER_(13, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_IMPRECISE_FP_ARITHMETIC_                     \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-imprecise-fp-arithmetic")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-imprecise-fp-arithmetic")
 # define EZTEST_REENABLE_WANALYZER_IMPRECISE_FP_ARITHMETIC_                    \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_IMPRECISE_FP_ARITHMETIC_
 # define EZTEST_REENABLE_WANALYZER_IMPRECISE_FP_ARITHMETIC_
 #endif
 #if (EZTEST_HAS_GCC_VER_(13, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_OUT_OF_BOUNDS_                               \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-out-of-bounds")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-out-of-bounds")
 # define EZTEST_REENABLE_WANALYZER_OUT_OF_BOUNDS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_OUT_OF_BOUNDS_
@@ -8191,7 +8192,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(13, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_FD_TYPE_MISMATCH_                            \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-fd-type-mismatch")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-fd-type-mismatch")
 # define EZTEST_REENABLE_WANALYZER_FD_TYPE_MISMATCH_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_FD_TYPE_MISMATCH_
@@ -8199,7 +8200,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(13, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_DEREF_BEFORE_CHECK_                          \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-deref-before-check")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-deref-before-check")
 # define EZTEST_REENABLE_WANALYZER_DEREF_BEFORE_CHECK_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_DEREF_BEFORE_CHECK_
@@ -8207,7 +8208,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(13, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_FD_PHASE_MISMATCH_                           \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-fd-phase-mismatch")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-fd-phase-mismatch")
 # define EZTEST_REENABLE_WANALYZER_FD_PHASE_MISMATCH_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_FD_PHASE_MISMATCH_
@@ -8215,16 +8216,16 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(13, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_FD_ACCESS_MODE_MISMATCH_                     \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-fd-access-mode-mismatch")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-fd-access-mode-mismatch")
 # define EZTEST_REENABLE_WANALYZER_FD_ACCESS_MODE_MISMATCH_                    \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_FD_ACCESS_MODE_MISMATCH_
 # define EZTEST_REENABLE_WANALYZER_FD_ACCESS_MODE_MISMATCH_
 #endif
 #if (EZTEST_HAS_GCC_VER_(13, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_VA_LIST_LEAK_                                \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-va-list-leak")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-va-list-leak")
 # define EZTEST_REENABLE_WANALYZER_VA_LIST_LEAK_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_VA_LIST_LEAK_
@@ -8232,7 +8233,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(13, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_INFINITE_RECURSION_                          \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-infinite-recursion")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-infinite-recursion")
 # define EZTEST_REENABLE_WANALYZER_INFINITE_RECURSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_INFINITE_RECURSION_
@@ -8240,7 +8241,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(13, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_TAINTED_ASSERTION_                           \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-tainted-assertion")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-tainted-assertion")
 # define EZTEST_REENABLE_WANALYZER_TAINTED_ASSERTION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_TAINTED_ASSERTION_
@@ -8248,7 +8249,7 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(13, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_ALLOCATION_SIZE_                             \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-allocation-size")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-allocation-size")
 # define EZTEST_REENABLE_WANALYZER_ALLOCATION_SIZE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_ALLOCATION_SIZE_
@@ -8256,16 +8257,16 @@
 #endif
 #if (EZTEST_HAS_GCC_VER_(13, 1, 0))
 # define EZTEST_DISABLE_WANALYZER_FD_USE_WITHOUT_CHECK_                        \
-  EZTEST_DISABLE_WARNING_("-Wanalyzer-fd-use-without-check")
+     EZTEST_DISABLE_WARNING_("-Wanalyzer-fd-use-without-check")
 # define EZTEST_REENABLE_WANALYZER_FD_USE_WITHOUT_CHECK_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WANALYZER_FD_USE_WITHOUT_CHECK_
 # define EZTEST_REENABLE_WANALYZER_FD_USE_WITHOUT_CHECK_
 #endif
 #if (EZTEST_HAS_GCC_VER_(14, 0, 0))
 # define EZTEST_DISABLE_WFLEX_ARRAY_MEMBER_NOT_AT_END_                         \
-  EZTEST_DISABLE_WARNING_("-Wflex-array-member-not-at-end")
+     EZTEST_DISABLE_WARNING_("-Wflex-array-member-not-at-end")
 # define EZTEST_REENABLE_WFLEX_ARRAY_MEMBER_NOT_AT_END_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WFLEX_ARRAY_MEMBER_NOT_AT_END_
@@ -8273,9 +8274,9 @@
 #endif
 #if ((EZTEST_HAS_CLANG_VER_(4, 0, 0)) && EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WCOMPARE_DISTINCT_POINTER_TYPES_                       \
-  EZTEST_DISABLE_WARNING_("-Wcompare-distinct-pointer-types")
+     EZTEST_DISABLE_WARNING_("-Wcompare-distinct-pointer-types")
 # define EZTEST_REENABLE_WCOMPARE_DISTINCT_POINTER_TYPES_                      \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCOMPARE_DISTINCT_POINTER_TYPES_
 # define EZTEST_REENABLE_WCOMPARE_DISTINCT_POINTER_TYPES_
@@ -8283,7 +8284,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7)) &&       \
      EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WBAD_FUNCTION_CAST_                                    \
-  EZTEST_DISABLE_WARNING_("-Wbad-function-cast")
+     EZTEST_DISABLE_WARNING_("-Wbad-function-cast")
 # define EZTEST_REENABLE_WBAD_FUNCTION_CAST_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WBAD_FUNCTION_CAST_
@@ -8292,7 +8293,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(9, 1, 0)) &&       \
      EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WABSOLUTE_VALUE_                                       \
-  EZTEST_DISABLE_WARNING_("-Wabsolute-value")
+     EZTEST_DISABLE_WARNING_("-Wabsolute-value")
 # define EZTEST_REENABLE_WABSOLUTE_VALUE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WABSOLUTE_VALUE_
@@ -8301,7 +8302,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7)) &&       \
      EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WSTRICT_PROTOTYPES_                                    \
-  EZTEST_DISABLE_WARNING_("-Wstrict-prototypes")
+     EZTEST_DISABLE_WARNING_("-Wstrict-prototypes")
 # define EZTEST_REENABLE_WSTRICT_PROTOTYPES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSTRICT_PROTOTYPES_
@@ -8310,9 +8311,9 @@
 #if ((EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7)) &&       \
      EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WIMPLICIT_FUNCTION_DECLARATION_                        \
-  EZTEST_DISABLE_WARNING_("-Wimplicit-function-declaration")
+     EZTEST_DISABLE_WARNING_("-Wimplicit-function-declaration")
 # define EZTEST_REENABLE_WIMPLICIT_FUNCTION_DECLARATION_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WIMPLICIT_FUNCTION_DECLARATION_
 # define EZTEST_REENABLE_WIMPLICIT_FUNCTION_DECLARATION_
@@ -8320,7 +8321,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7)) &&       \
      EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WMISSING_PROTOTYPES_                                   \
-  EZTEST_DISABLE_WARNING_("-Wmissing-prototypes")
+     EZTEST_DISABLE_WARNING_("-Wmissing-prototypes")
 # define EZTEST_REENABLE_WMISSING_PROTOTYPES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMISSING_PROTOTYPES_
@@ -8337,7 +8338,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7)) &&       \
      EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WPOINTER_TO_INT_CAST_                                  \
-  EZTEST_DISABLE_WARNING_("-Wpointer-to-int-cast")
+     EZTEST_DISABLE_WARNING_("-Wpointer-to-int-cast")
 # define EZTEST_REENABLE_WPOINTER_TO_INT_CAST_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPOINTER_TO_INT_CAST_
@@ -8354,7 +8355,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(5, 1, 0)) &&       \
      EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WINT_CONVERSION_                                       \
-  EZTEST_DISABLE_WARNING_("-Wint-conversion")
+     EZTEST_DISABLE_WARNING_("-Wint-conversion")
 # define EZTEST_REENABLE_WINT_CONVERSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINT_CONVERSION_
@@ -8363,7 +8364,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7)) &&       \
      EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WDECLARATION_AFTER_STATEMENT_                          \
-  EZTEST_DISABLE_WARNING_("-Wdeclaration-after-statement")
+     EZTEST_DISABLE_WARNING_("-Wdeclaration-after-statement")
 # define EZTEST_REENABLE_WDECLARATION_AFTER_STATEMENT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDECLARATION_AFTER_STATEMENT_
@@ -8372,7 +8373,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(5, 1, 0)) &&       \
      EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WINCOMPATIBLE_POINTER_TYPES_                           \
-  EZTEST_DISABLE_WARNING_("-Wincompatible-pointer-types")
+     EZTEST_DISABLE_WARNING_("-Wincompatible-pointer-types")
 # define EZTEST_REENABLE_WINCOMPATIBLE_POINTER_TYPES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINCOMPATIBLE_POINTER_TYPES_
@@ -8381,7 +8382,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7)) &&       \
      EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WNESTED_EXTERNS_                                       \
-  EZTEST_DISABLE_WARNING_("-Wnested-externs")
+     EZTEST_DISABLE_WARNING_("-Wnested-externs")
 # define EZTEST_REENABLE_WNESTED_EXTERNS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNESTED_EXTERNS_
@@ -8390,7 +8391,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(7, 1, 0)) &&       \
      EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WDUPLICATE_DECL_SPECIFIER_                             \
-  EZTEST_DISABLE_WARNING_("-Wduplicate-decl-specifier")
+     EZTEST_DISABLE_WARNING_("-Wduplicate-decl-specifier")
 # define EZTEST_REENABLE_WDUPLICATE_DECL_SPECIFIER_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDUPLICATE_DECL_SPECIFIER_
@@ -8415,7 +8416,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7)) &&       \
      EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WOLD_STYLE_DEFINITION_                                 \
-  EZTEST_DISABLE_WARNING_("-Wold-style-definition")
+     EZTEST_DISABLE_WARNING_("-Wold-style-definition")
 # define EZTEST_REENABLE_WOLD_STYLE_DEFINITION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOLD_STYLE_DEFINITION_
@@ -8423,9 +8424,9 @@
 #endif
 #if ((EZTEST_HAS_CLANG_VER_(4, 0, 0)) && EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WMISSING_VARIABLE_DECLARATIONS_                        \
-  EZTEST_DISABLE_WARNING_("-Wmissing-variable-declarations")
+     EZTEST_DISABLE_WARNING_("-Wmissing-variable-declarations")
 # define EZTEST_REENABLE_WMISSING_VARIABLE_DECLARATIONS_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMISSING_VARIABLE_DECLARATIONS_
 # define EZTEST_REENABLE_WMISSING_VARIABLE_DECLARATIONS_
@@ -8433,7 +8434,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(8, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7)) &&       \
      EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WOVERRIDE_INIT_                                        \
-  EZTEST_DISABLE_WARNING_("-Woverride-init")
+     EZTEST_DISABLE_WARNING_("-Woverride-init")
 # define EZTEST_REENABLE_WOVERRIDE_INIT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOVERRIDE_INIT_
@@ -8441,7 +8442,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(4, 4, 7)) && EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WTRADITIONAL_CONVERSION_                               \
-  EZTEST_DISABLE_WARNING_("-Wtraditional-conversion")
+     EZTEST_DISABLE_WARNING_("-Wtraditional-conversion")
 # define EZTEST_REENABLE_WTRADITIONAL_CONVERSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WTRADITIONAL_CONVERSION_
@@ -8449,7 +8450,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(4, 4, 7)) && EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WOLD_STYLE_DECLARATION_                                \
-  EZTEST_DISABLE_WARNING_("-Wold-style-declaration")
+     EZTEST_DISABLE_WARNING_("-Wold-style-declaration")
 # define EZTEST_REENABLE_WOLD_STYLE_DECLARATION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOLD_STYLE_DECLARATION_
@@ -8457,7 +8458,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(4, 4, 7)) && EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WMISSING_PARAMETER_TYPE_                               \
-  EZTEST_DISABLE_WARNING_("-Wmissing-parameter-type")
+     EZTEST_DISABLE_WARNING_("-Wmissing-parameter-type")
 # define EZTEST_REENABLE_WMISSING_PARAMETER_TYPE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMISSING_PARAMETER_TYPE_
@@ -8472,7 +8473,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(4, 5, 3)) && EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WUNSUFFIXED_FLOAT_CONSTANTS_                           \
-  EZTEST_DISABLE_WARNING_("-Wunsuffixed-float-constants")
+     EZTEST_DISABLE_WARNING_("-Wunsuffixed-float-constants")
 # define EZTEST_REENABLE_WUNSUFFIXED_FLOAT_CONSTANTS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WUNSUFFIXED_FLOAT_CONSTANTS_
@@ -8480,7 +8481,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(4, 5, 3)) && EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WJUMP_MISSES_INIT_                                     \
-  EZTEST_DISABLE_WARNING_("-Wjump-misses-init")
+     EZTEST_DISABLE_WARNING_("-Wjump-misses-init")
 # define EZTEST_REENABLE_WJUMP_MISSES_INIT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WJUMP_MISSES_INIT_
@@ -8488,7 +8489,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(5, 1, 0)) && EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WDESIGNATED_INIT_                                      \
-  EZTEST_DISABLE_WARNING_("-Wdesignated-init")
+     EZTEST_DISABLE_WARNING_("-Wdesignated-init")
 # define EZTEST_REENABLE_WDESIGNATED_INIT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDESIGNATED_INIT_
@@ -8496,7 +8497,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(5, 1, 0)) && EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WDISCARDED_ARRAY_QUALIFIERS_                           \
-  EZTEST_DISABLE_WARNING_("-Wdiscarded-array-qualifiers")
+     EZTEST_DISABLE_WARNING_("-Wdiscarded-array-qualifiers")
 # define EZTEST_REENABLE_WDISCARDED_ARRAY_QUALIFIERS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDISCARDED_ARRAY_QUALIFIERS_
@@ -8504,7 +8505,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(5, 1, 0)) && EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WC90_C99_COMPAT_                                       \
-  EZTEST_DISABLE_WARNING_("-Wc90-c99-compat")
+     EZTEST_DISABLE_WARNING_("-Wc90-c99-compat")
 # define EZTEST_REENABLE_WC90_C99_COMPAT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WC90_C99_COMPAT_
@@ -8512,7 +8513,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(5, 1, 0)) && EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WC99_C11_COMPAT_                                       \
-  EZTEST_DISABLE_WARNING_("-Wc99-c11-compat")
+     EZTEST_DISABLE_WARNING_("-Wc99-c11-compat")
 # define EZTEST_REENABLE_WC99_C11_COMPAT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WC99_C11_COMPAT_
@@ -8520,7 +8521,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(5, 1, 0)) && EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WDISCARDED_QUALIFIERS_                                 \
-  EZTEST_DISABLE_WARNING_("-Wdiscarded-qualifiers")
+     EZTEST_DISABLE_WARNING_("-Wdiscarded-qualifiers")
 # define EZTEST_REENABLE_WDISCARDED_QUALIFIERS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDISCARDED_QUALIFIERS_
@@ -8528,7 +8529,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(6, 1, 0)) && EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WOVERRIDE_INIT_SIDE_EFFECTS_                           \
-  EZTEST_DISABLE_WARNING_("-Woverride-init-side-effects")
+     EZTEST_DISABLE_WARNING_("-Woverride-init-side-effects")
 # define EZTEST_REENABLE_WOVERRIDE_INIT_SIDE_EFFECTS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOVERRIDE_INIT_SIDE_EFFECTS_
@@ -8536,7 +8537,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(9, 1, 0)) && EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WC11_C2X_COMPAT_                                       \
-  EZTEST_DISABLE_WARNING_("-Wc11-c2x-compat")
+     EZTEST_DISABLE_WARNING_("-Wc11-c2x-compat")
 # define EZTEST_REENABLE_WC11_C2X_COMPAT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WC11_C2X_COMPAT_
@@ -8544,7 +8545,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(13, 1, 0)) && EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WENUM_INT_MISMATCH_                                    \
-  EZTEST_DISABLE_WARNING_("-Wenum-int-mismatch")
+     EZTEST_DISABLE_WARNING_("-Wenum-int-mismatch")
 # define EZTEST_REENABLE_WENUM_INT_MISMATCH_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WENUM_INT_MISMATCH_
@@ -8552,7 +8553,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(13, 1, 0)) && EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WSTRICT_FLEX_ARRAYS_                                   \
-  EZTEST_DISABLE_WARNING_("-Wstrict-flex-arrays")
+     EZTEST_DISABLE_WARNING_("-Wstrict-flex-arrays")
 # define EZTEST_REENABLE_WSTRICT_FLEX_ARRAYS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSTRICT_FLEX_ARRAYS_
@@ -8561,7 +8562,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(12, 1, 0)) &&      \
      EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WCXX14_EXTENSIONS_                                     \
-  EZTEST_DISABLE_WARNING_("-Wc++14-extensions")
+     EZTEST_DISABLE_WARNING_("-Wc++14-extensions")
 # define EZTEST_REENABLE_WCXX14_EXTENSIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX14_EXTENSIONS_
@@ -8578,7 +8579,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7)) &&       \
      EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WNON_VIRTUAL_DTOR_                                     \
-  EZTEST_DISABLE_WARNING_("-Wnon-virtual-dtor")
+     EZTEST_DISABLE_WARNING_("-Wnon-virtual-dtor")
 # define EZTEST_REENABLE_WNON_VIRTUAL_DTOR_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNON_VIRTUAL_DTOR_
@@ -8595,7 +8596,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7)) &&       \
      EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WOVERLOADED_VIRTUAL_                                   \
-  EZTEST_DISABLE_WARNING_("-Woverloaded-virtual")
+     EZTEST_DISABLE_WARNING_("-Woverloaded-virtual")
 # define EZTEST_REENABLE_WOVERLOADED_VIRTUAL_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOVERLOADED_VIRTUAL_
@@ -8604,7 +8605,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(9, 1, 0)) &&       \
      EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WREDUNDANT_MOVE_                                       \
-  EZTEST_DISABLE_WARNING_("-Wredundant-move")
+     EZTEST_DISABLE_WARNING_("-Wredundant-move")
 # define EZTEST_REENABLE_WREDUNDANT_MOVE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WREDUNDANT_MOVE_
@@ -8621,7 +8622,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(10, 1, 0)) &&      \
      EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WMISMATCHED_TAGS_                                      \
-  EZTEST_DISABLE_WARNING_("-Wmismatched-tags")
+     EZTEST_DISABLE_WARNING_("-Wmismatched-tags")
 # define EZTEST_REENABLE_WMISMATCHED_TAGS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMISMATCHED_TAGS_
@@ -8638,7 +8639,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7)) &&       \
      EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WOLD_STYLE_CAST_                                       \
-  EZTEST_DISABLE_WARNING_("-Wold-style-cast")
+     EZTEST_DISABLE_WARNING_("-Wold-style-cast")
 # define EZTEST_REENABLE_WOLD_STYLE_CAST_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WOLD_STYLE_CAST_
@@ -8647,7 +8648,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(13, 1, 0)) &&      \
      EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WINVALID_CONSTEXPR_                                    \
-  EZTEST_DISABLE_WARNING_("-Winvalid-constexpr")
+     EZTEST_DISABLE_WARNING_("-Winvalid-constexpr")
 # define EZTEST_REENABLE_WINVALID_CONSTEXPR_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINVALID_CONSTEXPR_
@@ -8656,7 +8657,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 9, 0)) &&       \
      EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WDELETE_INCOMPLETE_                                    \
-  EZTEST_DISABLE_WARNING_("-Wdelete-incomplete")
+     EZTEST_DISABLE_WARNING_("-Wdelete-incomplete")
 # define EZTEST_REENABLE_WDELETE_INCOMPLETE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDELETE_INCOMPLETE_
@@ -8665,7 +8666,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 5, 3)) &&       \
      EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WCONVERSION_NULL_                                      \
-  EZTEST_DISABLE_WARNING_("-Wconversion-null")
+     EZTEST_DISABLE_WARNING_("-Wconversion-null")
 # define EZTEST_REENABLE_WCONVERSION_NULL_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCONVERSION_NULL_
@@ -8674,7 +8675,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(12, 1, 0)) &&      \
      EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WCXX11_EXTENSIONS_                                     \
-  EZTEST_DISABLE_WARNING_("-Wc++11-extensions")
+     EZTEST_DISABLE_WARNING_("-Wc++11-extensions")
 # define EZTEST_REENABLE_WCXX11_EXTENSIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX11_EXTENSIONS_
@@ -8683,7 +8684,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(9, 1, 0)) &&       \
      EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WPESSIMIZING_MOVE_                                     \
-  EZTEST_DISABLE_WARNING_("-Wpessimizing-move")
+     EZTEST_DISABLE_WARNING_("-Wpessimizing-move")
 # define EZTEST_REENABLE_WPESSIMIZING_MOVE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPESSIMIZING_MOVE_
@@ -8692,7 +8693,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 7, 1)) &&       \
      EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WDELETE_NON_VIRTUAL_DTOR_                              \
-  EZTEST_DISABLE_WARNING_("-Wdelete-non-virtual-dtor")
+     EZTEST_DISABLE_WARNING_("-Wdelete-non-virtual-dtor")
 # define EZTEST_REENABLE_WDELETE_NON_VIRTUAL_DTOR_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDELETE_NON_VIRTUAL_DTOR_
@@ -8709,7 +8710,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(10, 1, 0)) &&      \
      EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WINACCESSIBLE_BASE_                                    \
-  EZTEST_DISABLE_WARNING_("-Winaccessible-base")
+     EZTEST_DISABLE_WARNING_("-Winaccessible-base")
 # define EZTEST_REENABLE_WINACCESSIBLE_BASE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINACCESSIBLE_BASE_
@@ -8758,7 +8759,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7)) &&       \
      EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WCTOR_DTOR_PRIVACY_                                    \
-  EZTEST_DISABLE_WARNING_("-Wctor-dtor-privacy")
+     EZTEST_DISABLE_WARNING_("-Wctor-dtor-privacy")
 # define EZTEST_REENABLE_WCTOR_DTOR_PRIVACY_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCTOR_DTOR_PRIVACY_
@@ -8767,7 +8768,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(11, 1, 0)) &&      \
      EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WMISMATCHED_NEW_DELETE_                                \
-  EZTEST_DISABLE_WARNING_("-Wmismatched-new-delete")
+     EZTEST_DISABLE_WARNING_("-Wmismatched-new-delete")
 # define EZTEST_REENABLE_WMISMATCHED_NEW_DELETE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMISMATCHED_NEW_DELETE_
@@ -8792,7 +8793,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(4, 0, 0) || EZTEST_HAS_GCC_VER_(4, 4, 7)) &&       \
      EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WINVALID_OFFSETOF_                                     \
-  EZTEST_DISABLE_WARNING_("-Winvalid-offsetof")
+     EZTEST_DISABLE_WARNING_("-Winvalid-offsetof")
 # define EZTEST_REENABLE_WINVALID_OFFSETOF_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINVALID_OFFSETOF_
@@ -8801,9 +8802,9 @@
 #if ((EZTEST_HAS_CLANG_VER_(5, 0, 0) || EZTEST_HAS_GCC_VER_(4, 7, 1)) &&       \
      EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WZERO_AS_NULL_POINTER_CONSTANT_                        \
-  EZTEST_DISABLE_WARNING_("-Wzero-as-null-pointer-constant")
+     EZTEST_DISABLE_WARNING_("-Wzero-as-null-pointer-constant")
 # define EZTEST_REENABLE_WZERO_AS_NULL_POINTER_CONSTANT_                       \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WZERO_AS_NULL_POINTER_CONSTANT_
 # define EZTEST_REENABLE_WZERO_AS_NULL_POINTER_CONSTANT_
@@ -8819,7 +8820,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(5, 0, 0) || EZTEST_HAS_GCC_VER_(7, 1, 0)) &&       \
      EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WNOEXCEPT_TYPE_                                        \
-  EZTEST_DISABLE_WARNING_("-Wnoexcept-type")
+     EZTEST_DISABLE_WARNING_("-Wnoexcept-type")
 # define EZTEST_REENABLE_WNOEXCEPT_TYPE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNOEXCEPT_TYPE_
@@ -8828,7 +8829,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(5, 0, 0) || EZTEST_HAS_GCC_VER_(12, 1, 0)) &&      \
      EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WCXX17_EXTENSIONS_                                     \
-  EZTEST_DISABLE_WARNING_("-Wc++17-extensions")
+     EZTEST_DISABLE_WARNING_("-Wc++17-extensions")
 # define EZTEST_REENABLE_WCXX17_EXTENSIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX17_EXTENSIONS_
@@ -8845,7 +8846,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(9, 0, 0) || EZTEST_HAS_GCC_VER_(11, 1, 0)) &&      \
      EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WCTAD_MAYBE_UNSUPPORTED_                               \
-  EZTEST_DISABLE_WARNING_("-Wctad-maybe-unsupported")
+     EZTEST_DISABLE_WARNING_("-Wctad-maybe-unsupported")
 # define EZTEST_REENABLE_WCTAD_MAYBE_UNSUPPORTED_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCTAD_MAYBE_UNSUPPORTED_
@@ -8854,7 +8855,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(10, 0, 0) || EZTEST_HAS_GCC_VER_(12, 1, 0)) &&     \
      EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WCXX20_EXTENSIONS_                                     \
-  EZTEST_DISABLE_WARNING_("-Wc++20-extensions")
+     EZTEST_DISABLE_WARNING_("-Wc++20-extensions")
 # define EZTEST_REENABLE_WCXX20_EXTENSIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX20_EXTENSIONS_
@@ -8871,7 +8872,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(10, 0, 0) || EZTEST_HAS_GCC_VER_(9, 1, 0)) &&      \
      EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WDEPRECATED_COPY_DTOR_                                 \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-copy-dtor")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-copy-dtor")
 # define EZTEST_REENABLE_WDEPRECATED_COPY_DTOR_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_COPY_DTOR_
@@ -8880,9 +8881,9 @@
 #if ((EZTEST_HAS_CLANG_VER_(10, 0, 0) || EZTEST_HAS_GCC_VER_(11, 1, 0)) &&     \
      EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WDEPRECATED_ENUM_FLOAT_CONVERSION_                     \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-enum-float-conversion")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-enum-float-conversion")
 # define EZTEST_REENABLE_WDEPRECATED_ENUM_FLOAT_CONVERSION_                    \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_ENUM_FLOAT_CONVERSION_
 # define EZTEST_REENABLE_WDEPRECATED_ENUM_FLOAT_CONVERSION_
@@ -8890,7 +8891,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(10, 0, 0) || EZTEST_HAS_GCC_VER_(9, 1, 0)) &&      \
      EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WDEPRECATED_COPY_                                      \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-copy")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-copy")
 # define EZTEST_REENABLE_WDEPRECATED_COPY_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_COPY_
@@ -8899,9 +8900,9 @@
 #if ((EZTEST_HAS_CLANG_VER_(10, 0, 0) || EZTEST_HAS_GCC_VER_(11, 1, 0)) &&     \
      EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WDEPRECATED_ENUM_ENUM_CONVERSION_                      \
-  EZTEST_DISABLE_WARNING_("-Wdeprecated-enum-enum-conversion")
+     EZTEST_DISABLE_WARNING_("-Wdeprecated-enum-enum-conversion")
 # define EZTEST_REENABLE_WDEPRECATED_ENUM_ENUM_CONVERSION_                     \
-  EZTEST_REENABLE_WARNING_
+     EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDEPRECATED_ENUM_ENUM_CONVERSION_
 # define EZTEST_REENABLE_WDEPRECATED_ENUM_ENUM_CONVERSION_
@@ -8909,7 +8910,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(10, 0, 0) || EZTEST_HAS_GCC_VER_(11, 1, 0)) &&     \
      EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WRANGE_LOOP_CONSTRUCT_                                 \
-  EZTEST_DISABLE_WARNING_("-Wrange-loop-construct")
+     EZTEST_DISABLE_WARNING_("-Wrange-loop-construct")
 # define EZTEST_REENABLE_WRANGE_LOOP_CONSTRUCT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WRANGE_LOOP_CONSTRUCT_
@@ -8918,7 +8919,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(11, 0, 0) || EZTEST_HAS_GCC_VER_(5, 1, 0)) &&      \
      EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WSUGGEST_OVERRIDE_                                     \
-  EZTEST_DISABLE_WARNING_("-Wsuggest-override")
+     EZTEST_DISABLE_WARNING_("-Wsuggest-override")
 # define EZTEST_REENABLE_WSUGGEST_OVERRIDE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSUGGEST_OVERRIDE_
@@ -8927,7 +8928,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(11, 0, 0) || EZTEST_HAS_GCC_VER_(9, 1, 0)) &&      \
      EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WCLASS_CONVERSION_                                     \
-  EZTEST_DISABLE_WARNING_("-Wclass-conversion")
+     EZTEST_DISABLE_WARNING_("-Wclass-conversion")
 # define EZTEST_REENABLE_WCLASS_CONVERSION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCLASS_CONVERSION_
@@ -8936,7 +8937,7 @@
 #if ((EZTEST_HAS_CLANG_VER_(17, 0, 0) || EZTEST_HAS_GCC_VER_(12, 1, 0)) &&     \
      EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WCXX23_EXTENSIONS_                                     \
-  EZTEST_DISABLE_WARNING_("-Wc++23-extensions")
+     EZTEST_DISABLE_WARNING_("-Wc++23-extensions")
 # define EZTEST_REENABLE_WCXX23_EXTENSIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCXX23_EXTENSIONS_
@@ -8944,7 +8945,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(4, 4, 7)) && EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WSTRICT_NULL_SENTINEL_                                 \
-  EZTEST_DISABLE_WARNING_("-Wstrict-null-sentinel")
+     EZTEST_DISABLE_WARNING_("-Wstrict-null-sentinel")
 # define EZTEST_REENABLE_WSTRICT_NULL_SENTINEL_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSTRICT_NULL_SENTINEL_
@@ -8952,7 +8953,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(4, 4, 7)) && EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WPMF_CONVERSIONS_                                      \
-  EZTEST_DISABLE_WARNING_("-Wpmf-conversions")
+     EZTEST_DISABLE_WARNING_("-Wpmf-conversions")
 # define EZTEST_REENABLE_WPMF_CONVERSIONS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPMF_CONVERSIONS_
@@ -8960,7 +8961,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(4, 4, 7)) && EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WNON_TEMPLATE_FRIEND_                                  \
-  EZTEST_DISABLE_WARNING_("-Wnon-template-friend")
+     EZTEST_DISABLE_WARNING_("-Wnon-template-friend")
 # define EZTEST_REENABLE_WNON_TEMPLATE_FRIEND_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WNON_TEMPLATE_FRIEND_
@@ -8982,7 +8983,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(4, 8, 1)) && EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WINHERITED_VARIADIC_CTOR_                              \
-  EZTEST_DISABLE_WARNING_("-Winherited-variadic-ctor")
+     EZTEST_DISABLE_WARNING_("-Winherited-variadic-ctor")
 # define EZTEST_REENABLE_WINHERITED_VARIADIC_CTOR_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINHERITED_VARIADIC_CTOR_
@@ -8990,7 +8991,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(4, 8, 1)) && EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WLITERAL_SUFFIX_                                       \
-  EZTEST_DISABLE_WARNING_("-Wliteral-suffix")
+     EZTEST_DISABLE_WARNING_("-Wliteral-suffix")
 # define EZTEST_REENABLE_WLITERAL_SUFFIX_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WLITERAL_SUFFIX_
@@ -9012,7 +9013,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(4, 8, 1)) && EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WVIRTUAL_MOVE_ASSIGN_                                  \
-  EZTEST_DISABLE_WARNING_("-Wvirtual-move-assign")
+     EZTEST_DISABLE_WARNING_("-Wvirtual-move-assign")
 # define EZTEST_REENABLE_WVIRTUAL_MOVE_ASSIGN_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WVIRTUAL_MOVE_ASSIGN_
@@ -9020,7 +9021,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(4, 9, 0)) && EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WCONDITIONALLY_SUPPORTED_                              \
-  EZTEST_DISABLE_WARNING_("-Wconditionally-supported")
+     EZTEST_DISABLE_WARNING_("-Wconditionally-supported")
 # define EZTEST_REENABLE_WCONDITIONALLY_SUPPORTED_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCONDITIONALLY_SUPPORTED_
@@ -9028,7 +9029,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(5, 1, 0)) && EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WSIZED_DEALLOCATION_                                   \
-  EZTEST_DISABLE_WARNING_("-Wsized-deallocation")
+     EZTEST_DISABLE_WARNING_("-Wsized-deallocation")
 # define EZTEST_REENABLE_WSIZED_DEALLOCATION_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSIZED_DEALLOCATION_
@@ -9036,7 +9037,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(6, 1, 0)) && EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WMULTIPLE_INHERITANCE_                                 \
-  EZTEST_DISABLE_WARNING_("-Wmultiple-inheritance")
+     EZTEST_DISABLE_WARNING_("-Wmultiple-inheritance")
 # define EZTEST_REENABLE_WMULTIPLE_INHERITANCE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMULTIPLE_INHERITANCE_
@@ -9065,7 +9066,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(6, 1, 0)) && EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WPLACEMENT_NEW_                                        \
-  EZTEST_DISABLE_WARNING_("-Wplacement-new")
+     EZTEST_DISABLE_WARNING_("-Wplacement-new")
 # define EZTEST_REENABLE_WPLACEMENT_NEW_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPLACEMENT_NEW_
@@ -9073,7 +9074,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(6, 1, 0)) && EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WVIRTUAL_INHERITANCE_                                  \
-  EZTEST_DISABLE_WARNING_("-Wvirtual-inheritance")
+     EZTEST_DISABLE_WARNING_("-Wvirtual-inheritance")
 # define EZTEST_REENABLE_WVIRTUAL_INHERITANCE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WVIRTUAL_INHERITANCE_
@@ -9081,7 +9082,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(6, 1, 0)) && EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WSUBOBJECT_LINKAGE_                                    \
-  EZTEST_DISABLE_WARNING_("-Wsubobject-linkage")
+     EZTEST_DISABLE_WARNING_("-Wsubobject-linkage")
 # define EZTEST_REENABLE_WSUBOBJECT_LINKAGE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WSUBOBJECT_LINKAGE_
@@ -9103,7 +9104,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(8, 1, 0)) && EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WCLASS_MEMACCESS_                                      \
-  EZTEST_DISABLE_WARNING_("-Wclass-memaccess")
+     EZTEST_DISABLE_WARNING_("-Wclass-memaccess")
 # define EZTEST_REENABLE_WCLASS_MEMACCESS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCLASS_MEMACCESS_
@@ -9111,7 +9112,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(9, 1, 0)) && EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WINIT_LIST_LIFETIME_                                   \
-  EZTEST_DISABLE_WARNING_("-Winit-list-lifetime")
+     EZTEST_DISABLE_WARNING_("-Winit-list-lifetime")
 # define EZTEST_REENABLE_WINIT_LIST_LIFETIME_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINIT_LIST_LIFETIME_
@@ -9126,7 +9127,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(10, 1, 0)) && EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WCOMMA_SUBSCRIPT_                                      \
-  EZTEST_DISABLE_WARNING_("-Wcomma-subscript")
+     EZTEST_DISABLE_WARNING_("-Wcomma-subscript")
 # define EZTEST_REENABLE_WCOMMA_SUBSCRIPT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCOMMA_SUBSCRIPT_
@@ -9134,7 +9135,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(10, 1, 0)) && EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WREDUNDANT_TAGS_                                       \
-  EZTEST_DISABLE_WARNING_("-Wredundant-tags")
+     EZTEST_DISABLE_WARNING_("-Wredundant-tags")
 # define EZTEST_REENABLE_WREDUNDANT_TAGS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WREDUNDANT_TAGS_
@@ -9142,7 +9143,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(11, 2, 0)) && EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WINVALID_IMPORTED_MACROS_                              \
-  EZTEST_DISABLE_WARNING_("-Winvalid-imported-macros")
+     EZTEST_DISABLE_WARNING_("-Winvalid-imported-macros")
 # define EZTEST_REENABLE_WINVALID_IMPORTED_MACROS_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINVALID_IMPORTED_MACROS_
@@ -9150,7 +9151,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(12, 1, 0)) && EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WMISSING_REQUIRES_                                     \
-  EZTEST_DISABLE_WARNING_("-Wmissing-requires")
+     EZTEST_DISABLE_WARNING_("-Wmissing-requires")
 # define EZTEST_REENABLE_WMISSING_REQUIRES_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMISSING_REQUIRES_
@@ -9158,7 +9159,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(12, 1, 0)) && EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WMISSING_TEMPLATE_KEYWORD_                             \
-  EZTEST_DISABLE_WARNING_("-Wmissing-template-keyword")
+     EZTEST_DISABLE_WARNING_("-Wmissing-template-keyword")
 # define EZTEST_REENABLE_WMISSING_TEMPLATE_KEYWORD_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WMISSING_TEMPLATE_KEYWORD_
@@ -9166,7 +9167,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(12, 1, 0)) && EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WINTERFERENCE_SIZE_                                    \
-  EZTEST_DISABLE_WARNING_("-Winterference-size")
+     EZTEST_DISABLE_WARNING_("-Winterference-size")
 # define EZTEST_REENABLE_WINTERFERENCE_SIZE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WINTERFERENCE_SIZE_
@@ -9174,7 +9175,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(13, 1, 0)) && EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WCHANGES_MEANING_                                      \
-  EZTEST_DISABLE_WARNING_("-Wchanges-meaning")
+     EZTEST_DISABLE_WARNING_("-Wchanges-meaning")
 # define EZTEST_REENABLE_WCHANGES_MEANING_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WCHANGES_MEANING_
@@ -9182,7 +9183,7 @@
 #endif
 #if ((EZTEST_HAS_GCC_VER_(13, 1, 0)) && EZTEST_CXX_LANG_)
 # define EZTEST_DISABLE_WDANGLING_REFERENCE_                                   \
-  EZTEST_DISABLE_WARNING_("-Wdangling-reference")
+     EZTEST_DISABLE_WARNING_("-Wdangling-reference")
 # define EZTEST_REENABLE_WDANGLING_REFERENCE_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WDANGLING_REFERENCE_
@@ -9190,7 +9191,7 @@
 #endif
 #if (EZTEST_HAS_CLANG_VER_(19, 0, 0) && EZTEST_C_LANG_)
 # define EZTEST_DISABLE_WPRE_C11_COMPAT_                                       \
-  EZTEST_DISABLE_WARNING_("-Wpre-c11-compat")
+     EZTEST_DISABLE_WARNING_("-Wpre-c11-compat")
 # define EZTEST_REENABLE_WPRE_C11_COMPAT_ EZTEST_REENABLE_WARNING_
 #else
 # define EZTEST_DISABLE_WPRE_C11_COMPAT_
