@@ -343,16 +343,21 @@ class eztest_cxx_binop_streq_t : public EZTEST_NS_ eztest_cxx_print_var_t {
     EZTEST_PRIVATE_CXX_INL_ bool
     eztest_cxx_run(const EZTEST_STD_NS_ string &      eztest_op0,
                    const EZTEST_STD_NS_ string_view & eztest_op1) {
-        return EZTEST_STD_NS_ operator==(EZTEST_STD_NS_ string_view(eztest_op0),
-                                         eztest_op1);
+        EZTEST_DISABLE_WAGGREGATE_RETURN_
+        EZTEST_STD_NS_ string_view eztest_op0_sv(eztest_op0);
+        EZTEST_REENABLE_WAGGREGATE_RETURN_
+        return EZTEST_STD_NS_ operator==(eztest_op0_sv, eztest_op1);
     }
 
     EZTEST_PRIVATE_CXX_INL_ bool
     eztest_cxx_run(const EZTEST_STD_NS_ string_view & eztest_op0,
                    const EZTEST_STD_NS_ string &      eztest_op1) {
-        return EZTEST_STD_NS_ operator==(
-            eztest_op0, EZTEST_STD_NS_ string_view(eztest_op1));
+        EZTEST_DISABLE_WAGGREGATE_RETURN_
+        EZTEST_STD_NS_ string_view eztest_op1_sv(eztest_op1);
+        EZTEST_REENABLE_WAGGREGATE_RETURN_
+        return EZTEST_STD_NS_ operator==(eztest_op0, eztest_op1_sv);
     }
+
 #endif
 
     EZTEST_PRIVATE_CXX_INL_ bool
@@ -905,97 +910,97 @@ EZTEST_DISABLE_WCXX98_COMPAT_PEDANTIC_
 EZTEST_DISABLE_WVARIADIC_MACROS_
 
 #define EZTEST_GET_TERNOP_EXPRESSIONS_IMPL_(expr0, expr1, expr2, ...)          \
- EZTEST_STRINGIFY_(expr0), EZTEST_STRINGIFY_(expr1), EZTEST_STRINGIFY_(expr2)
+    EZTEST_STRINGIFY_(expr0), EZTEST_STRINGIFY_(expr1), EZTEST_STRINGIFY_(expr2)
 #define EZTEST_GET_TERNOP_EXPRESSIONS_(...)                                    \
- EZTEST_GET_TERNOP_EXPRESSIONS_IMPL_(__VA_ARGS__, eztest0, eztest1, eztest2,   \
-                                     eztest3)
+    EZTEST_GET_TERNOP_EXPRESSIONS_IMPL_(__VA_ARGS__, eztest0, eztest1,         \
+                                        eztest2, eztest3)
 
 #define EZTEST_GET_BINOP_EXPRESSIONS_IMPL_(expr0, expr1, ...)                  \
- EZTEST_STRINGIFY_(expr0), EZTEST_STRINGIFY_(expr1)
+    EZTEST_STRINGIFY_(expr0), EZTEST_STRINGIFY_(expr1)
 #define EZTEST_GET_BINOP_EXPRESSIONS_(...)                                     \
- EZTEST_GET_BINOP_EXPRESSIONS_IMPL_(__VA_ARGS__, eztest0, eztest1, eztest2)
+    EZTEST_GET_BINOP_EXPRESSIONS_IMPL_(__VA_ARGS__, eztest0, eztest1, eztest2)
 
 #define EZTEST_GET_BOOL_EXPRESSIONS_IMPL_(expr0, ...) EZTEST_STRINGIFY_(expr0)
 #define EZTEST_GET_BOOL_EXPRESSIONS_(...)                                      \
- EZTEST_GET_BOOL_EXPRESSIONS_IMPL_(__VA_ARGS__, eztest0, eztest1)
+    EZTEST_GET_BOOL_EXPRESSIONS_IMPL_(__VA_ARGS__, eztest0, eztest1)
 
 #define EZTEST_ASSERT_BOOL_IMPL_(exit_on_fail, expec, ...)                     \
- EZTEST_NS_ eztest_cxx_bool_assert(exit_on_fail, EZTEST_LINE_, EZTEST_FILE_,   \
-                                   EZTEST_GET_BOOL_EXPRESSIONS_(__VA_ARGS__),  \
-                                   expec, __VA_ARGS__)
+    EZTEST_NS_ eztest_cxx_bool_assert(                                         \
+        exit_on_fail, EZTEST_LINE_, EZTEST_FILE_,                              \
+        EZTEST_GET_BOOL_EXPRESSIONS_(__VA_ARGS__), expec, __VA_ARGS__)
 
 
 #define EZTEST_ASSERT_BINOP_IMPL_(exit_on_fail, binop_t, ...)                  \
- EZTEST_NS_ eztest_cxx_binop_assert<EZTEST_NS_ binop_t>(                       \
-     exit_on_fail, EZTEST_LINE_, EZTEST_FILE_,                                 \
-     EZTEST_GET_BINOP_EXPRESSIONS_(__VA_ARGS__), __VA_ARGS__)
+    EZTEST_NS_ eztest_cxx_binop_assert<EZTEST_NS_ binop_t>(                    \
+        exit_on_fail, EZTEST_LINE_, EZTEST_FILE_,                              \
+        EZTEST_GET_BINOP_EXPRESSIONS_(__VA_ARGS__), __VA_ARGS__)
 
 #define EZTEST_ASSERT_TERNOP_IMPL_(exit_on_fail, ternop_t, ...)                \
- EZTEST_NS_ eztest_cxx_ternop_assert<EZTEST_NS_ ternop_t>(                     \
-     exit_on_fail, EZTEST_LINE_, EZTEST_FILE_,                                 \
-     EZTEST_GET_TERNOP_EXPRESSIONS_(__VA_ARGS__), __VA_ARGS__)
+    EZTEST_NS_ eztest_cxx_ternop_assert<EZTEST_NS_ ternop_t>(                  \
+        exit_on_fail, EZTEST_LINE_, EZTEST_FILE_,                              \
+        EZTEST_GET_TERNOP_EXPRESSIONS_(__VA_ARGS__), __VA_ARGS__)
 
 #define EZTEST_ASSERT_TRUE_IMPL_(...)                                          \
- EZTEST_ASSERT_BOOL_IMPL_(1, true, __VA_ARGS__)
+    EZTEST_ASSERT_BOOL_IMPL_(1, true, __VA_ARGS__)
 #define EZTEST_ASSERT_FALSE_IMPL_(...)                                         \
- EZTEST_ASSERT_BOOL_IMPL_(1, false, __VA_ARGS__)
+    EZTEST_ASSERT_BOOL_IMPL_(1, false, __VA_ARGS__)
 #define EZTEST_ASSERT_EQ_IMPL_(...)                                            \
- EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_eq_t, __VA_ARGS__)
+    EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_eq_t, __VA_ARGS__)
 #define EZTEST_ASSERT_NE_IMPL_(...)                                            \
- EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_ne_t, __VA_ARGS__)
+    EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_ne_t, __VA_ARGS__)
 #define EZTEST_ASSERT_LE_IMPL_(...)                                            \
- EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_le_t, __VA_ARGS__)
+    EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_le_t, __VA_ARGS__)
 #define EZTEST_ASSERT_LT_IMPL_(...)                                            \
- EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_lt_t, __VA_ARGS__)
+    EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_lt_t, __VA_ARGS__)
 #define EZTEST_ASSERT_GE_IMPL_(...)                                            \
- EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_ge_t, __VA_ARGS__)
+    EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_ge_t, __VA_ARGS__)
 #define EZTEST_ASSERT_GT_IMPL_(...)                                            \
- EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_gt_t, __VA_ARGS__)
+    EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_gt_t, __VA_ARGS__)
 #define EZTEST_ASSERT_STREQ_IMPL_(...)                                         \
- EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_streq_t, __VA_ARGS__)
+    EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_streq_t, __VA_ARGS__)
 #define EZTEST_ASSERT_STRNE_IMPL_(...)                                         \
- EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_strne_t, __VA_ARGS__)
+    EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_strne_t, __VA_ARGS__)
 #define EZTEST_ASSERT_STRCASEEQ_IMPL_(...)                                     \
- EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_strcaseeq_t, __VA_ARGS__)
+    EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_strcaseeq_t, __VA_ARGS__)
 #define EZTEST_ASSERT_STRCASENE_IMPL_(...)                                     \
- EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_strcasene_t, __VA_ARGS__)
+    EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_strcasene_t, __VA_ARGS__)
 #define EZTEST_ASSERT_FLOAT_EQ_IMPL_(...)                                      \
- EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_flt_eq_t, __VA_ARGS__)
+    EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_flt_eq_t, __VA_ARGS__)
 #define EZTEST_ASSERT_DOUBLE_EQ_IMPL_(...)                                     \
- EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_dbl_eq_t, __VA_ARGS__)
+    EZTEST_ASSERT_BINOP_IMPL_(1, eztest_cxx_binop_dbl_eq_t, __VA_ARGS__)
 #define EZTEST_ASSERT_NEAR_IMPL_(...)                                          \
- EZTEST_ASSERT_TERNOP_IMPL_(1, eztest_cxx_ternop_near_t, __VA_ARGS__)
+    EZTEST_ASSERT_TERNOP_IMPL_(1, eztest_cxx_ternop_near_t, __VA_ARGS__)
 
 #define EZTEST_EXPECT_TRUE_IMPL_(...)                                          \
- EZTEST_ASSERT_BOOL_IMPL_(0, true, __VA_ARGS__)
+    EZTEST_ASSERT_BOOL_IMPL_(0, true, __VA_ARGS__)
 #define EZTEST_EXPECT_FALSE_IMPL_(...)                                         \
- EZTEST_ASSERT_BOOL_IMPL_(0, false, __VA_ARGS__)
+    EZTEST_ASSERT_BOOL_IMPL_(0, false, __VA_ARGS__)
 #define EZTEST_EXPECT_EQ_IMPL_(...)                                            \
- EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_eq_t, __VA_ARGS__)
+    EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_eq_t, __VA_ARGS__)
 #define EZTEST_EXPECT_NE_IMPL_(...)                                            \
- EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_ne_t, __VA_ARGS__)
+    EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_ne_t, __VA_ARGS__)
 #define EZTEST_EXPECT_LE_IMPL_(...)                                            \
- EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_le_t, __VA_ARGS__)
+    EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_le_t, __VA_ARGS__)
 #define EZTEST_EXPECT_LT_IMPL_(...)                                            \
- EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_lt_t, __VA_ARGS__)
+    EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_lt_t, __VA_ARGS__)
 #define EZTEST_EXPECT_GE_IMPL_(...)                                            \
- EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_ge_t, __VA_ARGS__)
+    EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_ge_t, __VA_ARGS__)
 #define EZTEST_EXPECT_GT_IMPL_(...)                                            \
- EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_gt_t, __VA_ARGS__)
+    EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_gt_t, __VA_ARGS__)
 #define EZTEST_EXPECT_STREQ_IMPL_(...)                                         \
- EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_streq_t, __VA_ARGS__)
+    EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_streq_t, __VA_ARGS__)
 #define EZTEST_EXPECT_STRNE_IMPL_(...)                                         \
- EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_strne_t, __VA_ARGS__)
+    EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_strne_t, __VA_ARGS__)
 #define EZTEST_EXPECT_STRCASEEQ_IMPL_(...)                                     \
- EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_strcaseeq_t, __VA_ARGS__)
+    EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_strcaseeq_t, __VA_ARGS__)
 #define EZTEST_EXPECT_STRCASENE_IMPL_(...)                                     \
- EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_strcasene_t, __VA_ARGS__)
+    EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_strcasene_t, __VA_ARGS__)
 #define EZTEST_EXPECT_FLOAT_EQ_IMPL_(...)                                      \
- EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_flt_eq_t, __VA_ARGS__)
+    EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_flt_eq_t, __VA_ARGS__)
 #define EZTEST_EXPECT_DOUBLE_EQ_IMPL_(...)                                     \
- EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_dbl_eq_t, __VA_ARGS__)
+    EZTEST_ASSERT_BINOP_IMPL_(0, eztest_cxx_binop_dbl_eq_t, __VA_ARGS__)
 #define EZTEST_EXPECT_NEAR_IMPL_(...)                                          \
- EZTEST_ASSERT_TERNOP_IMPL_(0, eztest_cxx_ternop_near_t, __VA_ARGS__)
+    EZTEST_ASSERT_TERNOP_IMPL_(0, eztest_cxx_ternop_near_t, __VA_ARGS__)
 
 
 EZTEST_REENABLE_WCXX98_COMPAT_PEDANTIC_

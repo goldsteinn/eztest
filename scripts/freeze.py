@@ -122,8 +122,11 @@ def fillin_pragmas(lines, pragmas):
             re.DOTALL | re.MULTILINE)
 
         code = c_code("\n".join(lines))
-        code = code.replace("(void)", " (void) ")
-        lines = code.split()
+        tok_code = code
+        tok_code = tok_code.replace(",", " , ")
+        tok_code = tok_code.replace(")", " ) ")
+        tok_code = tok_code.replace("(", " ( ")
+        lines = tok_code.split()
         all_toks = {}
         for tok in lines:
             all_toks.setdefault(tok, 0)
@@ -143,7 +146,8 @@ def fillin_pragmas(lines, pragmas):
 
             assert pragma_lines.count(match.group(0)) == 1
             assert code.count(match.group(0)) == 1
-            assert match.group(0) not in orig_code, match.group(0)
+            assert match.group(0) not in orig_code, "Not in orig: {}".format(
+                match.group(0))
 
             assert match.group(1) not in all_pragmas
             all_pragmas.add(match.group(1))
@@ -164,7 +168,8 @@ def fillin_pragmas(lines, pragmas):
             assert match.group(2).replace("EZTEST_REENABLE_",
                                           "EZTEST_DISABLE_") == match.group(1)
 
-            assert cnt1 == cnt2, match.group(1)
+            assert cnt1 == cnt2, "Cnts don't match: {} -- {} != {}".format(
+                match.group(1), cnt1, cnt2)
             assert cnt1 >= 2
 
             if cnt1 == 2:
@@ -173,19 +178,19 @@ def fillin_pragmas(lines, pragmas):
                 return match.group(0)
 
         pragma_lines = re_pragmas_line.sub(pragmas_replacer, pragma_lines)
-
         assert len(all_matches) >= 1000
         assert 2 * len(all_matches) == len(all_pragmas), "{} vs {}".format(
             len(all_matches), len(all_pragmas))
 
         assert idx >= 0
+        assert idx < len(lines_in)
 
         lines_in[idx] = pragma_lines
-    except Exception:
+    except Exception as e:
         assert idx >= 0
         assert lines_in[idx] == pragmas[0]
         lines_in[idx] = "\n".join(pragmas[1])
-        print("Failed to trim pragmas")
+        print("Failed to trim pragmas: {}".format(str(e)))
 
     return lines_in
 

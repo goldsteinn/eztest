@@ -375,8 +375,9 @@ The following macros can be defined to change compilation.
       `-Wall -Wextra -Wpedantic` the only warning that may show up is
       `-Wunused-function` depending on the set of `ASSERT`/`EXPECT`
       checks used. The total set of disabled warnings are:
-        - `-Wcxx98-compat`
+        - `-Waggregate-returns`
         - `-Wcxx98-compat-pedantic`
+        - `-Wcxx98-compat`
         - `-Wdouble-promotion`
         - `-Wfloat-equal`
         - `-Wformat-nonliteral`
