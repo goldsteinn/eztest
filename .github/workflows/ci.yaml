@@ -18,6 +18,7 @@ jobs:
       matrix:
         system: [
         { os: ubuntu-latest, },
+        { os: ubuntu-24.04 },
         { os: ubuntu-22.04 },
         { os: ubuntu-20.04 },
         #{ os: ubuntu-18.04 },
@@ -81,7 +82,28 @@ jobs:
           uver: 0,
           os: ubuntu-latest,
         },
-
+        {
+          pkgs: 'gcc-14  g++-14  gcc-14-multilib g++-14-multilib',
+          cc: gcc-14,
+          cxx: g++-14,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'gnu',
+          comp_ver: 14,
+          uver: 0,
+          os: ubuntu-24.04,
+        },
+        {
+          pkgs: 'gcc-13  g++-13  gcc-13-multilib g++-13-multilib',
+          cc: gcc-13,
+          cxx: g++-13,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'gnu',
+          comp_ver: 13,
+          uver: 0,
+          os: ubuntu-24.04,
+        },
         {
           pkgs: 'gcc-13  g++-13  gcc-13-multilib g++-13-multilib',
           cc: gcc-13,
@@ -334,6 +356,18 @@ jobs:
           install_method: 'web',
           comp_base: 'llvm',
           comp_ver: 19,
+          uver: 14,
+          os: ubuntu-latest,
+        },
+
+        {
+          pkgs: '',
+          cc: clang-20,
+          cxx: clang++-20,
+          tidy: 'clang-tidy-20',
+          install_method: 'web',
+          comp_base: 'llvm',
+          comp_ver: 20,
           uver: 14,
           os: ubuntu-latest,
         },
