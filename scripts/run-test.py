@@ -435,6 +435,7 @@ k_OKAY = 1
 k_FAIL = 2
 k_TIMEFAIL = 3
 k_SIGFAIL = 4
+k_LEAKFAIL = 5
 
 
 class test_t():
@@ -468,8 +469,15 @@ class test_t():
         if self.name_.startswith("DISABLED_"):
             self.expec_ = k_DISABLE
         else:
-            postfix_keys = (("_okay", k_OKAY), ("_fail", k_FAIL),
-                            ("_timefail", k_TIMEFAIL), ("_sigfail", k_SIGFAIL))
+            san_only_fail = False
+            name = self.name_
+            if name.endswith("failsan"):
+                san_only_fail = True
+                name = name[:-3]
+
+            postfix_keys = (("_okay", k_OKAY), ("_fail", k_FAIL), ("_timefail",
+                                                                   k_TIMEFAIL),
+                            ("_sigfail", k_SIGFAIL), ("_leakfail", k_LEAKFAIL))
             san_postfix_keys = (("m", k_MSAN), ("a", k_ASAN), ("t", k_TSAN),
                                 ("u", k_USAN), ("l", k_LSAN), ("U",
                                                                k_NOSIG_USAN),
@@ -478,9 +486,9 @@ class test_t():
 
             matched = False
             for option in postfix_keys:
-                if self.name_.endswith(option[0]):
+                if name.endswith(option[0]):
                     self.expec_ = option[1]
-                    name_pieces = self.name_.split("_")
+                    name_pieces = name.split("_")
                     assert len(name_pieces) >= 2
                     if name_pieces[-2].endswith("san"):
                         san_piece = name_pieces[-2][:-3]
@@ -495,6 +503,8 @@ class test_t():
                     matched = True
                     break
             assert matched, "Unknown test decl: {}".format(orig_testline)
+            if san_only_fail and (self.expec_san_ & G_SAN_OPT[1]) == 0:
+                self.expec_ = k_OKAY
 
     def key(self):
         return "{}.{}".format(self.suite_, self.name_)
@@ -506,12 +516,13 @@ class test_t():
         return r'eztest_{}_{}_\d+func'.format(self.suite_, self.name_)
 
     def expec_fail(self):
-        return self.expec_ in (k_FAIL, k_TIMEFAIL, k_SIGFAIL)
+        return self.expec_ in (k_FAIL, k_TIMEFAIL, k_SIGFAIL, k_LEAKFAIL)
 
     def expec_mask_fail(self, mask):
         return (self.expec_san_ & mask & G_SAN_OPT[1]) != 0
 
     def expec_san_fail(self):
+
         return self.expec_mask_fail(k_ANY_SAN)
 
     def expec_nosig_san_fail(self):
@@ -677,6 +688,15 @@ def match_lines(expec, output):
                         format(test.link_re_func(), re_basename(),
                                re_exe_basename()))
                     expec_artifacts.append(r'==\d+==ABORTING$')
+                if test.expec_ == k_LEAKFAIL:
+                    expec_artifacts.append(
+                        r'==\d+==ERROR: LeakSanitizer: detected memory leaks')
+                    expec_artifacts.append(
+                        r'Direct leak of \d+ byte\(s\) in \d+ object\(s\) allocated from:'
+                    )
+                    expec_artifacts.append(
+                        r'SUMMARY: {}: \d+ byte\(s\) leaked in \d+ allocation\(s\).'
+                        .format(G_SAN_OPT[0]))
             else:
                 if test.expec_ == k_FAIL:
                     expec_artifacts.append(r'^.*{}:\d+ Failure$'.format(
@@ -703,9 +723,8 @@ def match_lines(expec, output):
                 output.re_match(r'qemu:\s+uncaught\s+target\s+signal\s+\d')
 
             if test.expec_mask_fail(k_NOSIG_USAN):
-                output.re_match_arr(
-                    [r'^.*\d+:\d+:\s+runtime\s+error:'.format(re_srcname())] +
-                    expec_artifacts)
+                output.re_match_arr([r'^.*\d+:\d+:\s+runtime\s+error:'] +
+                                    expec_artifacts)
             elif test.expec_san_fail():
                 output.re_match_arr(expec_artifacts)
             else:
@@ -733,8 +752,9 @@ def match_lines(expec, output):
         output.must_match("[  FAILED  ] {} tests.".format(expec.nfails_))
         for test in expec.fail_ord_:
             fail_str = None
-            if test.expec_ == k_FAIL or (test.expec_san_fail()
-                                         and test.expec_ == k_SIGFAIL):
+            if test.expec_ == k_FAIL or (test.expec_san_fail() and
+                                         (test.expec_ == k_SIGFAIL
+                                          or test.expec_ == k_LEAKFAIL)):
                 fail_str = "Assert Failure"
             elif test.expec_ == k_TIMEFAIL:
                 fail_str = "Timeout"
@@ -813,7 +833,7 @@ def run_test(exe, src):
             assert (ret & 0xff) != 0
             assert (ret & 0xff) == ret
         output = output_t(stdout_res)
-        #err_output = output_t(stderr_res)
+        # err_output = output_t(stderr_res)
         match_lines(expec_res, output)
 
         print("[       OK ] {}".format(test_name))

@@ -7,7 +7,7 @@
 #include "eztest-libc-incs.h"
 
 
-#define EZTEST_EXIT_ EZTEST_STD_NS_ _Exit
+#define EZTEST_EXIT_ EZTEST_STD_NS_ exit
 EZTEST_DISABLE_WCXX98_COMPAT_PEDANTIC_
 
 #define EZTEST_PRINTF_(...)                                                    \

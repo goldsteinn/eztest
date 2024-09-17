@@ -2,7 +2,7 @@
 #define EZTEST_EZTEST_H_
 /*
  * Single header of entire eztest suite.
- * Generated: 2024-09-16 12:12:16.764253
+ * Generated: 2024-09-17 15:18:39.085625
  */
 /* Begin include of: eztest.h  */
 
@@ -765,7 +765,7 @@ EZTEST_DISABLE_WSYSTEM_HEADERS_
 /* End include of: eztest-libc-incs.h  */
 
 
-#define EZTEST_EXIT_ EZTEST_STD_NS_ _Exit
+#define EZTEST_EXIT_ EZTEST_STD_NS_ exit
 EZTEST_DISABLE_WCXX98_COMPAT_PEDANTIC_
 
 #define EZTEST_PRINTF_(...)                                                                                      \

@@ -433,6 +433,7 @@ eztest_test_add_tests_(
   test-strings-failure.cc
   test-fail.c
   test-c11-bool.c
+  test-leak.c
 )
 
 if(NOT EZTEST_TEST_RUN_EXTERNAL_TEST_)
