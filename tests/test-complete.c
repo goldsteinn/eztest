@@ -3731,7 +3731,7 @@ TEST(sigs, fpe_self_Uultamsan_sigfail) {
     ASSERT_TRUE(val);
 }
 #elif EZTEST_ARCH_IS_AARCH64_
-TEST(sigs, fpe_self_fail) {
+TEST(sigs, fpe_self_Uusan_fail) {
     long val = 0;
     /* NOLINTBEGIN(hicpp-no-assembler) */
     __asm__ volatile("" : "+r"(val) : : "memory");
