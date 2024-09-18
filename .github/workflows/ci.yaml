@@ -425,7 +425,6 @@ jobs:
       if: matrix.compiler.install_method == 'web' && matrix.compiler.comp_base == 'llvm'
       run: |
         sudo apt-get update
-#        sudo apt-get remove clang-${{matrix.compiler.uver}} lldb-${{matrix.compiler.uver}} lld-${{matrix.compiler.uver}} clangd-${{matrix.compiler.uver}} clang-tidy-${{matrix.compiler.uver}} clang-format-${{matrix.compiler.uver}} clang-tools-${{matrix.compiler.uver}} llvm-${{matrix.compiler.uver}}-dev lld-${{matrix.compiler.uver}} lldb-${{matrix.compiler.uver}} llvm-${{matrix.compiler.uver}}-tools libomp-${{matrix.compiler.uver}}-dev libc++-${{matrix.compiler.uver}}-dev libc++abi-${{matrix.compiler.uver}}-dev libclang-common-${{matrix.compiler.uver}}-dev libclang-${{matrix.compiler.uver}}-dev libclang-cpp${{matrix.compiler.uver}}-dev libunwind-${{matrix.compiler.uver}}-dev
         wget https://apt.llvm.org/llvm.sh
         chmod +x llvm.sh
         sudo ./llvm.sh ${{matrix.compiler.comp_ver}} all
@@ -1171,7 +1170,6 @@ jobs:
       if: matrix.compiler.install_method == 'web' && matrix.compiler.comp_base == 'llvm'
       run: |
         sudo apt-get update
-#        sudo apt-get remove clang-${{matrix.compiler.uver}} lldb-${{matrix.compiler.uver}} lld-${{matrix.compiler.uver}} clangd-${{matrix.compiler.uver}} clang-tidy-${{matrix.compiler.uver}} clang-format-${{matrix.compiler.uver}} clang-tools-${{matrix.compiler.uver}} llvm-${{matrix.compiler.uver}}-dev lld-${{matrix.compiler.uver}} lldb-${{matrix.compiler.uver}} llvm-${{matrix.compiler.uver}}-tools libomp-${{matrix.compiler.uver}}-dev libc++-${{matrix.compiler.uver}}-dev libc++abi-${{matrix.compiler.uver}}-dev libclang-common-${{matrix.compiler.uver}}-dev libclang-${{matrix.compiler.uver}}-dev libclang-cpp${{matrix.compiler.uver}}-dev libunwind-${{matrix.compiler.uver}}-dev
         wget https://apt.llvm.org/llvm.sh
         chmod +x llvm.sh
         sudo ./llvm.sh ${{matrix.compiler.comp_ver}} all
@@ -1916,7 +1914,6 @@ jobs:
       if: matrix.compiler.install_method == 'web' && matrix.compiler.comp_base == 'llvm'
       run: |
         sudo apt-get update
-#        sudo apt-get remove clang-${{matrix.compiler.uver}} lldb-${{matrix.compiler.uver}} lld-${{matrix.compiler.uver}} clangd-${{matrix.compiler.uver}} clang-tidy-${{matrix.compiler.uver}} clang-format-${{matrix.compiler.uver}} clang-tools-${{matrix.compiler.uver}} llvm-${{matrix.compiler.uver}}-dev lld-${{matrix.compiler.uver}} lldb-${{matrix.compiler.uver}} llvm-${{matrix.compiler.uver}}-tools libomp-${{matrix.compiler.uver}}-dev libc++-${{matrix.compiler.uver}}-dev libc++abi-${{matrix.compiler.uver}}-dev libclang-common-${{matrix.compiler.uver}}-dev libclang-${{matrix.compiler.uver}}-dev libclang-cpp${{matrix.compiler.uver}}-dev libunwind-${{matrix.compiler.uver}}-dev
         wget https://apt.llvm.org/llvm.sh
         chmod +x llvm.sh
         sudo ./llvm.sh ${{matrix.compiler.comp_ver}} all
@@ -2662,7 +2659,6 @@ jobs:
       if: matrix.compiler.install_method == 'web' && matrix.compiler.comp_base == 'llvm'
       run: |
         sudo apt-get update
-#        sudo apt-get remove clang-${{matrix.compiler.uver}} lldb-${{matrix.compiler.uver}} lld-${{matrix.compiler.uver}} clangd-${{matrix.compiler.uver}} clang-tidy-${{matrix.compiler.uver}} clang-format-${{matrix.compiler.uver}} clang-tools-${{matrix.compiler.uver}} llvm-${{matrix.compiler.uver}}-dev lld-${{matrix.compiler.uver}} lldb-${{matrix.compiler.uver}} llvm-${{matrix.compiler.uver}}-tools libomp-${{matrix.compiler.uver}}-dev libc++-${{matrix.compiler.uver}}-dev libc++abi-${{matrix.compiler.uver}}-dev libclang-common-${{matrix.compiler.uver}}-dev libclang-${{matrix.compiler.uver}}-dev libclang-cpp${{matrix.compiler.uver}}-dev libunwind-${{matrix.compiler.uver}}-dev
         wget https://apt.llvm.org/llvm.sh
         chmod +x llvm.sh
         sudo ./llvm.sh ${{matrix.compiler.comp_ver}} all
