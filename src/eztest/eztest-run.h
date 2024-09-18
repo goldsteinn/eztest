@@ -1,6 +1,7 @@
 #ifndef EZTEST_D_EZTEST_D_EZTEST_RUN_H_
 #define EZTEST_D_EZTEST_D_EZTEST_RUN_H_
 
+#include "eztest-algo.h"
 #include "eztest-duration.h"
 #include "eztest-fail.h"
 #include "eztest-group-it.h"
@@ -183,13 +184,17 @@ eztest_run_tests(const EZTEST_LIST_T_ * eztest_tests_base,
                 return 1;
             }
         }
-        if (eztest_run_result > EZTEST_NS_ eztest_k_status_unknown) {
-            eztest_run_result = EZTEST_NS_ eztest_k_status_unknown;
-        }
+        /* Clamp return value.  */
+        eztest_run_result = EZTEST_MIN_(
+            eztest_run_result,
+            EZTEST_CAST_(unsigned, EZTEST_NS_ eztest_k_status_unknown));
+
         eztest_test->eztest_status_ = eztest_run_result;
         EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_
         /* NOLINTBEGIN(cppcoreguidelines-pro-bounds-constant-array-index) */
+        /* NOLINTBEGIN(llvmlibc-callee-namespace) */
         ++eztest_results->eztest_stats_[eztest_run_result];
+        /* NOLINTEND(llvmlibc-callee-namespace) */
         /* NOLINTEND(cppcoreguidelines-pro-bounds-constant-array-index) */
         EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_
     }

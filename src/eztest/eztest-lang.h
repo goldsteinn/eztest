@@ -10,20 +10,20 @@
 # define EZTEST_STRUCT_
 
 # define EZTEST_NAMESPACE_BEGIN_                                               \
-  EZTEST_DISABLE_WNAMESPACES_                                                  \
-  namespace eztest {
+     EZTEST_DISABLE_WNAMESPACES_                                               \
+     namespace eztest {
 
 # define EZTEST_NAMESPACE_END_                                                 \
-  }                                                                            \
-  EZTEST_REENABLE_WNAMESPACES_
+     }                                                                         \
+     EZTEST_REENABLE_WNAMESPACES_
 
 # define EZTEST_NS_                                                            \
-  /* NOLINTBEGIN(llvmlibc-callee-namespace) */                                 \
-  eztest::/* NOLINTEND(llvmlibc-callee-namespace) */
+     /* NOLINTBEGIN(llvmlibc-callee-namespace) */                              \
+     eztest::/* NOLINTEND(llvmlibc-callee-namespace) */
 
 # define EZTEST_STD_NS_                                                        \
-  /* NOLINTBEGIN(llvmlibc-callee-namespace) */                                 \
-  std::/* NOLINTEND(llvmlibc-callee-namespace) */
+     /* NOLINTBEGIN(llvmlibc-callee-namespace) */                              \
+     std::/* NOLINTEND(llvmlibc-callee-namespace) */
 
 # define EZTEST_VOID_ARG_
 
@@ -32,17 +32,17 @@
 # endif
 
 # define EZTEST_PRIVATE_CXX_INL_ /* NOLINTBEGIN(llvmlibc-inl*-func*-decl) */   \
-  static EZTEST_INLINE_          /* NOLINTEND(llvmlibc-inl*-func*-decl) */
+     static EZTEST_INLINE_       /* NOLINTEND(llvmlibc-inl*-func*-decl) */
 
 
 # define EZTEST_PRIVATE_                                                       \
-  /* NOLINTBEGIN(llvmlibc-inl*-func*-decl) */                                  \
-  static /* NOLINTEND(llvmlibc-inl*-func*-decl) */
+     /* NOLINTBEGIN(llvmlibc-inl*-func*-decl) */                               \
+     static /* NOLINTEND(llvmlibc-inl*-func*-decl) */
 
 
 # if EZTEST_CXX_LANG_ >= 2011
 #  define EZTEST_NULL_                                                         \
-   EZTEST_DISABLE_WCXX98_COMPAT_ nullptr EZTEST_REENABLE_WCXX98_COMPAT_
+      EZTEST_DISABLE_WCXX98_COMPAT_ nullptr EZTEST_REENABLE_WCXX98_COMPAT_
 # else
 #  include <cstddef> /* NULL.  */
 #  define EZTEST_NULL_ NULL
@@ -50,16 +50,16 @@
 
 # define EZTEST_CAST_(type, expr) static_cast<type>(expr)
 # define EZTEST_REINTERPRET_CAST_(type, var)                                   \
-  /* NOLINTBEGIN(cppcoreguidelines-pro-type-reinterpret-cast) */               \
-  reinterpret_cast<type>(                                                      \
-      var) /* NOLINTEND(cppcoreguidelines-pro-type-reinterpret-cast) */
+     /* NOLINTBEGIN(cppcoreguidelines-pro-type-reinterpret-cast) */            \
+     reinterpret_cast<type>(                                                   \
+         var) /* NOLINTEND(cppcoreguidelines-pro-type-reinterpret-cast) */
 
 # if EZTEST_CXX_LANG_ >= 2011
 #  define EZTEST_STATIC_ASSERT_MSG_(cond, msg)                                 \
-   EZTEST_DISABLE_WCXX98_COMPAT_ static_assert(cond, msg)                      \
-       EZTEST_REENABLE_WCXX98_COMPAT_
+      EZTEST_DISABLE_WCXX98_COMPAT_ static_assert(cond, msg)                   \
+          EZTEST_REENABLE_WCXX98_COMPAT_
 #  define EZTEST_AUTO_(eztest_unused_A0)                                       \
-   EZTEST_DISABLE_WCXX98_COMPAT_ auto EZTEST_REENABLE_WCXX98_COMPAT_
+      EZTEST_DISABLE_WCXX98_COMPAT_ auto EZTEST_REENABLE_WCXX98_COMPAT_
 # endif
 
 
@@ -79,7 +79,7 @@
 # endif
 
 # define EZTEST_PRIVATE_ /* NOLINTBEGIN(llvmlibc-inline-function-decl) */      \
-  static                 /* NOLINTEND(llvmlibc-inline-function-decl) */
+     static              /* NOLINTEND(llvmlibc-inline-function-decl) */
 # define EZTEST_PRIVATE_CXX_INL_ EZTEST_PRIVATE_
 
 
@@ -102,9 +102,9 @@
 
 #ifndef EZTEST_STATIC_ASSERT_MSG_
 # define EZTEST_STATIC_ASSERT_MSG_(cond, msg)                                  \
-  struct EZTEST_UNIQUE_NAME_(eztest_static_assertion) {                        \
-   char EZTEST_UNIQUE_NAME_(eztest_x_)[(cond) ? 1 : -1];                       \
-  }
+     struct EZTEST_UNIQUE_NAME_(eztest_static_assertion) {                     \
+         char EZTEST_UNIQUE_NAME_(eztest_x_)[(cond) ? 1 : -1];                 \
+     }
 
 #endif
 
@@ -116,9 +116,9 @@
 #define EZTEST_STRUCT_NS_ EZTEST_STRUCT_ EZTEST_NS_
 
 #define EZTEST_UNIMPLEMENTED_(name)                                            \
- EZTEST_STATIC_ASSERT_MSG_(0, name " is unimplemented")
+    EZTEST_STATIC_ASSERT_MSG_(0, name " is unimplemented")
 #define EZTEST_STATIC_ASSERT_(cond)                                            \
- EZTEST_STATIC_ASSERT_MSG_(cond, EZTEST_STRINGIFY_(cond))
+    EZTEST_STATIC_ASSERT_MSG_(cond, EZTEST_STRINGIFY_(cond))
 
 
 #endif

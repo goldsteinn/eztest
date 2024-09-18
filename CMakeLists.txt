@@ -92,7 +92,8 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
       --src=${PROJECT_SOURCE_DIR}/src/eztest/eztest.h
       --prefix=${PROJECT_BINARY_DIR}/${EZTEST_INTERNAL_PREFIX_} --dst=eztest.h
       --trim-pragmas
-    DEPENDS ${PROJECT_SOURCE_DIR}/src/eztest/eztest-api.h
+    DEPENDS ${PROJECT_SOURCE_DIR}/src/eztest/eztest-algo.h
+            ${PROJECT_SOURCE_DIR}/src/eztest/eztest-api.h
             ${PROJECT_SOURCE_DIR}/src/eztest/eztest-arch.h
             ${PROJECT_SOURCE_DIR}/src/eztest/eztest-asserts-impl.h
             ${PROJECT_SOURCE_DIR}/src/eztest/eztest-c-asserts-impl.h

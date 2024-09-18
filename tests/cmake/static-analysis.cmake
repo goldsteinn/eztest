@@ -9,6 +9,7 @@ set(CMAKE_FIND_PACKAGE_SORT_DIRECTION DEC)
 option(EZTEST_CLANG_TIDY "Path: path to clang tidy executable")
 
 set(EZTEST_CLANG_TIDY_EXE_NAMES_
+    clang-tidy-20
     clang-tidy-19
     clang-tidy-18
     clang-tidy-17

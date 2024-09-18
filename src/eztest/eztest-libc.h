@@ -6,18 +6,21 @@
 #include "eztest-lang.h"
 #include "eztest-libc-incs.h"
 
-
-#define EZTEST_EXIT_ EZTEST_STD_NS_ exit
+/* TODO: Wrap the call to exit in a mutex.  */
+#define EZTEST_EXIT_    /* NOLINTBEGIN(concurrency-mt-unsafe) */               \
+    EZTEST_STD_NS_ exit /* NOLINTEND(concurrency-mt-unsafe) */
 EZTEST_DISABLE_WCXX98_COMPAT_PEDANTIC_
 
 #define EZTEST_PRINTF_(...)                                                    \
- /* NOLINTBEGIN(clang-ana*-sec*.insecureAPI.Depr*OrUnsafeBufferHandling) */    \
- /* NOLINTBEGIN(cppcoreguide*-pro-type-vararg,hicpp-vararg) */                 \
- EZTEST_STD_NS_ fprintf(                                                       \
-     EZTEST_STDOUT_,                                                           \
-     __VA_ARGS__) /* NOLINTEND(cppcoreguide*-pro-type-vararg,hicpp-vararg) */  \
+    /* NOLINTBEGIN(clang-ana*-sec*.insecureAPI.Depr*OrUnsafeBufferHandling) */ \
+    /* NOLINTBEGIN(cppcoreguide*-pro-type-vararg,hicpp-vararg) */              \
+    EZTEST_STD_NS_ fprintf(                                                    \
+        EZTEST_STDOUT_,                                                        \
+        __VA_ARGS__) /* NOLINTEND(cppcoreguide*-pro-type-vararg,hicpp-vararg)  \
+                      */                                                       \
                                                                                \
-     /* NOLINTEND(clang-ana*-sec*.insecureAPI.Depr*OrUnsafeBufferHandling) */
+        /* NOLINTEND(clang-ana*-sec*.insecureAPI.Depr*OrUnsafeBufferHandling)  \
+         */
 
 EZTEST_REENABLE_WCXX98_COMPAT_PEDANTIC_
 
@@ -25,8 +28,8 @@ EZTEST_REENABLE_WCXX98_COMPAT_PEDANTIC_
 #define EZTEST_FFLUSH_   EZTEST_STD_NS_ fflush
 #define EZTEST_ERRNO_    errno
 #define EZTEST_STDOUT_                                                         \
- EZTEST_DISABLE_WDISABLED_MACRO_EXPANSION_ stdout                              \
-     EZTEST_REENABLE_WDISABLED_MACRO_EXPANSION_
+    EZTEST_DISABLE_WDISABLED_MACRO_EXPANSION_ stdout                           \
+        EZTEST_REENABLE_WDISABLED_MACRO_EXPANSION_
 
 /* strerror is safe here. We have complete control of the threads
    and know in the parent proc there will only be 1 thread (the
@@ -37,17 +40,17 @@ EZTEST_REENABLE_WCXX98_COMPAT_PEDANTIC_
 #  define EZTEST_STRERROR_R_(errnum, buf, bufsz) strerror_r(errnum, buf, bufsz)
 # else
 #  define EZTEST_STRERROR_R_(errnum, buf, bufsz)                               \
-   (strerror_r(errnum, buf, bufsz) == 0 ? &((buf)[0]) : "Unknown error")
+      (strerror_r(errnum, buf, bufsz) == 0 ? &((buf)[0]) : "Unknown error")
 # endif
 #else
 # if EZTEST_CXX_LANG_
 #  define EZTEST_STRERROR_R_(errnum, buf, bufsz)                               \
-   /* NOLINTBEGIN(concurrency-mt-unsafe) */                                    \
-   std::strerror(errnum) /* NOLINTEND(concurrency-mt-unsafe) */
+      /* NOLINTBEGIN(concurrency-mt-unsafe) */                                 \
+      std::strerror(errnum) /* NOLINTEND(concurrency-mt-unsafe) */
 # else
 #  define EZTEST_STRERROR_R_(errnum, buf, bufsz)                               \
-   /* NOLINTBEGIN(concurrency-mt-unsafe) */                                    \
-   strerror(errnum) /* NOLINTEND(concurrency-mt-unsafe) */
+      /* NOLINTBEGIN(concurrency-mt-unsafe) */                                 \
+      strerror(errnum) /* NOLINTEND(concurrency-mt-unsafe) */
 # endif
 #endif
 
@@ -85,7 +88,7 @@ EZTEST_NAMESPACE_END_
 
 #define EZTEST_STRCMP_(lhs, rhs) EZTEST_STD_NS_ strcmp(lhs, rhs)
 #define EZTEST_STARTSWITH_(prefix, str)                                        \
- (EZTEST_STD_NS_ strncmp(prefix, str, EZTEST_STD_NS_ strlen(prefix)) == 0)
+    (EZTEST_STD_NS_ strncmp(prefix, str, EZTEST_STD_NS_ strlen(prefix)) == 0)
 
 #define EZTEST_MEMCPY_(dst, src, sz) EZTEST_STD_NS_ memcpy(dst, src, sz)
 #define EZTEST_MEMSET_(dst, val, sz) EZTEST_STD_NS_ memset(dst, val, sz)
@@ -93,8 +96,8 @@ EZTEST_NAMESPACE_END_
 
 #if EZTEST_POSIX_VERSION_ >= 200809L || EZTEST_GNU_SOURCE_ != 0
 # define EZTEST_STRNLEN_(str, maxlen)                                          \
-  /* NOLINTBEGIN(llvmlibc-callee-namespace) */                                 \
-  strnlen(str, maxlen) /* NOLINTEND(llvmlibc-callee-namespace) */
+     /* NOLINTBEGIN(llvmlibc-callee-namespace) */                              \
+     strnlen(str, maxlen) /* NOLINTEND(llvmlibc-callee-namespace) */
 
 #else
 EZTEST_NAMESPACE_BEGIN_
@@ -119,11 +122,11 @@ EZTEST_NAMESPACE_END_
 
 #if EZTEST_GNU_SOURCE_ != 0
 # define EZTEST_STRCASECMP_(lhs, rhs)                                          \
-  /* NOLINTBEGIN(llvmlibc-callee-namespace) */ strcasecmp(                     \
-      lhs, rhs) /* NOLINTEND(llvmlibc-callee-namespace) */
+     /* NOLINTBEGIN(llvmlibc-callee-namespace) */ strcasecmp(                  \
+         lhs, rhs) /* NOLINTEND(llvmlibc-callee-namespace) */
 # define EZTEST_STRNCASECMP_(lhs, rhs, len)                                    \
-  /* NOLINTBEGIN(llvmlibc-callee-namespace) */ strncasecmp(                    \
-      lhs, rhs, len) /* NOLINTEND(llvmlibc-callee-namespace) */
+     /* NOLINTBEGIN(llvmlibc-callee-namespace) */ strncasecmp(                 \
+         lhs, rhs, len) /* NOLINTEND(llvmlibc-callee-namespace) */
 
 #else
 EZTEST_NAMESPACE_BEGIN_
@@ -190,7 +193,7 @@ EZTEST_REENABLE_WUNUSED_FUNCTION_
 EZTEST_NAMESPACE_END_
 # define EZTEST_STRCASECMP_(lhs, rhs) EZTEST_NS_ eztest_strcasecmp(lhs, rhs)
 # define EZTEST_STRNCASECMP_(lhs, rhs, len)                                    \
-  EZTEST_NS_ eztest_strncasecmp(lhs, rhs, len)
+     EZTEST_NS_ eztest_strncasecmp(lhs, rhs, len)
 
 #endif
 #endif

@@ -344,7 +344,7 @@ class eztest_cxx_binop_streq_t : public EZTEST_NS_ eztest_cxx_print_var_t {
     eztest_cxx_run(const EZTEST_STD_NS_ string &      eztest_op0,
                    const EZTEST_STD_NS_ string_view & eztest_op1) {
         EZTEST_DISABLE_WAGGREGATE_RETURN_
-        EZTEST_STD_NS_ string_view eztest_op0_sv(eztest_op0);
+        const EZTEST_STD_NS_ string_view eztest_op0_sv(eztest_op0);
         EZTEST_REENABLE_WAGGREGATE_RETURN_
         return EZTEST_STD_NS_ operator==(eztest_op0_sv, eztest_op1);
     }
@@ -353,7 +353,7 @@ class eztest_cxx_binop_streq_t : public EZTEST_NS_ eztest_cxx_print_var_t {
     eztest_cxx_run(const EZTEST_STD_NS_ string_view & eztest_op0,
                    const EZTEST_STD_NS_ string &      eztest_op1) {
         EZTEST_DISABLE_WAGGREGATE_RETURN_
-        EZTEST_STD_NS_ string_view eztest_op1_sv(eztest_op1);
+        const EZTEST_STD_NS_ string_view eztest_op1_sv(eztest_op1);
         EZTEST_REENABLE_WAGGREGATE_RETURN_
         return EZTEST_STD_NS_ operator==(eztest_op0, eztest_op1_sv);
     }

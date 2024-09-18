@@ -4327,7 +4327,9 @@ TEST(sigs, fpe_self_Uultamsan_sigfail) {
 }
 #elif EZTEST_ARCH_IS_AARCH64_
 TEST(sigs, fpe_self_Uusan_fail) {
+    /* NOLINTBEGIN(google-runtime-int) */
     long val = 0;
+    /* NOLINTEND(google-runtime-int) */
     /* NOLINTBEGIN(hicpp-no-assembler) */
     __asm__ volatile("" : "+r"(val) : : "memory");
     /* NOLINTEND(hicpp-no-assembler) */

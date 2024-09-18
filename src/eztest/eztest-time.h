@@ -7,8 +7,9 @@
 #include "eztest-system.h"
 
 #define EZTEST_CXX_HAS_TS_                                                     \
- (EZTEST_CXX_LANG_ >= 2020 ||                                                  \
-  (EZTEST_CXX_LANG_ >= 2017 && EZTEST_USING_GCC_ >= EZTEST_VERNUM_(9, 0, 0)))
+    (EZTEST_CXX_LANG_ >= 2020 ||                                               \
+     (EZTEST_CXX_LANG_ >= 2017 &&                                              \
+      EZTEST_USING_GCC_ >= EZTEST_VERNUM_(9, 0, 0)))
 
 #if EZTEST_CXX_HAS_TS_ || (EZTEST_C_LANG_ >= 2011) ||                          \
     (EZTEST_POSIX_VERSION_ >= 199309L)
@@ -39,8 +40,7 @@
 
 #endif
 
-#define EZTEST_TIME_T_INIT_                                                    \
- { 0, 0 }
+#define EZTEST_TIME_T_INIT_ { 0, 0 }
 
 #define EZTEST_TIME_GET_(tsp)   EZTEST_NS_ eztest_time_get(tsp)
 #define EZTEST_TIME_AS_MS_(tsp) EZTEST_NS_ eztest_time_timespec_to_ms(tsp)
@@ -74,11 +74,11 @@ EZTEST_PRIVATE_
 int64_t
 eztest_time_timespec_to_ms(const EZTEST_TIME_T_ * eztest_ts) {
 #if EZTEST_TIME_IS_TIMESPEC_
-    return EZTEST_CAST_(int64_t, eztest_ts->tv_sec) * EZTEST_MSEC_TO_SEC_L_ +
-           EZTEST_CAST_(int64_t, eztest_ts->tv_nsec) / (EZTEST_USEC_TO_SEC_L_);
+    return (EZTEST_CAST_(int64_t, eztest_ts->tv_sec) * EZTEST_MSEC_TO_SEC_L_) +
+           (EZTEST_CAST_(int64_t, eztest_ts->tv_nsec) / EZTEST_USEC_TO_SEC_L_);
 #else
-    return EZTEST_CAST_(int64_t, eztest_ts->tv_sec) * EZTEST_MSEC_TO_SEC_L_ +
-           EZTEST_CAST_(int64_t, eztest_ts->tv_usec) / (EZTEST_MSEC_TO_SEC_L_);
+    return (EZTEST_CAST_(int64_t, eztest_ts->tv_sec) * EZTEST_MSEC_TO_SEC_L_) +
+           (EZTEST_CAST_(int64_t, eztest_ts->tv_usec) / EZTEST_MSEC_TO_SEC_L_);
 #endif
 }
 EZTEST_NAMESPACE_END_

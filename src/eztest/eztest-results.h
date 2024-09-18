@@ -19,7 +19,7 @@ struct eztest_results_t {
 EZTEST_REENABLE_WPADDED_
 #define EZTEST_RESULTS_T_ EZTEST_STRUCT_NS_ eztest_results_t
 #define EZTEST_RESULTS_T_INIT_                                                 \
- { EZTEST_DURATION_T_INIT_, EZTEST_ARR_T_INIT_, 0 }
+    { EZTEST_DURATION_T_INIT_, EZTEST_ARR_T_INIT_, 0 }
 
 
 EZTEST_PRIVATE_ unsigned
@@ -27,6 +27,7 @@ eztest_results_count_failed(const EZTEST_RESULTS_T_ * eztest_results) {
 
     unsigned eztest_cnt = 0;
     EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_
+    /* NOLINTBEGIN(llvmlibc-callee-namespace) */
     eztest_cnt +=
         eztest_results->eztest_stats_[EZTEST_NS_ eztest_k_status_fail];
     eztest_cnt +=
@@ -35,6 +36,7 @@ eztest_results_count_failed(const EZTEST_RESULTS_T_ * eztest_results) {
         eztest_results->eztest_stats_[EZTEST_NS_ eztest_k_status_fail_unknown];
     eztest_cnt +=
         eztest_results->eztest_stats_[EZTEST_NS_ eztest_k_status_fail_timeout];
+    /* NOLINTEND(llvmlibc-callee-namespace) */
     EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_
     return eztest_cnt;
 }
@@ -44,7 +46,9 @@ EZTEST_PRIVATE_ unsigned
 eztest_results_count_passed(const EZTEST_RESULTS_T_ * eztest_results) {
 
     EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_
+    /* NOLINTBEGIN(llvmlibc-callee-namespace) */
     return eztest_results->eztest_stats_[EZTEST_NS_ eztest_k_status_passed];
+    /* NOLINTEND(llvmlibc-callee-namespace) */
     EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_
 }
 
@@ -53,7 +57,9 @@ EZTEST_PRIVATE_ unsigned
 eztest_results_count_disabled(const EZTEST_RESULTS_T_ * eztest_results) {
 
     EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_
+    /* NOLINTBEGIN(llvmlibc-callee-namespace) */
     return eztest_results->eztest_stats_[EZTEST_NS_ eztest_k_status_disabled];
+    /* NOLINTEND(llvmlibc-callee-namespace) */
     EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_
 }
 
@@ -62,7 +68,9 @@ EZTEST_PRIVATE_ unsigned
 eztest_results_count_unknown(const EZTEST_RESULTS_T_ * eztest_results) {
 
     EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_
+    /* NOLINTBEGIN(llvmlibc-callee-namespace) */
     return eztest_results->eztest_stats_[EZTEST_NS_ eztest_k_status_unknown];
+    /* NOLINTEND(llvmlibc-callee-namespace) */
     EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_
 }
 
@@ -72,12 +80,14 @@ eztest_results_count_internal_errors(const EZTEST_RESULTS_T_ * eztest_results) {
 
     unsigned eztest_cnt = 0;
     EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_
+    /* NOLINTBEGIN(llvmlibc-callee-namespace) */
     eztest_cnt +=
         eztest_results
             ->eztest_stats_[EZTEST_NS_ eztest_k_status_internal_error];
     eztest_cnt +=
         eztest_results
             ->eztest_stats_[EZTEST_NS_ eztest_k_status_internal_fatal_error];
+    /* NOLINTEND(llvmlibc-callee-namespace) */
     EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_
     return eztest_cnt;
 }

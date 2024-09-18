@@ -32,6 +32,8 @@
 /*
  * Disable warnings that are inevitable in implementation:
  * The following warnings are present / disabled:
+ *
+ *	 -Waggregate-returns
  *   -Wcxx98-compat
  *   -Wcxx98-compat-pedantic
  *   -Wdouble-promotion
