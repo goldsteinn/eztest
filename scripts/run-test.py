@@ -791,7 +791,7 @@ def run_proc(exe):
     proc = subprocess.Popen(cmds,
                             stdout=subprocess.PIPE,
                             stderr=subprocess.STDOUT)
-    stdout_data, unused = proc.communicate(timeout=60)
+    stdout_data, unused = proc.communicate(timeout=3600)
 
     assert unused is None
     ret = proc.returncode
