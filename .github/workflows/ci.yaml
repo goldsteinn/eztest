@@ -14,7 +14,7 @@ jobs:
   eztest-integration:
     name: Integration - ${{ matrix.system.os }}
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         system: [
         { os: ubuntu-latest, },
@@ -38,16 +38,16 @@ jobs:
     - name: Check Install
       if: always()
       run: |
-        cmake --build build --target install
+        cmake --build build --target install --verbose
     - name: Check External
       if: always()
       run: |
-        cmake --build build --target check-external
+        cmake --build build --target check-external --verbose
 
   eztest-x86:
     name: ${{ matrix.targets.arch }}, ${{ matrix.compiler.cc }}, ${{ matrix.compiler.os }}
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         targets: [
           { arch: 'x86-64', runtime_pkg: '' },
@@ -423,7 +423,7 @@ jobs:
     - name: Check Weverything
       if: always()
       run: |
-        cmake --build build --target check-all
+        cmake --build build --target check-all --verbose
     - name: Check San Weverything
       if: always()
       run: |
@@ -431,7 +431,7 @@ jobs:
     - name: Check External Weverything
       if: always()
       run: |
-        cmake --build build --target check-external
+        cmake --build build --target check-external --verbose
     - name: Check Static Analysis Weverything
       if: always()
       run: |
@@ -444,11 +444,11 @@ jobs:
     - name: Check C99 Ext Weverything
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-c
+        cmake --build build-99-11 --target check-all-c --verbose
     - name: Check CXX11 Ext Weverything
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-cxx
+        cmake --build build-99-11 --target check-all-cxx --verbose
     - name: Check San C99/CXX11 Ext Weverything
       if: always()
       run: |
@@ -465,11 +465,11 @@ jobs:
     - name: Check C11 Ext Weverything
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-c
+        cmake --build build-11-14 --target check-all-c --verbose
     - name: Check CXX14 Ext Weverything
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-cxx
+        cmake --build build-11-14 --target check-all-cxx --verbose
     - name: Check San C11/CXX14 Ext Weverything
       if: always()
       run: |
@@ -486,11 +486,11 @@ jobs:
     - name: Check C17 Ext Weverything
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-c
+        cmake --build build-17-17 --target check-all-c --verbose
     - name: Check CXX17 Ext Weverything
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-cxx
+        cmake --build build-17-17 --target check-all-cxx --verbose
     - name: Check San C17/CXX17 Ext Weverything
       if: always()
       run: |
@@ -507,7 +507,7 @@ jobs:
     - name: Check CXX20 Ext Weverything
       if: always()
       run: |
-        cmake --build build-20 --target check-all-cxx
+        cmake --build build-20 --target check-all-cxx --verbose
     - name: Check San CXX20 Ext Weverything
       if: always()
       run: |
@@ -524,11 +524,11 @@ jobs:
     - name: Check C23 Ext Weverything
       if: always()
       run: |
-        cmake --build build-23-23 --target check-all-c
+        cmake --build build-23-23 --target check-all-c --verbose
     - name: Check CXX23 Ext Weverything
       if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
       run: |
-        cmake --build build-23-23 --target check-all-cxx
+        cmake --build build-23-23 --target check-all-cxx --verbose
     - name: Check San C23 Ext Weverything
       if: always()
       run: |
@@ -550,11 +550,11 @@ jobs:
     - name: Check C99 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-c
+        cmake --build build-99-11 --target check-all-c --verbose
     - name: Check CXX11 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-cxx
+        cmake --build build-99-11 --target check-all-cxx --verbose
     - name: Check San C99/CXX11 No-Ext Weverything
       if: always()
       run: |
@@ -571,11 +571,11 @@ jobs:
     - name: Check C11 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-c
+        cmake --build build-11-14 --target check-all-c --verbose
     - name: Check CXX14 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-cxx
+        cmake --build build-11-14 --target check-all-cxx --verbose
     - name: Check San C11/CXX14 No-Ext Weverything
       if: always()
       run: |
@@ -592,11 +592,11 @@ jobs:
     - name: Check C17 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-c
+        cmake --build build-17-17 --target check-all-c --verbose
     - name: Check CXX17 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-cxx
+        cmake --build build-17-17 --target check-all-cxx --verbose
     - name: Check San C17/CXX17 No-Ext Weverything
       if: always()
       run: |
@@ -613,7 +613,7 @@ jobs:
     - name: Check CXX20 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-20 --target check-all-cxx
+        cmake --build build-20 --target check-all-cxx --verbose
     - name: Check San CXX20 No-Ext Weverything
       if: always()
       run: |
@@ -630,11 +630,11 @@ jobs:
     - name: Check C23 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-23-23 --target check-all-c
+        cmake --build build-23-23 --target check-all-c --verbose
     - name: Check CXX23 No-Ext Weverything
       if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
       run: |
-        cmake --build build-23-23 --target check-all-cxx
+        cmake --build build-23-23 --target check-all-cxx --verbose
     - name: Check San C23 No-Ext Weverything
       if: always()
       run: |
@@ -654,7 +654,7 @@ jobs:
     - name: Check Wall
       if: always()
       run: |
-        cmake --build build --target check-all
+        cmake --build build --target check-all --verbose
     - name: Check San Wall
       if: always()
       run: |
@@ -662,7 +662,7 @@ jobs:
     - name: Check External Wall
       if: always()
       run: |
-        cmake --build build --target check-external
+        cmake --build build --target check-external --verbose
     - name: Check Static Analysis Wall
       if: always()
       run: |
@@ -675,11 +675,11 @@ jobs:
     - name: Check C99 Ext Wall
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-c
+        cmake --build build-99-11 --target check-all-c --verbose
     - name: Check CXX11 Ext Wall
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-cxx
+        cmake --build build-99-11 --target check-all-cxx --verbose
     - name: Check San C99/CXX11 Ext Wall
       if: always()
       run: |
@@ -696,11 +696,11 @@ jobs:
     - name: Check C11 Ext Wall
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-c
+        cmake --build build-11-14 --target check-all-c --verbose
     - name: Check CXX14 Ext Wall
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-cxx
+        cmake --build build-11-14 --target check-all-cxx --verbose
     - name: Check San C11/CXX14 Ext Wall
       if: always()
       run: |
@@ -717,11 +717,11 @@ jobs:
     - name: Check C17 Ext Wall
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-c
+        cmake --build build-17-17 --target check-all-c --verbose
     - name: Check CXX17 Ext Wall
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-cxx
+        cmake --build build-17-17 --target check-all-cxx --verbose
     - name: Check San C17/CXX17 Ext Wall
       if: always()
       run: |
@@ -738,7 +738,7 @@ jobs:
     - name: Check CXX20 Ext Wall
       if: always()
       run: |
-        cmake --build build-20 --target check-all-cxx
+        cmake --build build-20 --target check-all-cxx --verbose
     - name: Check San CXX20 Ext Wall
       if: always()
       run: |
@@ -755,11 +755,11 @@ jobs:
     - name: Check C23 Ext Wall
       if: always()
       run: |
-        cmake --build build-23-23 --target check-all-c
+        cmake --build build-23-23 --target check-all-c --verbose
     - name: Check CXX23 Ext Wall
       if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
       run: |
-        cmake --build build-23-23 --target check-all-cxx
+        cmake --build build-23-23 --target check-all-cxx --verbose
     - name: Check San C23 Ext Wall
       if: always()
       run: |
@@ -781,11 +781,11 @@ jobs:
     - name: Check C99 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-c
+        cmake --build build-99-11 --target check-all-c --verbose
     - name: Check CXX11 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-cxx
+        cmake --build build-99-11 --target check-all-cxx --verbose
     - name: Check San C99/CXX11 No-Ext Wall
       if: always()
       run: |
@@ -802,11 +802,11 @@ jobs:
     - name: Check C11 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-c
+        cmake --build build-11-14 --target check-all-c --verbose
     - name: Check CXX14 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-cxx
+        cmake --build build-11-14 --target check-all-cxx --verbose
     - name: Check San C11/CXX14 No-Ext Wall
       if: always()
       run: |
@@ -823,11 +823,11 @@ jobs:
     - name: Check C17 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-c
+        cmake --build build-17-17 --target check-all-c --verbose
     - name: Check CXX17 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-cxx
+        cmake --build build-17-17 --target check-all-cxx --verbose
     - name: Check San C17/CXX17 No-Ext Wall
       if: always()
       run: |
@@ -844,7 +844,7 @@ jobs:
     - name: Check CXX20 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-20 --target check-all-cxx
+        cmake --build build-20 --target check-all-cxx --verbose
     - name: Check San CXX20 No-Ext Wall
       if: always()
       run: |
@@ -861,11 +861,11 @@ jobs:
     - name: Check C23 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-23-23 --target check-all-c
+        cmake --build build-23-23 --target check-all-c --verbose
     - name: Check CXX23 No-Ext Wall
       if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
       run: |
-        cmake --build build-23-23 --target check-all-cxx
+        cmake --build build-23-23 --target check-all-cxx --verbose
     - name: Check San C23 No-Ext Wall
       if: always()
       run: |
@@ -881,7 +881,7 @@ jobs:
   eztest-riscv64:
     name: ${{ matrix.targets.arch }}, ${{ matrix.compiler.cc }}, ${{ matrix.compiler.os }}
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         targets: [
           { arch: 'riscv64', runtime_pkg: 'qemu-user-static qemu-utils  qemu-system-riscv64' },
@@ -1115,7 +1115,7 @@ jobs:
     - name: Check Weverything
       if: always()
       run: |
-        cmake --build build --target check-all
+        cmake --build build --target check-all --verbose
     - name: Check San Weverything
       if: always()
       run: |
@@ -1123,7 +1123,7 @@ jobs:
     - name: Check External Weverything
       if: always()
       run: |
-        cmake --build build --target check-external
+        cmake --build build --target check-external --verbose
     - name: Check Static Analysis Weverything
       if: always()
       run: |
@@ -1136,11 +1136,11 @@ jobs:
     - name: Check C99 Ext Weverything
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-c
+        cmake --build build-99-11 --target check-all-c --verbose
     - name: Check CXX11 Ext Weverything
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-cxx
+        cmake --build build-99-11 --target check-all-cxx --verbose
     - name: Check San C99/CXX11 Ext Weverything
       if: always()
       run: |
@@ -1157,11 +1157,11 @@ jobs:
     - name: Check C11 Ext Weverything
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-c
+        cmake --build build-11-14 --target check-all-c --verbose
     - name: Check CXX14 Ext Weverything
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-cxx
+        cmake --build build-11-14 --target check-all-cxx --verbose
     - name: Check San C11/CXX14 Ext Weverything
       if: always()
       run: |
@@ -1178,11 +1178,11 @@ jobs:
     - name: Check C17 Ext Weverything
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-c
+        cmake --build build-17-17 --target check-all-c --verbose
     - name: Check CXX17 Ext Weverything
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-cxx
+        cmake --build build-17-17 --target check-all-cxx --verbose
     - name: Check San C17/CXX17 Ext Weverything
       if: always()
       run: |
@@ -1199,7 +1199,7 @@ jobs:
     - name: Check CXX20 Ext Weverything
       if: always()
       run: |
-        cmake --build build-20 --target check-all-cxx
+        cmake --build build-20 --target check-all-cxx --verbose
     - name: Check San CXX20 Ext Weverything
       if: always()
       run: |
@@ -1216,11 +1216,11 @@ jobs:
     - name: Check C23 Ext Weverything
       if: always()
       run: |
-        cmake --build build-23-23 --target check-all-c
+        cmake --build build-23-23 --target check-all-c --verbose
     - name: Check CXX23 Ext Weverything
       if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
       run: |
-        cmake --build build-23-23 --target check-all-cxx
+        cmake --build build-23-23 --target check-all-cxx --verbose
     - name: Check San C23 Ext Weverything
       if: always()
       run: |
@@ -1242,11 +1242,11 @@ jobs:
     - name: Check C99 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-c
+        cmake --build build-99-11 --target check-all-c --verbose
     - name: Check CXX11 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-cxx
+        cmake --build build-99-11 --target check-all-cxx --verbose
     - name: Check San C99/CXX11 No-Ext Weverything
       if: always()
       run: |
@@ -1263,11 +1263,11 @@ jobs:
     - name: Check C11 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-c
+        cmake --build build-11-14 --target check-all-c --verbose
     - name: Check CXX14 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-cxx
+        cmake --build build-11-14 --target check-all-cxx --verbose
     - name: Check San C11/CXX14 No-Ext Weverything
       if: always()
       run: |
@@ -1284,11 +1284,11 @@ jobs:
     - name: Check C17 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-c
+        cmake --build build-17-17 --target check-all-c --verbose
     - name: Check CXX17 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-cxx
+        cmake --build build-17-17 --target check-all-cxx --verbose
     - name: Check San C17/CXX17 No-Ext Weverything
       if: always()
       run: |
@@ -1305,7 +1305,7 @@ jobs:
     - name: Check CXX20 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-20 --target check-all-cxx
+        cmake --build build-20 --target check-all-cxx --verbose
     - name: Check San CXX20 No-Ext Weverything
       if: always()
       run: |
@@ -1322,11 +1322,11 @@ jobs:
     - name: Check C23 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-23-23 --target check-all-c
+        cmake --build build-23-23 --target check-all-c --verbose
     - name: Check CXX23 No-Ext Weverything
       if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
       run: |
-        cmake --build build-23-23 --target check-all-cxx
+        cmake --build build-23-23 --target check-all-cxx --verbose
     - name: Check San C23 No-Ext Weverything
       if: always()
       run: |
@@ -1346,7 +1346,7 @@ jobs:
     - name: Check Wall
       if: always()
       run: |
-        cmake --build build --target check-all
+        cmake --build build --target check-all --verbose
     - name: Check San Wall
       if: always()
       run: |
@@ -1354,7 +1354,7 @@ jobs:
     - name: Check External Wall
       if: always()
       run: |
-        cmake --build build --target check-external
+        cmake --build build --target check-external --verbose
     - name: Check Static Analysis Wall
       if: always()
       run: |
@@ -1367,11 +1367,11 @@ jobs:
     - name: Check C99 Ext Wall
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-c
+        cmake --build build-99-11 --target check-all-c --verbose
     - name: Check CXX11 Ext Wall
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-cxx
+        cmake --build build-99-11 --target check-all-cxx --verbose
     - name: Check San C99/CXX11 Ext Wall
       if: always()
       run: |
@@ -1388,11 +1388,11 @@ jobs:
     - name: Check C11 Ext Wall
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-c
+        cmake --build build-11-14 --target check-all-c --verbose
     - name: Check CXX14 Ext Wall
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-cxx
+        cmake --build build-11-14 --target check-all-cxx --verbose
     - name: Check San C11/CXX14 Ext Wall
       if: always()
       run: |
@@ -1409,11 +1409,11 @@ jobs:
     - name: Check C17 Ext Wall
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-c
+        cmake --build build-17-17 --target check-all-c --verbose
     - name: Check CXX17 Ext Wall
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-cxx
+        cmake --build build-17-17 --target check-all-cxx --verbose
     - name: Check San C17/CXX17 Ext Wall
       if: always()
       run: |
@@ -1430,7 +1430,7 @@ jobs:
     - name: Check CXX20 Ext Wall
       if: always()
       run: |
-        cmake --build build-20 --target check-all-cxx
+        cmake --build build-20 --target check-all-cxx --verbose
     - name: Check San CXX20 Ext Wall
       if: always()
       run: |
@@ -1447,11 +1447,11 @@ jobs:
     - name: Check C23 Ext Wall
       if: always()
       run: |
-        cmake --build build-23-23 --target check-all-c
+        cmake --build build-23-23 --target check-all-c --verbose
     - name: Check CXX23 Ext Wall
       if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
       run: |
-        cmake --build build-23-23 --target check-all-cxx
+        cmake --build build-23-23 --target check-all-cxx --verbose
     - name: Check San C23 Ext Wall
       if: always()
       run: |
@@ -1473,11 +1473,11 @@ jobs:
     - name: Check C99 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-c
+        cmake --build build-99-11 --target check-all-c --verbose
     - name: Check CXX11 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-cxx
+        cmake --build build-99-11 --target check-all-cxx --verbose
     - name: Check San C99/CXX11 No-Ext Wall
       if: always()
       run: |
@@ -1494,11 +1494,11 @@ jobs:
     - name: Check C11 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-c
+        cmake --build build-11-14 --target check-all-c --verbose
     - name: Check CXX14 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-cxx
+        cmake --build build-11-14 --target check-all-cxx --verbose
     - name: Check San C11/CXX14 No-Ext Wall
       if: always()
       run: |
@@ -1515,11 +1515,11 @@ jobs:
     - name: Check C17 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-c
+        cmake --build build-17-17 --target check-all-c --verbose
     - name: Check CXX17 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-cxx
+        cmake --build build-17-17 --target check-all-cxx --verbose
     - name: Check San C17/CXX17 No-Ext Wall
       if: always()
       run: |
@@ -1536,7 +1536,7 @@ jobs:
     - name: Check CXX20 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-20 --target check-all-cxx
+        cmake --build build-20 --target check-all-cxx --verbose
     - name: Check San CXX20 No-Ext Wall
       if: always()
       run: |
@@ -1553,11 +1553,11 @@ jobs:
     - name: Check C23 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-23-23 --target check-all-c
+        cmake --build build-23-23 --target check-all-c --verbose
     - name: Check CXX23 No-Ext Wall
       if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
       run: |
-        cmake --build build-23-23 --target check-all-cxx
+        cmake --build build-23-23 --target check-all-cxx --verbose
     - name: Check San C23 No-Ext Wall
       if: always()
       run: |
@@ -1574,7 +1574,7 @@ jobs:
   eztest-aarch64:
     name: ${{ matrix.targets.arch }}, ${{ matrix.compiler.cc }}, ${{ matrix.compiler.os }}
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         targets: [
           { arch: 'aarch64', runtime_pkg: 'qemu-user-static qemu-utils  qemu-system-aarch64' },
@@ -1809,7 +1809,7 @@ jobs:
     - name: Check Weverything
       if: always()
       run: |
-        cmake --build build --target check-all
+        cmake --build build --target check-all --verbose
     - name: Check San Weverything
       if: always()
       run: |
@@ -1817,7 +1817,7 @@ jobs:
     - name: Check External Weverything
       if: always()
       run: |
-        cmake --build build --target check-external
+        cmake --build build --target check-external --verbose
     - name: Check Static Analysis Weverything
       if: always()
       run: |
@@ -1830,11 +1830,11 @@ jobs:
     - name: Check C99 Ext Weverything
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-c
+        cmake --build build-99-11 --target check-all-c --verbose
     - name: Check CXX11 Ext Weverything
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-cxx
+        cmake --build build-99-11 --target check-all-cxx --verbose
     - name: Check San C99/CXX11 Ext Weverything
       if: always()
       run: |
@@ -1851,11 +1851,11 @@ jobs:
     - name: Check C11 Ext Weverything
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-c
+        cmake --build build-11-14 --target check-all-c --verbose
     - name: Check CXX14 Ext Weverything
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-cxx
+        cmake --build build-11-14 --target check-all-cxx --verbose
     - name: Check San C11/CXX14 Ext Weverything
       if: always()
       run: |
@@ -1872,11 +1872,11 @@ jobs:
     - name: Check C17 Ext Weverything
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-c
+        cmake --build build-17-17 --target check-all-c --verbose
     - name: Check CXX17 Ext Weverything
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-cxx
+        cmake --build build-17-17 --target check-all-cxx --verbose
     - name: Check San C17/CXX17 Ext Weverything
       if: always()
       run: |
@@ -1893,7 +1893,7 @@ jobs:
     - name: Check CXX20 Ext Weverything
       if: always()
       run: |
-        cmake --build build-20 --target check-all-cxx
+        cmake --build build-20 --target check-all-cxx --verbose
     - name: Check San CXX20 Ext Weverything
       if: always()
       run: |
@@ -1910,11 +1910,11 @@ jobs:
     - name: Check C23 Ext Weverything
       if: always()
       run: |
-        cmake --build build-23-23 --target check-all-c
+        cmake --build build-23-23 --target check-all-c --verbose
     - name: Check CXX23 Ext Weverything
       if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
       run: |
-        cmake --build build-23-23 --target check-all-cxx
+        cmake --build build-23-23 --target check-all-cxx --verbose
     - name: Check San C23 Ext Weverything
       if: always()
       run: |
@@ -1936,11 +1936,11 @@ jobs:
     - name: Check C99 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-c
+        cmake --build build-99-11 --target check-all-c --verbose
     - name: Check CXX11 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-cxx
+        cmake --build build-99-11 --target check-all-cxx --verbose
     - name: Check San C99/CXX11 No-Ext Weverything
       if: always()
       run: |
@@ -1957,11 +1957,11 @@ jobs:
     - name: Check C11 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-c
+        cmake --build build-11-14 --target check-all-c --verbose
     - name: Check CXX14 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-cxx
+        cmake --build build-11-14 --target check-all-cxx --verbose
     - name: Check San C11/CXX14 No-Ext Weverything
       if: always()
       run: |
@@ -1978,11 +1978,11 @@ jobs:
     - name: Check C17 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-c
+        cmake --build build-17-17 --target check-all-c --verbose
     - name: Check CXX17 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-cxx
+        cmake --build build-17-17 --target check-all-cxx --verbose
     - name: Check San C17/CXX17 No-Ext Weverything
       if: always()
       run: |
@@ -1999,7 +1999,7 @@ jobs:
     - name: Check CXX20 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-20 --target check-all-cxx
+        cmake --build build-20 --target check-all-cxx --verbose
     - name: Check San CXX20 No-Ext Weverything
       if: always()
       run: |
@@ -2016,11 +2016,11 @@ jobs:
     - name: Check C23 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-23-23 --target check-all-c
+        cmake --build build-23-23 --target check-all-c --verbose
     - name: Check CXX23 No-Ext Weverything
       if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
       run: |
-        cmake --build build-23-23 --target check-all-cxx
+        cmake --build build-23-23 --target check-all-cxx --verbose
     - name: Check San C23 No-Ext Weverything
       if: always()
       run: |
@@ -2040,7 +2040,7 @@ jobs:
     - name: Check Wall
       if: always()
       run: |
-        cmake --build build --target check-all
+        cmake --build build --target check-all --verbose
     - name: Check San Wall
       if: always()
       run: |
@@ -2048,7 +2048,7 @@ jobs:
     - name: Check External Wall
       if: always()
       run: |
-        cmake --build build --target check-external
+        cmake --build build --target check-external --verbose
     - name: Check Static Analysis Wall
       if: always()
       run: |
@@ -2061,11 +2061,11 @@ jobs:
     - name: Check C99 Ext Wall
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-c
+        cmake --build build-99-11 --target check-all-c --verbose
     - name: Check CXX11 Ext Wall
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-cxx
+        cmake --build build-99-11 --target check-all-cxx --verbose
     - name: Check San C99/CXX11 Ext Wall
       if: always()
       run: |
@@ -2082,11 +2082,11 @@ jobs:
     - name: Check C11 Ext Wall
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-c
+        cmake --build build-11-14 --target check-all-c --verbose
     - name: Check CXX14 Ext Wall
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-cxx
+        cmake --build build-11-14 --target check-all-cxx --verbose
     - name: Check San C11/CXX14 Ext Wall
       if: always()
       run: |
@@ -2103,11 +2103,11 @@ jobs:
     - name: Check C17 Ext Wall
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-c
+        cmake --build build-17-17 --target check-all-c --verbose
     - name: Check CXX17 Ext Wall
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-cxx
+        cmake --build build-17-17 --target check-all-cxx --verbose
     - name: Check San C17/CXX17 Ext Wall
       if: always()
       run: |
@@ -2124,7 +2124,7 @@ jobs:
     - name: Check CXX20 Ext Wall
       if: always()
       run: |
-        cmake --build build-20 --target check-all-cxx
+        cmake --build build-20 --target check-all-cxx --verbose
     - name: Check San CXX20 Ext Wall
       if: always()
       run: |
@@ -2141,11 +2141,11 @@ jobs:
     - name: Check C23 Ext Wall
       if: always()
       run: |
-        cmake --build build-23-23 --target check-all-c
+        cmake --build build-23-23 --target check-all-c --verbose
     - name: Check CXX23 Ext Wall
       if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
       run: |
-        cmake --build build-23-23 --target check-all-cxx
+        cmake --build build-23-23 --target check-all-cxx --verbose
     - name: Check San C23 Ext Wall
       if: always()
       run: |
@@ -2167,11 +2167,11 @@ jobs:
     - name: Check C99 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-c
+        cmake --build build-99-11 --target check-all-c --verbose
     - name: Check CXX11 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-cxx
+        cmake --build build-99-11 --target check-all-cxx --verbose
     - name: Check San C99/CXX11 No-Ext Wall
       if: always()
       run: |
@@ -2188,11 +2188,11 @@ jobs:
     - name: Check C11 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-c
+        cmake --build build-11-14 --target check-all-c --verbose
     - name: Check CXX14 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-cxx
+        cmake --build build-11-14 --target check-all-cxx --verbose
     - name: Check San C11/CXX14 No-Ext Wall
       if: always()
       run: |
@@ -2209,11 +2209,11 @@ jobs:
     - name: Check C17 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-c
+        cmake --build build-17-17 --target check-all-c --verbose
     - name: Check CXX17 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-cxx
+        cmake --build build-17-17 --target check-all-cxx --verbose
     - name: Check San C17/CXX17 No-Ext Wall
       if: always()
       run: |
@@ -2230,7 +2230,7 @@ jobs:
     - name: Check CXX20 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-20 --target check-all-cxx
+        cmake --build build-20 --target check-all-cxx --verbose
     - name: Check San CXX20 No-Ext Wall
       if: always()
       run: |
@@ -2247,11 +2247,11 @@ jobs:
     - name: Check C23 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-23-23 --target check-all-c
+        cmake --build build-23-23 --target check-all-c --verbose
     - name: Check CXX23 No-Ext Wall
       if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
       run: |
-        cmake --build build-23-23 --target check-all-cxx
+        cmake --build build-23-23 --target check-all-cxx --verbose
     - name: Check San C23 No-Ext Wall
       if: always()
       run: |
@@ -2268,7 +2268,7 @@ jobs:
   eztest-arm:
     name: ${{ matrix.targets.arch }}, ${{ matrix.compiler.cc }}, ${{ matrix.compiler.os }}
     strategy:
-      fail-fast: false
+      fail-fast: true  
       matrix:
         targets: [
           { arch: 'arm', runtime_pkg: 'qemu-user-static qemu-utils  qemu-system-arm' },
@@ -2503,7 +2503,7 @@ jobs:
     - name: Check Weverything
       if: always()
       run: |
-        cmake --build build --target check-all
+        cmake --build build --target check-all --verbose
     - name: Check San Weverything
       if: always()
       run: |
@@ -2511,7 +2511,7 @@ jobs:
     - name: Check External Weverything
       if: always()
       run: |
-        cmake --build build --target check-external
+        cmake --build build --target check-external --verbose
     - name: Check Static Analysis Weverything
       if: always()
       run: |
@@ -2524,11 +2524,11 @@ jobs:
     - name: Check C99 Ext Weverything
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-c
+        cmake --build build-99-11 --target check-all-c --verbose
     - name: Check CXX11 Ext Weverything
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-cxx
+        cmake --build build-99-11 --target check-all-cxx --verbose
     - name: Check San C99/CXX11 Ext Weverything
       if: always()
       run: |
@@ -2545,11 +2545,11 @@ jobs:
     - name: Check C11 Ext Weverything
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-c
+        cmake --build build-11-14 --target check-all-c --verbose
     - name: Check CXX14 Ext Weverything
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-cxx
+        cmake --build build-11-14 --target check-all-cxx --verbose
     - name: Check San C11/CXX14 Ext Weverything
       if: always()
       run: |
@@ -2566,11 +2566,11 @@ jobs:
     - name: Check C17 Ext Weverything
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-c
+        cmake --build build-17-17 --target check-all-c --verbose
     - name: Check CXX17 Ext Weverything
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-cxx
+        cmake --build build-17-17 --target check-all-cxx --verbose
     - name: Check San C17/CXX17 Ext Weverything
       if: always()
       run: |
@@ -2587,7 +2587,7 @@ jobs:
     - name: Check CXX20 Ext Weverything
       if: always()
       run: |
-        cmake --build build-20 --target check-all-cxx
+        cmake --build build-20 --target check-all-cxx --verbose
     - name: Check San CXX20 Ext Weverything
       if: always()
       run: |
@@ -2604,11 +2604,11 @@ jobs:
     - name: Check C23 Ext Weverything
       if: always()
       run: |
-        cmake --build build-23-23 --target check-all-c
+        cmake --build build-23-23 --target check-all-c --verbose
     - name: Check CXX23 Ext Weverything
       if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
       run: |
-        cmake --build build-23-23 --target check-all-cxx
+        cmake --build build-23-23 --target check-all-cxx --verbose
     - name: Check San C23 Ext Weverything
       if: always()
       run: |
@@ -2630,11 +2630,11 @@ jobs:
     - name: Check C99 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-c
+        cmake --build build-99-11 --target check-all-c --verbose
     - name: Check CXX11 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-cxx
+        cmake --build build-99-11 --target check-all-cxx --verbose
     - name: Check San C99/CXX11 No-Ext Weverything
       if: always()
       run: |
@@ -2651,11 +2651,11 @@ jobs:
     - name: Check C11 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-c
+        cmake --build build-11-14 --target check-all-c --verbose
     - name: Check CXX14 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-cxx
+        cmake --build build-11-14 --target check-all-cxx --verbose
     - name: Check San C11/CXX14 No-Ext Weverything
       if: always()
       run: |
@@ -2672,11 +2672,11 @@ jobs:
     - name: Check C17 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-c
+        cmake --build build-17-17 --target check-all-c --verbose
     - name: Check CXX17 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-cxx
+        cmake --build build-17-17 --target check-all-cxx --verbose
     - name: Check San C17/CXX17 No-Ext Weverything
       if: always()
       run: |
@@ -2693,7 +2693,7 @@ jobs:
     - name: Check CXX20 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-20 --target check-all-cxx
+        cmake --build build-20 --target check-all-cxx --verbose
     - name: Check San CXX20 No-Ext Weverything
       if: always()
       run: |
@@ -2710,11 +2710,11 @@ jobs:
     - name: Check C23 No-Ext Weverything
       if: always()
       run: |
-        cmake --build build-23-23 --target check-all-c
+        cmake --build build-23-23 --target check-all-c --verbose
     - name: Check CXX23 No-Ext Weverything
       if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
       run: |
-        cmake --build build-23-23 --target check-all-cxx
+        cmake --build build-23-23 --target check-all-cxx --verbose
     - name: Check San C23 No-Ext Weverything
       if: always()
       run: |
@@ -2734,7 +2734,7 @@ jobs:
     - name: Check Wall
       if: always()
       run: |
-        cmake --build build --target check-all
+        cmake --build build --target check-all --verbose
     - name: Check San Wall
       if: always()
       run: |
@@ -2742,7 +2742,7 @@ jobs:
     - name: Check External Wall
       if: always()
       run: |
-        cmake --build build --target check-external
+        cmake --build build --target check-external --verbose
     - name: Check Static Analysis Wall
       if: always()
       run: |
@@ -2755,11 +2755,11 @@ jobs:
     - name: Check C99 Ext Wall
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-c
+        cmake --build build-99-11 --target check-all-c --verbose
     - name: Check CXX11 Ext Wall
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-cxx
+        cmake --build build-99-11 --target check-all-cxx --verbose
     - name: Check San C99/CXX11 Ext Wall
       if: always()
       run: |
@@ -2776,11 +2776,11 @@ jobs:
     - name: Check C11 Ext Wall
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-c
+        cmake --build build-11-14 --target check-all-c --verbose
     - name: Check CXX14 Ext Wall
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-cxx
+        cmake --build build-11-14 --target check-all-cxx --verbose
     - name: Check San C11/CXX14 Ext Wall
       if: always()
       run: |
@@ -2797,11 +2797,11 @@ jobs:
     - name: Check C17 Ext Wall
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-c
+        cmake --build build-17-17 --target check-all-c --verbose
     - name: Check CXX17 Ext Wall
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-cxx
+        cmake --build build-17-17 --target check-all-cxx --verbose
     - name: Check San C17/CXX17 Ext Wall
       if: always()
       run: |
@@ -2818,7 +2818,7 @@ jobs:
     - name: Check CXX20 Ext Wall
       if: always()
       run: |
-        cmake --build build-20 --target check-all-cxx
+        cmake --build build-20 --target check-all-cxx --verbose
     - name: Check San CXX20 Ext Wall
       if: always()
       run: |
@@ -2835,11 +2835,11 @@ jobs:
     - name: Check C23 Ext Wall
       if: always()
       run: |
-        cmake --build build-23-23 --target check-all-c
+        cmake --build build-23-23 --target check-all-c --verbose
     - name: Check CXX23 Ext Wall
       if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
       run: |
-        cmake --build build-23-23 --target check-all-cxx
+        cmake --build build-23-23 --target check-all-cxx --verbose
     - name: Check San C23 Ext Wall
       if: always()
       run: |
@@ -2861,11 +2861,11 @@ jobs:
     - name: Check C99 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-c
+        cmake --build build-99-11 --target check-all-c --verbose
     - name: Check CXX11 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-99-11 --target check-all-cxx
+        cmake --build build-99-11 --target check-all-cxx --verbose
     - name: Check San C99/CXX11 No-Ext Wall
       if: always()
       run: |
@@ -2882,11 +2882,11 @@ jobs:
     - name: Check C11 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-c
+        cmake --build build-11-14 --target check-all-c --verbose
     - name: Check CXX14 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-11-14 --target check-all-cxx
+        cmake --build build-11-14 --target check-all-cxx --verbose
     - name: Check San C11/CXX14 No-Ext Wall
       if: always()
       run: |
@@ -2903,11 +2903,11 @@ jobs:
     - name: Check C17 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-c
+        cmake --build build-17-17 --target check-all-c --verbose
     - name: Check CXX17 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-17-17 --target check-all-cxx
+        cmake --build build-17-17 --target check-all-cxx --verbose
     - name: Check San C17/CXX17 No-Ext Wall
       if: always()
       run: |
@@ -2924,7 +2924,7 @@ jobs:
     - name: Check CXX20 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-20 --target check-all-cxx
+        cmake --build build-20 --target check-all-cxx --verbose
     - name: Check San CXX20 No-Ext Wall
       if: always()
       run: |
@@ -2941,11 +2941,11 @@ jobs:
     - name: Check C23 No-Ext Wall
       if: always()
       run: |
-        cmake --build build-23-23 --target check-all-c
+        cmake --build build-23-23 --target check-all-c --verbose
     - name: Check CXX23 No-Ext Wall
       if: matrix.compiler.comp_base != 'llvm' || (matrix.compiler.comp_ver > 15 || matrix.compiler.comp_ver < 12)
       run: |
-        cmake --build build-23-23 --target check-all-cxx
+        cmake --build build-23-23 --target check-all-cxx --verbose
     - name: Check San C23 No-Ext Wall
       if: always()
       run: |
