@@ -2,7 +2,7 @@
 #define EZTEST_EZTEST_H_
 /*
  * Single header of entire eztest suite.
- * Generated: 2024-09-18 00:44:40.069727
+ * Generated: 2024-09-18 10:13:32.569413
  */
 /* Begin include of: eztest.h  */
 
@@ -2962,7 +2962,7 @@ eztest_list_insert_test(EZTEST_LIST_T_ * eztest_list,
         /* TODO: Move these pragmas to EZTEST_STRCMP_ (clang doesn't seem to be
          * picking them up) */
         EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
-        int eztest_at_new_group = EZTEST_CAST_(
+        const int eztest_at_new_group = EZTEST_CAST_(
             int,
             EZTEST_STRCMP_(eztest_cur->eztest_group_, eztest_new_group) != 0);
         EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
