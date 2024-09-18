@@ -810,14 +810,18 @@ TEST(fpe, assert_double_near7_fail) {
 TEST(fpe, assert_double_near8_fail) {
     /* NOLINTBEGIN(*-magic-numbers) */
     double fp0 = 1.10001;
+    /* NOLINTBEGIN(performance-type-promotion-in-math-fn) */
     ASSERT_NEAR(fp0, 1.1F, .000001F);
+    /* NOLINTEND(performance-type-promotion-in-math-fn) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
 TEST(fpe, assert_double_near9_fail) {
     /* NOLINTBEGIN(*-magic-numbers) */
     double fp0 = 1.10001;
+    /* NOLINTBEGIN(performance-type-promotion-in-math-fn) */
     ASSERT_NEAR(1.1F, fp0, .000001F);
+    /* NOLINTEND(performance-type-promotion-in-math-fn) */
     /* NOLINTEND(*-magic-numbers) */
 }
 

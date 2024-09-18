@@ -5,11 +5,13 @@
 #endif
 #include "eztest/eztest.h"
 
+#if !(EZTEST_ARCH_IS_ANY_X86_ || EZTEST_ARCH_IS_AARCH64_ ||                    \
+      EZTEST_ARCH_IS_RISCV64_)
 /* NOLINTBEGIN(llvmlibc-restrict-system-libc-headers) */
-#include <signal.h>
-#include <unistd.h>
+# include <signal.h>
+# include <unistd.h>
 /* NOLINTEND(llvmlibc-restrict-system-libc-headers) */
-
+#endif
 
 /* NOLINTBEGIN(altera-unroll-loops) */
 #if TS_USING_GCC_ || TS_HAS_CLANG_VER_(14, 0, 0) || !EZTEST_ARCH_IS_ANY_RISCV_
