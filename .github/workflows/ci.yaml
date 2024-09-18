@@ -14,7 +14,7 @@ jobs:
   eztest-integration:
     name: Integration - ${{ matrix.system.os }}
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         system: [
         { os: ubuntu-latest, },
@@ -47,7 +47,7 @@ jobs:
   eztest-x86:
     name: ${{ matrix.targets.arch }}, ${{ matrix.compiler.cc }}, ${{ matrix.compiler.os }}
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         targets: [
           { arch: 'x86-64', runtime_pkg: '' },
@@ -918,7 +918,7 @@ jobs:
   eztest-riscv64:
     name: ${{ matrix.targets.arch }}, ${{ matrix.compiler.cc }}, ${{ matrix.compiler.os }}
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         targets: [
           { arch: 'riscv64', runtime_pkg: 'qemu-user-static qemu-utils  qemu-system-riscv64' },
@@ -1661,7 +1661,7 @@ jobs:
   eztest-aarch64:
     name: ${{ matrix.targets.arch }}, ${{ matrix.compiler.cc }}, ${{ matrix.compiler.os }}
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         targets: [
           { arch: 'aarch64', runtime_pkg: 'qemu-user-static qemu-utils  qemu-system-aarch64' },
@@ -2405,7 +2405,7 @@ jobs:
   eztest-arm:
     name: ${{ matrix.targets.arch }}, ${{ matrix.compiler.cc }}, ${{ matrix.compiler.os }}
     strategy:
-      fail-fast: false  
+      fail-fast: true  
       matrix:
         targets: [
           { arch: 'arm', runtime_pkg: 'qemu-user-static qemu-utils  qemu-system-arm' },
