@@ -61,8 +61,10 @@ TEST(fpe, assert_float_eq0_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
     ASSERT_FLOAT_EQ(fp0, fp1);
@@ -79,8 +81,10 @@ TEST(fpe, assert_float_eq1_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -98,8 +102,10 @@ TEST(fpe, assert_float_eq2_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -117,8 +123,10 @@ TEST(fpe, assert_float_eq3_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -136,8 +144,10 @@ TEST(fpe, assert_float_eq4_fail) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -155,8 +165,10 @@ TEST(fpe, assert_float_eq5_fail) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -174,8 +186,10 @@ TEST(fpe, assert_float_eq6_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -193,8 +207,10 @@ TEST(fpe, assert_float_eq7_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -211,8 +227,10 @@ TEST(fpe, assert_float_eq8_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -230,8 +248,10 @@ TEST(fpe, assert_float_eq9_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -250,8 +270,10 @@ TEST(fpe, assert_float_eq10_fail) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -271,8 +293,10 @@ TEST(fpe, assert_float_eq11_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -290,8 +314,10 @@ TEST(fpe, assert_float_eq12_fail) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
     /* NOLINTBEGIN(cppcoreguidelines-pro-type-vararg,hicpp-vararg) */
@@ -395,8 +421,10 @@ TEST(fpe, assert_double_eq0_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -416,8 +444,10 @@ TEST(fpe, assert_double_eq1_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -437,8 +467,10 @@ TEST(fpe, assert_double_eq2_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -458,8 +490,10 @@ TEST(fpe, assert_double_eq3_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -479,8 +513,10 @@ TEST(fpe, assert_double_eq4_fail) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -500,8 +536,10 @@ TEST(fpe, assert_double_eq5_fail) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -521,8 +559,10 @@ TEST(fpe, assert_double_eq6_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -542,8 +582,10 @@ TEST(fpe, assert_double_eq7_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -562,8 +604,10 @@ TEST(fpe, assert_double_eq8_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -583,8 +627,10 @@ TEST(fpe, assert_double_eq9_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -605,8 +651,10 @@ TEST(fpe, assert_double_eq10_fail) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -626,8 +674,10 @@ TEST(fpe, assert_double_eq11_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -647,8 +697,10 @@ TEST(fpe, assert_double_eq12_fail) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
     ASSERT_DOUBLE_EQ(fp0, fp1);
@@ -1161,8 +1213,10 @@ TEST(fpe, expect_float_eq0_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
     EXPECT_FLOAT_EQ(fp0, fp1);
@@ -1179,8 +1233,10 @@ TEST(fpe, expect_float_eq1_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -1198,8 +1254,10 @@ TEST(fpe, expect_float_eq2_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -1217,8 +1275,10 @@ TEST(fpe, expect_float_eq3_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -1236,8 +1296,10 @@ TEST(fpe, expect_float_eq4_fail) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -1255,8 +1317,10 @@ TEST(fpe, expect_float_eq5_fail) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -1274,8 +1338,10 @@ TEST(fpe, expect_float_eq6_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -1293,8 +1359,10 @@ TEST(fpe, expect_float_eq7_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -1311,8 +1379,10 @@ TEST(fpe, expect_float_eq8_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -1330,8 +1400,10 @@ TEST(fpe, expect_float_eq9_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -1350,8 +1422,10 @@ TEST(fpe, expect_float_eq10_fail) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
     /* NOLINTBEGIN(cppcoreguidelines-pro-type-vararg,hicpp-vararg) */
@@ -1370,8 +1444,10 @@ TEST(fpe, expect_float_eq11_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -1389,8 +1465,10 @@ TEST(fpe, expect_float_eq12_fail) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
     /* NOLINTBEGIN(cppcoreguidelines-pro-type-vararg,hicpp-vararg) */
@@ -1494,8 +1572,10 @@ TEST(fpe, expect_double_eq0_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -1515,8 +1595,10 @@ TEST(fpe, expect_double_eq1_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -1536,8 +1618,10 @@ TEST(fpe, expect_double_eq2_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -1557,8 +1641,10 @@ TEST(fpe, expect_double_eq3_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -1578,8 +1664,10 @@ TEST(fpe, expect_double_eq4_fail) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -1599,8 +1687,10 @@ TEST(fpe, expect_double_eq5_fail) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -1620,8 +1710,10 @@ TEST(fpe, expect_double_eq6_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -1641,8 +1733,10 @@ TEST(fpe, expect_double_eq7_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -1661,8 +1755,10 @@ TEST(fpe, expect_double_eq8_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -1682,8 +1778,10 @@ TEST(fpe, expect_double_eq9_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -1704,8 +1802,10 @@ TEST(fpe, expect_double_eq10_fail) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -1725,8 +1825,10 @@ TEST(fpe, expect_double_eq11_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -1746,8 +1848,10 @@ TEST(fpe, expect_double_eq12_fail) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
     EXPECT_DOUBLE_EQ(fp0, fp1);
@@ -2976,8 +3080,10 @@ TEST(fpe, assert_float_eq0_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
     EXPECT_FLOAT_EQ(fp0, fp1);
@@ -2994,8 +3100,10 @@ TEST(fpe, assert_float_eq1_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -3013,8 +3121,10 @@ TEST(fpe, assert_float_eq2_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -3032,8 +3142,10 @@ TEST(fpe, assert_float_eq3_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -3051,8 +3163,10 @@ TEST(fpe, assert_float_eq4_fail) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -3070,8 +3184,10 @@ TEST(fpe, assert_float_eq5_fail) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -3089,8 +3205,10 @@ TEST(fpe, assert_float_eq6_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -3108,8 +3226,10 @@ TEST(fpe, assert_float_eq7_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -3126,8 +3246,10 @@ TEST(fpe, assert_float_eq8_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -3145,8 +3267,10 @@ TEST(fpe, assert_float_eq9_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -3165,8 +3289,10 @@ TEST(fpe, assert_float_eq10_fail) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -3184,8 +3310,10 @@ TEST(fpe, assert_float_eq11_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -3203,8 +3331,10 @@ TEST(fpe, assert_float_eq12_fail) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
     EXPECT_FLOAT_EQ(fp0, fp1);
@@ -3224,8 +3354,10 @@ TEST(fpe, assert_double_eq0_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -3245,8 +3377,10 @@ TEST(fpe, assert_double_eq1_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -3266,8 +3400,10 @@ TEST(fpe, assert_double_eq2_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -3287,8 +3423,10 @@ TEST(fpe, assert_double_eq3_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -3308,8 +3446,10 @@ TEST(fpe, assert_double_eq4_fail) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -3329,8 +3469,10 @@ TEST(fpe, assert_double_eq5_fail) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -3350,8 +3492,10 @@ TEST(fpe, assert_double_eq6_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -3371,8 +3515,10 @@ TEST(fpe, assert_double_eq7_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -3391,8 +3537,10 @@ TEST(fpe, assert_double_eq8_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -3412,8 +3560,10 @@ TEST(fpe, assert_double_eq9_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -3434,8 +3584,10 @@ TEST(fpe, assert_double_eq10_fail) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -3455,8 +3607,10 @@ TEST(fpe, assert_double_eq11_okay) {
     /* NOLINTEND(*-magic-numbers) */
     /* NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     /* NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
      */
 
@@ -3474,8 +3628,10 @@ TEST(fpe, assert_double_eq12_fail) {
     bits1 = ts_uint64_c(0x80000000, 0x00000002);
     /* NOLINTEND(llvmlibc-callee-namespace) */
     /* NOLINTEND(*-magic-numbers) */
+    TS_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     std::memcpy(&fp0, &bits0, sizeof(bits0));
     std::memcpy(&fp1, &bits1, sizeof(bits1));
+    TS_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     EXPECT_DOUBLE_EQ(fp0, fp1);
 }
 

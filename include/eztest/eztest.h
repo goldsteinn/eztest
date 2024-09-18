@@ -2,7 +2,7 @@
 #define EZTEST_EZTEST_H_
 /*
  * Single header of entire eztest suite.
- * Generated: 2024-09-17 15:18:39.085625
+ * Generated: 2024-09-18 00:44:40.069727
  */
 /* Begin include of: eztest.h  */
 
@@ -37,6 +37,8 @@
 /*
  * Disable warnings that are inevitable in implementation:
  * The following warnings are present / disabled:
+ *
+ *	 -Waggregate-returns
  *   -Wcxx98-compat
  *   -Wcxx98-compat-pedantic
  *   -Wdouble-promotion
@@ -45,6 +47,7 @@
  *   -Wglobal-constructors
  *   -Wpadded
  *   -Wunsafe-buffer-usage
+ *   -Wunsafe-buffer-usage-in-libc-call
  *   -Wunused-function
  *   -Wunused-member-function
  *   -Wunused-result
@@ -545,6 +548,15 @@
 # define EZTEST_DISABLE_WPRE_C11_COMPAT_
 # define EZTEST_REENABLE_WPRE_C11_COMPAT_
 #endif
+#if (EZTEST_HAS_CLANG_VER_(20, 0, 0))
+# define EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_                     \
+     EZTEST_DISABLE_WARNING_("-Wunsafe-buffer-usage-in-libc-call")
+# define EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_                    \
+     EZTEST_REENABLE_WARNING_
+#else
+# define EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
+# define EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
+#endif
 /* End include of: eztest-compiler-warnings.h  */
 #undef EZTEST_IN_COMPILER_HDR_
 
@@ -764,24 +776,28 @@ EZTEST_DISABLE_WSYSTEM_HEADERS_
 
 /* End include of: eztest-libc-incs.h  */
 
-
-#define EZTEST_EXIT_ EZTEST_STD_NS_ exit
+/* TODO: Wrap the call to exit in a mutex.  */
+#define EZTEST_EXIT_    /* NOLINTBEGIN(concurrency-mt-unsafe) */               \
+    EZTEST_STD_NS_ exit /* NOLINTEND(concurrency-mt-unsafe) */
 EZTEST_DISABLE_WCXX98_COMPAT_PEDANTIC_
 
-#define EZTEST_PRINTF_(...)                                                                                      \
-    /* NOLINTBEGIN(clang-ana*-sec*.insecureAPI.Depr*OrUnsafeBufferHandling) */                                   \
-    /* NOLINTBEGIN(cppcoreguide*-pro-type-vararg,hicpp-vararg) */                                                \
-    EZTEST_STD_NS_ fprintf(EZTEST_STDOUT_, __VA_ARGS__) /* NOLINTEND(cppcoreguide*-pro-type-vararg,hicpp-vararg) \
-                                                         */                                                      \
-                                                                                                                 \
-        /* NOLINTEND(clang-ana*-sec*.insecureAPI.Depr*OrUnsafeBufferHandling)                                    \
-         */
+#define EZTEST_PRINTF_(...)                                                    \
+    /* NOLINTBEGIN(clang-ana*-sec*.insecureAPI.Depr*OrUnsafeBufferHandling) */ \
+    /* NOLINTBEGIN(cppcoreguide*-pro-type-vararg,hicpp-vararg) */              \
+    EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_                          \
+    EZTEST_STD_NS_ fprintf(EZTEST_STDOUT_, __VA_ARGS__)                        \
+    EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_                         \
+    /* NOLINTEND(cppcoreguide*-pro-type-vararg,hicpp-vararg) */                \
+    /* NOLINTEND(clang-ana*-sec*.insecureAPI.Depr*OrUnsafeBufferHandling) */
+
 
 EZTEST_REENABLE_WCXX98_COMPAT_PEDANTIC_
 
-#define EZTEST_VFPRINTF_ EZTEST_STD_NS_ vfprintf
-#define EZTEST_FFLUSH_   EZTEST_STD_NS_ fflush
-#define EZTEST_ERRNO_    errno
+#define EZTEST_VFPRINTF_                                                       \
+    EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_ EZTEST_STD_NS_ vfprintf  \
+        EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
+#define EZTEST_FFLUSH_ EZTEST_STD_NS_ fflush
+#define EZTEST_ERRNO_  errno
 #define EZTEST_STDOUT_                                                         \
     EZTEST_DISABLE_WDISABLED_MACRO_EXPANSION_ stdout                           \
         EZTEST_REENABLE_WDISABLED_MACRO_EXPANSION_
@@ -792,20 +808,31 @@ EZTEST_REENABLE_WCXX98_COMPAT_PEDANTIC_
    conditions from user code).  */
 #if (EZTEST_POSIX_VERSION_ >= 200112L || EZTEST_XOPEN_VERSION_ >= 600)
 # if EZTEST_GNU_SOURCE_
-#  define EZTEST_STRERROR_R_(errnum, buf, bufsz) strerror_r(errnum, buf, bufsz)
+#  define EZTEST_STRERROR_R_(errnum, buf, bufsz)                               \
+      EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_ strerror_r(errnum,     \
+                                                                   buf, bufsz) \
+          EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
 # else
 #  define EZTEST_STRERROR_R_(errnum, buf, bufsz)                               \
-      (strerror_r(errnum, buf, bufsz) == 0 ? &((buf)[0]) : "Unknown error")
+      (EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_ strerror_r(           \
+           errnum, buf, bufsz)                                                 \
+                   EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_ == 0     \
+           ? &((buf)[0])                                                       \
+           : "Unknown error")
 # endif
 #else
 # if EZTEST_CXX_LANG_
-#  define EZTEST_STRERROR_R_(errnum, buf, bufsz)                               \
-      /* NOLINTBEGIN(concurrency-mt-unsafe) */                                 \
-      std::strerror(errnum) /* NOLINTEND(concurrency-mt-unsafe) */
+#  define EZTEST_STRERROR_R_(errnum, buf, bufsz)                                                 \
+      /* NOLINTBEGIN(concurrency-mt-unsafe) */                                                   \
+      EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_ std::strerror(errnum)                    \
+          EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_ /* NOLINTEND(concurrency-mt-unsafe) \
+                                                              */
 # else
-#  define EZTEST_STRERROR_R_(errnum, buf, bufsz)                               \
-      /* NOLINTBEGIN(concurrency-mt-unsafe) */                                 \
-      strerror(errnum) /* NOLINTEND(concurrency-mt-unsafe) */
+#  define EZTEST_STRERROR_R_(errnum, buf, bufsz)                                                 \
+      /* NOLINTBEGIN(concurrency-mt-unsafe) */                                                   \
+      EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_ strerror(errnum)                         \
+          EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_ /* NOLINTEND(concurrency-mt-unsafe) \
+                                                              */
 # endif
 #endif
 
@@ -839,20 +866,35 @@ EZTEST_NAMESPACE_END_
 #define EZTEST_PWARN_V_(msg) EZTEST_NS_ eztest_pwarn(msg, 1)
 
 
-#define EZTEST_STRLEN_(str) EZTEST_STD_NS_ strlen(str)
+#define EZTEST_STRLEN_(str)                                                    \
+    EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_ EZTEST_STD_NS_ strlen(   \
+        str) EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
 
-#define EZTEST_STRCMP_(lhs, rhs) EZTEST_STD_NS_ strcmp(lhs, rhs)
+#define EZTEST_STRCMP_(lhs, rhs)                                               \
+    EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_ EZTEST_STD_NS_ strcmp(   \
+        lhs, rhs) EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
+
 #define EZTEST_STARTSWITH_(prefix, str)                                        \
-    (EZTEST_STD_NS_ strncmp(prefix, str, EZTEST_STD_NS_ strlen(prefix)) == 0)
+    EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_(                         \
+        EZTEST_STD_NS_ strncmp(prefix, str, EZTEST_STD_NS_ strlen(prefix)) ==  \
+        0)                                                                     \
+    EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
 
-#define EZTEST_MEMCPY_(dst, src, sz) EZTEST_STD_NS_ memcpy(dst, src, sz)
+#define EZTEST_MEMCPY_(dst, src, sz)                                           \
+    EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_ EZTEST_STD_NS_ memcpy(   \
+        dst, src, sz) EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
 #define EZTEST_MEMSET_(dst, val, sz) EZTEST_STD_NS_ memset(dst, val, sz)
-#define EZTEST_MEMCMP_(s0, s1, sz)   EZTEST_STD_NS_ memcmp(s0, s1, sz)
+#define EZTEST_MEMCMP_(s0, s1, sz)                                             \
+    EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_ EZTEST_STD_NS_ memcmp(   \
+        s0, s1, sz) EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
 
 #if EZTEST_POSIX_VERSION_ >= 200809L || EZTEST_GNU_SOURCE_ != 0
-# define EZTEST_STRNLEN_(str, maxlen)                                          \
-     /* NOLINTBEGIN(llvmlibc-callee-namespace) */                              \
-     strnlen(str, maxlen) /* NOLINTEND(llvmlibc-callee-namespace) */
+# define EZTEST_STRNLEN_(str, maxlen)                                                               \
+     /* NOLINTBEGIN(llvmlibc-callee-namespace) */                                                   \
+     EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_                                              \
+     strnlen(str, maxlen)                                                                           \
+         EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_ /* NOLINTEND(llvmlibc-callee-namespace) \
+                                                             */
 
 #else
 EZTEST_NAMESPACE_BEGIN_
@@ -876,9 +918,13 @@ EZTEST_NAMESPACE_END_
 
 
 #if EZTEST_GNU_SOURCE_ != 0
-# define EZTEST_STRCASECMP_(lhs, rhs)                                          \
-     /* NOLINTBEGIN(llvmlibc-callee-namespace) */ strcasecmp(                  \
-         lhs, rhs) /* NOLINTEND(llvmlibc-callee-namespace) */
+# define EZTEST_STRCASECMP_(lhs, rhs)                                                               \
+     /* NOLINTBEGIN(llvmlibc-callee-namespace) */                                                   \
+     EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_                                              \
+     strcasecmp(lhs, rhs)                                                                           \
+         EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_ /* NOLINTEND(llvmlibc-callee-namespace) \
+                                                             */
+
 # define EZTEST_STRNCASECMP_(lhs, rhs, len)                                    \
      /* NOLINTBEGIN(llvmlibc-callee-namespace) */ strncasecmp(                 \
          lhs, rhs, len) /* NOLINTEND(llvmlibc-callee-namespace) */
@@ -955,7 +1001,9 @@ EZTEST_NAMESPACE_END_
 
 
 #if EZTEST_CXX_LANG_ >= 2011
+/* NOLINTBEGIN(llvmlibc-restrict-system-libc-headers) */
 # include <array>
+/* NOLINTEND(llvmlibc-restrict-system-libc-headers) */
 # define EZTEST_ARR_BUILDER_(name, T, k_n) EZTEST_STD_NS_ array<T, k_n> name
 # define EZTEST_ARR_T_INIT_                                                    \
      {                                                                         \
@@ -1562,7 +1610,7 @@ class eztest_cxx_binop_streq_t : public EZTEST_NS_ eztest_cxx_print_var_t {
     eztest_cxx_run(const EZTEST_STD_NS_ string &      eztest_op0,
                    const EZTEST_STD_NS_ string_view & eztest_op1) {
         EZTEST_DISABLE_WAGGREGATE_RETURN_
-        EZTEST_STD_NS_ string_view eztest_op0_sv(eztest_op0);
+        const EZTEST_STD_NS_ string_view eztest_op0_sv(eztest_op0);
         EZTEST_REENABLE_WAGGREGATE_RETURN_
         return EZTEST_STD_NS_ operator==(eztest_op0_sv, eztest_op1);
     }
@@ -1571,7 +1619,7 @@ class eztest_cxx_binop_streq_t : public EZTEST_NS_ eztest_cxx_print_var_t {
     eztest_cxx_run(const EZTEST_STD_NS_ string_view & eztest_op0,
                    const EZTEST_STD_NS_ string &      eztest_op1) {
         EZTEST_DISABLE_WAGGREGATE_RETURN_
-        EZTEST_STD_NS_ string_view eztest_op1_sv(eztest_op1);
+        const EZTEST_STD_NS_ string_view eztest_op1_sv(eztest_op1);
         EZTEST_REENABLE_WAGGREGATE_RETURN_
         return EZTEST_STD_NS_ operator==(eztest_op0, eztest_op1_sv);
     }
@@ -2911,9 +2959,14 @@ eztest_list_insert_test(EZTEST_LIST_T_ * eztest_list,
     eztest_prev                 = EZTEST_NULL_;
     for (eztest_cur = eztest_list->eztest_tests_begin_; eztest_ntests != 0;
          --eztest_ntests, eztest_cur = eztest_cur->eztest_next_) {
-        if (EZTEST_CAST_(int, EZTEST_STRCMP_(eztest_cur->eztest_group_,
-                                             eztest_new_group) != 0) ==
-            eztest_found_group) {
+        /* TODO: Move these pragmas to EZTEST_STRCMP_ (clang doesn't seem to be
+         * picking them up) */
+        EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
+        int eztest_at_new_group = EZTEST_CAST_(
+            int,
+            EZTEST_STRCMP_(eztest_cur->eztest_group_, eztest_new_group) != 0);
+        EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
+        if (eztest_at_new_group == eztest_found_group) {
             if (eztest_found_group == 0) {
                 eztest_found_group = 1;
             }
@@ -3146,11 +3199,11 @@ EZTEST_PRIVATE_
 int64_t
 eztest_time_timespec_to_ms(const EZTEST_TIME_T_ * eztest_ts) {
 #if EZTEST_TIME_IS_TIMESPEC_
-    return EZTEST_CAST_(int64_t, eztest_ts->tv_sec) * EZTEST_MSEC_TO_SEC_L_ +
-           EZTEST_CAST_(int64_t, eztest_ts->tv_nsec) / (EZTEST_USEC_TO_SEC_L_);
+    return (EZTEST_CAST_(int64_t, eztest_ts->tv_sec) * EZTEST_MSEC_TO_SEC_L_) +
+           (EZTEST_CAST_(int64_t, eztest_ts->tv_nsec) / EZTEST_USEC_TO_SEC_L_);
 #else
-    return EZTEST_CAST_(int64_t, eztest_ts->tv_sec) * EZTEST_MSEC_TO_SEC_L_ +
-           EZTEST_CAST_(int64_t, eztest_ts->tv_usec) / (EZTEST_MSEC_TO_SEC_L_);
+    return (EZTEST_CAST_(int64_t, eztest_ts->tv_sec) * EZTEST_MSEC_TO_SEC_L_) +
+           (EZTEST_CAST_(int64_t, eztest_ts->tv_usec) / EZTEST_MSEC_TO_SEC_L_);
 #endif
 }
 EZTEST_NAMESPACE_END_
@@ -3245,6 +3298,7 @@ eztest_results_count_failed(const EZTEST_RESULTS_T_ * eztest_results) {
 
     unsigned eztest_cnt = 0;
     EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_
+    /* NOLINTBEGIN(llvmlibc-callee-namespace) */
     eztest_cnt +=
         eztest_results->eztest_stats_[EZTEST_NS_ eztest_k_status_fail];
     eztest_cnt +=
@@ -3253,6 +3307,7 @@ eztest_results_count_failed(const EZTEST_RESULTS_T_ * eztest_results) {
         eztest_results->eztest_stats_[EZTEST_NS_ eztest_k_status_fail_unknown];
     eztest_cnt +=
         eztest_results->eztest_stats_[EZTEST_NS_ eztest_k_status_fail_timeout];
+    /* NOLINTEND(llvmlibc-callee-namespace) */
     EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_
     return eztest_cnt;
 }
@@ -3262,7 +3317,9 @@ EZTEST_PRIVATE_ unsigned
 eztest_results_count_passed(const EZTEST_RESULTS_T_ * eztest_results) {
 
     EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_
+    /* NOLINTBEGIN(llvmlibc-callee-namespace) */
     return eztest_results->eztest_stats_[EZTEST_NS_ eztest_k_status_passed];
+    /* NOLINTEND(llvmlibc-callee-namespace) */
     EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_
 }
 
@@ -3271,7 +3328,9 @@ EZTEST_PRIVATE_ unsigned
 eztest_results_count_disabled(const EZTEST_RESULTS_T_ * eztest_results) {
 
     EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_
+    /* NOLINTBEGIN(llvmlibc-callee-namespace) */
     return eztest_results->eztest_stats_[EZTEST_NS_ eztest_k_status_disabled];
+    /* NOLINTEND(llvmlibc-callee-namespace) */
     EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_
 }
 
@@ -3280,7 +3339,9 @@ EZTEST_PRIVATE_ unsigned
 eztest_results_count_unknown(const EZTEST_RESULTS_T_ * eztest_results) {
 
     EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_
+    /* NOLINTBEGIN(llvmlibc-callee-namespace) */
     return eztest_results->eztest_stats_[EZTEST_NS_ eztest_k_status_unknown];
+    /* NOLINTEND(llvmlibc-callee-namespace) */
     EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_
 }
 
@@ -3290,12 +3351,14 @@ eztest_results_count_internal_errors(const EZTEST_RESULTS_T_ * eztest_results) {
 
     unsigned eztest_cnt = 0;
     EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_
+    /* NOLINTBEGIN(llvmlibc-callee-namespace) */
     eztest_cnt +=
         eztest_results
             ->eztest_stats_[EZTEST_NS_ eztest_k_status_internal_error];
     eztest_cnt +=
         eztest_results
             ->eztest_stats_[EZTEST_NS_ eztest_k_status_internal_fatal_error];
+    /* NOLINTEND(llvmlibc-callee-namespace) */
     EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_
     return eztest_cnt;
 }
@@ -3304,6 +3367,21 @@ EZTEST_NAMESPACE_END_
 /* End include of: eztest-results.h  */
 /* Begin include of: eztest-run.h  */
 
+/* Begin include of: eztest-algo.h  */
+
+
+#if EZTEST_CXX_LANG_
+/* NOLINTBEGIN(llvmlibc-restrict-system-libc-headers) */
+# include <algorithm>
+/* NOLINTEND(llvmlibc-restrict-system-libc-headers) */
+# define EZTEST_MIN_(eztest_lhs, eztest_rhs)                                   \
+     EZTEST_STD_NS_ min(eztest_lhs, eztest_rhs)
+#else
+# define EZTEST_MIN_(eztest_lhs, eztest_rhs)                                   \
+     ((eztest_lhs) < (eztest_rhs) ? (eztest_lhs) : (eztest_rhs))
+#endif
+
+/* End include of: eztest-algo.h  */
 /* Begin include of: eztest-group-it.h  */
 
 
@@ -3352,9 +3430,13 @@ eztest_group_it_next(EZTEST_GROUP_IT_T_ * eztest_group_it,
         *eztest_new_group_out = 0;
     }
     else {
+        /* TODO: Move these pragmas to EZTEST_STRCMP_ (clang doesn't seem to be
+         * picking them up) */
+        EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
         *eztest_new_group_out = EZTEST_CAST_(
             int, EZTEST_STRCMP_(eztest_cur_group,
                                 eztest_cur_test->eztest_group_) != 0);
+        EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
     }
 
     eztest_group_it->eztest_cur_test_ = eztest_cur_test;
@@ -4279,13 +4361,17 @@ eztest_run_tests(const EZTEST_LIST_T_ * eztest_tests_base,
                 return 1;
             }
         }
-        if (eztest_run_result > EZTEST_NS_ eztest_k_status_unknown) {
-            eztest_run_result = EZTEST_NS_ eztest_k_status_unknown;
-        }
+        /* Clamp return value.  */
+        eztest_run_result = EZTEST_MIN_(
+            eztest_run_result,
+            EZTEST_CAST_(unsigned, EZTEST_NS_ eztest_k_status_unknown));
+
         eztest_test->eztest_status_ = eztest_run_result;
         EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_
         /* NOLINTBEGIN(cppcoreguidelines-pro-bounds-constant-array-index) */
+        /* NOLINTBEGIN(llvmlibc-callee-namespace) */
         ++eztest_results->eztest_stats_[eztest_run_result];
+        /* NOLINTEND(llvmlibc-callee-namespace) */
         /* NOLINTEND(cppcoreguidelines-pro-bounds-constant-array-index) */
         EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_
     }

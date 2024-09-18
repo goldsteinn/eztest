@@ -42,6 +42,7 @@
  *   -Wglobal-constructors
  *   -Wpadded
  *   -Wunsafe-buffer-usage
+ *   -Wunsafe-buffer-usage-in-libc-call
  *   -Wunused-function
  *   -Wunused-member-function
  *   -Wunused-result

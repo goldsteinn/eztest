@@ -76,14 +76,15 @@ eztest_fp_bits_get_ulp(uint64_t              eztest_fp_bits_lhs,
 }
 
 #define EZTEST_BITCAST_FP_TO_U64_(ty_t, fp, u64_out)                           \
- /* NOLINTBEGIN(cppcoreguide*-avoid-do-while) */                               \
- do {                                                                          \
-  ty_t eztest_fp_tmp_ = fp;                                                    \
-  (u64_out)           = 0;                                                     \
-  /* NOLINTBEGIN(clang-a*-sec*.insecureAPI.Depr*OrUnsafeBufferHandling) */     \
-  EZTEST_MEMCPY_(&(u64_out), &eztest_fp_tmp_, sizeof(ty_t));                   \
-  /* NOLINTEND(clang-a*-sec*.insecureAPI.Depr*OrUnsafeBufferHandling) */       \
- } while (0) /* NOLINTEND(cppcoreguide*-avoid-do-while) */
+    /* NOLINTBEGIN(cppcoreguide*-avoid-do-while) */                            \
+    do {                                                                       \
+        ty_t eztest_fp_tmp_ = fp;                                              \
+        (u64_out)           = 0;                                               \
+        /* NOLINTBEGIN(clang-a*-sec*.insecureAPI.Depr*OrUnsafeBufferHandling)  \
+         */                                                                    \
+        EZTEST_MEMCPY_(&(u64_out), &eztest_fp_tmp_, sizeof(ty_t));             \
+        /* NOLINTEND(clang-a*-sec*.insecureAPI.Depr*OrUnsafeBufferHandling) */ \
+    } while (0) /* NOLINTEND(cppcoreguide*-avoid-do-while) */
 
 
 EZTEST_PRIVATE_ int

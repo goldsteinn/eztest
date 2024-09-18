@@ -14,7 +14,7 @@ struct eztest_list_t {
 };
 #define EZTEST_LIST_T_ EZTEST_STRUCT_NS_ eztest_list_t
 #define EZTEST_LIST_T_INIT_                                                    \
- { EZTEST_NULL_, 0, EZTEST_STRUCT_INTT_PADDING_INIT_ }
+    { EZTEST_NULL_, 0, EZTEST_STRUCT_INTT_PADDING_INIT_ }
 
 
 /*
@@ -40,9 +40,14 @@ eztest_list_insert_test(EZTEST_LIST_T_ * eztest_list,
     eztest_prev                 = EZTEST_NULL_;
     for (eztest_cur = eztest_list->eztest_tests_begin_; eztest_ntests != 0;
          --eztest_ntests, eztest_cur = eztest_cur->eztest_next_) {
-        if (EZTEST_CAST_(int, EZTEST_STRCMP_(eztest_cur->eztest_group_,
-                                             eztest_new_group) != 0) ==
-            eztest_found_group) {
+        /* TODO: Move these pragmas to EZTEST_STRCMP_ (clang doesn't seem to be
+         * picking them up) */
+        EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
+        int eztest_at_new_group = EZTEST_CAST_(
+            int,
+            EZTEST_STRCMP_(eztest_cur->eztest_group_, eztest_new_group) != 0);
+        EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_IN_LIBC_CALL_
+        if (eztest_at_new_group == eztest_found_group) {
             if (eztest_found_group == 0) {
                 eztest_found_group = 1;
             }
