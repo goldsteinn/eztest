@@ -14,7 +14,7 @@ jobs:
   eztest-integration:
     name: Integration - ${{ matrix.system.os }}
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         system: [
         { os: ubuntu-latest, },
@@ -47,7 +47,7 @@ jobs:
   eztest-x86:
     name: ${{ matrix.targets.arch }}, ${{ matrix.compiler.cc }}, ${{ matrix.compiler.os }}
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         targets: [
           { arch: 'x86-64', runtime_pkg: '' },
@@ -104,17 +104,18 @@ jobs:
           uver: 0,
           os: ubuntu-24.04,
         },
-        {
-          pkgs: 'gcc-13  g++-13  gcc-13-multilib g++-13-multilib',
-          cc: gcc-13,
-          cxx: g++-13,
-          tidy: 'clang-tidy',
-          install_method: 'apt',
-          comp_base: 'gnu',
-          comp_ver: 13,
-          uver: 0,
-          os: ubuntu-22.04,
-        },
+# Fails to install
+#        {
+#          pkgs: 'gcc-13  g++-13  gcc-13-multilib g++-13-multilib',
+#          cc: gcc-13,
+#          cxx: g++-13,
+#          tidy: 'clang-tidy',
+#          install_method: 'apt',
+#          comp_base: 'gnu',
+#          comp_ver: 13,
+#          uver: 0,
+#          os: ubuntu-22.04,
+#        },
 
         {
           pkgs: 'gcc-12  g++-12   gcc-12-multilib g++-12-multilib',
@@ -200,6 +201,42 @@ jobs:
           comp_ver: 15,
           uver: 0,
           os: ubuntu-latest,
+        },
+
+        {
+          pkgs: 'clang-18',
+          cc: clang-18,
+          cxx: clang++-18,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 18,
+          uver: 0,
+          os: ubuntu-24.04,
+        },
+
+        {
+          pkgs: 'clang-17',
+          cc: clang-17,
+          cxx: clang++-17,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 17,
+          uver: 0,
+          os: ubuntu-24.04,
+        },
+
+        {
+          pkgs: 'clang-16',
+          cc: clang-16,
+          cxx: clang++-16,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 16,
+          uver: 0,
+          os: ubuntu-24.04,
         },
 
         {
@@ -320,7 +357,7 @@ jobs:
           install_method: 'web',
           comp_base: 'llvm',
           comp_ver: 16,
-          uver: 14,
+          uver: 18,
           os: ubuntu-latest,
         },
 
@@ -332,7 +369,7 @@ jobs:
           install_method: 'web',
           comp_base: 'llvm',
           comp_ver: 17,
-          uver: 14,
+          uver: 18,
           os: ubuntu-latest,
         },
 
@@ -344,21 +381,22 @@ jobs:
           install_method: 'web',
           comp_base: 'llvm',
           comp_ver: 18,
-          uver: 14,
+          uver: 18,
           os: ubuntu-latest,
         },
 
-        {
-          pkgs: '',
-          cc: clang-19,
-          cxx: clang++-19,
-          tidy: 'clang-tidy-19',
-          install_method: 'web',
-          comp_base: 'llvm',
-          comp_ver: 19,
-          uver: 14,
-          os: ubuntu-latest,
-        },
+# Fails to install
+#        {
+#          pkgs: '',
+#          cc: clang-19,
+#          cxx: clang++-19,
+#          tidy: 'clang-tidy-19',
+#          install_method: 'web',
+#          comp_base: 'llvm',
+#          comp_ver: 19,
+#          uver: 18,
+#          os: ubuntu-latest,
+#        },
 
         {
           pkgs: '',
@@ -368,7 +406,7 @@ jobs:
           install_method: 'web',
           comp_base: 'llvm',
           comp_ver: 20,
-          uver: 14,
+          uver: 18,
           os: ubuntu-latest,
         },
         ]
@@ -881,7 +919,7 @@ jobs:
   eztest-riscv64:
     name: ${{ matrix.targets.arch }}, ${{ matrix.compiler.cc }}, ${{ matrix.compiler.os }}
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         targets: [
           { arch: 'riscv64', runtime_pkg: 'qemu-user-static qemu-utils  qemu-system-riscv64' },
@@ -900,6 +938,45 @@ jobs:
           comp_ver: 15,
           uver: 0,
           os: ubuntu-latest,
+        },
+
+        {
+          pkgs: 'clang-18 gcc-riscv64-linux-gnu  g++-riscv64-linux-gnu',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: clang-18,
+          cxx: clang++-18,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 18,
+          uver: 0,
+          os: ubuntu-24.04,
+        },
+
+        {
+          pkgs: 'clang-17 gcc-riscv64-linux-gnu  g++-riscv64-linux-gnu',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: clang-17,
+          cxx: clang++-17,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 17,
+          uver: 0,
+          os: ubuntu-24.04,
+        },
+
+        {
+          pkgs: 'clang-16 gcc-riscv64-linux-gnu  g++-riscv64-linux-gnu',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: clang-16,
+          cxx: clang++-16,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 16,
+          uver: 0,
+          os: ubuntu-24.04,
         },
 
         {
@@ -951,7 +1028,7 @@ jobs:
           install_method: 'web',
           comp_base: 'llvm',
           comp_ver: 16,
-          uver: 14,
+          uver: 18,
           os: ubuntu-latest,
         },
 
@@ -964,7 +1041,7 @@ jobs:
           install_method: 'web',
           comp_base: 'llvm',
           comp_ver: 17,
-          uver: 14,
+          uver: 18,
           os: ubuntu-latest,
         },
 
@@ -977,20 +1054,32 @@ jobs:
           install_method: 'web',
           comp_base: 'llvm',
           comp_ver: 18,
-          uver: 14,
+          uver: 18,
           os: ubuntu-latest,
         },
-
+# Fails to install
+#        {
+#          pkgs: ' gcc-riscv64-linux-gnu  g++-riscv64-linux-gnu',
+#          libgcc_pkgs : ' gcc-multilib g++-multilib',
+#          cc: clang-19,
+#          cxx: clang++-19,
+#          tidy: 'clang-tidy-19',
+#          install_method: 'web',
+#          comp_base: 'llvm',
+#          comp_ver: 19,
+#          uver: 18,
+#          os: ubuntu-latest,
+#        },
         {
           pkgs: ' gcc-riscv64-linux-gnu  g++-riscv64-linux-gnu',
           libgcc_pkgs : ' gcc-multilib g++-multilib',
-          cc: clang-19,
-          cxx: clang++-19,
-          tidy: 'clang-tidy-19',
+          cc: clang-20,
+          cxx: clang++-20,
+          tidy: 'clang-tidy-20',
           install_method: 'web',
           comp_base: 'llvm',
-          comp_ver: 19,
-          uver: 14,
+          comp_ver: 20,
+          uver: 18,
           os: ubuntu-latest,
         },
         # arm
@@ -1574,7 +1663,7 @@ jobs:
   eztest-aarch64:
     name: ${{ matrix.targets.arch }}, ${{ matrix.compiler.cc }}, ${{ matrix.compiler.os }}
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         targets: [
           { arch: 'aarch64', runtime_pkg: 'qemu-user-static qemu-utils  qemu-system-aarch64' },
@@ -1593,6 +1682,45 @@ jobs:
           comp_ver: 15,
           uver: 0,
           os: ubuntu-latest,
+        },
+
+        {
+          pkgs: 'clang-18 gcc-aarch64-linux-gnu  g++-aarch64-linux-gnu',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: clang-18,
+          cxx: clang++-18,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 18,
+          uver: 0,
+          os: ubuntu-24.04,
+        },
+
+        {
+          pkgs: 'clang-17 gcc-aarch64-linux-gnu  g++-aarch64-linux-gnu',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: clang-17,
+          cxx: clang++-17,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 17,
+          uver: 0,
+          os: ubuntu-24.04,
+        },
+
+        {
+          pkgs: 'clang-16 gcc-aarch64-linux-gnu  g++-aarch64-linux-gnu',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: clang-16,
+          cxx: clang++-16,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 16,
+          uver: 0,
+          os: ubuntu-24.04,
         },
 
         {
@@ -1645,7 +1773,7 @@ jobs:
           install_method: 'web',
           comp_base: 'llvm',
           comp_ver: 16,
-          uver: 14,
+          uver: 18,
           os: ubuntu-latest,
         },
 
@@ -1658,7 +1786,7 @@ jobs:
           install_method: 'web',
           comp_base: 'llvm',
           comp_ver: 17,
-          uver: 14,
+          uver: 18,
           os: ubuntu-latest,
         },
 
@@ -1671,20 +1799,32 @@ jobs:
           install_method: 'web',
           comp_base: 'llvm',
           comp_ver: 18,
-          uver: 14,
+          uver: 18,
           os: ubuntu-latest,
         },
-
+# Fails to install
+#        {
+#          pkgs: ' gcc-aarch64-linux-gnu  g++-aarch64-linux-gnu',
+#          libgcc_pkgs : ' gcc-multilib g++-multilib',
+#          cc: clang-19,
+#          cxx: clang++-19,
+#          tidy: 'clang-tidy-19',
+#          install_method: 'web',
+#          comp_base: 'llvm',
+#          comp_ver: 19,
+#          uver: 18,
+#          os: ubuntu-latest,
+#        },
         {
           pkgs: ' gcc-aarch64-linux-gnu  g++-aarch64-linux-gnu',
           libgcc_pkgs : ' gcc-multilib g++-multilib',
-          cc: clang-19,
-          cxx: clang++-19,
-          tidy: 'clang-tidy-19',
+          cc: clang-20,
+          cxx: clang++-20,
+          tidy: 'clang-tidy-20',
           install_method: 'web',
           comp_base: 'llvm',
-          comp_ver: 19,
-          uver: 14,
+          comp_ver: 20,
+          uver: 18,
           os: ubuntu-latest,
         },
         # arm
@@ -2268,7 +2408,7 @@ jobs:
   eztest-arm:
     name: ${{ matrix.targets.arch }}, ${{ matrix.compiler.cc }}, ${{ matrix.compiler.os }}
     strategy:
-      fail-fast: true  
+      fail-fast: false  
       matrix:
         targets: [
           { arch: 'arm', runtime_pkg: 'qemu-user-static qemu-utils  qemu-system-arm' },
@@ -2287,6 +2427,45 @@ jobs:
           comp_ver: 15,
           uver: 0,
           os: ubuntu-latest,
+        },
+
+        {
+          pkgs: 'clang-18 gcc-arm-linux-gnu  g++-arm-linux-gnu',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: clang-18,
+          cxx: clang++-18,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 18,
+          uver: 0,
+          os: ubuntu-24.04,
+        },
+
+        {
+          pkgs: 'clang-17 gcc-arm-linux-gnu  g++-arm-linux-gnu',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: clang-17,
+          cxx: clang++-17,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 17,
+          uver: 0,
+          os: ubuntu-24.04,
+        },
+
+        {
+          pkgs: 'clang-16 gcc-arm-linux-gnu  g++-arm-linux-gnu',
+          libgcc_pkgs : ' gcc-multilib g++-multilib',
+          cc: clang-16,
+          cxx: clang++-16,
+          tidy: 'clang-tidy',
+          install_method: 'apt',
+          comp_base: 'llvm',
+          comp_ver: 16,
+          uver: 0,
+          os: ubuntu-24.04,
         },
 
         {
@@ -2339,7 +2518,7 @@ jobs:
           install_method: 'web',
           comp_base: 'llvm',
           comp_ver: 16,
-          uver: 14,
+          uver: 18,
           os: ubuntu-latest,
         },
 
@@ -2352,7 +2531,7 @@ jobs:
           install_method: 'web',
           comp_base: 'llvm',
           comp_ver: 17,
-          uver: 14,
+          uver: 18,
           os: ubuntu-latest,
         },
 
@@ -2365,20 +2544,33 @@ jobs:
           install_method: 'web',
           comp_base: 'llvm',
           comp_ver: 18,
-          uver: 14,
+          uver: 18,
           os: ubuntu-latest,
         },
+# Fails to install
+#        {
+#          pkgs: ' gcc-arm-linux-gnueabi  g++-arm-linux-gnueabi',
+#          libgcc_pkgs : ' gcc-multilib g++-multilib',
+#          cc: clang-19,
+#          cxx: clang++-19,
+#          tidy: 'clang-tidy-19',
+#          install_method: 'web',
+#          comp_base: 'llvm',
+#          comp_ver: 19,
+#          uver: 18,
+#          os: ubuntu-latest,
+#        },
 
         {
           pkgs: ' gcc-arm-linux-gnueabi  g++-arm-linux-gnueabi',
           libgcc_pkgs : ' gcc-multilib g++-multilib',
-          cc: clang-19,
-          cxx: clang++-19,
-          tidy: 'clang-tidy-19',
+          cc: clang-20,
+          cxx: clang++-20,
+          tidy: 'clang-tidy-20',
           install_method: 'web',
           comp_base: 'llvm',
-          comp_ver: 19,
-          uver: 14,
+          comp_ver: 20,
+          uver: 18,
           os: ubuntu-latest,
         },
         # arm
