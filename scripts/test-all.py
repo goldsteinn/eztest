@@ -4,7 +4,7 @@ import multiprocessing
 
 assert len(sys.argv) >= 2
 
-G_COMPILER = sys.argv[1].lower()
+G_COMPILER = sys.argv[1]
 G_COMPILER_NORM = {
     "clang": "clang",
     "llvm": "clang",
@@ -32,7 +32,7 @@ try:
     G_f = open(G_README)
     G_content = G_f.read()
     G_f.close()
-    assert G_content.startswith("# EZTEST")
+    assert G_content.startswith("# EZTest")
 except Exception:
     assert False, "Unable to verify!"
 
@@ -72,9 +72,21 @@ def run_test_impl(ver, c_std, cxx_std, ext):
 
     ext = "-DCMAKE_C_EXTENSIONS={} -DCMAKE_CXX_EXTENSIONS={}".format(ext, ext)
 
+    c_compiler = ""
+    cxx_compiler = ""
+    if G_COMPILER == "clang":
+        c_compiler = f"clang-{ver}"
+        cxx_compiler = f"clang++-{ver}"
+    elif G_COMPILER == "gcc":
+        c_compiler = f"gcc-{ver}"
+        cxx_compiler = f"g++-{ver}"
+    else:
+        assert False
+
     cmake_res = os_do(
-        "(cd {}; cmake {} -GNinja {} {} {} -DCMAKE_C_COMPILER=$(compiler-vers --ver {} --get-c) -DCMAKE_CXX_COMPILER=$(compiler-vers --ver {} --get-cc) -DCMAKE_BUILD_TYPE=Release > log.txt 2>&1)"
-        .format(test_dir, G_SRC_DIR, c_std, cxx_std, ext, cver, cver))
+        "(cd {}; cmake {} -GNinja {} {} {} -DCMAKE_C_COMPILER={} -DCMAKE_CXX_COMPILER={} -DCMAKE_BUILD_TYPE=Release -DEZTEST_BUILD_TESTS=ON > log.txt 2>&1)"
+        .format(test_dir, G_SRC_DIR, c_std, cxx_std, ext, c_compiler,
+                cxx_compiler))
 
     omap = {0: "P", 1: "F", -1: "U"}
 
@@ -82,8 +94,10 @@ def run_test_impl(ver, c_std, cxx_std, ext):
     for lang in ["c", "cxx"]:
         todo = "all-{}".format(lang)
         todo_san = "all-all-{}".format(lang)
+        todo_tidy = "run-static-analysis"
         res = -1
         res_san = -1
+        res_tidy = -1
         if cmake_res == 0:
             res = os_do(
                 "(cd {}; ninja --verbose check-{} >> log.txt 2>&1)".format(
@@ -92,14 +106,23 @@ def run_test_impl(ver, c_std, cxx_std, ext):
                 res_san = os_do(
                     "(cd {}; ninja --verbose check-{} >> log.txt 2>&1)".format(
                         test_dir, todo_san))
+                if res_san == 0:
+                    if lang == "c":
+                        res_tidy = 0
+                    else:
+                        res_tidy = os_do(
+                            "(cd {}; ninja --verbose {} >> log.txt 2>&1)".
+                            format(test_dir, todo_tidy))
 
-        if res == 1 or res_san == 1:
+        if res == 1 or res_san == 1 or res_tidy == 1:
             total_res = 1
-        elif total_res == 0 and (res == -1 or res_san == -1):
+        elif total_res == 0 and (res == -1 or res_san == -1 or res_tidy == -1):
             total_res = -1
 
         status.append("{}: {}".format(todo, omap[res]))
         status.append("{}: {}".format(todo_san, omap[res_san]))
+        if lang == "cxx":
+            status.append("{}: {}".format(todo_tidy, omap[res_tidy]))
 
     tail = ""
     if total_res == 0:
@@ -110,6 +133,8 @@ def run_test_impl(ver, c_std, cxx_std, ext):
         tail = "Failed"
 
     print(hdr + " - ".join(status) + " -- " + tail)
+    if tail == "Failed":
+        print(f"\tSee Log in {test_dir}")
 
 
 def run_test(ver):

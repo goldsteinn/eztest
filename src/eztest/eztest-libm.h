@@ -17,5 +17,8 @@
 # define EZTEST_ABS_(x) EZTEST_STD_NS_ fabs(x)
 #endif
 
+#define EZTEST_LONG_DOUBLE_T_ /* NOLINTBEGIN(google-runtime-float) */          \
+    long double               /* NOLINTEND(google-runtime-float) */
+
 #define EZTEST_ISNAN_(x) EZTEST_STD_NS_ isnan(x)
 #endif

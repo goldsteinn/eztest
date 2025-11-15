@@ -943,6 +943,7 @@ TEST(fpe, assert_double_near23_okay) {
 //
 TEST(fpe, assert_long_double_near0_okay) {
     /* NOLINTBEGIN(*-magic-numbers) */
+    /* NOLINTBEGIN(google-runtime-float) */
     const long double fp0 = 1.1L;
     const long double fp1 = 1.2L;
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
@@ -950,11 +951,13 @@ TEST(fpe, assert_long_double_near0_okay) {
     ASSERT_NEAR(fp0, fp1, .1);
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(google-runtime-float) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
 TEST(fpe, assert_long_double_near1_fail) {
     /* NOLINTBEGIN(*-magic-numbers) */
+    /* NOLINTBEGIN(google-runtime-float) */
     const long double fp0 = 1.2L;
     const long double fp1 = 1.1L;
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
@@ -962,11 +965,13 @@ TEST(fpe, assert_long_double_near1_fail) {
     ASSERT_NEAR(fp0, fp1, .0999);
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(google-runtime-float) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
 TEST(fpe, assert_long_double_near2_okay) {
     /* NOLINTBEGIN(*-magic-numbers) */
+    /* NOLINTBEGIN(google-runtime-float) */
     const long double fp0 = 1.1L;
     const long double fp1 = 1.1000001L;
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
@@ -974,11 +979,13 @@ TEST(fpe, assert_long_double_near2_okay) {
     ASSERT_NEAR(fp0, fp1, .0001F);
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(google-runtime-float) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
 TEST(fpe, assert_long_double_near3_okay) {
     /* NOLINTBEGIN(*-magic-numbers) */
+    /* NOLINTBEGIN(google-runtime-float) */
     const long double fp0 = 1.1000001L;
     const long double fp1 = 1.1L;
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
@@ -986,11 +993,13 @@ TEST(fpe, assert_long_double_near3_okay) {
     ASSERT_NEAR(fp0, fp1, .0001);
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(google-runtime-float) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
 TEST(fpe, assert_long_double_near4_okay) {
     /* NOLINTBEGIN(*-magic-numbers) */
+    /* NOLINTBEGIN(google-runtime-float) */
     const long double fp0 = 1.10001L;
     const long double fp1 = 1.1L;
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
@@ -998,10 +1007,12 @@ TEST(fpe, assert_long_double_near4_okay) {
     ASSERT_NEAR(fp0, fp1, .0001L);
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(google-runtime-float) */
     /* NOLINTEND(*-magic-numbers) */
 }
 TEST(fpe, assert_long_double_near5_fail) {
     /* NOLINTBEGIN(*-magic-numbers) */
+    /* NOLINTBEGIN(google-runtime-float) */
     const long double fp0 = 1.10001L;
     const long double fp1 = 1.1L;
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
@@ -1009,12 +1020,14 @@ TEST(fpe, assert_long_double_near5_fail) {
     ASSERT_NEAR(fp0, fp1, .000001L);
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(google-runtime-float) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
 
 TEST(fpe, assert_long_double_near6_fail) {
     /* NOLINTBEGIN(*-magic-numbers) */
+    /* NOLINTBEGIN(google-runtime-float) */
     const long double fp0 = 1.10001L;
     const long double fp1 = 1.1L;
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
@@ -1022,61 +1035,72 @@ TEST(fpe, assert_long_double_near6_fail) {
     ASSERT_NEAR(fp0, fp1, .000001F);
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(google-runtime-float) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
 TEST(fpe, assert_long_double_near7_fail) {
     /* NOLINTBEGIN(*-magic-numbers) */
+    /* NOLINTBEGIN(google-runtime-float) */
     const long double fp0 = 1.10001L;
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
     TS_DISABLE_WABSOLUTE_VALUE_
     ASSERT_NEAR(fp0, 1.1, .000001L);
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(google-runtime-float) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
 TEST(fpe, assert_long_double_near8_fail) {
     /* NOLINTBEGIN(*-magic-numbers) */
+    /* NOLINTBEGIN(google-runtime-float) */
     const long double fp0 = 1.10001L;
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
     TS_DISABLE_WABSOLUTE_VALUE_
     ASSERT_NEAR(fp0, 1.1, .000001);
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(google-runtime-float) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
 TEST(fpe, assert_long_double_near9_fail) {
     /* NOLINTBEGIN(*-magic-numbers) */
+    /* NOLINTBEGIN(google-runtime-float) */
     const long double fp0 = 1.10001L;
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
     TS_DISABLE_WABSOLUTE_VALUE_
     ASSERT_NEAR(1.1F, fp0, .000001F);
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(google-runtime-float) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
 TEST(fpe, assert_long_double_near10_fail) {
     /* NOLINTBEGIN(*-magic-numbers) */
+    /* NOLINTBEGIN(google-runtime-float) */
     const long double fp0 = 1.10001L;
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
     TS_DISABLE_WABSOLUTE_VALUE_
     ASSERT_NEAR(1.1F, fp0, .000001L);
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(google-runtime-float) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
 TEST(fpe, assert_long_double_near11_fail) {
     /* NOLINTBEGIN(*-magic-numbers) */
+    /* NOLINTBEGIN(google-runtime-float) */
     const long double fp0 = 1.10001L;
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
     TS_DISABLE_WABSOLUTE_VALUE_
     ASSERT_NEAR(1.1, fp0, .000001);
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(google-runtime-float) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
@@ -1100,6 +1124,7 @@ TEST(fpe, assert_long_double_near14_fail) {
 
 TEST(fpe, assert_long_double_near15_okay) {
     /* NOLINTBEGIN(*-magic-numbers) */
+    /* NOLINTBEGIN(google-runtime-float) */
     const float       fp0 = 1.10001F;
     const long double fp1 = 1.1L;
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
@@ -1107,6 +1132,7 @@ TEST(fpe, assert_long_double_near15_okay) {
     ASSERT_NEAR(fp0, fp1, .0001L);
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(google-runtime-float) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
@@ -1135,6 +1161,7 @@ TEST(fpe, assert_long_double_near17_okay) {
 
 TEST(fpe, assert_long_double_near18_okay) {
     /* NOLINTBEGIN(*-magic-numbers) */
+    /* NOLINTBEGIN(google-runtime-float) */
     const float       fp0 = 1.10001F;
     const long double fp1 = 1.1L;
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
@@ -1142,11 +1169,13 @@ TEST(fpe, assert_long_double_near18_okay) {
     ASSERT_NEAR(fp0, fp1, .0001F);
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(google-runtime-float) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
 TEST(fpe, assert_long_double_near19_okay) {
     /* NOLINTBEGIN(*-magic-numbers) */
+    /* NOLINTBEGIN(google-runtime-float) */
     const long double fp0 = 1.10001L;
     const float       fp1 = 1.1F;
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
@@ -1154,6 +1183,7 @@ TEST(fpe, assert_long_double_near19_okay) {
     ASSERT_NEAR(fp0, fp1, .0001L);
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(google-runtime-float) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
@@ -2094,6 +2124,7 @@ TEST(fpe, expect_double_near23_okay) {
 //
 TEST(fpe, expect_long_double_near0_okay) {
     /* NOLINTBEGIN(*-magic-numbers) */
+    /* NOLINTBEGIN(google-runtime-float) */
     const long double fp0 = 1.1L;
     const long double fp1 = 1.2L;
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
@@ -2101,11 +2132,13 @@ TEST(fpe, expect_long_double_near0_okay) {
     EXPECT_NEAR(fp0, fp1, .1);
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(google-runtime-float) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
 TEST(fpe, expect_long_double_near1_fail) {
     /* NOLINTBEGIN(*-magic-numbers) */
+    /* NOLINTBEGIN(google-runtime-float) */
     const long double fp0 = 1.2L;
     const long double fp1 = 1.1L;
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
@@ -2113,11 +2146,13 @@ TEST(fpe, expect_long_double_near1_fail) {
     EXPECT_NEAR(fp0, fp1, .0999);
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(google-runtime-float) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
 TEST(fpe, expect_long_double_near2_okay) {
     /* NOLINTBEGIN(*-magic-numbers) */
+    /* NOLINTBEGIN(google-runtime-float) */
     const long double fp0 = 1.1L;
     const long double fp1 = 1.1000001L;
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
@@ -2125,11 +2160,13 @@ TEST(fpe, expect_long_double_near2_okay) {
     EXPECT_NEAR(fp0, fp1, .0001F);
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(google-runtime-float) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
 TEST(fpe, expect_long_double_near3_okay) {
     /* NOLINTBEGIN(*-magic-numbers) */
+    /* NOLINTBEGIN(google-runtime-float) */
     const long double fp0 = 1.1000001L;
     const long double fp1 = 1.1L;
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
@@ -2137,11 +2174,13 @@ TEST(fpe, expect_long_double_near3_okay) {
     EXPECT_NEAR(fp0, fp1, .0001);
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(google-runtime-float) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
 TEST(fpe, expect_long_double_near4_okay) {
     /* NOLINTBEGIN(*-magic-numbers) */
+    /* NOLINTBEGIN(google-runtime-float) */
     const long double fp0 = 1.10001L;
     const long double fp1 = 1.1L;
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
@@ -2149,10 +2188,12 @@ TEST(fpe, expect_long_double_near4_okay) {
     EXPECT_NEAR(fp0, fp1, .0001L);
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(google-runtime-float) */
     /* NOLINTEND(*-magic-numbers) */
 }
 TEST(fpe, expect_long_double_near5_fail) {
     /* NOLINTBEGIN(*-magic-numbers) */
+    /* NOLINTBEGIN(google-runtime-float) */
     const long double fp0 = 1.10001L;
     const long double fp1 = 1.1L;
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
@@ -2160,12 +2201,14 @@ TEST(fpe, expect_long_double_near5_fail) {
     EXPECT_NEAR(fp0, fp1, .000001L);
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(google-runtime-float) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
 
 TEST(fpe, expect_long_double_near6_fail) {
     /* NOLINTBEGIN(*-magic-numbers) */
+    /* NOLINTBEGIN(google-runtime-float) */
     const long double fp0 = 1.10001L;
     const long double fp1 = 1.1L;
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
@@ -2173,61 +2216,72 @@ TEST(fpe, expect_long_double_near6_fail) {
     EXPECT_NEAR(fp0, fp1, .000001F);
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(google-runtime-float) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
 TEST(fpe, expect_long_double_near7_fail) {
     /* NOLINTBEGIN(*-magic-numbers) */
+    /* NOLINTBEGIN(google-runtime-float) */
     const long double fp0 = 1.10001L;
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
     TS_DISABLE_WABSOLUTE_VALUE_
     EXPECT_NEAR(fp0, 1.1, .000001L);
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(google-runtime-float) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
 TEST(fpe, expect_long_double_near8_fail) {
     /* NOLINTBEGIN(*-magic-numbers) */
+    /* NOLINTBEGIN(google-runtime-float) */
     const long double fp0 = 1.10001L;
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
     TS_DISABLE_WABSOLUTE_VALUE_
     EXPECT_NEAR(fp0, 1.1, .000001);
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(google-runtime-float) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
 TEST(fpe, expect_long_double_near9_fail) {
     /* NOLINTBEGIN(*-magic-numbers) */
+    /* NOLINTBEGIN(google-runtime-float) */
     const long double fp0 = 1.10001L;
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
     TS_DISABLE_WABSOLUTE_VALUE_
     EXPECT_NEAR(1.1F, fp0, .000001F);
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(google-runtime-float) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
 TEST(fpe, expect_long_double_near10_fail) {
     /* NOLINTBEGIN(*-magic-numbers) */
+    /* NOLINTBEGIN(google-runtime-float) */
     const long double fp0 = 1.10001L;
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
     TS_DISABLE_WABSOLUTE_VALUE_
     EXPECT_NEAR(1.1F, fp0, .000001L);
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(google-runtime-float) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
 TEST(fpe, expect_long_double_near11_fail) {
     /* NOLINTBEGIN(*-magic-numbers) */
+    /* NOLINTBEGIN(google-runtime-float) */
     const long double fp0 = 1.10001L;
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
     TS_DISABLE_WABSOLUTE_VALUE_
     EXPECT_NEAR(1.1, fp0, .000001);
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(google-runtime-float) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
@@ -2251,13 +2305,15 @@ TEST(fpe, expect_long_double_near14_fail) {
 
 TEST(fpe, expect_long_double_near15_okay) {
     /* NOLINTBEGIN(*-magic-numbers) */
-    const float       fp0 = 1.10001F;
+    const float fp0 = 1.10001F;
+    /* NOLINTBEGIN(google-runtime-float) */
     const long double fp1 = 1.1L;
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
     TS_DISABLE_WABSOLUTE_VALUE_
     EXPECT_NEAR(fp0, fp1, .0001L);
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(google-runtime-float) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
@@ -2286,18 +2342,21 @@ TEST(fpe, expect_long_double_near17_okay) {
 
 TEST(fpe, expect_long_double_near18_okay) {
     /* NOLINTBEGIN(*-magic-numbers) */
-    const float       fp0 = 1.10001F;
+    const float fp0 = 1.10001F;
+    /* NOLINTBEGIN(google-runtime-float) */
     const long double fp1 = 1.1L;
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
     TS_DISABLE_WABSOLUTE_VALUE_
     EXPECT_NEAR(fp0, fp1, .0001F);
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(google-runtime-float) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
 TEST(fpe, expect_long_double_near19_okay) {
     /* NOLINTBEGIN(*-magic-numbers) */
+    /* NOLINTBEGIN(google-runtime-float) */
     const long double fp0 = 1.10001L;
     const float       fp1 = 1.1F;
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
@@ -2305,6 +2364,7 @@ TEST(fpe, expect_long_double_near19_okay) {
     EXPECT_NEAR(fp0, fp1, .0001L);
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
+    /* NOLINTEND(google-runtime-float) */
     /* NOLINTEND(*-magic-numbers) */
 }
 

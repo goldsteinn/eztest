@@ -1,13 +1,13 @@
 #ifndef EZTEST_D_EZTEST_D_EZTEST_ARCH_H_
 #define EZTEST_D_EZTEST_D_EZTEST_ARCH_H_
 
-#if defined(__AMDGPU__)
+#ifdef __AMDGPU__
 # define EZTEST_ARCH_IS_AMDGPU_ 1
 #else
 # define EZTEST_ARCH_IS_AMDGPU_ 0
 #endif
 
-#if defined(__NVPTX__)
+#ifdef __NVPTX__
 # define EZTEST_ARCH_IS_NVPTX_ 1
 #else
 # define EZTEST_ARCH_IS_NVPTX_ 0

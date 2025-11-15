@@ -17,6 +17,8 @@
 
 
 /* NOLINTBEGIN(altera-unroll-loops) */
+/* NOLINTBEGIN(hicpp-use-nullptr) */
+/* NOLINTBEGIN(modernize-use-nullptr) */
 TS_DISABLE_WSTACK_PROTECTOR_
 TS_DISABLE_WDOUBLE_PROMOTION_
 TS_DISABLE_WFLOAT_EQUAL_
@@ -1124,7 +1126,9 @@ TEST(fpe, assert_long_double_near13_fail) {
 
 TEST(fpe, assert_long_double_near14_fail) {
     /* NOLINTBEGIN(*-magic-numbers) */
+    /* NOLINTBEGIN(performance-type-promotion-in-math-fn) */
     ASSERT_NEAR(1.1, 1.10001F, .000001F);
+    /* NOLINTEND(performance-type-promotion-in-math-fn) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
@@ -1996,28 +2000,36 @@ TEST(fpe, expect_double_near6_fail) {
     /* NOLINTBEGIN(*-magic-numbers) */
     double fp0 = 1.10001;
     double fp1 = 1.1;
+    /* NOLINTBEGIN(performance-type-promotion-in-math-fn) */
     EXPECT_NEAR(fp0, fp1, .000001F);
+    /* NOLINTEND(performance-type-promotion-in-math-fn) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
 TEST(fpe, expect_double_near7_fail) {
     /* NOLINTBEGIN(*-magic-numbers) */
     double fp0 = 1.10001;
+    /* NOLINTBEGIN(performance-type-promotion-in-math-fn) */
     EXPECT_NEAR(fp0, 1.1, .000001F);
+    /* NOLINTEND(performance-type-promotion-in-math-fn) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
 TEST(fpe, expect_double_near8_fail) {
     /* NOLINTBEGIN(*-magic-numbers) */
     double fp0 = 1.10001;
+    /* NOLINTBEGIN(performance-type-promotion-in-math-fn) */
     EXPECT_NEAR(fp0, 1.1F, .000001F);
+    /* NOLINTEND(performance-type-promotion-in-math-fn) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
 TEST(fpe, expect_double_near9_fail) {
     /* NOLINTBEGIN(*-magic-numbers) */
     double fp0 = 1.10001;
-    EXPECT_NEAR(1.1F, fp0, .000001F);
+    /* NOLINTBEGIN(performance-type-promotion-in-math-fn) */ EXPECT_NEAR(
+        1.1F, fp0,
+        .000001F); /* NOLINTEND(performance-type-promotion-in-math-fn) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
@@ -2049,7 +2061,9 @@ TEST(fpe, expect_double_near13_fail) {
 
 TEST(fpe, expect_double_near14_fail) {
     /* NOLINTBEGIN(*-magic-numbers) */
-    EXPECT_NEAR(1.1, 1.10001F, .000001F);
+    /* NOLINTBEGIN(performance-type-promotion-in-math-fn) */ EXPECT_NEAR(
+        1.1, 1.10001F,
+        .000001F); /* NOLINTEND(performance-type-promotion-in-math-fn) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
@@ -2096,14 +2110,18 @@ TEST(fpe, expect_double_near19_okay) {
     /* NOLINTBEGIN(*-magic-numbers) */
     double fp0 = 1.10001;
     float  fp1 = 1.1F;
-    EXPECT_NEAR(fp0, fp1, .0001F);
+    /* NOLINTBEGIN(performance-type-promotion-in-math-fn) */ EXPECT_NEAR(
+        fp0, fp1,
+        .0001F); /* NOLINTEND(performance-type-promotion-in-math-fn) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
 TEST(fpe, expect_double_near20_okay) {
     /* NOLINTBEGIN(*-magic-numbers) */
     float fp0 = 1.10001F;
-    EXPECT_NEAR(fp0, 1.1, .0001F);
+    /* NOLINTBEGIN(performance-type-promotion-in-math-fn) */ EXPECT_NEAR(
+        fp0, 1.1,
+        .0001F); /* NOLINTEND(performance-type-promotion-in-math-fn) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
@@ -2117,7 +2135,9 @@ TEST(fpe, expect_double_near21_okay) {
 TEST(fpe, expect_double_near22_okay) {
     /* NOLINTBEGIN(*-magic-numbers) */
     float fp0 = 1.10001F;
-    EXPECT_NEAR(1.1, fp0, .0001F);
+    /* NOLINTBEGIN(performance-type-promotion-in-math-fn) */ EXPECT_NEAR(
+        1.1, fp0,
+        .0001F); /* NOLINTEND(performance-type-promotion-in-math-fn) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
@@ -2163,7 +2183,9 @@ TEST(fpe, expect_long_double_near2_okay) {
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
     TS_DISABLE_WABSOLUTE_VALUE_
     TS_DISABLE_WCONVERSION_
-    EXPECT_NEAR(fp0, fp1, .0001F);
+    /* NOLINTBEGIN(performance-type-promotion-in-math-fn) */ EXPECT_NEAR(
+        fp0, fp1,
+        .0001F); /* NOLINTEND(performance-type-promotion-in-math-fn) */
     TS_REENABLE_WCONVERSION_
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
@@ -2219,7 +2241,9 @@ TEST(fpe, expect_long_double_near6_fail) {
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
     TS_DISABLE_WABSOLUTE_VALUE_
     TS_DISABLE_WCONVERSION_
-    EXPECT_NEAR(fp0, fp1, .000001F);
+    /* NOLINTBEGIN(performance-type-promotion-in-math-fn) */ EXPECT_NEAR(
+        fp0, fp1,
+        .000001F); /* NOLINTEND(performance-type-promotion-in-math-fn) */
     TS_REENABLE_WCONVERSION_
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
@@ -2258,7 +2282,9 @@ TEST(fpe, expect_long_double_near9_fail) {
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
     TS_DISABLE_WABSOLUTE_VALUE_
     TS_DISABLE_WCONVERSION_
-    EXPECT_NEAR(1.1F, fp0, .000001F);
+    /* NOLINTBEGIN(performance-type-promotion-in-math-fn) */ EXPECT_NEAR(
+        1.1F, fp0,
+        .000001F); /* NOLINTEND(performance-type-promotion-in-math-fn) */
     TS_REENABLE_WCONVERSION_
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
@@ -2305,7 +2331,9 @@ TEST(fpe, expect_long_double_near13_fail) {
 
 TEST(fpe, expect_long_double_near14_fail) {
     /* NOLINTBEGIN(*-magic-numbers) */
-    EXPECT_NEAR(1.1, 1.10001F, .000001F);
+    /* NOLINTBEGIN(performance-type-promotion-in-math-fn) */ EXPECT_NEAR(
+        1.1, 1.10001F,
+        .000001F); /* NOLINTEND(performance-type-promotion-in-math-fn) */
     /* NOLINTEND(*-magic-numbers) */
 }
 
@@ -2357,7 +2385,9 @@ TEST(fpe, expect_long_double_near18_okay) {
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
     TS_DISABLE_WABSOLUTE_VALUE_
     TS_DISABLE_WCONVERSION_
-    EXPECT_NEAR(fp0, fp1, .0001F);
+    /* NOLINTBEGIN(performance-type-promotion-in-math-fn) */ EXPECT_NEAR(
+        fp0, fp1,
+        .0001F); /* NOLINTEND(performance-type-promotion-in-math-fn) */
     TS_REENABLE_WCONVERSION_
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
@@ -2384,7 +2414,9 @@ TEST(fpe, expect_long_double_near20_okay) {
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
     TS_DISABLE_WABSOLUTE_VALUE_
     TS_DISABLE_WCONVERSION_
-    EXPECT_NEAR(fp0, 1.1L, .0001F);
+    /* NOLINTBEGIN(performance-type-promotion-in-math-fn) */ EXPECT_NEAR(
+        fp0, 1.1L,
+        .0001F); /* NOLINTEND(performance-type-promotion-in-math-fn) */
     TS_REENABLE_WCONVERSION_
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
@@ -2410,7 +2442,9 @@ TEST(fpe, expect_long_double_near22_okay) {
     TS_DISABLE_WIMPLICIT_FLOAT_CONVERSION_
     TS_DISABLE_WABSOLUTE_VALUE_
     TS_DISABLE_WCONVERSION_
+    /* NOLINTBEGIN(performance-type-promotion-in-math-fn) */
     EXPECT_NEAR(1.1L, fp0, .0001F);
+    /* NOLINTEND(performance-type-promotion-in-math-fn) */
     TS_REENABLE_WCONVERSION_
     TS_REENABLE_WABSOLUTE_VALUE_
     TS_REENABLE_WIMPLICIT_FLOAT_CONVERSION_
@@ -3906,4 +3940,6 @@ TS_REENABLE_WFLOAT_EQUAL_
 TS_REENABLE_WFLOAT_CONVERSION_
 TS_REENABLE_WMISSING_NORETURN_
 TS_REENABLE_WSTACK_PROTECTOR_
+/* NOLINTEND(modernize-use-nullptr) */
+/* NOLINTEND(hicpp-use-nullptr) */
 /* NOLINTEND(altera-unroll-loops) */

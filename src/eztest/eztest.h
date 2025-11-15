@@ -66,10 +66,21 @@
 # define EZTEST_C_PRINT_ARGS 1
 #endif
 
-/* Verbosity for internal status from the testsuite.  Mostly useful for
- * debugging.  */
+/*
+ * Verbosity for internal status from the testsuite.  Mostly useful for
+ * debugging.
+ */
 #ifndef EZTEST_VERBOSITY
 # define EZTEST_VERBOSITY 0
+#endif
+
+/*
+ * Enable __COUNTER__ macros (for creating unique identifiers) as opposed to
+ * using __LINE__. Shouldn't make a real difference and __COUNTER__ trips up
+ * '-Wc2y-extensions' (LLVM 19+).
+ */
+#ifndef EZTEST_USE_COUNTER
+# define EZTEST_USE_COUNTER 0
 #endif
 
 

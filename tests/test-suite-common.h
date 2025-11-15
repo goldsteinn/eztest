@@ -105,8 +105,10 @@
 #  define TS_CXX_LANG_ 1
 # endif
 # define TS_C_LANG_ 0
+/* NOLINTBEGIN(readability-use-concise-preprocessor-directives) */
 #elif defined(__STDC__)
-# if defined(__STDC_VERSION__)
+/* NOLINTEND(readability-use-concise-preprocessor-directives) */
+# ifdef __STDC_VERSION__
 #  if (__STDC_VERSION__ >= 202311L)
 #   define TS_C_LANG_ 2023
 #  elif (__STDC_VERSION__ >= 201710L)
@@ -127,7 +129,7 @@
 #endif
 
 
-#if (defined __cplusplus)
+#ifdef __cplusplus
 # if __cplusplus >= 201103L
 #  define TS_NULL_ nullptr
 # else

@@ -90,7 +90,7 @@ class eztest_cxx_print_var_t {
         return EZTEST_PRINTF_("%lf", eztest_var);
     }
     EZTEST_PRIVATE_ int
-    eztest_cxx_print_var(long double eztest_var) {
+    eztest_cxx_print_var(EZTEST_LONG_DOUBLE_T_ eztest_var) {
         return EZTEST_PRINTF_("%Lf", eztest_var);
     }
 
@@ -678,6 +678,7 @@ eztest_cxx_fail(int eztest_exit_on_failure) {
 EZTEST_DISABLE_GCC7_GCC8_UBSAN_WPADDED_
 /* NOLINTBEGIN(cert-dcl50-cpp,bugprone-easily-swappable-parameters) */
 /* NOLINTBEGIN(llvmlibc-inline-function-decl) */
+/* NOLINTBEGIN(modernize-avoid-variadic-functions) */
 template<typename eztest_T0_t>
 EZTEST_PRIVATE_
 EZTEST_ATTR_FMT_(7,
@@ -689,6 +690,7 @@ EZTEST_ATTR_FMT_(7,
                                                 const eztest_T0_t & eztest_op0,
                                                 const char *        eztest_fmt,
                                                 ...) {
+    /* NOLINTEND(modernize-avoid-variadic-functions) */
     /* NOLINTEND(llvmlibc-inline-function-decl) */
     /* NOLINTEND(cert-dcl50-cpp,bugprone-easily-swappable-parameters) */
     EZTEST_REENABLE_GCC7_GCC8_UBSAN_WPADDED_
@@ -744,6 +746,7 @@ eztest_cxx_bool_assert(int                 eztest_exit_on_failure,
 EZTEST_DISABLE_GCC7_GCC8_UBSAN_WPADDED_
 /* NOLINTBEGIN(cert-dcl50-cpp,bugprone-easily-swappable-parameters) */
 /* NOLINTBEGIN(llvmlibc-inline-function-decl) */
+/* NOLINTBEGIN(modernize-avoid-variadic-functions) */
 template<typename eztest_cxx_binop_t,
          typename eztest_T0_t,
          typename eztest_T1_t>
@@ -758,6 +761,7 @@ EZTEST_ATTR_FMT_(8,
                                                  const eztest_T1_t & eztest_op1,
                                                  const char *        eztest_fmt,
                                                  ...) {
+    /* NOLINTEND(modernize-avoid-variadic-functions) */
     /* NOLINTEND(llvmlibc-inline-function-decl) */
     /* NOLINTEND(cert-dcl50-cpp,bugprone-easily-swappable-parameters) */
     EZTEST_REENABLE_GCC7_GCC8_UBSAN_WPADDED_
@@ -818,6 +822,7 @@ eztest_cxx_binop_assert(int                 eztest_exit_on_failure,
 EZTEST_DISABLE_GCC7_GCC8_UBSAN_WPADDED_
 /* NOLINTBEGIN(cert-dcl50-cpp,bugprone-easily-swappable-parameters) */
 /* NOLINTBEGIN(llvmlibc-inline-function-decl) */
+/* NOLINTBEGIN(modernize-avoid-variadic-functions) */
 template<typename eztest_cxx_ternop_t,
          typename eztest_T0_t,
          typename eztest_T1_t,
@@ -835,6 +840,7 @@ EZTEST_ATTR_FMT_(10, 11) void eztest_cxx_ternop_assert(
     const eztest_T2_t & eztest_op2,
     const char *        eztest_fmt,
     ...) {
+    /* NOLINTEND(modernize-avoid-variadic-functions) */
     /* NOLINTEND(llvmlibc-inline-function-decl) */
     /* NOLINTEND(cert-dcl50-cpp,bugprone-easily-swappable-parameters) */
     EZTEST_REENABLE_GCC7_GCC8_UBSAN_WPADDED_

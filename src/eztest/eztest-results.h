@@ -28,6 +28,8 @@ eztest_results_count_failed(const EZTEST_RESULTS_T_ * eztest_results) {
     unsigned eztest_cnt = 0;
     EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_
     /* NOLINTBEGIN(llvmlibc-callee-namespace) */
+    /* NOLINTBEGIN(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
+     */
     eztest_cnt +=
         eztest_results->eztest_stats_[EZTEST_NS_ eztest_k_status_fail];
     eztest_cnt +=
@@ -36,6 +38,8 @@ eztest_results_count_failed(const EZTEST_RESULTS_T_ * eztest_results) {
         eztest_results->eztest_stats_[EZTEST_NS_ eztest_k_status_fail_unknown];
     eztest_cnt +=
         eztest_results->eztest_stats_[EZTEST_NS_ eztest_k_status_fail_timeout];
+    /* NOLINTEND(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
+     */
     /* NOLINTEND(llvmlibc-callee-namespace) */
     EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_
     return eztest_cnt;
@@ -47,7 +51,11 @@ eztest_results_count_passed(const EZTEST_RESULTS_T_ * eztest_results) {
 
     EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_
     /* NOLINTBEGIN(llvmlibc-callee-namespace) */
+    /* NOLINTBEGIN(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
+     */
     return eztest_results->eztest_stats_[EZTEST_NS_ eztest_k_status_passed];
+    /* NOLINTEND(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
+     */
     /* NOLINTEND(llvmlibc-callee-namespace) */
     EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_
 }
@@ -58,7 +66,11 @@ eztest_results_count_disabled(const EZTEST_RESULTS_T_ * eztest_results) {
 
     EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_
     /* NOLINTBEGIN(llvmlibc-callee-namespace) */
+    /* NOLINTBEGIN(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
+     */
     return eztest_results->eztest_stats_[EZTEST_NS_ eztest_k_status_disabled];
+    /* NOLINTEND(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
+     */
     /* NOLINTEND(llvmlibc-callee-namespace) */
     EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_
 }
@@ -69,7 +81,11 @@ eztest_results_count_unknown(const EZTEST_RESULTS_T_ * eztest_results) {
 
     EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_
     /* NOLINTBEGIN(llvmlibc-callee-namespace) */
+    /* NOLINTBEGIN(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
+     */
     return eztest_results->eztest_stats_[EZTEST_NS_ eztest_k_status_unknown];
+    /* NOLINTEND(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
+     */
     /* NOLINTEND(llvmlibc-callee-namespace) */
     EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_
 }
@@ -81,12 +97,16 @@ eztest_results_count_internal_errors(const EZTEST_RESULTS_T_ * eztest_results) {
     unsigned eztest_cnt = 0;
     EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_
     /* NOLINTBEGIN(llvmlibc-callee-namespace) */
+    /* NOLINTBEGIN(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
+     */
     eztest_cnt +=
         eztest_results
             ->eztest_stats_[EZTEST_NS_ eztest_k_status_internal_error];
     eztest_cnt +=
         eztest_results
             ->eztest_stats_[EZTEST_NS_ eztest_k_status_internal_fatal_error];
+    /* NOLINTEND(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
+     */
     /* NOLINTEND(llvmlibc-callee-namespace) */
     EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_
     return eztest_cnt;

@@ -8,12 +8,15 @@
 
 EZTEST_NAMESPACE_BEGIN_
 typedef unsigned eztest_proc_status_t;
+/* NOLINTBEGIN(cppcoreguidelines-use-enum-class) */
 enum {
     eztest_k_proc_unknown,
     eztest_k_proc_returned,
     eztest_k_proc_signalled,
     eztest_k_proc_timed_out
 };
+/* NOLINTEND(cppcoreguidelines-use-enum-class) */
+#define EZTEST_PROC_STATUS_T_ EZTEST_NS_ eztest_proc_status_t
 
 /* NOLINTBEGIN(llvmlibc-restrict-system-libc-headers) */
 #include <poll.h>         /* pollfd, poll.  */
@@ -30,32 +33,33 @@ enum {
 /* Maybe use pthread_sigprocmask (afraid of -lpthread dependency) */
 #endif
 #define EZTEST_SIGPROCMASK_(todo, new_mask, old_mask)                          \
- /* NOLINTBEGIN(concurrency-mt-unsafe,llvmlibc-callee-namespace) */            \
- sigprocmask(todo, new_mask, old_mask)                                         \
+    /* NOLINTBEGIN(concurrency-mt-unsafe,llvmlibc-callee-namespace) */         \
+    sigprocmask(todo, new_mask, old_mask)                                      \
                                                                                \
-     /* NOLINTEND(concurrency-mt-unsafe,llvmlibc-callee-namespace) */
+        /* NOLINTEND(concurrency-mt-unsafe,llvmlibc-callee-namespace) */
 
 
 typedef int (*eztest_proc_func)(const EZTEST_TEST_T_ *);
-
+#define EZTEST_PROC_FUNC_ EZTEST_NS_ eztest_proc_func
 
 struct eztest_proc_result_t {
-    eztest_proc_status_t eztest_proc_status_;
-    int                  eztest_proc_status_value_;
-    EZTEST_DURATION_T_   eztest_proc_duration_;
+    EZTEST_PROC_STATUS_T_ eztest_proc_status_;
+    int                   eztest_proc_status_value_;
+    EZTEST_DURATION_T_    eztest_proc_duration_;
 };
-#define EZTEST_PROC_RESULT_T_ EZTEST_STRUCT_NS_ eztest_proc_result_t
-#define EZTEST_PROC_RESULT_T_INIT_                                             \
- { 0, 0, EZTEST_DURATION_T_INIT_ }
+#define EZTEST_PROC_RESULT_T_      EZTEST_STRUCT_NS_ eztest_proc_result_t
+#define EZTEST_PROC_RESULT_T_INIT_ { 0, 0, EZTEST_DURATION_T_INIT_ }
 
 
 typedef int eztest_timed_wait_res_t;
+/* NOLINTBEGIN(cppcoreguidelines-use-enum-class) */
 enum {
     eztest_k_timed_wait_fallback = -2,
     eztest_k_timed_wait_err      = -1,
     eztest_k_timed_wait_returned = 0,
     eztest_k_timed_wait_timeout  = 1
 };
+/* NOLINTEND(cppcoreguidelines-use-enum-class) */
 #define EZTEST_TIMED_WAIT_RES_T_ EZTEST_NS_ eztest_timed_wait_res_t
 
 EZTEST_DISABLE_WUSELESS_CAST_
@@ -101,7 +105,9 @@ eztest_proc_waitpid(pid_t eztest_proc_pid,
 EZTEST_PRIVATE_ int
 eztest_proc_wait_on_fd(int eztest_proc_fd, long eztest_proc_timeout_ms) {
     /* NOLINTEND(bugprone-easily-swappable-parameters) */
+    /* NOLINTBEGIN(modernize-use-designated-initializers) */
     EZTEST_STRUCT_ pollfd eztest_poll_fd = { eztest_proc_fd, POLLIN, 0 };
+    /* NOLINTEND(modernize-use-designated-initializers) */
     /* NOLINTBEGIN(llvmlibc-callee-namespace) */
     const int eztest_poll_res = poll(&eztest_poll_fd, EZTEST_CAST_(nfds_t, 1),
                                      EZTEST_CAST_(int, eztest_proc_timeout_ms));
@@ -476,10 +482,10 @@ eztest_testsuite_pid(EZTEST_VOID_ARG_) {
 
 EZTEST_PRIVATE_
 int
-eztest_proc_run(EZTEST_NS_ eztest_proc_func eztest_to_dispatch,
-                const EZTEST_TEST_T_ *      eztest_test,
-                long                        eztest_proc_timeout_ms,
-                EZTEST_PROC_RESULT_T_ *     eztest_proc_res_out) {
+eztest_proc_run(EZTEST_PROC_FUNC_       eztest_to_dispatch,
+                const EZTEST_TEST_T_ *  eztest_test,
+                long                    eztest_proc_timeout_ms,
+                EZTEST_PROC_RESULT_T_ * eztest_proc_res_out) {
     unsigned eztest_fork_att_cnt  = 0;
     int      eztest_proc_ret      = 0;
     int      eztest_wait_result   = 0;

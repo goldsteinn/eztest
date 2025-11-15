@@ -69,7 +69,9 @@ EZTEST_REENABLE_WCXX98_COMPAT_PEDANTIC_
 EZTEST_NAMESPACE_BEGIN_
 EZTEST_PRIVATE_ void
 eztest_perr(const char * eztest_usr_msg) {
+    /* NOLINTBEGIN(cppcoreguidelines-use-enum-class) */
     enum { eztest_k_errbuf_size = 512 };
+    /* NOLINTEND(cppcoreguidelines-use-enum-class) */
     char eztest_errbuf[eztest_k_errbuf_size];
     /* NOLINTBEGIN(llvmlibc-callee-namespace) */
     /* NOLINTBEGIN(hicpp-no-array-decay) */

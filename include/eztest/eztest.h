@@ -2,7 +2,7 @@
 #define EZTEST_EZTEST_H_
 /*
  * Single header of entire eztest suite.
- * Generated: 2024-09-18 10:13:32.569413
+ * Generated: 2025-11-15 18:22:19.079355
  */
 /* Begin include of: eztest.h  */
 
@@ -71,10 +71,21 @@
 # define EZTEST_C_PRINT_ARGS 1
 #endif
 
-/* Verbosity for internal status from the testsuite.  Mostly useful for
- * debugging.  */
+/*
+ * Verbosity for internal status from the testsuite.  Mostly useful for
+ * debugging.
+ */
 #ifndef EZTEST_VERBOSITY
 # define EZTEST_VERBOSITY 0
+#endif
+
+/*
+ * Enable __COUNTER__ macros (for creating unique identifiers) as opposed to
+ * using __LINE__. Shouldn't make a real difference and __COUNTER__ trips up
+ * '-Wc2y-extensions' (LLVM 19+).
+ */
+#ifndef EZTEST_USE_COUNTER
+# define EZTEST_USE_COUNTER 0
 #endif
 
 
@@ -83,6 +94,7 @@
 /* Begin include of: eztest-compiler.h  */
 
 /* Begin include of: eztest-pre-processor.h  */
+
 
 #define EZTEST_STRINGIFY_IMPL_(eztest_expr) #eztest_expr
 #define EZTEST_STRINGIFY_(eztest_expr)      EZTEST_STRINGIFY_IMPL_(eztest_expr)
@@ -96,16 +108,17 @@
 #define EZTEST_SNAKE_CAT_(eztest_expr0, eztest_expr1)                          \
     EZTEST_SNAKE_CAT_IMPL_(eztest_expr0, eztest_expr1)
 
-#ifdef __COUNTER__
-# define EZTEST_COUNTER_ __COUNTER__
-#else
-# define EZTEST_COUNTER_ 0
-#endif
 
 #ifdef __LINE__
 # define EZTEST_LINE_ __LINE__
 #else
 # define EZTEST_LINE_ 0
+#endif
+
+#if (defined __COUNTER__) && (EZTEST_USE_COUNTER)
+# define EZTEST_COUNTER_ __COUNTER__
+#else
+# define EZTEST_COUNTER_ EZTEST_LINE_
 #endif
 
 #ifdef __FILE__
@@ -839,7 +852,9 @@ EZTEST_REENABLE_WCXX98_COMPAT_PEDANTIC_
 EZTEST_NAMESPACE_BEGIN_
 EZTEST_PRIVATE_ void
 eztest_perr(const char * eztest_usr_msg) {
+    /* NOLINTBEGIN(cppcoreguidelines-use-enum-class) */
     enum { eztest_k_errbuf_size = 512 };
+    /* NOLINTEND(cppcoreguidelines-use-enum-class) */
     char eztest_errbuf[eztest_k_errbuf_size];
     /* NOLINTBEGIN(llvmlibc-callee-namespace) */
     /* NOLINTBEGIN(hicpp-no-array-decay) */
@@ -1070,6 +1085,9 @@ EZTEST_NAMESPACE_END_
 #else
 # define EZTEST_ABS_(x) EZTEST_STD_NS_ fabs(x)
 #endif
+
+#define EZTEST_LONG_DOUBLE_T_ /* NOLINTBEGIN(google-runtime-float) */          \
+    long double               /* NOLINTEND(google-runtime-float) */
 
 #define EZTEST_ISNAN_(x) EZTEST_STD_NS_ isnan(x)
 /* End include of: eztest-libm.h  */
@@ -1356,7 +1374,7 @@ class eztest_cxx_print_var_t {
         return EZTEST_PRINTF_("%lf", eztest_var);
     }
     EZTEST_PRIVATE_ int
-    eztest_cxx_print_var(long double eztest_var) {
+    eztest_cxx_print_var(EZTEST_LONG_DOUBLE_T_ eztest_var) {
         return EZTEST_PRINTF_("%Lf", eztest_var);
     }
 
@@ -1944,6 +1962,7 @@ eztest_cxx_fail(int eztest_exit_on_failure) {
 EZTEST_DISABLE_GCC7_GCC8_UBSAN_WPADDED_
 /* NOLINTBEGIN(cert-dcl50-cpp,bugprone-easily-swappable-parameters) */
 /* NOLINTBEGIN(llvmlibc-inline-function-decl) */
+/* NOLINTBEGIN(modernize-avoid-variadic-functions) */
 template<typename eztest_T0_t>
 EZTEST_PRIVATE_
 EZTEST_ATTR_FMT_(7,
@@ -1955,6 +1974,7 @@ EZTEST_ATTR_FMT_(7,
                                                 const eztest_T0_t & eztest_op0,
                                                 const char *        eztest_fmt,
                                                 ...) {
+    /* NOLINTEND(modernize-avoid-variadic-functions) */
     /* NOLINTEND(llvmlibc-inline-function-decl) */
     /* NOLINTEND(cert-dcl50-cpp,bugprone-easily-swappable-parameters) */
     EZTEST_REENABLE_GCC7_GCC8_UBSAN_WPADDED_
@@ -2010,6 +2030,7 @@ eztest_cxx_bool_assert(int                 eztest_exit_on_failure,
 EZTEST_DISABLE_GCC7_GCC8_UBSAN_WPADDED_
 /* NOLINTBEGIN(cert-dcl50-cpp,bugprone-easily-swappable-parameters) */
 /* NOLINTBEGIN(llvmlibc-inline-function-decl) */
+/* NOLINTBEGIN(modernize-avoid-variadic-functions) */
 template<typename eztest_cxx_binop_t,
          typename eztest_T0_t,
          typename eztest_T1_t>
@@ -2024,6 +2045,7 @@ EZTEST_ATTR_FMT_(8,
                                                  const eztest_T1_t & eztest_op1,
                                                  const char *        eztest_fmt,
                                                  ...) {
+    /* NOLINTEND(modernize-avoid-variadic-functions) */
     /* NOLINTEND(llvmlibc-inline-function-decl) */
     /* NOLINTEND(cert-dcl50-cpp,bugprone-easily-swappable-parameters) */
     EZTEST_REENABLE_GCC7_GCC8_UBSAN_WPADDED_
@@ -2084,6 +2106,7 @@ eztest_cxx_binop_assert(int                 eztest_exit_on_failure,
 EZTEST_DISABLE_GCC7_GCC8_UBSAN_WPADDED_
 /* NOLINTBEGIN(cert-dcl50-cpp,bugprone-easily-swappable-parameters) */
 /* NOLINTBEGIN(llvmlibc-inline-function-decl) */
+/* NOLINTBEGIN(modernize-avoid-variadic-functions) */
 template<typename eztest_cxx_ternop_t,
          typename eztest_T0_t,
          typename eztest_T1_t,
@@ -2101,6 +2124,7 @@ EZTEST_ATTR_FMT_(10, 11) void eztest_cxx_ternop_assert(
     const eztest_T2_t & eztest_op2,
     const char *        eztest_fmt,
     ...) {
+    /* NOLINTEND(modernize-avoid-variadic-functions) */
     /* NOLINTEND(llvmlibc-inline-function-decl) */
     /* NOLINTEND(cert-dcl50-cpp,bugprone-easily-swappable-parameters) */
     EZTEST_REENABLE_GCC7_GCC8_UBSAN_WPADDED_
@@ -2297,55 +2321,59 @@ EZTEST_REENABLE_WVARIADIC_MACROS_
 #  define EZTEST_C11_REENABLE_WPRE_C11_COMPAT_ EZTEST_REENABLE_WPRE_C11_COMPAT_
 
 /* clang-format off */
-#define EZTEST_C_GET_VAR_FMT_SPECIFIER_(var)    \
-    _Generic((var),                             \
-             _Bool : "%d",                      \
-             unsigned char : "%hhu",            \
-             unsigned short : "%hu",            \
-             unsigned int : "%u",               \
-             unsigned long : "%lu",             \
-             unsigned long long : "%llu",       \
-             signed char : "%hhd",              \
-             signed short : "%hd",              \
-             signed int : "%d",                 \
-             signed long : "%ld",               \
-             signed long long : "%lld",         \
-             char : "%c",                       \
-             long double : "%Lf",               \
-             double : "%lf",                    \
-             float : "%f",                      \
-             void * :"%p",                      \
-             const void * :"%p",                \
-             _Bool * : "%p",                    \
-             const _Bool * : "%p",              \
-             unsigned char * : "%p",            \
-             const unsigned char * : "%p",      \
-             unsigned short * : "%p",           \
-             const unsigned short * : "%p",     \
-             unsigned int * : "%p",             \
-             const unsigned int * : "%p",       \
-             unsigned long * : "%p",            \
-             const unsigned long * : "%p",      \
-             unsigned long long * : "%p",       \
-             const unsigned long long * : "%p", \
-             signed char * : "%p",              \
-             const signed char * : "%p",        \
-             signed short * : "%p",             \
-             const signed short * : "%p",       \
-             signed int * : "%p",               \
-             const signed int * : "%p",         \
-             signed long * : "%p",              \
-             const signed long * : "%p",        \
-             signed long long * : "%p",         \
-             const signed long long * : "%p",   \
-             char * : "%p",                     \
-             const char * : "%p",               \
-             long double * : "%p",              \
-             const long double * : "%p",        \
-             double * : "%p",                   \
-             const double * : "%p",             \
-             float * : "%p",                    \
-             const float * : "%p",              \
+#define EZTEST_C_GET_VAR_FMT_SPECIFIER_(var)              \
+    _Generic((var),                                       \
+             _Bool : "%d",                                \
+             unsigned char : "%hhu",                      \
+             unsigned short : "%hu",                      \
+             unsigned int : "%u",                         \
+             unsigned long : "%lu",                       \
+             unsigned long long : "%llu",                 \
+             signed char : "%hhd",                        \
+             signed short : "%hd",                        \
+             signed int : "%d",                           \
+             signed long : "%ld",                         \
+             signed long long : "%lld",                   \
+             char : "%c",                                 \
+             EZTEST_LONG_DOUBLE_T_ : "%Lf",               \
+             double : "%lf",                              \
+             float : "%f",                                \
+             void * :"%p",                                \
+             void ** :"%p",                               \
+             const void * :"%p",                          \
+             _Bool * : "%p",                              \
+             const _Bool * : "%p",                        \
+             unsigned char * : "%p",                      \
+             unsigned char ** : "%p",                     \
+             const unsigned char * : "%p",                \
+             unsigned short * : "%p",                     \
+             const unsigned short * : "%p",               \
+             unsigned int * : "%p",                       \
+             const unsigned int * : "%p",                 \
+             unsigned long * : "%p",                      \
+             const unsigned long * : "%p",                \
+             unsigned long long * : "%p",                 \
+             const unsigned long long * : "%p",           \
+             signed char * : "%p",                        \
+             signed char ** : "%p",                       \
+             const signed char * : "%p",                  \
+             signed short * : "%p",                       \
+             const signed short * : "%p",                 \
+             signed int * : "%p",                         \
+             const signed int * : "%p",                   \
+             signed long * : "%p",                        \
+             const signed long * : "%p",                  \
+             signed long long * : "%p",                   \
+             const signed long long * : "%p",             \
+             char * : "%p",                               \
+             char ** : "%p",                              \
+             const char * : "%p",                         \
+             EZTEST_LONG_DOUBLE_T_ * : "%p",              \
+             const EZTEST_LONG_DOUBLE_T_ * : "%p",        \
+             double * : "%p",                             \
+             const double * : "%p",                       \
+             float * : "%p",                              \
+             const float * : "%p",                        \
              default : EZTEST_NULL_)
 
 
@@ -2793,8 +2821,7 @@ EZTEST_REENABLE_WVARIADIC_MACROS_
 EZTEST_NAMESPACE_BEGIN_
 
 typedef unsigned eztest_status_t;
-
-
+/* NOLINTBEGIN(cppcoreguidelines-use-enum-class) */
 enum {
     eztest_k_status_init,
     eztest_k_status_counted,
@@ -2810,6 +2837,7 @@ enum {
     eztest_k_status_unknown,
     eztest_k_status_end
 };
+/* NOLINTEND(cppcoreguidelines-use-enum-class) */
 #define EZTEST_STATUS_T_ EZTEST_NS_ eztest_status_t
 
 
@@ -3003,13 +3031,13 @@ EZTEST_NAMESPACE_END_
 
 /* Begin include of: eztest-arch.h  */
 
-#if defined(__AMDGPU__)
+#ifdef __AMDGPU__
 # define EZTEST_ARCH_IS_AMDGPU_ 1
 #else
 # define EZTEST_ARCH_IS_AMDGPU_ 0
 #endif
 
-#if defined(__NVPTX__)
+#ifdef __NVPTX__
 # define EZTEST_ARCH_IS_NVPTX_ 1
 #else
 # define EZTEST_ARCH_IS_NVPTX_ 0
@@ -3299,6 +3327,8 @@ eztest_results_count_failed(const EZTEST_RESULTS_T_ * eztest_results) {
     unsigned eztest_cnt = 0;
     EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_
     /* NOLINTBEGIN(llvmlibc-callee-namespace) */
+    /* NOLINTBEGIN(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
+     */
     eztest_cnt +=
         eztest_results->eztest_stats_[EZTEST_NS_ eztest_k_status_fail];
     eztest_cnt +=
@@ -3307,6 +3337,8 @@ eztest_results_count_failed(const EZTEST_RESULTS_T_ * eztest_results) {
         eztest_results->eztest_stats_[EZTEST_NS_ eztest_k_status_fail_unknown];
     eztest_cnt +=
         eztest_results->eztest_stats_[EZTEST_NS_ eztest_k_status_fail_timeout];
+    /* NOLINTEND(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
+     */
     /* NOLINTEND(llvmlibc-callee-namespace) */
     EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_
     return eztest_cnt;
@@ -3318,7 +3350,11 @@ eztest_results_count_passed(const EZTEST_RESULTS_T_ * eztest_results) {
 
     EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_
     /* NOLINTBEGIN(llvmlibc-callee-namespace) */
+    /* NOLINTBEGIN(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
+     */
     return eztest_results->eztest_stats_[EZTEST_NS_ eztest_k_status_passed];
+    /* NOLINTEND(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
+     */
     /* NOLINTEND(llvmlibc-callee-namespace) */
     EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_
 }
@@ -3329,7 +3365,11 @@ eztest_results_count_disabled(const EZTEST_RESULTS_T_ * eztest_results) {
 
     EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_
     /* NOLINTBEGIN(llvmlibc-callee-namespace) */
+    /* NOLINTBEGIN(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
+     */
     return eztest_results->eztest_stats_[EZTEST_NS_ eztest_k_status_disabled];
+    /* NOLINTEND(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
+     */
     /* NOLINTEND(llvmlibc-callee-namespace) */
     EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_
 }
@@ -3340,7 +3380,11 @@ eztest_results_count_unknown(const EZTEST_RESULTS_T_ * eztest_results) {
 
     EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_
     /* NOLINTBEGIN(llvmlibc-callee-namespace) */
+    /* NOLINTBEGIN(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
+     */
     return eztest_results->eztest_stats_[EZTEST_NS_ eztest_k_status_unknown];
+    /* NOLINTEND(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
+     */
     /* NOLINTEND(llvmlibc-callee-namespace) */
     EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_
 }
@@ -3352,12 +3396,16 @@ eztest_results_count_internal_errors(const EZTEST_RESULTS_T_ * eztest_results) {
     unsigned eztest_cnt = 0;
     EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_
     /* NOLINTBEGIN(llvmlibc-callee-namespace) */
+    /* NOLINTBEGIN(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
+     */
     eztest_cnt +=
         eztest_results
             ->eztest_stats_[EZTEST_NS_ eztest_k_status_internal_error];
     eztest_cnt +=
         eztest_results
             ->eztest_stats_[EZTEST_NS_ eztest_k_status_internal_fatal_error];
+    /* NOLINTEND(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
+     */
     /* NOLINTEND(llvmlibc-callee-namespace) */
     EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_
     return eztest_cnt;
@@ -3632,12 +3680,15 @@ EZTEST_NAMESPACE_END_
 
 EZTEST_NAMESPACE_BEGIN_
 typedef unsigned eztest_proc_status_t;
+/* NOLINTBEGIN(cppcoreguidelines-use-enum-class) */
 enum {
     eztest_k_proc_unknown,
     eztest_k_proc_returned,
     eztest_k_proc_signalled,
     eztest_k_proc_timed_out
 };
+/* NOLINTEND(cppcoreguidelines-use-enum-class) */
+#define EZTEST_PROC_STATUS_T_ EZTEST_NS_ eztest_proc_status_t
 
 /* NOLINTBEGIN(llvmlibc-restrict-system-libc-headers) */
 #include <poll.h>         /* pollfd, poll.  */
@@ -3661,24 +3712,26 @@ enum {
 
 
 typedef int (*eztest_proc_func)(const EZTEST_TEST_T_ *);
-
+#define EZTEST_PROC_FUNC_ EZTEST_NS_ eztest_proc_func
 
 struct eztest_proc_result_t {
-    eztest_proc_status_t eztest_proc_status_;
-    int                  eztest_proc_status_value_;
-    EZTEST_DURATION_T_   eztest_proc_duration_;
+    EZTEST_PROC_STATUS_T_ eztest_proc_status_;
+    int                   eztest_proc_status_value_;
+    EZTEST_DURATION_T_    eztest_proc_duration_;
 };
 #define EZTEST_PROC_RESULT_T_      EZTEST_STRUCT_NS_ eztest_proc_result_t
 #define EZTEST_PROC_RESULT_T_INIT_ { 0, 0, EZTEST_DURATION_T_INIT_ }
 
 
 typedef int eztest_timed_wait_res_t;
+/* NOLINTBEGIN(cppcoreguidelines-use-enum-class) */
 enum {
     eztest_k_timed_wait_fallback = -2,
     eztest_k_timed_wait_err      = -1,
     eztest_k_timed_wait_returned = 0,
     eztest_k_timed_wait_timeout  = 1
 };
+/* NOLINTEND(cppcoreguidelines-use-enum-class) */
 #define EZTEST_TIMED_WAIT_RES_T_ EZTEST_NS_ eztest_timed_wait_res_t
 
 EZTEST_DISABLE_WUSELESS_CAST_
@@ -3724,7 +3777,9 @@ eztest_proc_waitpid(pid_t eztest_proc_pid,
 EZTEST_PRIVATE_ int
 eztest_proc_wait_on_fd(int eztest_proc_fd, long eztest_proc_timeout_ms) {
     /* NOLINTEND(bugprone-easily-swappable-parameters) */
+    /* NOLINTBEGIN(modernize-use-designated-initializers) */
     EZTEST_STRUCT_ pollfd eztest_poll_fd = { eztest_proc_fd, POLLIN, 0 };
+    /* NOLINTEND(modernize-use-designated-initializers) */
     /* NOLINTBEGIN(llvmlibc-callee-namespace) */
     const int eztest_poll_res = poll(&eztest_poll_fd, EZTEST_CAST_(nfds_t, 1),
                                      EZTEST_CAST_(int, eztest_proc_timeout_ms));
@@ -4099,10 +4154,10 @@ eztest_testsuite_pid(EZTEST_VOID_ARG_) {
 
 EZTEST_PRIVATE_
 int
-eztest_proc_run(EZTEST_NS_ eztest_proc_func eztest_to_dispatch,
-                const EZTEST_TEST_T_ *      eztest_test,
-                long                        eztest_proc_timeout_ms,
-                EZTEST_PROC_RESULT_T_ *     eztest_proc_res_out) {
+eztest_proc_run(EZTEST_PROC_FUNC_       eztest_to_dispatch,
+                const EZTEST_TEST_T_ *  eztest_test,
+                long                    eztest_proc_timeout_ms,
+                EZTEST_PROC_RESULT_T_ * eztest_proc_res_out) {
     unsigned eztest_fork_att_cnt  = 0;
     int      eztest_proc_ret      = 0;
     int      eztest_wait_result   = 0;
@@ -4369,9 +4424,13 @@ eztest_run_tests(const EZTEST_LIST_T_ * eztest_tests_base,
         eztest_test->eztest_status_ = eztest_run_result;
         EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_
         /* NOLINTBEGIN(cppcoreguidelines-pro-bounds-constant-array-index) */
+        /* NOLINTBEGIN(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
+         */
         /* NOLINTBEGIN(llvmlibc-callee-namespace) */
         ++eztest_results->eztest_stats_[eztest_run_result];
         /* NOLINTEND(llvmlibc-callee-namespace) */
+        /* NOLINTEND(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
+         */
         /* NOLINTEND(cppcoreguidelines-pro-bounds-constant-array-index) */
         EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_
     }

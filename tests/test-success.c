@@ -8,7 +8,6 @@
 /* NOLINTBEGIN(llvmlibc-restrict-system-libc-headers) */
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 /* NOLINTEND(llvmlibc-restrict-system-libc-headers) */
 
 

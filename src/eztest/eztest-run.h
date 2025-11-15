@@ -192,9 +192,13 @@ eztest_run_tests(const EZTEST_LIST_T_ * eztest_tests_base,
         eztest_test->eztest_status_ = eztest_run_result;
         EZTEST_DISABLE_WUNSAFE_BUFFER_USAGE_
         /* NOLINTBEGIN(cppcoreguidelines-pro-bounds-constant-array-index) */
+        /* NOLINTBEGIN(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
+         */
         /* NOLINTBEGIN(llvmlibc-callee-namespace) */
         ++eztest_results->eztest_stats_[eztest_run_result];
         /* NOLINTEND(llvmlibc-callee-namespace) */
+        /* NOLINTEND(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
+         */
         /* NOLINTEND(cppcoreguidelines-pro-bounds-constant-array-index) */
         EZTEST_REENABLE_WUNSAFE_BUFFER_USAGE_
     }
